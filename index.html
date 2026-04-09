@@ -1,58 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My UX/UI Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paige — Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Hi, I'm Alex</h1>
-    <p>UX/UI Designer & Front-end Developer</p>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Project 1</h3>
-        <p>A brief description of the project.</p>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#hero" class="nav-logo">Paige.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Interface Designer & Creative · Based in NZ</p>
+      <h1 class="hero-name">De&shy;sign<br>that <em>lands.</em></h1>
+      <p class="hero-sub">Hi, I'm Paige — I make things that look good, work well, and don't feel like every other portfolio you've seen today.</p>
+      <a href="#work" class="hero-cta">
+        See my work
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <path d="M1 6h16M11 1l6 5-6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-graphic">
+        <div class="hg-rect hg-rect-1"></div>
+        <div class="hg-rect hg-rect-2">
+          <span class="hg-tag">UI · UX · Brand · Web</span>
+        </div>
+        <div class="hg-circle"></div>
+        <span class="hg-text">Interface Design</span>
       </div>
-      <div class="project-card">
-        <h3>Project 2</h3>
-        <p>A brief description of the project.</p>
-      </div>
-      <div class="project-card">
-        <h3>Project 3</h3>
-        <p>A brief description of the project.</p>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Interface Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Web Development <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Brand Identity <span class="marquee-dot"></span></span>
+      <span class="marquee-item">WordPress <span class="marquee-dot"></span></span>
+      <span class="marquee-item">InDesign <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Illustrator <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Social Media <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Print Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">HTML · CSS · JS <span class="marquee-dot"></span></span>
+      <span class="marquee-item">University of Waikato <span class="marquee-dot"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Interface Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Web Development <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Brand Identity <span class="marquee-dot"></span></span>
+      <span class="marquee-item">WordPress <span class="marquee-dot"></span></span>
+      <span class="marquee-item">InDesign <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Illustrator <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Social Media <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Print Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">HTML · CSS · JS <span class="marquee-dot"></span></span>
+      <span class="marquee-item">University of Waikato <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-left reveal">
+      <p class="section-label">About me</p>
+      <h2 class="section-heading">Designer who actually ships.</h2>
+    </div>
+    <div class="about-body reveal">
+      <p>I'm Paige — a 24-year-old interface designer from New Zealand with a <strong>Bachelor of Design (Interface Design)</strong> from the University of Waikato and a habit of making things look significantly better than I found them.</p>
+      <p>Most recently I was a <strong>Marketing Coordinator at a luxury lighting company</strong>, where I rebuilt their website from the ground up, created print collateral, ran social media, and made sure everything from the spec sheets to the signage had that polished feeling. Before that: a design internship, and three years at NZ Post where I snuck in design work wherever I could.</p>
+      <p>I work at the intersection of <strong>visual design and front-end development</strong> — comfortable in both Figma and a code editor, equally at home with a rebrand or a responsive layout.</p>
+      <div class="skills-grid">
+        <span class="skill-tag">UI / UX Design</span>
+        <span class="skill-tag">HTML · CSS · JS</span>
+        <span class="skill-tag">WordPress + PHP</span>
+        <span class="skill-tag">Adobe InDesign</span>
+        <span class="skill-tag">Adobe Illustrator</span>
+        <span class="skill-tag">Adobe Photoshop</span>
+        <span class="skill-tag">Print & Collateral</span>
+        <span class="skill-tag">Social Media</span>
+        <span class="skill-tag">Brand & Identity</span>
+        <span class="skill-tag">Signage & Wayfinding</span>
       </div>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I create user-friendly interfaces and beautiful digital experiences.</p>
+  <!-- Work -->
+  <section id="work">
+    <div class="work-header reveal">
+      <div>
+        <p class="section-label">Selected work</p>
+        <h2 class="section-heading">Things I've made.</h2>
+      </div>
+      <a href="#contact" class="view-all">Get in touch →</a>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="card-visual">
+          <div class="card-bg card-bg-1"></div>
+          <div class="card-overlay">
+            <span class="card-hover-text">View project →</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <p class="card-category">Web Design & Development</p>
+          <h3 class="card-title">Luxury Lighting — Website Redesign</h3>
+          <p class="card-desc">Full website overhaul built in WordPress using custom HTML, CSS, JS and PHP. Elevated the brand's digital presence to match its premium physical products.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="card-visual">
+          <div class="card-bg card-bg-2">Brochure.</div>
+          <div class="card-overlay">
+            <span class="card-hover-text">View project →</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <p class="card-category">Print Design · InDesign</p>
+          <h3 class="card-title">Product Catalogues & Spec Sheets</h3>
+          <p class="card-desc">Redesigned technical spec sheets and installation guides for a suite of lighting products. Clean, precise, and actually nice to look at.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="card-visual">
+          <div class="card-bg card-bg-3"></div>
+          <div class="card-overlay">
+            <span class="card-hover-text">View project →</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <p class="card-category">Social Media & Brand</p>
+          <h3 class="card-title">Social Graphics & Brand Identity</h3>
+          <p class="card-desc">Created and managed social media content using Illustrator and Photoshop — consistent, on-brand, and built to perform.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="card-visual" style="aspect-ratio:4/3">
+          <div class="card-bg" style="background:linear-gradient(135deg,#e8e0d4,#c9bfb0);display:flex;align-items:center;justify-content:center;">
+            <div style="width:80px;height:80px;border:2px solid rgba(0,0,0,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+              <div style="width:40px;height:40px;border:2px solid rgba(0,0,0,0.15);border-radius:50%"></div>
+            </div>
+          </div>
+          <div class="card-overlay">
+            <span class="card-hover-text">View project →</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <p class="card-category">University Project</p>
+          <h3 class="card-title">Interface Design — Uni Work</h3>
+          <p class="card-desc">Selected projects from my Bachelor of Design at the University of Waikato, focusing on UX research, wireframing, and high-fidelity interface design.</p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
+  <!-- Experience -->
+  <section id="experience">
+    <div class="reveal">
+      <p class="section-label">Experience</p>
+      <h2 class="section-heading">Where I've been.</h2>
+    </div>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <p class="exp-date">2023 – Present</p>
+          <p class="exp-company">Luxury Lighting Co.</p>
+          <p class="exp-role">Marketing Coordinator</p>
+        </div>
+        <div>
+          <p class="exp-desc">Led the full website redesign and ongoing maintenance (WordPress, HTML, CSS, JS, PHP). Redesigned spec sheets and installation instructions in InDesign. Created social media graphics in Illustrator and Photoshop, managed content scheduling, designed brochures and catalogues, and organised in-building signage.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">WordPress</span>
+            <span class="exp-tag">HTML/CSS/JS</span>
+            <span class="exp-tag">InDesign</span>
+            <span class="exp-tag">Illustrator</span>
+            <span class="exp-tag">Photoshop</span>
+            <span class="exp-tag">Social Media</span>
+            <span class="exp-tag">Print Design</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <p class="exp-date">2022 – 2023</p>
+          <p class="exp-company">Design Internship</p>
+          <p class="exp-role">Design Intern · 6 months</p>
+        </div>
+        <div>
+          <p class="exp-desc">Six-month internship that gave me real-world experience applying my degree. Worked across visual design projects and built confidence translating briefs into polished outcomes.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Visual Design</span>
+            <span class="exp-tag">Branding</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <p class="exp-date">2019 – 2022</p>
+          <p class="exp-company">NZ Post</p>
+          <p class="exp-role">Parcel Sorter + Design</p>
+        </div>
+        <div>
+          <p class="exp-desc">Three years of operational work alongside informal design contributions — because when you're a designer, you can't help but make things look better wherever you are.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Design</span>
+            <span class="exp-tag">Operations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <p class="exp-date">2019 – 2023</p>
+          <p class="exp-company">University of Waikato</p>
+          <p class="exp-role">Bachelor of Design — Interface Design</p>
+        </div>
+        <div>
+          <p class="exp-desc">Graduated with a major in Interface Design. Studied UX research, visual systems, typography, interaction design, and the theory behind why good design actually works.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">UX Research</span>
+            <span class="exp-tag">Interface Design</span>
+            <span class="exp-tag">Typography</span>
+            <span class="exp-tag">Visual Systems</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section id="contact">
-    <h2>Contact Me</h2>
-    <form id="contactForm">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-    <p id="responseMsg"></p>
+    <p class="section-label reveal">Get in touch</p>
+    <h2 class="section-heading reveal">Let's make something<br><em style="font-style:italic;color:var(--accent)">good.</em></h2>
+    <p class="contact-sub reveal">Open to new roles, freelance projects, and anything interesting.<br>If you've made it this far, we're probably a good match.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:hello@paigedesign.co.nz" class="contact-btn contact-btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Say hello
+      </a>
+      <a href="https://linkedin.com/in/paige" target="_blank" class="contact-btn contact-btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="#" class="contact-btn contact-btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download CV
+      </a>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2026 Alex. All rights reserved.</p>
+    <span>© 2026 Paige. All rights reserved.</span>
+    <a href="#hero">Back to top ↑</a>
   </footer>
 
   <script src="script.js"></script>
