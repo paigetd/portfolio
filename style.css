@@ -280,6 +280,7 @@ section { padding: 4rem 3rem; }
   align-items: flex-end;
   margin-bottom: 2rem;
 }
+
 .work-header .section-heading { margin-bottom: 0; }
 .view-all {
   font-size: 0.72rem;
@@ -295,33 +296,83 @@ section { padding: 4rem 3rem; }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
 }
+
+/* Hero card — full width, horizontal layout */
+.project-card--hero {
+  grid-column: span 2;
+  display: grid !important;
+  grid-template-columns: 1.6fr 1fr;
+  text-decoration: none;
+  color: inherit;
+}
+.project-card--hero .card-visual { border-radius: 4px 0 0 4px; }
+.project-card--hero .card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 0 4px 4px 0;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-left: none;
+}
+.card-info--hero .card-title { font-size: 1.5rem; margin-bottom: 0.6rem; }
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+.card-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  background: var(--cream);
+  border-radius: 100px;
+  color: var(--mid);
+}
+
 .project-card {
   background: var(--white);
   overflow: hidden;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
-.project-card:nth-child(1) { grid-column: span 7; }
-.project-card:nth-child(2) { grid-column: span 5; }
-.project-card:nth-child(3) { grid-column: span 5; }
-.project-card:nth-child(4) { grid-column: span 7; }
+
+.card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:hover .card-photo { transform: scale(1.03); }
 
 .card-visual {
   width: 100%;
   overflow: hidden;
   position: relative;
+  height: 220px;
 }
+.project-card--hero .card-visual { height: 340px; }
+
 .card-visual-inner {
   width: 100%;
+  height: 100%;
   transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .project-card:hover .card-visual-inner { transform: scale(1.04); }
 
 .cv-1 {
-  height: 200px;
+  height: 220px;
   background: linear-gradient(135deg, #111827 0%, #1e3a5f 100%);
   display: flex; align-items: center; justify-content: center;
 }
@@ -332,7 +383,7 @@ section { padding: 4rem 3rem; }
   box-shadow: 0 0 60px rgba(200,169,110,0.2), inset 0 0 30px rgba(200,169,110,0.06);
 }
 .cv-2 {
-  height: 180px;
+  height: 220px;
   background: linear-gradient(170deg, #f5efe6 0%, #e0d5c4 100%);
   display: flex; align-items: flex-end; justify-content: flex-start;
   padding: 1.5rem;
@@ -343,7 +394,7 @@ section { padding: 4rem 3rem; }
   letter-spacing: -0.03em;
 }
 .cv-3 {
-  height: 180px;
+  height: 220px;
   background: #1a1a1a;
   display: flex; align-items: center; justify-content: center;
   gap: 10px;
@@ -355,7 +406,7 @@ section { padding: 4rem 3rem; }
   opacity: 0.65;
 }
 .cv-4 {
-  height: 200px;
+  height: 220px;
   background: linear-gradient(135deg, #f0ebe3 0%, #ddd7cd 100%);
   display: grid;
   place-items: center;
@@ -545,8 +596,11 @@ footer a:hover { color: var(--accent); }
   section { padding: 3rem 1.5rem; }
   #about { grid-template-columns: 1fr; gap: 2.5rem; }
   .projects-grid { grid-template-columns: 1fr; }
-  .project-card:nth-child(n) { grid-column: span 1; }
-  .cv-1, .cv-2, .cv-3, .cv-4 { height: 200px; }
+  .project-card--hero { grid-column: span 1; grid-template-columns: 1fr; }
+  .project-card--hero .card-visual { border-radius: 4px 4px 0 0; height: 220px; }
+  .project-card--hero .card-info { border-radius: 0 0 4px 4px; border-left: 1px solid rgba(0,0,0,0.06); border-top: none; }
+  .cv-1, .cv-2, .cv-3, .cv-4 { height: 180px; }
+  .card-visual { height: 180px; }
   #experience { grid-template-columns: 1fr; gap: 1rem; }
   .exp-heading-col { position: static; }
   .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
