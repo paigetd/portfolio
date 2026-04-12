@@ -30,6 +30,8 @@
       flex-direction: column;
       align-items: center;
     }
+    .phones-row--5 { grid-template-columns: repeat(5, 1fr); }
+    .phones-row--5 .phone-wrap img { max-width: 180px; }
     .phone-wrap img {
       width: 100%;
       max-width: 240px;
@@ -156,8 +158,8 @@
     }
 
     @media (max-width: 900px) {
-      .phones-row { grid-template-columns: 1fr; gap: 1.5rem; align-items: center; }
-      .phone-wrap img { max-width: 200px; }
+      .phones-row, .phones-row--5 { grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+      .phones-row--5 .phone-wrap img, .phone-wrap img { max-width: 160px; }
       .feature-grid, .insights { grid-template-columns: 1fr; }
       .ocean-journey { grid-template-columns: 1fr; }
       .ocean-arrow { flex-direction: row; }
@@ -220,18 +222,27 @@
     <div class="inner">
       <span class="section-label">02 — The App</span>
       <h2 class="section-heading">Three screens that tell the whole story.</h2>
-      <div class="phones-row">
+      <!-- All 5 screens in a staggered row -->
+      <div class="phones-row phones-row--5">
         <div class="phone-wrap">
-          <img src="splashy-login.png" alt="Splashy login screen"/>
-          <p class="phone-label">Onboarding & Login</p>
+          <img src="splash screen.png" alt="Splashy splash screen"/>
+          <p class="phone-label">Splash screen</p>
         </div>
-        <div class="phone-wrap" style="transform: translateY(-20px)">
-          <img src="splashy-ocean.png" alt="Splashy ocean screen"/>
-          <p class="phone-label">Your Ocean — the reward space</p>
+        <div class="phone-wrap" style="transform:translateY(-16px)">
+          <img src="fish - medium.png" alt="Ocean — in progress"/>
+          <p class="phone-label">Ocean — building up</p>
+        </div>
+        <div class="phone-wrap" style="transform:translateY(-32px)">
+          <img src="fish.png" alt="Ocean — thriving"/>
+          <p class="phone-label">Ocean — thriving</p>
+        </div>
+        <div class="phone-wrap" style="transform:translateY(-16px)">
+          <img src="quests active good.png" alt="Quests screen"/>
+          <p class="phone-label">Active quests</p>
         </div>
         <div class="phone-wrap">
-          <img src="splashy-quests.png" alt="Splashy quests screen"/>
-          <p class="phone-label">Quests — real-world challenges</p>
+          <img src="log drag.png" alt="Log — recycling drag game"/>
+          <p class="phone-label">Log — sort your waste</p>
         </div>
       </div>
     </div>
