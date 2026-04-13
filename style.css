@@ -13,8 +13,8 @@
 html { scroll-behavior: smooth; }
 
 /* ── Cursor ── */
-* { cursor: none !important; }
-#cdot, #cring { will-change: transform; }
+body.has-custom-cursor,
+body.has-custom-cursor * { cursor: none !important; }
 
 /* ── Page transition ── */
 #page-overlay { will-change: opacity; }
@@ -127,15 +127,16 @@ nav.scrolled {
 .hero-name {
   font-family: var(--serif);
   font-size: clamp(5.5rem, 14vw, 13rem);
-  line-height: 0.88;
+  line-height: 0.92;
   letter-spacing: -0.02em;
   margin-bottom: 0;
-  overflow: hidden;
+  overflow: visible;
+  padding-bottom: 0.08em;
 }
 .hero-name-line {
   display: block;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateY(20px);
   animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .hero-name-line:nth-child(1) { animation-delay: 0.1s; }
@@ -180,39 +181,14 @@ nav.scrolled {
 .hero-scroll:hover svg { transform: translateY(4px); }
 
 @keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
   to { opacity: 1; }
 }
 
-/* ── Marquee ── */
-.marquee-wrap {
-  overflow: hidden;
-  background: var(--black);
-  padding: 1rem 0;
-  white-space: nowrap;
-}
-.marquee-track {
-  display: inline-flex;
-  animation: marquee 28s linear infinite;
-}
-.marquee-item {
-  display: inline-flex; align-items: center; gap: 2rem;
-  padding: 0 2rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(246,243,238,0.5);
-}
-.marquee-item strong { color: var(--white); font-weight: 400; }
-.marquee-sep {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* marquee removed */
 
 /* ── Shared section ── */
 section { padding: 4rem 3rem; }
@@ -329,6 +305,7 @@ section { padding: 4rem 3rem; }
   position: relative;
   overflow: hidden;
   background: #111;
+  min-height: 260px;
 }
 .pcard-img img {
   width: 100%;
