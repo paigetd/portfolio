@@ -1,328 +1,648 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paige Simm — Interface Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <!-- Nav -->
-  <nav>
-    <a href="#hero" class="nav-logo">Paige Simm.</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+:root {
+  --black: #0e0d0b;
+  --white: #f6f3ee;
+  --cream: #edeae3;
+  --accent: #c8a96e;
+  --mid: #7a746d;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
 
-  <!-- Hero -->
-  <section id="hero">
-    <div class="hero-top">
-      <span class="hero-tag">Interface Designer &amp; Creative, New Zealand</span>
-      <span class="hero-available">
-        <span class="dot-pulse"></span>
-        Available for work
-      </span>
-    </div>
+html { scroll-behavior: smooth; }
 
-    <div class="hero-main">
-      <h1 class="hero-name">
-        <span class="hero-name-line">Paige</span>
-        <span class="hero-name-line">Simm.</span>
-      </h1>
-      <div class="hero-bottom">
-        <p class="hero-role">
-          <strong>Interface designer</strong> with a knack for front-end. I make things look good, work well, and feel considered. Website rebuilds, print, social — whatever it takes.
-        </p>
-        <a href="#work" class="hero-scroll">
-          See the work
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+/* ── Cursor ── */
+* { cursor: none !important; }
+#cdot, #cring { will-change: transform; }
 
-  <!-- Marquee -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-      <span class="marquee-item"><strong>Interface Design</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Web Development</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Brand Identity</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">WordPress <span class="marquee-sep"></span></span>
-      <span class="marquee-item">InDesign <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Illustrator <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Social Media</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Print Design <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>HTML · CSS · JS</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">University of Waikato <span class="marquee-sep"></span></span>
-      <!-- duplicate -->
-      <span class="marquee-item"><strong>Interface Design</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Web Development</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Brand Identity</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">WordPress <span class="marquee-sep"></span></span>
-      <span class="marquee-item">InDesign <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Illustrator <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>Social Media</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">Print Design <span class="marquee-sep"></span></span>
-      <span class="marquee-item"><strong>HTML · CSS · JS</strong> <span class="marquee-sep"></span></span>
-      <span class="marquee-item">University of Waikato <span class="marquee-sep"></span></span>
-    </div>
-  </div>
+/* ── Page transition ── */
+#page-overlay { will-change: opacity; }
 
-  <!-- About -->
-  <section id="about">
-    <div class="about-left reveal">
-      <span class="section-label">About me</span>
-      <h2 class="section-heading">Designer who actually ships.</h2>
-    </div>
-    <div class="about-body reveal">
-      <p>Hey, I'm Paige Simm. I'm a 24-year-old interface designer from New Zealand with a <strong>Bachelor of Design (Interface Design)</strong> from the University of Waikato. I have a habit of making things look significantly better than I found them.</p>
-      <p>Most recently I was a <strong>Marketing Coordinator at a luxury lighting company</strong> where I rebuilt their website from scratch, created print collateral, ran social media, and made sure everything from spec sheets to in-building signage felt polished. Before that I did a design internship, and spent three years at NZ Post sneaking in design work wherever I could.</p>
-      <p>I sit at the intersection of <strong>visual design and front-end development</strong> and I'm equally comfortable in Figma or a code editor. Oh, and every graphic, illustration, and image across my work is <strong>hand-drawn by me in Illustrator.</strong></p>
-      <div class="skills-grid">
-        <span class="skill-tag">UI / UX Design</span>
-        <span class="skill-tag">HTML · CSS · JS</span>
-        <span class="skill-tag">WordPress + PHP</span>
-        <span class="skill-tag">Adobe InDesign</span>
-        <span class="skill-tag">Adobe Illustrator</span>
-        <span class="skill-tag">Adobe Photoshop</span>
-        <span class="skill-tag">Print & Collateral</span>
-        <span class="skill-tag">Social Media</span>
-        <span class="skill-tag">Brand & Identity</span>
-        <span class="skill-tag">Signage & Wayfinding</span>
-        <span class="skill-tag">Illustration</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- Work -->
-  <section id="work">
-    <div class="work-header">
-      <div>
-        <span class="section-label">Selected work</span>
-        <h2 class="section-heading">Things I've made.</h2>
-      </div>
-      <a href="#contact" class="view-all">Get in touch →</a>
-    </div>
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
 
-    <div class="projects-grid">
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.8rem 3rem;
+  z-index: 100;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(246,243,238,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width 0.35s ease;
+}
+.nav-links a:hover::after { width: 100%; }
 
-      <!-- Hunza: image left, text right -->
-      <a href="hunza-case-study.html" class="pcard pcard--wide">
-        <div class="pcard-img">
-          <img src="1775772387453_image.png" alt="Hunza & LuxR website redesign"/>
-          <div class="pcard-overlay"><div class="pcard-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L12 2M12 2H5M12 2v7"/></svg></div></div>
-        </div>
-        <div class="pcard-body">
-          <div>
-            <p class="pcard-cat">UX/UI · Web Development</p>
-            <h3 class="pcard-title">Hunza & LuxR: Website Redesign</h3>
-            <p class="pcard-desc">Merged two premium outdoor lighting brands onto one unified website. Led the UX/UI end-to-end and built the whole thing in WordPress with custom HTML, CSS, JS and PHP.</p>
-          </div>
-          <div class="pcard-tags">
-            <span class="pcard-tag">WordPress</span>
-            <span class="pcard-tag">HTML/CSS/JS</span>
-            <span class="pcard-tag">UX Research</span>
-            <span class="pcard-tag">Brand Merge</span>
-          </div>
-        </div>
-      </a>
+/* ── Hero ── */
+#hero {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3rem 3rem;
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
 
-      <!-- Automote: image left, text right -->
-      <a href="automote-case-study.html" class="pcard pcard--wide">
-        <div class="pcard-img">
-          <img src="automote-orders.png" alt="Automote dealer platform"/>
-          <div class="pcard-overlay"><div class="pcard-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L12 2M12 2H5M12 2v7"/></svg></div></div>
-        </div>
-        <div class="pcard-body">
-          <div>
-            <p class="pcard-cat">B2B UX/UI · Desktop App · Internship</p>
-            <h3 class="pcard-title">Automote: Dealer Platform Redesign</h3>
-            <p class="pcard-desc">Full redesign of a stock and inventory management tool used by car dealerships every day. Fixed broken navigation, missing feedback states, and a fragmented visual system. Delivered as a fully interactive Figma prototype.</p>
-          </div>
-          <div class="pcard-tags">
-            <span class="pcard-tag">Figma</span>
-            <span class="pcard-tag">B2B UX</span>
-            <span class="pcard-tag">Design Systems</span>
-            <span class="pcard-tag">Prototype</span>
-          </div>
-        </div>
-      </a>
+.hero-top {
+  position: absolute;
+  top: 6.5rem; left: 3rem; right: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hero-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  opacity: 0;
+  animation: fadeIn 0.7s 0.3s forwards;
+}
+.hero-available {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  opacity: 0;
+  animation: fadeIn 0.7s 0.5s forwards;
+}
+.dot-pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #6abf7b;
+  position: relative;
+  flex-shrink: 0;
+}
+.dot-pulse::after {
+  content: '';
+  position: absolute; inset: -3px;
+  border-radius: 50%;
+  border: 1px solid #6abf7b;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0; transform: scale(1.8); }
+}
 
-      <!-- Splashy: image left, text right -->
-      <a href="splashy-case-study.html" class="pcard pcard--wide">
-        <div class="pcard-img pcard-img--dark">
-          <div class="splashy-phones">
-            <img src="splash screen.png" alt="Splashy splash screen" style="transform:rotate(-4deg)"/>
-            <img src="fish.png" alt="Splashy ocean"/>
-            <img src="quests active good.png" alt="Splashy quests" style="transform:rotate(4deg)"/>
-          </div>
-          <div class="pcard-overlay"><div class="pcard-arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L12 2M12 2H5M12 2v7"/></svg></div></div>
-        </div>
-        <div class="pcard-body">
-          <div>
-            <p class="pcard-cat">UX Research · Mobile App · Capstone</p>
-            <h3 class="pcard-title">Splashy: Sustainability App for Kids</h3>
-            <p class="pcard-desc">A gamified mobile app that gets kids excited about sustainability. Complete real-world quests, earn ocean creatures as rewards, and watch a polluted ocean come to life. All illustration hand-drawn in Illustrator.</p>
-          </div>
-          <div class="pcard-tags">
-            <span class="pcard-tag">UX Research</span>
-            <span class="pcard-tag">Figma</span>
-            <span class="pcard-tag">Illustration</span>
-            <span class="pcard-tag">Children's UX</span>
-          </div>
-        </div>
-      </a>
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(5.5rem, 14vw, 13rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+.hero-name-line {
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-name-line:nth-child(1) { animation-delay: 0.1s; }
+.hero-name-line:nth-child(2) {
+  animation-delay: 0.22s;
+  font-style: italic;
+  color: var(--accent);
+  padding-left: 0.12em;
+}
 
-      <!-- Small cards row -->
-      <div class="pcard pcard--small">
-        <div class="pcard-img pcard-img--print">
-          <span class="pcard-placeholder-text">Spec Sheet.</span>
-        </div>
-        <div class="pcard-body pcard-body--small">
-          <p class="pcard-cat">Print Design · InDesign</p>
-          <h3 class="pcard-title">Product Catalogues & Spec Sheets</h3>
-          <p class="pcard-desc">Redesigned technical spec sheets and installation guides for a lighting product suite. All hand-illustrated in Illustrator.</p>
-        </div>
-      </div>
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1.8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  opacity: 0;
+  animation: fadeIn 0.8s 0.7s forwards;
+}
+.hero-role {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: var(--mid);
+  line-height: 1.6;
+  max-width: 40ch;
+}
+.hero-role strong { color: var(--black); font-weight: 500; }
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.3s;
+}
+.hero-scroll:hover { color: var(--accent); }
+.hero-scroll svg { transition: transform 0.4s ease; }
+.hero-scroll:hover svg { transform: translateY(4px); }
 
-      <div class="pcard pcard--small">
-        <div class="pcard-img pcard-img--social">
-          <div class="social-bars">
-            <div style="height:35px"></div><div style="height:55px"></div>
-            <div style="height:45px"></div><div style="height:70px"></div>
-            <div style="height:40px"></div><div style="height:60px"></div>
-          </div>
-        </div>
-        <div class="pcard-body pcard-body--small">
-          <p class="pcard-cat">Social Media · Brand · Illustration</p>
-          <h3 class="pcard-title">Social Graphics & Brand Identity</h3>
-          <p class="pcard-desc">Social content for a luxury lighting brand. All graphics hand-drawn in Illustrator and Photoshop, created and managed from brief to post.</p>
-        </div>
-      </div>
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    </div>
-  </section>
+/* ── Marquee ── */
+.marquee-wrap {
+  overflow: hidden;
+  background: var(--black);
+  padding: 1rem 0;
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 28s linear infinite;
+}
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 2rem;
+  padding: 0 2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(246,243,238,0.5);
+}
+.marquee-item strong { color: var(--white); font-weight: 400; }
+.marquee-sep {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    <!-- Experience -->
-  <section id="experience">
-    <div class="exp-heading-col reveal">
-      <span class="section-label">Experience</span>
-      <h2 class="section-heading">Where I've been.</h2>
-    </div>
+/* ── Shared section ── */
+section { padding: 4rem 3rem; }
+.section-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+.section-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.8rem;
+}
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal.visible { opacity: 1; transform: none; }
 
-    <div class="exp-list">
+/* ── About ── */
+#about {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 4rem;
+  align-items: start;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.about-left .section-heading { margin-bottom: 0; max-width: 14ch; }
 
-      <div class="exp-item reveal">
-        <div class="exp-meta">
-          <p class="exp-date">2023 – Present</p>
-          <p class="exp-company">Luxury Lighting Co.</p>
-          <p class="exp-role">Marketing Coordinator</p>
-        </div>
-        <div>
-          <p class="exp-desc">Led the full website redesign and ongoing maintenance (WordPress, HTML, CSS, JS, PHP). Redesigned spec sheets and installation instructions in InDesign. Created social media graphics in Illustrator and Photoshop, managed content scheduling, designed brochures and catalogues, and organised in-building signage.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">WordPress</span>
-            <span class="exp-tag">HTML/CSS/JS</span>
-            <span class="exp-tag">InDesign</span>
-            <span class="exp-tag">Illustrator</span>
-            <span class="exp-tag">Photoshop</span>
-            <span class="exp-tag">Social Media</span>
-            <span class="exp-tag">Print Design</span>
-          </div>
-        </div>
-      </div>
+.about-body p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--mid);
+  margin-bottom: 1rem;
+}
+.about-body p strong { color: var(--black); font-weight: 500; }
 
-      <div class="exp-item reveal">
-        <div class="exp-meta">
-          <p class="exp-date">2022 – 2023</p>
-          <p class="exp-company">Design Internship</p>
-          <p class="exp-role">Design Intern · 6 months</p>
-        </div>
-        <div>
-          <p class="exp-desc">Six-month internship applying my degree in a real-world studio environment. Worked across visual design projects and built confidence translating briefs into polished outcomes.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">Visual Design</span>
-            <span class="exp-tag">Branding</span>
-          </div>
-        </div>
-      </div>
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+.skill-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #d5d0c8;
+  border-radius: 100px;
+  color: var(--mid);
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  cursor: default;
+}
+.skill-tag:hover {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
 
-      <div class="exp-item reveal">
-        <div class="exp-meta">
-          <p class="exp-date">2019 – 2022</p>
-          <p class="exp-company">NZ Post</p>
-          <p class="exp-role">Parcel Sorter + Design</p>
-        </div>
-        <div>
-          <p class="exp-desc">Three years of operational work with informal design contributions on the side. When you're a designer you just can't help it.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">Design</span>
-            <span class="exp-tag">Operations</span>
-          </div>
-        </div>
-      </div>
+/* ── Work ── */
+#work {
+  background: var(--cream);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.work-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+.work-header .section-heading { margin-bottom: 0; }
+.view-all {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mid);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+.view-all:hover { color: var(--black); }
 
-      <div class="exp-item reveal">
-        <div class="exp-meta">
-          <p class="exp-date">2019 – 2023</p>
-          <p class="exp-company">University of Waikato</p>
-          <p class="exp-role">BDes — Interface Design</p>
-        </div>
-        <div>
-          <p class="exp-desc">Graduated with a major in Interface Design. Studied UX research, visual systems, typography, interaction design, and the theory behind why good design works.</p>
-          <div class="exp-tags">
-            <span class="exp-tag">UX Research</span>
-            <span class="exp-tag">Interface Design</span>
-            <span class="exp-tag">Typography</span>
-            <span class="exp-tag">Visual Systems</span>
-          </div>
-        </div>
-      </div>
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-    </div>
-  </section>
+/* ── Base card ── */
+.pcard {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: none;
+  will-change: transform;
+}
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="contact-left reveal">
-      <span class="section-label">Get in touch</span>
-      <h2 class="contact-heading">Let's make<br>something <em>good.</em></h2>
-    </div>
-    <div class="contact-right reveal">
-      <p class="contact-sub">Open to new roles, freelance work, and anything interesting. If you've made it this far, we're probably a good match.</p>
-      <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#7c14191010133c0c1d151b1918190f151b12521f13521206" class="contact-link">
-          <span class="__cf_email__" data-cfemail="620a070e0e0d2212030b05070607110b050c4c010d4c0c18">[email&#160;protected]</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 14L14 2M14 2H6M14 2v8"/>
-          </svg>
-        </a>
-        <a href="https://linkedin.com/in/paigesimm" target="_blank" rel="noopener" class="contact-link">
-          LinkedIn
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 14L14 2M14 2H6M14 2v8"/>
-          </svg>
-        </a>
-        <a href="#" class="contact-link">
-          Download CV
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 2v9M3 11l5 3 5-3M2 14h12"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+/* ── Wide card: image left, text right ── */
+.pcard--wide {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  min-height: 260px;
+}
+.pcard-img {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+.pcard-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.pcard--wide:hover .pcard-img img { transform: scale(1.04); }
 
-  <!-- Footer -->
-  <footer>
-    <span>© 2026 Paige Simm.
+/* Dark bg variant for Splashy phones */
+.pcard-img--dark {
+  background: linear-gradient(135deg, #0d2235 0%, #1a5070 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.splashy-phones {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  height: 100%;
+}
+.splashy-phones img {
+  width: auto !important;
+  height: 220px !important;
+  object-fit: contain !important;
+  object-position: bottom !important;
+  flex-shrink: 0;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  transition: transform 0.4s ease !important;
+}
+.pcard--wide:hover .splashy-phones img { transform: translateY(-6px) !important; }
+
+.pcard-overlay {
+  position: absolute; inset: 0;
+  background: rgba(14,13,11,0);
+  display: flex; align-items: flex-end;
+  padding: 1.2rem;
+  transition: background 0.4s;
+  pointer-events: none;
+}
+.pcard--wide:hover .pcard-overlay { background: rgba(14,13,11,0.35); }
+.pcard-arrow {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s, transform 0.35s;
+  flex-shrink: 0;
+}
+.pcard-arrow svg { width: 13px; height: 13px; }
+.pcard--wide:hover .pcard-arrow { opacity: 1; transform: translateY(0); }
+
+.pcard-body {
+  padding: 2rem 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid rgba(0,0,0,0.06);
+}
+.pcard-cat {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.pcard-title {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
+}
+.pcard-desc {
+  font-size: 0.83rem;
+  color: var(--mid);
+  line-height: 1.7;
+}
+.pcard-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+}
+.pcard-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  background: var(--cream);
+  border-radius: 100px;
+  color: var(--mid);
+}
+
+/* ── Small cards row ── */
+.projects-grid .pcard--small:first-of-type,
+.pcard--small + .pcard--small {
+  display: block;
+}
+/* Wrap small cards in a row */
+.pcard--small {
+  flex: 1;
+}
+
+/* Trick: last two cards sit side by side */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  gap: 1rem;
+}
+.pcard--wide {
+  grid-column: span 2;
+}
+.pcard--small {
+  grid-column: span 1;
+}
+
+/* Small card image areas */
+.pcard-img--print {
+  height: 160px;
+  background: linear-gradient(170deg, #f5efe6 0%, #e0d5c4 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.pcard-placeholder-text {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: rgba(0,0,0,0.1);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.pcard-img--social {
+  height: 160px;
+  background: #111;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 1.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.social-bars div {
+  width: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.65;
+}
+
+.pcard-body--small {
+  padding: 1.2rem 1.4rem 1.4rem;
+  border-left: none;
+}
+.pcard-body--small .pcard-title { font-size: 1.15rem; }
+
+/* Hover on small cards */
+.pcard--small:hover .pcard-img--print,
+.pcard--small:hover .pcard-img--social {
+  opacity: 0.92;
+}
+
+/* ── Experience ── */
+#experience {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.exp-heading-col { position: sticky; top: 8rem; }
+.exp-heading-col .section-heading { margin-bottom: 0; }
+
+.exp-item {
+  border-top: 1px solid rgba(0,0,0,0.09);
+  padding: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  transition: padding-left 0.35s ease;
+}
+.exp-item:hover { padding-left: 0.4rem; }
+
+.exp-date {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.exp-company {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.15rem;
+}
+.exp-role {
+  font-size: 0.75rem;
+  color: var(--mid);
+  letter-spacing: 0.03em;
+}
+.exp-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--mid);
+}
+.exp-tags {
+  margin-top: 1rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.exp-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  background: var(--cream);
+  border-radius: 100px;
+  color: var(--mid);
+}
+
+/* ── Contact ── */
+#contact {
+  background: var(--black);
+  color: var(--white);
+  padding: 5rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+}
+#contact .section-label { color: var(--accent); }
+.contact-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.0;
+  color: var(--white);
+  margin-top: 0.5rem;
+}
+.contact-heading em { font-style: italic; color: var(--accent); }
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+.contact-sub {
+  font-size: 1rem;
+  color: rgba(246,243,238,0.45);
+  line-height: 1.75;
+}
+.contact-links { display: flex; flex-direction: column; }
+.contact-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(246,243,238,0.08);
+  text-decoration: none;
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+}
+.contact-link:last-child { border-bottom: 1px solid rgba(246,243,238,0.08); }
+.contact-link:hover { color: var(--accent); }
+.contact-link svg { opacity: 0.35; transition: opacity 0.3s, transform 0.3s; }
+.contact-link:hover svg { opacity: 1; transform: translate(3px, -3px); }
+
+/* ── Footer ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(246,243,238,0.06);
+  padding: 1.6rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer span, footer a {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: rgba(246,243,238,0.22);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+footer a:hover { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  nav { padding: 1.4rem 1.5rem; }
+  .nav-links { gap: 1.5rem; }
+  #hero { padding: 0 1.5rem 3rem; }
+  .hero-top { left: 1.5rem; right: 1.5rem; top: 5.5rem; }
+  .hero-name { font-size: clamp(4rem, 16vw, 7rem); }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  section { padding: 3rem 1.5rem; }
+  #about { grid-template-columns: 1fr; gap: 2.5rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .pcard--wide { grid-column: span 1; grid-template-columns: 1fr; min-height: auto; }
+  .pcard-img { height: 200px; }
+  .pcard-img--dark { height: 200px; }
+  .splashy-phones img { height: 160px !important; }
+  .pcard-body { border-left: none; border-top: 1px solid rgba(0,0,0,0.06); padding: 1.4rem; }
+  .pcard--small { grid-column: span 1; }
+  #experience { grid-template-columns: 1fr; gap: 1rem; }
+  .exp-heading-col { position: static; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+  #contact { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 1.5rem; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.4rem; }
+}
