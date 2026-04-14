@@ -323,7 +323,7 @@
       if (!h || h.startsWith('#') || h.startsWith('mailto') || h.startsWith('http') || !h.endsWith('.html')) return;
       a.addEventListener('click', e => { e.preventDefault(); ov.style.opacity = '1'; ov.style.pointerEvents = 'all'; setTimeout(() => window.location.href = h, 420); });
     });
-    const nav = document.querySelector('nav');
+    nav = document.querySelector('nav');
     window.addEventListener('scroll', () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
     document.querySelectorAll('.cs-section').forEach(s => {
       const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { s.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.05 });
