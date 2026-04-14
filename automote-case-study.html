@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hunza-case-study.css">
   <link rel="stylesheet" href="cs-shared.css">
   <style>
     .cs-hero-bg { background: linear-gradient(160deg, #0f1a2e 0%, #0a0a08 65%); }
@@ -64,7 +63,7 @@
           <p>The existing interface had accumulated years of fixes on top of fixes. The result was a tool that was genuinely painful to use. My job was to redesign the core workflows from scratch in Figma, producing a fully interactive prototype that the development team could use to plan implementation.</p>
           <div class="impact-row" style="margin-top:1.5rem;">
             <div class="impact-item"><p class="impact-val">6</p><p class="impact-label">Core UI problems identified in audit</p></div>
-            <div class="impact-item"><p class="impact-val">3</p><p class="impact-label">Steps cut from enquiry path on average</p></div>
+            <div class="impact-item"><p class="impact-val">5→2</p><p class="impact-label">Steps to update order status, before and after</p></div>
             <div class="impact-item"><p class="impact-val">B2B</p><p class="impact-label">Complex real-world user workflows</p></div>
             <div class="impact-item"><p class="impact-val">100%</p><p class="impact-label">Interactive Figma prototype delivered</p></div>
           </div>
@@ -99,8 +98,8 @@
   <section class="cs-section">
     <div class="inner">
       <span class="section-label">03 — Core User Flow</span>
-      <h2 class="section-heading">Mapping the most critical workflow.</h2>
-      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">Order management was the highest-frequency task. I mapped it first because fixing this flow would have the biggest daily impact for users.</p>
+      <h2 class="section-heading">Core workflow: updating order status.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">Order status updates were the most frequent dealer action in the system. I mapped this flow first because reducing friction here would have the biggest cumulative daily impact. Previously it required navigating away, making the change, then returning — 5 steps. The redesign brought it to 2.</p>
       <div class="user-flow">
         <div class="flow-step"><div class="flow-box">View orders list</div></div>
         <div class="flow-arrow"></div>
@@ -141,7 +140,7 @@
             <div class="wf-line wf-line--med"></div>
           </div>
           <div class="wf-label">Orders list — v1</div>
-          <div class="wf-version">No filter, no sort — hard to scan</div>
+          <div class="wf-version">v1 — No filtering made large order lists unmanageable</div>
         </div>
         <div class="wireframe">
           <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
@@ -161,7 +160,7 @@
             </div>
           </div>
           <div class="wf-label">Orders + filter panel — v2</div>
-          <div class="wf-version">Collapsible filter, better scan</div>
+          <div class="wf-version">v2 — Collapsible filter panel introduced to support high-volume workflows</div>
         </div>
         <div class="wireframe">
           <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
@@ -181,7 +180,7 @@
             <div class="wf-block--btn" style="margin-top:0.5rem;"></div>
           </div>
           <div class="wf-label">Configure build — v2</div>
-          <div class="wf-version">Two-panel layout, keeps context</div>
+          <div class="wf-version">v2 — Two-panel layout keeps order context visible during configuration</div>
         </div>
       </div>
     </div>
@@ -270,8 +269,8 @@
       <div class="outcomes">
         <div class="outcome">
           <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg>
-          <p class="outcome-t">Positive stakeholder reception at review</p>
-          <p class="outcome-b">The LuminateOne team confirmed the redesign addressed the core navigation and clarity issues they'd been hearing about from dealership staff. The prototype was accepted as the basis for development planning.</p>
+          <p class="outcome-t">Stakeholders confirmed key pain points were solved</p>
+          <p class="outcome-b">LuminateOne confirmed the redesign directly addressed navigation and clarity issues previously raised by dealership staff. The prototype was approved as the basis for development planning without further revision cycles.</p>
         </div>
         <div class="outcome">
           <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14h18M14 5l9 9-9 9"/></svg>
@@ -280,8 +279,8 @@
         </div>
         <div class="outcome">
           <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20" rx="2"/><path d="M9 14l4 4 6-7"/></svg>
-          <p class="outcome-t">Comprehensive handoff for development</p>
-          <p class="outcome-b">The fully interactive Figma prototype covered all core workflows with annotated component specs, interaction states, and documented design decisions — reducing ambiguity for the development team.</p>
+          <p class="outcome-t">Structured prototype reduced development ambiguity</p>
+          <p class="outcome-b">The fully interactive prototype covered all core workflows with annotated specs, interaction states, and documented decisions. The structured handoff enabled clearer implementation planning and reduced the back-and-forth typically needed between design and dev.</p>
         </div>
       </div>
     </div>
