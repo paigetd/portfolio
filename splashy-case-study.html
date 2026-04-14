@@ -3,180 +3,52 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Splashy — Case Study · Paige</title>
+  <title>Splashy — Case Study · Paige Simm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hunza-case-study.css">
+  <link rel="stylesheet" href="cs-shared.css">
   <style>
-    /* Splashy-specific overrides */
-    .cs-hero-bg {
-      background: linear-gradient(160deg, #0d2a3a 0%, #0a0a08 65%);
-    }
-    .cs-hero-bg::after {
-      background: radial-gradient(ellipse at 60% 30%, rgba(100,190,210,0.12) 0%, transparent 55%);
-    }
-
-    /* Three phones layout */
+    .cs-hero-bg { background: linear-gradient(160deg, #0d2a3a 0%, #0a0a08 65%); }
+    .cs-hero-bg::after { background: radial-gradient(ellipse at 60% 30%, rgba(100,190,210,0.12) 0%, transparent 55%); }
     .phones-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-      align-items: end;
-    }
-    .phone-wrap {
       display: flex;
-      flex-direction: column;
+      gap: 1.2rem;
+      justify-content: center;
       align-items: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
-    .phones-row--5 { grid-template-columns: repeat(5, 1fr); }
+    .phone-wrap { display: flex; flex-direction: column; align-items: center; }
     .phone-wrap img {
-      width: 100%;
-      max-width: 180px;
-      height: 390px;
+      width: 100px;
+      height: 216px;
       object-fit: cover;
       object-position: top;
-      border-radius: 28px;
+      border-radius: 18px;
       display: block;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       transition: transform 0.4s ease;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
     }
-    .phone-wrap:hover img { transform: translateY(-6px); }
+    .phone-wrap:hover img { transform: translateY(-8px); }
     .phone-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(246,243,238,0.35);
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    /* Feature grid */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .feature-card {
-      background: rgba(100,190,210,0.06);
-      border: 1px solid rgba(100,190,210,0.15);
-      border-radius: 4px;
-      padding: 1.6rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(100,190,210,0.6), transparent);
-    }
-    .feature-emoji {
-      font-size: 1.6rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-    .feature-t {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-    .feature-b {
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: rgba(246,243,238,0.5);
-    }
-
-    /* Ocean journey visual */
-    .ocean-journey {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1.5rem;
-      align-items: center;
-      margin-top: 2rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 4px;
-      padding: 2rem;
-    }
-    .ocean-state {
-      text-align: center;
-    }
-    .ocean-vis {
-      height: 100px;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-    }
-    .ocean-vis--dirty { background: linear-gradient(180deg, #4a3520 0%, #2a1f0e 100%); }
-    .ocean-vis--clean { background: linear-gradient(180deg, #4db8d4 0%, #1a6b8a 100%); }
-    .ocean-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(246,243,238,0.4);
-    }
-    .ocean-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--accent);
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(246,243,238,0.3);
+      margin-top: 0.8rem;
+      text-align: center;
     }
-
-    /* Insight cards */
-    .insights {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .insight {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      padding: 1.4rem;
-    }
-    .insight-q {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1rem;
-      color: rgba(100,190,210,0.8);
-      margin-bottom: 0.6rem;
-      line-height: 1.4;
-    }
-    .insight-a {
-      font-size: 0.78rem;
-      color: rgba(246,243,238,0.45);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 900px) {
-      .phones-row, .phones-row--5 { grid-template-columns: 1fr 1fr; gap: 1rem; }
-      .phone-wrap img { height: 260px; max-width: 120px; }
-      .feature-grid, .insights { grid-template-columns: 1fr; }
-      .ocean-journey { grid-template-columns: 1fr; }
-      .ocean-arrow { flex-direction: row; }
-    }
+    .flow-box--teal { background: rgba(100,200,220,0.12); border-color: rgba(100,200,220,0.3); color: #6ecfe0; }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Paige.</a>
+    <a href="index.html" class="nav-logo">Paige Simm.</a>
     <a href="index.html#work" class="nav-back">
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-        <path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       All work
     </a>
   </nav>
@@ -184,19 +56,18 @@
   <div class="cs-hero">
     <div class="cs-hero-bg"></div>
     <div class="cs-hero-top">
-      <span class="cs-eyebrow">Case Study — UX/UI · Mobile App Design</span>
+      <span class="cs-eyebrow">Case Study — UX Research, Mobile App Design</span>
       <span class="cs-year">2023 · University Capstone</span>
     </div>
     <div class="cs-hero-content">
       <h1 class="cs-title">
-        <span class="cs-title-line">Splashy —</span>
+        <span class="cs-title-line">Splashy:</span>
         <span class="cs-title-line">Make an Impact.</span>
       </h1>
       <div class="cs-hero-meta">
-        <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX Research & UI Design</p></div>
-        <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">Mobile App (Figma)</p></div>
-        <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 6–12</p></div>
-        <div><p class="cs-meta-label">Context</p><p class="cs-meta-value">University Capstone Project</p></div>
+        <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX Research, UI Design, Illustration</p></div>
+        <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">iOS Mobile App (Figma)</p></div>
+        <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 6 to 12</p></div>
         <div><p class="cs-meta-label">Illustration</p><p class="cs-meta-value">All artwork hand-drawn in Illustrator</p></div>
       </div>
     </div>
@@ -208,260 +79,266 @@
       <div class="two-col">
         <div>
           <span class="section-label">01 — Overview</span>
-          <h2 class="section-heading">Getting kids to care about the planet — without lecturing them.</h2>
+          <h2 class="section-heading">Getting kids to care about the planet, without lecturing them.</h2>
         </div>
         <div class="body-text">
-          <p>For my university capstone, I designed <strong>Splashy</strong> — a gamified mobile app that encourages children to adopt environmentally friendly habits in their everyday lives.</p>
-          <p>The core mechanic: kids complete real-world quests (bringing a reusable bag to the supermarket, recycling correctly, reducing plastic use) and earn creatures and Ecopoints as rewards. These rewards populate a <strong>personal ocean</strong> — which starts brown and polluted, and gradually clears and fills with life as the child builds better habits.</p>
-          <p>Rather than preaching, Splashy makes the connection between behaviour and environmental impact <strong>visible, immediate, and theirs.</strong></p>
-          <p>Every character, creature, illustration, and graphic in the app — the fish, the crab, the coral, the ocean scenes — was <strong>hand-drawn by me in Adobe Illustrator.</strong></p>
+          <p>For my university capstone, I designed <strong>Splashy</strong>, a gamified mobile app that encourages children to adopt eco-friendly habits in their everyday lives. Kids complete real-world quests, earn ocean creatures as rewards, and watch their personal ocean transform from polluted to thriving.</p>
+          <p>The project ran for one semester and required me to conduct original user research, define the product concept, design and iterate on the UI, and produce a fully interactive Figma prototype. Every character, creature, and illustration was <strong>hand-drawn in Adobe Illustrator.</strong></p>
+          <div class="impact-row" style="margin-top:1.5rem;">
+            <div class="impact-item"><p class="impact-val">6</p><p class="impact-label">Children interviewed in research phase</p></div>
+            <div class="impact-item"><p class="impact-val">3</p><p class="impact-label">Major design iterations before final</p></div>
+            <div class="impact-item"><p class="impact-val">4</p><p class="impact-label">Core screens in the app flow</p></div>
+            <div class="impact-item"><p class="impact-val">100%</p><p class="impact-label">Illustration hand-drawn in Illustrator</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 02 The screens -->
+  <!-- 02 The Problem -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">02 — The App</span>
-      <h2 class="section-heading">Three screens that tell the whole story.</h2>
-      <!-- All 5 screens in a staggered row -->
-      <div class="phones-row phones-row--5">
-        <div class="phone-wrap">
-          <img src="splash screen.png" alt="Splashy splash screen"/>
-          <p class="phone-label">Splash screen</p>
-        </div>
-        <div class="phone-wrap">
-          <img src="fish - medium.png" alt="Ocean — in progress"/>
-          <p class="phone-label">Ocean — building up</p>
-        </div>
-        <div class="phone-wrap">
-          <img src="fish.png" alt="Ocean — thriving"/>
-          <p class="phone-label">Ocean — thriving</p>
-        </div>
-        <div class="phone-wrap">
-          <img src="quests active good.png" alt="Quests screen"/>
-          <p class="phone-label">Active quests</p>
-        </div>
-        <div class="phone-wrap">
-          <img src="log drag.png" alt="Log — recycling drag game"/>
-          <p class="phone-label">Log — sort your waste</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 Problem -->
-  <section class="cs-section">
-    <div class="inner">
-      <span class="section-label">03 — The Problem</span>
-      <h2 class="section-heading">Kids want to help. They just don't know how — or why it matters.</h2>
+      <span class="section-label">02 — The Problem</span>
+      <h2 class="section-heading">Kids want to help. They just don't know how, or why it matters.</h2>
       <div class="two-col">
         <div class="body-text">
-          <p>Sustainability education for children is often <strong>abstract and adult-led</strong> — posters in classrooms, lectures from parents, statistics that mean nothing to a 7-year-old. The gap isn't interest; most kids genuinely care about animals and nature. The gap is <strong>agency</strong>.</p>
-          <p>Existing apps were either too educational (boring), too complex, or didn't connect digital actions to real-world behaviour. None made the child feel like their choices were making something beautiful happen.</p>
+          <p>Sustainability education for children is largely adult-led and abstract. Posters in classrooms, statistics that mean nothing to a 7-year-old. The gap isn't interest — most kids genuinely care about animals and nature. The gap is <strong>agency and immediacy.</strong></p>
+          <p>Existing apps were either too educational and boring, too complex for the age group, or didn't connect digital behaviour to real-world action. None made the child feel like their choices were building something that belonged to them.</p>
         </div>
-        <div class="problem-grid" style="margin-top:0;">
-          <div class="prob">
-            <p class="prob-n">01</p>
-            <p class="prob-t">Abstract impact</p>
-            <p class="prob-b">Children couldn't see the connection between their actions and environmental outcomes.</p>
+        <div class="problem-grid">
+          <div class="prob"><p class="prob-n">01</p><p class="prob-t">Abstract impact</p><p class="prob-b">Children couldn't see the connection between their actions and environmental outcomes. The cause-and-effect was invisible.</p></div>
+          <div class="prob"><p class="prob-n">02</p><p class="prob-t">No ownership</p><p class="prob-b">Existing tools talked at kids rather than with them. Nothing felt personalised or theirs.</p></div>
+          <div class="prob"><p class="prob-n">03</p><p class="prob-t">Delayed rewards</p><p class="prob-b">Kids need immediate, tangible feedback. Long-term reward systems don't work for this age group.</p></div>
+          <div class="prob"><p class="prob-n">04</p><p class="prob-t">No real-world link</p><p class="prob-b">Apps that lived entirely on-screen missed the point. The behaviour change needed to happen in the physical world.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Research -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">03 — Research</span>
+      <h2 class="section-heading">Talking to the actual users.</h2>
+      <div class="two-col">
+        <div class="body-text">
+          <p>I conducted semi-structured interviews with six children aged 7 to 11. Rather than asking what features they wanted (kids struggle with abstract hypotheticals), I asked about things they already loved: games they played, things they collected, what made them feel proud.</p>
+          <p>The sessions revealed three consistent patterns that directly shaped the product.</p>
+        </div>
+        <div class="insights">
+          <div class="insight">
+            <p class="insight-q">"I want to help but I don't know what to do."</p>
+            <p class="insight-a">Kids had the desire but no clear pathway. This became the foundation for the quest system, with concrete, achievable tasks tied to real-world actions.</p>
           </div>
-          <div class="prob">
-            <p class="prob-n">02</p>
-            <p class="prob-t">No agency</p>
-            <p class="prob-b">Existing tools talked at kids, not with them. No sense of ownership or personal achievement.</p>
+          <div class="insight">
+            <p class="insight-q">"I love collecting things. Like Pokémon."</p>
+            <p class="insight-a">The creature collection mechanic came directly from this. Kids are motivated by accumulation and the satisfaction of completing a set.</p>
           </div>
-          <div class="prob">
-            <p class="prob-n">03</p>
-            <p class="prob-t">Short attention spans</p>
-            <p class="prob-b">Habit-building apps for children need immediate, tangible rewards — not delayed gratification.</p>
-          </div>
-          <div class="prob">
-            <p class="prob-n">04</p>
-            <p class="prob-t">No personalisation</p>
-            <p class="prob-b">Generic content doesn't resonate. Kids needed something that felt like theirs.</p>
+          <div class="insight">
+            <p class="insight-q">"I'd want to show my friends my ocean."</p>
+            <p class="insight-a">The personalised, named ocean taps into pride and identity. Your ocean is uniquely yours and reflects your real-world behaviour over time.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 04 Research -->
+  <!-- 04 User flow -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">04 — Research</span>
-      <h2 class="section-heading">Talking to the actual users — the kids.</h2>
-      <div class="body-text" style="max-width:60ch; margin-bottom: 2rem;">
-        <p>I conducted interviews with children in my target age group to understand how they currently think about the environment, what motivates them, and what kinds of rewards they'd actually care about. This shaped every design decision that followed.</p>
+      <span class="section-label">04 — User Flow</span>
+      <h2 class="section-heading">How a child moves through the app.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;">Mapping this flow was critical. The loop between real-world action and in-app reward needed to be short and satisfying, or kids would disengage.</p>
+      <div class="user-flow">
+        <div class="flow-step"><div class="flow-box">Sign up + questionnaire</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--teal">View assigned quests</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">Complete real-world task</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--teal">Log progress in app</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">Earn creature + Ecopoints</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--accent">Ocean updates</div></div>
       </div>
-      <div class="insights">
-        <div class="insight">
-          <p class="insight-q">"I want to help but I don't know what to do."</p>
-          <p class="insight-a">Kids had the desire but no clear pathway to action. This became the foundation for the quest system — concrete, achievable tasks.</p>
+    </div>
+  </section>
+
+  <!-- 05 Wireframes -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">05 — Wireframes</span>
+      <h2 class="section-heading">Starting rough, refining fast.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">I sketched initial layouts before moving into Figma. The early versions were deliberately simplified to test navigation logic before investing in visuals.</p>
+      <div class="wireframes">
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div class="wf-block" style="height:60px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:rgba(255,255,255,0.2);">Logo / Mascot</div>
+            <div class="wf-line wf-line--med" style="margin:0.3rem auto;"></div>
+            <div class="wf-block--btn" style="margin:0.5rem auto;"></div>
+            <div class="wf-block--btn" style="margin:0 auto;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.15);"></div>
+          </div>
+          <div class="wf-label">Splash / Onboarding</div>
+          <div class="wf-version">v1 — Early concept</div>
         </div>
-        <div class="insight">
-          <p class="insight-q">"I love collecting things. Like Pokémon."</p>
-          <p class="insight-a">The collection mechanic (unlocking ocean creatures) came directly from this. Kids are motivated by accumulation and completion.</p>
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div class="wf-line wf-line--short"></div>
+            <div class="wf-block wf-block--tall" style="display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:rgba(255,255,255,0.2);">Quest card</div>
+            <div class="wf-line wf-line--full"></div>
+            <div class="wf-line wf-line--med"></div>
+            <div class="wf-block--btn"></div>
+          </div>
+          <div class="wf-label">Quest Screen — v1</div>
+          <div class="wf-version">Too much text, kids got lost</div>
         </div>
-        <div class="insight">
-          <p class="insight-q">"I'd want to show my friends my ocean."</p>
-          <p class="insight-a">The personalised ocean — named after the user — taps into pride and identity. Your ocean is uniquely yours.</p>
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div class="wf-line wf-line--short"></div>
+            <div class="wf-block" style="height:35px;display:flex;align-items:center;padding:0 0.5rem;gap:0.4rem;">
+              <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.1);flex-shrink:0;"></div>
+              <div class="wf-line wf-line--med" style="margin:0;"></div>
+            </div>
+            <div class="wf-line wf-line--full"></div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:3px;padding:0.4rem;margin:0.2rem 0;">
+              <div class="wf-line wf-line--full" style="height:6px;background:rgba(200,169,110,0.2);"></div>
+            </div>
+            <div class="wf-block--btn"></div>
+          </div>
+          <div class="wf-label">Quest Screen — v3</div>
+          <div class="wf-version">Simplified, icon-led, tested better</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 05 The Ocean mechanic -->
+  <!-- 06 The App -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">05 — Core Mechanic</span>
-      <h2 class="section-heading">The ocean that grows with you.</h2>
-      <div class="body-text" style="max-width: 60ch; margin-bottom: 1.5rem;">
-        <p>The central design decision was making environmental impact <strong>visible and personal</strong>. Every quest completed clears the water a little more. Every reward unlocked adds a creature. The ocean becomes a living record of the child's real-world behaviour.</p>
+      <span class="section-label">06 — Final Design</span>
+      <h2 class="section-heading">The finished product.</h2>
+      <div class="phones-row">
+        <div class="phone-wrap"><img src="splash screen.png" alt="Splash screen"/><p class="phone-label">Splash screen</p></div>
+        <div class="phone-wrap"><img src="fish - medium.png" alt="Ocean building"/><p class="phone-label">Ocean building</p></div>
+        <div class="phone-wrap"><img src="fish.png" alt="Ocean thriving"/><p class="phone-label">Ocean thriving</p></div>
+        <div class="phone-wrap"><img src="quests active good.png" alt="Quests"/><p class="phone-label">Active quests</p></div>
+        <div class="phone-wrap"><img src="log drag.png" alt="Log screen"/><p class="phone-label">Waste sorting log</p></div>
       </div>
-      <div class="ocean-journey">
-        <div class="ocean-state">
-          <div class="ocean-vis ocean-vis--dirty">🪸</div>
-          <p class="ocean-label">Day 1 — Polluted ocean</p>
+    </div>
+  </section>
+
+  <!-- 07 Testing & Iteration -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">07 — Testing & Iteration</span>
+      <h2 class="section-heading">What didn't work, and what I changed.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:1.5rem;">I tested early prototypes with three of the original research participants. Their responses were direct — kids don't sugarcoat feedback.</p>
+      <div class="iterations">
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Problem found in testing</span>
+          <p class="iteration-title">Quest screen had too much text</p>
+          <p class="iteration-body">Children skipped reading the instructions entirely and just tapped buttons. The original layout assumed a reading level and attention span the age group didn't have.</p>
         </div>
-        <div class="ocean-arrow">
-          <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
-            <path d="M1 8h30M22 1l8 7-8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Complete quests
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">How I fixed it</span>
+          <p class="iteration-title">Simplified to icon-led cards with one key action</p>
+          <p class="iteration-body">Reduced text by 60%, moved key information into iconography, and made the progress bar the dominant visual element. Retested — kids understood the screen within seconds.</p>
         </div>
-        <div class="ocean-state">
-          <div class="ocean-vis ocean-vis--clean">🐠🦀🐡</div>
-          <p class="ocean-label">Over time — thriving ocean</p>
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Problem found in testing</span>
+          <p class="iteration-title">The ocean didn't feel different enough early on</p>
+          <p class="iteration-body">Children couldn't tell the difference between the dirty and slightly-less-dirty ocean states. The transition felt invisible, which removed the reward feeling entirely.</p>
+        </div>
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">How I fixed it</span>
+          <p class="iteration-title">Added distinct milestone states with creature unlocks</p>
+          <p class="iteration-body">Defined three clear ocean states (polluted, recovering, thriving) with obvious visual differences. Tied creature unlocks to each milestone so progress felt tangible and celebrated.</p>
         </div>
       </div>
-      <div class="feature-grid" style="margin-top: 1.5rem;">
-        <div class="feature-card">
-          <span class="feature-emoji">🎯</span>
-          <p class="feature-t">Real-world quests</p>
-          <p class="feature-b">Tasks like "bring a reusable bag 3 times" or "recycle 5 plastic items this week" connect the app directly to daily life — not just screen time.</p>
+      <div class="constraints">
+        <p class="constraints-title">Constraints I worked within</p>
+        <ul>
+          <li>University timeline meant one semester from research to prototype — no time for extended testing cycles</li>
+          <li>No parental dashboard in scope, though I noted this as a critical requirement for any real-world version</li>
+          <li>Quest content was manually curated — a scalable quest generation system would be needed for a real product</li>
+          <li>Long-term engagement mechanics (streaks, social features) were considered but deprioritised for the MVP scope</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Outcomes -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">08 — Outcomes</span>
+      <h2 class="section-heading">What the testing showed.</h2>
+      <div class="outcomes">
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg>
+          <p class="outcome-t">Children understood the reward system immediately</p>
+          <p class="outcome-b">All three test participants grasped the quest-to-ocean connection without explanation. The visual feedback loop was clear enough to require no instructions.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-emoji">🌊</span>
-          <p class="feature-t">A living reward space</p>
-          <p class="feature-b">The ocean isn't just a scoreboard — it's a place kids feel ownership over. Named after them, populated by their choices.</p>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3L25 9v10L14 25 3 19V9z"/></svg>
+          <p class="outcome-t">Collection mechanic drove engagement</p>
+          <p class="outcome-b">Kids asked "what's the next creature?" unprompted — a strong signal that the collection mechanic was creating genuine motivation to complete quests.</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-emoji">🦀</span>
-          <p class="feature-t">Creature unlocks</p>
-          <p class="feature-b">Each quest rewards a specific creature — a crab, a clownfish, coral. The collection grows alongside the child's habits.</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-emoji">📊</span>
-          <p class="feature-t">Plastic estimation</p>
-          <p class="feature-b">Sign-up questions estimate the child's current plastic usage, creating a personalised baseline and making progress feel meaningful.</p>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg>
+          <p class="outcome-t">Simplified UI measurably improved task completion</p>
+          <p class="outcome-b">After the quest screen redesign, children completed the "add progress" action in under 10 seconds compared to repeated confusion and mis-taps in v1 testing.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 06 Process -->
+  <!-- 09 Reflection -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">06 — Process</span>
-      <h2 class="section-heading">How I got here.</h2>
-      <div class="process">
-        <div class="step">
-          <p class="step-n">01</p>
-          <p class="step-t">Research</p>
-          <div class="step-b"><ul>
-            <li>Interviewed children (target users)</li>
-            <li>Identified motivation patterns</li>
-            <li>Reviewed existing kids' apps</li>
-            <li>Defined key design principles</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">02</p>
-          <p class="step-t">Define</p>
-          <div class="step-b"><ul>
-            <li>Identified core user needs</li>
-            <li>Mapped behaviour → reward loop</li>
-            <li>Defined the ocean mechanic</li>
-            <li>Set accessibility principles for kids</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">03</p>
-          <p class="step-t">Wireframe</p>
-          <div class="step-b"><ul>
-            <li>Mapped full user flow</li>
-            <li>Sketched key screen layouts</li>
-            <li>Tested navigation logic</li>
-            <li>Simplified for young users</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">04</p>
-          <p class="step-t">Design</p>
-          <div class="step-b"><ul>
-            <li>Full UI in Figma</li>
-            <li>All characters & scenes hand-drawn in Illustrator</li>
-            <li>Child-appropriate type & colour</li>
-            <li>Animated ocean concept</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">05</p>
-          <p class="step-t">Refine</p>
-          <div class="step-b"><ul>
-            <li>Iterated based on feedback</li>
-            <li>Simplified quest UI after testing</li>
-            <li>Refined reward flow clarity</li>
-            <li>Finalised visual system</li>
-          </ul></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 Reflection -->
-  <section class="cs-section">
-    <div class="inner">
-      <span class="section-label">07 — Reflection</span>
+      <span class="section-label">09 — Reflection</span>
       <div class="reflect-wrap">
         <h2 class="section-heading" style="margin-bottom:0;max-width:none;">What this taught me.</h2>
         <div class="reflect-body">
           <blockquote>"Designing for children is humbling. Every assumption you have about how users think gets stripped away the moment you actually talk to them."</blockquote>
-          <p>This project gave me my first real taste of <strong>research-led design</strong> — and it fundamentally changed how I approach problems. I started with assumptions about what kids needed. The interviews showed me something different.</p>
-          <p>The pivot to a collection mechanic came directly from a child telling me they loved Pokémon. The named ocean came from a kid saying they'd want to show their friends. <strong>The best design decisions in this project weren't mine — they came from listening.</strong></p>
-          <p>I also learned how different it is to design for a non-adult audience: everything needs to be simpler, more immediate, more delightful, and more forgiving. Typography, iconography, touch targets, reward timing — all of it needs rethinking from the ground up.</p>
+          <p>The biggest lesson from this project was that <strong>research isn't optional, it's structural.</strong> I started with assumptions about what kids needed. The interviews showed me something completely different. The collection mechanic came from a child mentioning Pokémon. The named ocean came from a kid saying they'd want to show their friends. The best design decisions weren't mine — they came from listening.</p>
+          <p>I also learned how different it is to design for a non-adult audience. Typography, touch targets, reward timing, information density — everything needs rethinking from the ground up. <strong>Simplicity isn't dumbing down, it's doing the hard design work so the user doesn't have to.</strong></p>
+          <p>If I were to continue this project, the next priorities would be a parental dashboard, scalable quest generation, and longitudinal testing to measure whether the habits actually stuck beyond a first session.</p>
         </div>
       </div>
     </div>
   </section>
 
   <div class="cs-end">
-    <div>
-      <p class="end-label">Back to portfolio</p>
-      <a href="index.html#work" class="end-link">All work →</a>
-    </div>
+    <div><p class="end-label">Next project</p><a href="hunza-case-study.html" class="end-link">Hunza & LuxR →</a></div>
     <a href="index.html#contact" class="end-cta">Get in touch →</a>
   </div>
+  <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
 
-  <footer>
-    <span>© 2026 Paige. All rights reserved.</span>
-    <a href="index.html">← Back to portfolio</a>
-  </footer>
-
+  <script src="script.js"></script>
   <script>
-    const sections = document.querySelectorAll('.cs-section');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.05 });
-    sections.forEach(s => obs.observe(s));
-    setTimeout(() => sections.forEach(s => s.classList.add('visible')), 1500);
+    const ov = document.createElement('div');
+    ov.style.cssText = 'position:fixed;inset:0;background:var(--black);z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.4s ease;';
+    document.body.appendChild(ov);
+    const pb = document.createElement('div');
+    pb.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9001;width:0;transition:width 0.1s linear;pointer-events:none;';
+    document.body.appendChild(pb);
+    window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = (t > 0 ? window.scrollY / t * 100 : 0) + '%'; }, { passive: true });
+    document.querySelectorAll('a[href]').forEach(a => {
+      const h = a.getAttribute('href');
+      if (!h || h.startsWith('#') || h.startsWith('mailto') || h.startsWith('http') || !h.endsWith('.html')) return;
+      a.addEventListener('click', e => { e.preventDefault(); ov.style.opacity = '1'; ov.style.pointerEvents = 'all'; setTimeout(() => window.location.href = h, 420); });
+    });
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    document.querySelectorAll('.cs-section').forEach(s => {
+      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { s.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.05 });
+      obs.observe(s);
+    });
+    setTimeout(() => document.querySelectorAll('.cs-section').forEach(s => s.classList.add('visible')), 1500);
   </script>
 </body>
 </html>
