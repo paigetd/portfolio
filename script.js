@@ -1,14 +1,4 @@
-/* ===========================================
-   Paige Simm — Portfolio
-   =========================================== */
 
-// ── Explained simply ──
-// scroll progress  → gold line at top fills as you scroll
-// text scramble    → hero name glitches through random chars before settling
-// card tilt        → project cards subtly rotate in 3D as mouse moves over them
-// magnetic         → contact links drift slightly toward the cursor
-// fade-ins         → sections drift up into view as you scroll to them
-// page transitions → smooth black fade when navigating between pages
 
 // ── Page transitions ──
 const overlay = document.createElement('div');
