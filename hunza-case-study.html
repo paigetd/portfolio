@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hunza Lighting — Case Study · Paige</title>
+  <title>Hunza & LuxR — Case Study · Paige Simm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hunza-case-study.css">
+  <link rel="stylesheet" href="cs-shared.css">
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Paige.</a>
+    <a href="index.html" class="nav-logo">Paige Simm.</a>
     <a href="index.html#work" class="nav-back">
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-        <path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       All work
     </a>
   </nav>
@@ -24,8 +23,8 @@
   <div class="cs-hero">
     <div class="cs-hero-bg"></div>
     <div class="cs-hero-top">
-      <span class="cs-eyebrow">Case Study — UX/UI & Web Development</span>
-      <span class="cs-year">2023 – 2024</span>
+      <span class="cs-eyebrow">Case Study — UX/UI, Web Development</span>
+      <span class="cs-year">2023 to 2024</span>
     </div>
     <div class="cs-hero-content">
       <h1 class="cs-title">
@@ -33,229 +32,245 @@
         <span class="cs-title-line">LuxR.</span>
       </h1>
       <div class="cs-hero-meta">
-        <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX/UI Design & Development</p></div>
-        <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">WordPress + Custom Code</p></div>
-        <div><p class="cs-meta-label">Scope</p><p class="cs-meta-value">Brand Merge + Full Redesign</p></div>
-        <div><p class="cs-meta-label">Stack</p><p class="cs-meta-value">HTML · CSS · JS · PHP</p></div>
+        <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX/UI Design, Development, Illustration</p></div>
+        <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">WordPress, Custom HTML/CSS/JS/PHP</p></div>
+        <div><p class="cs-meta-label">Scope</p><p class="cs-meta-value">Brand Merge, Full Redesign, SQL Fixes</p></div>
+        <div><p class="cs-meta-label">Users</p><p class="cs-meta-value">Architects, Homeowners, Trade Dealers</p></div>
       </div>
     </div>
   </div>
 
+  <!-- 01 Overview -->
   <section class="cs-section">
     <div class="inner">
       <div class="two-col">
         <div>
           <span class="section-label">01 — Overview</span>
-          <h2 class="section-heading">Two premium brands. One website. A lot of users to please.</h2>
+          <h2 class="section-heading">Two brands, one site, and a lot of problems to fix.</h2>
         </div>
-        <div>
-          <div class="body-text">
-            <p>Hunza Lighting and LuxR — two distinct premium outdoor lighting brands — needed to be <strong>merged onto a single, unified website</strong> without losing the identity of either. The existing Hunza site was functional but dated, and the LuxR presence was minimal. Neither reflected the quality of the products they sold.</p>
-            <p>I led the full UX/UI redesign: from auditing the existing site and mapping user behaviour, through wireframing and high-fidelity design, to building and launching the final product in WordPress with custom HTML, CSS, JS and PHP.</p>
-          </div>
-          <div class="stats">
-            <div class="stat"><p class="stat-n">2</p><p class="stat-d">Brands merged into one platform</p></div>
-            <div class="stat"><p class="stat-n">3+</p><p class="stat-d">Distinct audiences given clear journeys</p></div>
-            <div class="stat"><p class="stat-n">↑</p><p class="stat-d">Brand perception aligned with product quality</p></div>
-            <div class="stat"><p class="stat-n">NZ</p><p class="stat-d">Premium local brand, elevated globally</p></div>
+        <div class="body-text">
+          <p>Hunza Lighting and LuxR are two distinct premium outdoor lighting brands that needed to be merged onto a single website without losing the identity of either. I was brought on as Marketing Coordinator and ended up leading the full digital overhaul — from UX strategy through to building and maintaining the site in WordPress with custom HTML, CSS, JS, and PHP.</p>
+          <p>This wasn't a greenfield project. The existing Hunza site had real structural problems, a broken product database, and three different user audiences who were all being served the same generic experience. <strong>Everything had to work properly, not just look good.</strong></p>
+          <div class="impact-row" style="margin-top:1.5rem;">
+            <div class="impact-item"><p class="impact-val">2</p><p class="impact-label">Brands merged into one coherent platform</p></div>
+            <div class="impact-item"><p class="impact-val">3</p><p class="impact-label">Distinct user audiences given tailored journeys</p></div>
+            <div class="impact-item"><p class="impact-val">SQL</p><p class="impact-label">Database fix that unblocked accurate pricing</p></div>
+            <div class="impact-item"><p class="impact-val">NZ</p><p class="impact-label">Premium local brand, elevated globally</p></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 02 Problem -->
   <section class="cs-section">
     <div class="inner">
       <span class="section-label">02 — The Problem</span>
       <h2 class="section-heading">A premium brand let down by its own website.</h2>
-      <div class="problem-grid">
-        <div class="prob"><p class="prob-n">01</p><p class="prob-t">Confusing navigation</p><p class="prob-b">Users — architects, homeowners, distributors — couldn't quickly find what they needed. Product categories were unclear, and the path from landing to enquiry involved too many steps.</p></div>
-        <div class="prob"><p class="prob-n">02</p><p class="prob-t">No defined user journeys</p><p class="prob-b">The site treated everyone the same. Architects specifying commercial projects have completely different needs to a homeowner browsing garden lighting — neither was being served well.</p></div>
-        <div class="prob"><p class="prob-n">03</p><p class="prob-t">Visual hierarchy mismatch</p><p class="prob-b">Hunza products are premium, precision-engineered, and beautifully made. The website didn't communicate any of that. The design was actively undercutting the brand at every point.</p></div>
-        <div class="prob"><p class="prob-n">04</p><p class="prob-t">Two brands, no unified home</p><p class="prob-b">LuxR and Hunza needed to coexist without one cannibalising the other — maintaining separate product identities while presenting a single, coherent company to the world.</p></div>
+      <div class="two-col">
+        <div class="body-text">
+          <p>Before starting design work, I audited the existing site thoroughly. The visual design issues were obvious. But digging deeper revealed structural problems that no amount of good design could paper over. The site was <strong>actively losing enquiries</strong> because users couldn't find what they needed, and the product database had pricing errors caused by SKU conflicts in the backend.</p>
+        </div>
+        <div class="problem-grid">
+          <div class="prob"><p class="prob-n">01</p><p class="prob-t">No audience distinction</p><p class="prob-b">Architects specifying commercial projects, homeowners browsing, and trade distributors all landed on the same page with no differentiated path forward.</p></div>
+          <div class="prob"><p class="prob-n">02</p><p class="prob-t">Visual design undercut the brand</p><p class="prob-b">Hunza products are precision-engineered and expensive. The website looked cheap. Every page was actively damaging trust with potential customers.</p></div>
+          <div class="prob"><p class="prob-n">03</p><p class="prob-t">Broken product database</p><p class="prob-b">SKU conflicts in the database were causing products to display incorrect pricing — a serious problem for a brand where products cost thousands of dollars.</p></div>
+          <div class="prob"><p class="prob-n">04</p><p class="prob-t">Two brands, no unified home</p><p class="prob-b">LuxR existed as a separate site with minimal presence. Neither brand was benefiting from the relationship, and users had no way to discover both.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cs-section cs-section--gallery">
-    <div class="inner">
-      <span class="section-label">03 — Before & After</span>
-      <h2 class="section-heading">The transformation.</h2>
-
-      <div class="gallery-label-row">
-        <div class="gallery-era">
-          <span class="era-pill era-pill--before">Before</span>
-          <p class="era-desc">Two separate sites — neither reflecting the premium quality of the products.</p>
-        </div>
-        <div class="gallery-era gallery-era--right">
-          <span class="era-pill era-pill--after">After</span>
-          <p class="era-desc">One unified site — dark, refined, and built for conversion.</p>
-        </div>
-      </div>
-
-      <!-- Before: two sites side by side -->
-      <div class="before-pair">
-        <div class="before-card">
-          <div class="screen-wrap">
-            <div class="screen-bar">
-              <span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span>
-              <span class="screen-url">hunzalighting.com</span>
-            </div>
-            <img src="hunza-before.png" alt="Original Hunza Lighting website" class="screen-img"/>
-          </div>
-          <p class="screen-cap">Hunza Lighting — original site</p>
-        </div>
-        <div class="before-divider">
-          <div class="divider-line"></div>
-          <span class="divider-label">+</span>
-          <div class="divider-line"></div>
-        </div>
-        <div class="before-card">
-          <div class="screen-wrap">
-            <div class="screen-bar">
-              <span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span>
-              <span class="screen-url">luxrled.com</span>
-            </div>
-            <img src="luxr-before.png" alt="Original LuxR website" class="screen-img"/>
-          </div>
-          <p class="screen-cap">LuxR — original site</p>
-        </div>
-      </div>
-
-      <!-- Arrow -->
-      <div class="transform-arrow">
-        <div class="arrow-line"></div>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M10 2v16M3 11l7 7 7-7" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="arrow-label">Redesigned & merged</span>
-      </div>
-
-      <!-- After: full width -->
-      <div class="after-full">
-        <div class="screen-wrap screen-wrap--after">
-          <div class="screen-bar screen-bar--dark">
-            <span class="screen-dot screen-dot--dim"></span><span class="screen-dot screen-dot--dim"></span><span class="screen-dot screen-dot--dim"></span>
-            <span class="screen-url screen-url--dim">hunzalighting.com</span>
-          </div>
-          <img src="hunza-after.png" alt="Redesigned Hunza + LuxR website" class="screen-img screen-img--after"/>
-        </div>
-        <p class="screen-cap screen-cap--after">Hunza & LuxR — unified redesign</p>
-      </div>
-
-    </div>
-  </section>
-
+  <!-- 03 User Flow -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">04 — My Role</span>
-      <h2 class="section-heading">End-to-end — research to live site.</h2>
+      <span class="section-label">03 — User Flow</span>
+      <h2 class="section-heading">Redesigning the paths through the site.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">The original site had one path for everyone. The redesign introduced audience-based entry points — the user self-selects their context and is routed to content relevant to them.</p>
+      <div class="user-flow">
+        <div class="flow-step"><div class="flow-box">Homepage</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--accent">Select audience</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">Browse products by application</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">View specs + tech docs</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--accent">Enquire or find distributor</div></div>
+      </div>
+      <p style="font-size:0.78rem;color:rgba(246,243,238,0.3);margin-top:1rem;">Previously: Homepage → Products (undifferentiated) → Contact (if they could find it). Average 6 clicks to enquiry. Redesigned to 3.</p>
+    </div>
+  </section>
+
+  <!-- 04 Before / After -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">04 — Before & After</span>
+      <h2 class="section-heading">The transformation.</h2>
+      <div class="ba">
+        <div>
+          <p class="ba-label bef">Before <span class="badge bef">Original Hunza</span></p>
+          <img src="hunza-before.png" alt="Original Hunza site" class="ba-img"/>
+          <p class="ba-cap">Generic layout, no audience distinction, visual design that undercut the premium product quality. LuxR was entirely separate.</p>
+        </div>
+        <div>
+          <p class="ba-label aft">After <span class="badge aft">Redesigned</span></p>
+          <img src="hunza-after.png" alt="Redesigned Hunza + LuxR site" class="ba-img"/>
+          <p class="ba-cap">Unified platform for both brands. Dark, refined visual language. Audience-based navigation. Clear conversion pathways for each user type.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Technical -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">05 — Technical Challenge</span>
+      <h2 class="section-heading">The problem design alone couldn't fix.</h2>
+      <div class="two-col">
+        <div class="body-text">
+          <p>Midway through the project I discovered that a significant number of products were displaying incorrect prices on the site. For a brand where individual fixtures can cost several thousand dollars, this wasn't a minor bug — it was a trust and revenue issue.</p>
+          <p>After investigating the WordPress database through phpMyAdmin, I identified that duplicate and conflicting SKU entries were causing the pricing logic to pull from the wrong product records. I wrote a targeted SQL query to identify all affected SKUs, then systematically corrected the database entries and added validation to prevent the conflict recurring.</p>
+        </div>
+        <div class="tech-box">
+          <p class="tech-box-title">Technical implementation</p>
+          <p><strong>Problem:</strong> Duplicate SKU entries in the WooCommerce product database were causing incorrect prices to display across a subset of products. Affected items were showing prices from unrelated variants.</p>
+          <p><strong>Diagnosis:</strong> Used phpMyAdmin to query the wp_postmeta table and identify duplicate _sku meta keys. Cross-referenced with wp_posts to map the conflicts.</p>
+          <div class="code-snippet">SELECT post_id, meta_key, meta_value<br>FROM wp_postmeta<br>WHERE meta_key = '_sku'<br>GROUP BY meta_value<br>HAVING COUNT(*) > 1;</div>
+          <p><strong>Fix:</strong> Cleaned duplicate entries, standardised SKU format across all product records, and updated the pricing logic to enforce SKU uniqueness at the application layer. All prices validated correct post-fix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 My Role -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">06 — My Role</span>
+      <h2 class="section-heading">What I actually owned.</h2>
       <div class="role-wrap">
         <ul class="role-list">
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Led the full UX/UI redesign from discovery through to a live, maintained production website</li>
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Designed all layouts, components, and visual systems for both Hunza and LuxR brands</li>
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Built and implemented the entire redesign in WordPress using custom HTML, CSS, JS, and PHP</li>
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Collaborated with distributors and sales reps to gather real-world feedback and validate decisions</li>
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Maintained and iterated on the site post-launch — ongoing refinement based on usage and feedback</li>
-          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Created all graphics, social media imagery, and marketing illustrations — hand-drawn in Adobe Illustrator</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Led the full UX/UI redesign — from audit and research through to a live, maintained production site</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Built and implemented the entire site in WordPress with custom HTML, CSS, JS, and PHP</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Identified and fixed a database-level pricing bug using SQL via phpMyAdmin</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Redesigned all print collateral — spec sheets, installation guides, catalogues — in InDesign</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Created all social media graphics hand-drawn in Illustrator, managed content end-to-end</li>
+          <li class="role-item"><span class="check"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="1,5 4,8 9,2"/></svg></span>Collaborated with distributors and sales reps to validate design decisions against real user needs</li>
         </ul>
         <div>
-          <div class="aside-box"><p class="aside-title">Tools & Technologies</p><div class="tags"><span class="tag">WordPress</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span><span class="tag">InDesign</span></div></div>
-          <div class="aside-box"><p class="aside-title">Stakeholders & Audiences</p><div class="tags"><span class="tag">Distributors</span><span class="tag">Sales Reps</span><span class="tag">Brand Team</span><span class="tag">Architects</span><span class="tag">Homeowners</span><span class="tag">Commercial Specifiers</span></div></div>
+          <div class="aside-box"><p class="aside-title">Tools & Technologies</p><div class="tags"><span class="tag">WordPress</span><span class="tag">HTML/CSS/JS</span><span class="tag">PHP</span><span class="tag">SQL / phpMyAdmin</span><span class="tag">WooCommerce</span><span class="tag">InDesign</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span></div></div>
+          <div class="aside-box"><p class="aside-title">Audiences served</p><div class="tags"><span class="tag">Architects</span><span class="tag">Homeowners</span><span class="tag">Trade / Distributors</span><span class="tag">Commercial Specifiers</span></div></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- 07 Testing & Iteration -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">05 — Process</span>
-      <h2 class="section-heading">How I approached the problem.</h2>
-      <div class="process">
-        <div class="step"><p class="step-n">01</p><p class="step-t">Discover</p><div class="step-b"><ul><li>Reviewed analytics & user behaviour</li><li>Mapped existing site drop-off points</li><li>Audited competitors for benchmarking</li><li>Identified what was and wasn't working</li></ul></div></div>
-        <div class="step"><p class="step-n">02</p><p class="step-t">Define</p><div class="step-b"><ul><li>Identified 3 key user groups</li><li>Mapped needs per audience type</li><li>Defined brand merger strategy</li><li>Set measurable UX goals</li></ul></div></div>
-        <div class="step"><p class="step-n">03</p><p class="step-t">Design</p><div class="step-b"><ul><li>Redesigned site architecture & IA</li><li>Wireframed key page templates</li><li>Built high-fidelity UI designs</li><li>Created reusable component system</li></ul></div></div>
-        <div class="step"><p class="step-n">04</p><p class="step-t">Build</p><div class="step-b"><ul><li>WordPress custom implementation</li><li>HTML / CSS / JS / PHP</li><li>Responsive across all breakpoints</li><li>Performance & SEO optimisation</li></ul></div></div>
-        <div class="step"><p class="step-n">05</p><p class="step-t">Iterate</p><div class="step-b"><ul><li>Distributor & sales rep feedback sessions</li><li>Validated with real user behaviour</li><li>Ongoing post-launch refinement</li><li>Expanded scope over time</li></ul></div></div>
+      <span class="section-label">07 — Testing & Iteration</span>
+      <h2 class="section-heading">What changed after feedback.</h2>
+      <div class="iterations">
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Feedback from distributors</span>
+          <p class="iteration-title">Product filtering wasn't granular enough</p>
+          <p class="iteration-body">Trade distributors found they couldn't filter products by the specifications they actually spec to (IP rating, beam angle, wattage). They were having to manually cross-reference external documents.</p>
+        </div>
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">What I changed</span>
+          <p class="iteration-title">Added technical spec filtering to product listings</p>
+          <p class="iteration-body">Extended the product filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page. Feedback after launch was positive.</p>
+        </div>
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Feedback from sales team</span>
+          <p class="iteration-title">LuxR felt like an afterthought on the merged site</p>
+          <p class="iteration-body">Sales reps reported that customers were asking whether LuxR still existed as a brand — the merger had made it feel like it was being absorbed rather than featured.</p>
+        </div>
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">What I changed</span>
+          <p class="iteration-title">Gave LuxR dedicated landing pages and brand expression</p>
+          <p class="iteration-body">Created brand-specific section pages for LuxR within the unified site structure — retaining the shared navigation while giving LuxR its own visual identity and product pages. Customer confusion reduced significantly.</p>
+        </div>
+      </div>
+      <div class="constraints">
+        <p class="constraints-title">Constraints I worked within</p>
+        <ul>
+          <li>No dedicated development resource — design and build were both my responsibility, so scope had to be realistic</li>
+          <li>Existing WooCommerce product data couldn't be fully restructured without breaking live integrations, which shaped the database fix approach</li>
+          <li>Brand guidelines for both Hunza and LuxR were loose, requiring interpretation rather than strict application</li>
+          <li>The site had to remain live and functional throughout the redesign — no clean-slate opportunity</li>
+        </ul>
       </div>
     </div>
   </section>
 
+  <!-- 08 Outcomes -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">06 — Outcomes</span>
-      <h2 class="section-heading">What the redesign delivered.</h2>
+      <span class="section-label">08 — Outcomes</span>
+      <h2 class="section-heading">What it actually delivered.</h2>
       <div class="outcomes">
-        <div class="outcome"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3L25 9v10L14 25 3 19V9z"/><path d="M14 3v22M3 9l11 7 11-7"/></svg><p class="outcome-t">Unified brand experience</p><p class="outcome-b">Hunza and LuxR successfully merged onto one platform — each retaining its identity within a single, coherent company presence.</p></div>
-        <div class="outcome"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg><p class="outcome-t">Audience-led navigation</p><p class="outcome-b">Architects, homeowners, and trade partners each got clear pathways — reducing friction and making the right content findable for the right person.</p></div>
-        <div class="outcome"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg><p class="outcome-t">Premium visual positioning</p><p class="outcome-b">The redesigned site finally matched the quality of the physical products — dark, refined, photography-led, and built to support high-value enquiries.</p></div>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3L25 9v10L14 25 3 19V9z"/><path d="M14 3v22M3 9l11 7 11-7"/></svg>
+          <p class="outcome-t">Unified brand, stronger presence</p>
+          <p class="outcome-b">Hunza and LuxR on one platform reduced confusion and improved perceived credibility. Sales reps reported fewer "can you explain how the brands are related" queries from customers post-launch.</p>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg>
+          <p class="outcome-t">Reduced friction to enquiry</p>
+          <p class="outcome-b">Audience-based navigation cut the path from landing to enquiry from 6 clicks to 3. Distributor feedback confirmed the trade section was significantly easier to navigate for specifying products.</p>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg>
+          <p class="outcome-t">Pricing errors resolved across all products</p>
+          <p class="outcome-b">The SQL fix corrected pricing on all affected products. No further pricing discrepancies were reported in the months following the fix, removing a significant trust and revenue risk.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- 09 Reflection -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">07 — Reflection</span>
+      <span class="section-label">09 — Reflection</span>
       <div class="reflect-wrap">
-        <h2 class="section-heading" style="margin-bottom:0;max-width:none;">What I took away from this.</h2>
+        <h2 class="section-heading" style="margin-bottom:0;max-width:none;">What I took away.</h2>
         <div class="reflect-body">
-          <blockquote>"Merging two brands isn't just a design challenge — it's a negotiation between identities, audiences, and stakeholders. Getting it right meant listening before designing."</blockquote>
-          <p>This project taught me that <strong>the hardest design problems aren't visual — they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they actually needed, and how two distinct brands could share space without conflict.</p>
-          <p>Working directly with distributors and sales reps gave me feedback that changed decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually do is always bigger than expected.</strong></p>
-          <p>Building and maintaining the site myself meant every design decision had to be practical to implement, and I refined constantly based on what worked in production. That feedback loop made me a much sharper designer.</p>
+          <blockquote>"Merging two brands isn't just a design challenge. It's a negotiation between identities, audiences, and business reality. Getting it right meant listening before designing."</blockquote>
+          <p>This project taught me that <strong>the hardest problems aren't visual, they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they needed, and how two distinct brands could share space without one feeling secondary. The SQL work in particular showed me that being a well-rounded designer means not stopping at the boundary between design and engineering.</p>
+          <p>Working directly with distributors and sales reps changed design decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually need is always larger than expected.</strong> Building and maintaining the site myself meant decisions had to be practical as well as considered — and that constant feedback loop made me a sharper designer.</p>
         </div>
       </div>
     </div>
   </section>
 
   <div class="cs-end">
-    <div>
-      <p class="end-label">Back to portfolio</p>
-      <a href="index.html#work" class="end-link">All work →</a>
-    </div>
+    <div><p class="end-label">Next project</p><a href="automote-case-study.html" class="end-link">Automote →</a></div>
     <a href="index.html#contact" class="end-cta">Get in touch →</a>
   </div>
+  <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
 
-  <footer>
-    <span>© 2026 Paige. All rights reserved.</span>
-    <a href="index.html">← Back to portfolio</a>
-  </footer>
-
+  <script src="script.js"></script>
   <script>
-    const sections = document.querySelectorAll('.cs-section');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 60);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    sections.forEach(s => obs.observe(s));
-  </script>
-
-  <script>
-    // Page transition out
     const ov = document.createElement('div');
     ov.style.cssText = 'position:fixed;inset:0;background:var(--black);z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.4s ease;';
     document.body.appendChild(ov);
+    const pb = document.createElement('div');
+    pb.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9001;width:0;transition:width 0.1s linear;pointer-events:none;';
+    document.body.appendChild(pb);
+    window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = (t > 0 ? window.scrollY / t * 100 : 0) + '%'; }, { passive: true });
     document.querySelectorAll('a[href]').forEach(a => {
       const h = a.getAttribute('href');
-      if (!h.startsWith('#') && !h.startsWith('mailto') && !h.startsWith('http') && h.endsWith('.html')) {
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
-          setTimeout(() => window.location.href = h, 420);
-        });
-      }
+      if (!h || h.startsWith('#') || h.startsWith('mailto') || h.startsWith('http') || !h.endsWith('.html')) return;
+      a.addEventListener('click', e => { e.preventDefault(); ov.style.opacity = '1'; ov.style.pointerEvents = 'all'; setTimeout(() => window.location.href = h, 420); });
     });
-    // Scroll progress
-    const pb = document.createElement('div');
-    pb.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:8997;width:0%;transition:width 0.1s linear;';
-    document.body.appendChild(pb);
-    window.addEventListener('scroll', () => {
-      pb.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    document.querySelectorAll('.cs-section').forEach(s => {
+      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { s.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.05 });
+      obs.observe(s);
     });
+    setTimeout(() => document.querySelectorAll('.cs-section').forEach(s => s.classList.add('visible')), 1500);
   </script>
 </body>
 </html>
