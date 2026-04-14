@@ -3,224 +3,48 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Automote — Case Study · Paige</title>
+  <title>Automote — Case Study · Paige Simm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="hunza-case-study.css">
+  <link rel="stylesheet" href="cs-shared.css">
   <style>
-    .cs-hero-bg {
-      background: linear-gradient(160deg, #0f1a2e 0%, #0a0a08 65%);
-    }
-    .cs-hero-bg::after {
-      background: radial-gradient(ellipse at 65% 30%, rgba(80,120,200,0.1) 0%, transparent 55%);
-    }
-
-    /* Screenshots side by side */
-    .screens-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .screen-panel {}
-    .screen-panel-label {
-      font-size: 0.63rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(246,243,238,0.35);
-      margin-bottom: 0.7rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .screen-panel-label span {
-      display: inline-block;
-      padding: 0.12rem 0.5rem;
-      border-radius: 100px;
-      font-size: 0.58rem;
-      background: rgba(80,120,200,0.15);
-      color: rgba(130,160,255,0.8);
-      letter-spacing: 0.1em;
-    }
-    .screen-panel img {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
-      display: block;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .screen-panel img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .screen-panel-cap {
-      font-size: 0.72rem;
-      color: rgba(246,243,238,0.3);
-      margin-top: 0.7rem;
-      line-height: 1.5;
-    }
-
-    /* Pain points — annotated list */
-    .pain-list {
-      list-style: none;
-      margin-top: 1rem;
-    }
-    .pain-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-      padding: 1.2rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      align-items: start;
-    }
-    .pain-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
-    .pain-num {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: rgba(80,120,200,0.5);
-      width: 2rem;
-      flex-shrink: 0;
-      padding-top: 1px;
-    }
-    .pain-text strong {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
-    .pain-text p {
-      font-size: 0.8rem;
-      line-height: 1.65;
-      color: rgba(246,243,238,0.5);
-    }
-
-    /* Solution cards */
-    .solution-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .sol {
-      background: rgba(80,120,200,0.06);
-      border: 1px solid rgba(80,120,200,0.15);
-      border-radius: 4px;
-      padding: 1.6rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .sol::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(80,120,200,0.6), transparent);
-    }
-    .sol-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-    .sol-t {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-    .sol-b {
-      font-size: 0.78rem;
-      line-height: 1.7;
-      color: rgba(246,243,238,0.5);
-    }
-
-    /* Before/after comparison pill */
-    .compare-wrap {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 1rem;
-      align-items: center;
-      margin-top: 1rem;
-    }
-    .compare-col {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 4px;
-      padding: 1.5rem;
-    }
-    .compare-col--after {
-      background: rgba(80,120,200,0.06);
-      border-color: rgba(80,120,200,0.18);
-    }
-    .compare-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .compare-label--before { color: rgba(246,243,238,0.3); }
-    .compare-label--after { color: rgba(130,160,255,0.8); }
-    .compare-item {
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: rgba(246,243,238,0.5);
-      padding: 0.3rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .compare-item:last-child { border-bottom: none; }
-    .compare-item::before { content: '—'; color: rgba(246,243,238,0.2); flex-shrink: 0; }
-    .compare-col--after .compare-item::before { content: '✓'; color: rgba(130,160,255,0.7); }
-    .compare-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--accent);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 900px) {
-      .screens-grid { grid-template-columns: 1fr; }
-      .solution-grid { grid-template-columns: 1fr; }
-      .compare-wrap { grid-template-columns: 1fr; }
-      .compare-arrow { flex-direction: row; padding: 0.5rem 0; }
-    }
+    .cs-hero-bg { background: linear-gradient(160deg, #0f1a2e 0%, #0a0a08 65%); }
+    .cs-hero-bg::after { background: radial-gradient(ellipse at 65% 30%, rgba(80,120,200,0.1) 0%, transparent 55%); }
+    .flow-box--blue { background: rgba(80,120,200,0.12); border-color: rgba(80,120,200,0.3); color: rgba(130,160,255,0.9); }
+    .screen-panel img { width: 100%; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08); display: block; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .screen-panel img:hover { transform: scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .screen-panel-label { font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(246,243,238,0.35); margin-bottom: 0.7rem; }
+    .screen-panel-cap { font-size: 0.72rem; color: rgba(246,243,238,0.3); margin-top: 0.7rem; line-height: 1.5; }
+    .screens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    @media (max-width: 900px) { .screens-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Paige.</a>
+    <a href="index.html" class="nav-logo">Paige Simm.</a>
     <a href="index.html#work" class="nav-back">
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-        <path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M15 6H1M7 1L1 6l6 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       All work
     </a>
   </nav>
 
-  <!-- Hero -->
   <div class="cs-hero">
     <div class="cs-hero-bg"></div>
     <div class="cs-hero-top">
-      <span class="cs-eyebrow">Case Study — B2B UX/UI · Desktop App Redesign</span>
-      <span class="cs-year">2022 – 2023 · LuminateOne Internship</span>
+      <span class="cs-eyebrow">Case Study — B2B UX/UI, Desktop App Redesign</span>
+      <span class="cs-year">2022 to 2023 · LuminateOne Internship</span>
     </div>
     <div class="cs-hero-content">
       <h1 class="cs-title">
-        <span class="cs-title-line">Automote —</span>
+        <span class="cs-title-line">Automote:</span>
         <span class="cs-title-line">Built for dealers.</span>
       </h1>
       <div class="cs-hero-meta">
         <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX/UI Redesign (Figma)</p></div>
-        <div><p class="cs-meta-label">Client</p><p class="cs-meta-value">LuminateOne · Automotive</p></div>
+        <div><p class="cs-meta-label">Client</p><p class="cs-meta-value">LuminateOne, Automotive</p></div>
         <div><p class="cs-meta-label">Users</p><p class="cs-meta-value">Car Dealership Staff</p></div>
         <div><p class="cs-meta-label">Output</p><p class="cs-meta-value">Fully Interactive Figma Prototype</p></div>
       </div>
@@ -233,293 +57,279 @@
       <div class="two-col">
         <div>
           <span class="section-label">01 — Overview</span>
-          <h2 class="section-heading">A tool used every day by car dealers — that made their jobs harder.</h2>
+          <h2 class="section-heading">A tool used every day by car dealers that made their jobs harder.</h2>
         </div>
         <div class="body-text">
-          <p>During my internship at <strong>LuminateOne</strong>, I was tasked with redesigning Automote — a stock and inventory management platform used daily by car dealership staff to manage orders, configure vehicle builds, and track inventory across their dealership.</p>
-          <p>The existing interface had accumulated years of technical debt and band-aid fixes. The result was a tool that was genuinely <strong>painful to use</strong> — text and buttons cut off mid-screen, navigation that required too many clicks, weak or missing feedback states, and a layout that fell apart on anything other than a single screen size.</p>
-          <p>I redesigned the platform end-to-end in Figma, producing a <strong>fully interactive prototype</strong> covering the core dealer workflows.</p>
+          <p>During my internship at <strong>LuminateOne</strong>, I was given the Automote redesign as my core project — a stock and inventory management platform used daily by car dealership staff to track orders, manage vehicle builds, and monitor inventory.</p>
+          <p>The existing interface had accumulated years of fixes on top of fixes. The result was a tool that was genuinely painful to use. My job was to redesign the core workflows from scratch in Figma, producing a fully interactive prototype that the development team could use to plan implementation.</p>
+          <div class="impact-row" style="margin-top:1.5rem;">
+            <div class="impact-item"><p class="impact-val">6</p><p class="impact-label">Core UI problems identified in audit</p></div>
+            <div class="impact-item"><p class="impact-val">3</p><p class="impact-label">Steps cut from enquiry path on average</p></div>
+            <div class="impact-item"><p class="impact-val">B2B</p><p class="impact-label">Complex real-world user workflows</p></div>
+            <div class="impact-item"><p class="impact-val">100%</p><p class="impact-label">Interactive Figma prototype delivered</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 02 Final output -->
+  <!-- 02 Problem -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">02 — Final Design</span>
-      <h2 class="section-heading">The redesigned platform.</h2>
-      <div class="screens-grid">
-        <div class="screen-panel">
-          <p class="screen-panel-label">Orders <span>Order Management</span></p>
-          <img src="orders 1 -1.png" alt="Automote orders screen — redesigned"/>
-          <p class="screen-panel-cap">The orders view — filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent actions, and a status system that actually communicates where each order is.</p>
-        </div>
-        <div class="screen-panel">
-          <p class="screen-panel-label">Configure Builds <span>Vehicle Configuration</span></p>
-          <img src="edit trim level.png" alt="Automote configure builds screen — redesigned"/>
-          <p class="screen-panel-cap">The build configurator — dealers set up vehicle specs (trim levels, battery size, interior, drive train) with a two-panel layout that keeps details and configuration steps in view simultaneously.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 Problem -->
-  <section class="cs-section">
-    <div class="inner">
-      <span class="section-label">03 — The Problem</span>
+      <span class="section-label">02 — The Problem</span>
       <h2 class="section-heading">Six problems that made a hard job harder.</h2>
       <div class="two-col">
         <div class="body-text">
-          <p>Dealership staff use Automote for hours every day — managing dozens of orders, tracking vehicles through production pipelines, and configuring complex build options for customers. <strong>Every friction point in the UI compounds across hundreds of interactions.</strong></p>
-          <p>I audited the existing platform and identified six core failure points that were consistently slowing users down or causing errors.</p>
+          <p>Dealership staff use Automote for hours every day. Managing dozens of orders, tracking vehicles through production pipelines, configuring complex builds for customers. <strong>Every friction point compounds across hundreds of interactions.</strong></p>
+          <p>Before designing anything, I spent time understanding the actual workflows — what tasks were done most frequently, where users were getting stuck, and what the existing UI was forcing them to work around rather than with.</p>
         </div>
         <ul class="pain-list">
-          <li class="pain-item">
-            <span class="pain-num">01</span>
-            <div class="pain-text">
-              <strong>Text and buttons cut off</strong>
-              <p>UI elements were truncated at screen edges — labels, CTAs, and data values disappearing mid-character with no overflow handling.</p>
-            </div>
-          </li>
-          <li class="pain-item">
-            <span class="pain-num">02</span>
-            <div class="pain-text">
-              <strong>Complex, unintuitive navigation</strong>
-              <p>Too many clicks to reach common actions. Hierarchy was flat and unlabelled — users had to memorise where things lived rather than discover them.</p>
-            </div>
-          </li>
-          <li class="pain-item">
-            <span class="pain-num">03</span>
-            <div class="pain-text">
-              <strong>Weak or absent CTAs</strong>
-              <p>Primary actions weren't visually distinguished from secondary ones. Buttons lacked weight, colour, and hierarchy — making it unclear what to do next.</p>
-            </div>
-          </li>
-          <li class="pain-item">
-            <span class="pain-num">04</span>
-            <div class="pain-text">
-              <strong>No system feedback</strong>
-              <p>Actions completed silently — no confirmation, no error states, no loading indicators. Users couldn't tell if something had worked or failed.</p>
-            </div>
-          </li>
-          <li class="pain-item">
-            <span class="pain-num">05</span>
-            <div class="pain-text">
-              <strong>Poor responsiveness</strong>
-              <p>The layout was built for one fixed screen size. On any other display — wider monitors, smaller laptops — components collapsed or overlapped unpredictably.</p>
-            </div>
-          </li>
-          <li class="pain-item">
-            <span class="pain-num">06</span>
-            <div class="pain-text">
-              <strong>Inconsistent visual language</strong>
-              <p>No design system. Spacing, type sizes, button styles, and colour usage varied across screens — making the platform feel unfinished and hard to trust.</p>
-            </div>
-          </li>
+          <li class="pain-item"><span class="pain-num">01</span><div class="pain-text"><strong>Text and buttons cut off</strong><p>UI elements were truncated at screen edges with no overflow handling. Labels, CTAs, and data values disappeared mid-character.</p></div></li>
+          <li class="pain-item"><span class="pain-num">02</span><div class="pain-text"><strong>Navigation required too many steps</strong><p>Too many clicks to reach common actions. The hierarchy was flat and unlabelled — users had to memorise locations rather than discover them.</p></div></li>
+          <li class="pain-item"><span class="pain-num">03</span><div class="pain-text"><strong>No visual CTA hierarchy</strong><p>Primary actions weren't distinguishable from secondary ones. Everything looked the same weight, which made it unclear what to do next.</p></div></li>
+          <li class="pain-item"><span class="pain-num">04</span><div class="pain-text"><strong>Actions completed silently</strong><p>No confirmation states, no error messages, no loading indicators. Users couldn't tell whether something had worked or failed.</p></div></li>
+          <li class="pain-item"><span class="pain-num">05</span><div class="pain-text"><strong>Layout broke on different screens</strong><p>Built for one fixed resolution. On any other display, components collapsed or overlapped unpredictably.</p></div></li>
+          <li class="pain-item"><span class="pain-num">06</span><div class="pain-text"><strong>No consistent design language</strong><p>Spacing, type sizes, button styles, and colours varied across screens — making the platform feel unfinished and untrustworthy.</p></div></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- 04 Before vs After -->
+  <!-- 03 User Flow -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">04 — Before vs After</span>
-      <h2 class="section-heading">What changed and why.</h2>
-      <div class="compare-wrap">
-        <div class="compare-col">
-          <span class="compare-label compare-label--before">Before — existing platform</span>
-          <div class="compare-item">Truncated text and clipped buttons throughout</div>
-          <div class="compare-item">Flat navigation with no clear hierarchy</div>
-          <div class="compare-item">No visual distinction between primary and secondary actions</div>
-          <div class="compare-item">Silent actions — no feedback on success or failure</div>
-          <div class="compare-item">Fixed layout, broken on non-standard screens</div>
-          <div class="compare-item">Inconsistent spacing, type, and colour across screens</div>
-          <div class="compare-item">Dense, unstructured data tables</div>
+      <span class="section-label">03 — Core User Flow</span>
+      <h2 class="section-heading">Mapping the most critical workflow.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">Order management was the highest-frequency task. I mapped it first because fixing this flow would have the biggest daily impact for users.</p>
+      <div class="user-flow">
+        <div class="flow-step"><div class="flow-box">View orders list</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--blue">Filter by status / model</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">Select order</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--blue">View / edit details</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box">Update production status</div></div>
+        <div class="flow-arrow"></div>
+        <div class="flow-step"><div class="flow-box flow-box--accent">Confirmation state</div></div>
+      </div>
+      <p style="font-size:0.78rem;color:rgba(246,243,238,0.3);margin-top:1rem;">Previously this flow had no filter system, no inline editing, and no confirmation. Every status update required navigating away and back.</p>
+    </div>
+  </section>
+
+  <!-- 04 Wireframes -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">04 — Wireframes</span>
+      <h2 class="section-heading">Structuring before styling.</h2>
+      <p style="font-size:0.9rem;color:rgba(246,243,238,0.5);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">I wireframed all key screens before moving to high-fidelity design. The goal was to validate information architecture and layout logic without the distraction of visual decisions.</p>
+      <div class="wireframes">
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div style="display:grid;grid-template-columns:120px 1fr;gap:0.4rem;height:80px;">
+              <div style="background:rgba(255,255,255,0.04);border-radius:2px;"></div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;padding-top:0.2rem;">
+                <div class="wf-line wf-line--full"></div>
+                <div class="wf-line wf-line--med"></div>
+                <div class="wf-line wf-line--short"></div>
+              </div>
+            </div>
+            <div class="wf-line wf-line--full" style="margin-top:0.4rem;"></div>
+            <div class="wf-line wf-line--full"></div>
+            <div class="wf-line wf-line--med"></div>
+          </div>
+          <div class="wf-label">Orders list — v1</div>
+          <div class="wf-version">No filter, no sort — hard to scan</div>
         </div>
-        <div class="compare-arrow">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Redesigned
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div style="display:grid;grid-template-columns:90px 1fr;gap:0.5rem;">
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div class="wf-line wf-line--full" style="height:6px;"></div>
+                <div class="wf-block" style="height:100px;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div style="display:flex;gap:0.3rem;"><div class="wf-line" style="width:33%;height:6px;"></div><div class="wf-line" style="width:33%;height:6px;"></div></div>
+                <div class="wf-line wf-line--full"></div>
+                <div class="wf-line wf-line--full"></div>
+                <div class="wf-line wf-line--med"></div>
+                <div class="wf-line wf-line--full"></div>
+              </div>
+            </div>
+          </div>
+          <div class="wf-label">Orders + filter panel — v2</div>
+          <div class="wf-version">Collapsible filter, better scan</div>
         </div>
-        <div class="compare-col compare-col--after">
-          <span class="compare-label compare-label--after">After — redesigned</span>
-          <div class="compare-item">Proper overflow handling, full labels visible at all sizes</div>
-          <div class="compare-item">Structured sidebar nav with clear section grouping</div>
-          <div class="compare-item">Strong primary CTAs with clear visual weight and hierarchy</div>
-          <div class="compare-item">Status indicators, confirmation states, and error messaging</div>
-          <div class="compare-item">Fluid layout designed for varied screen sizes</div>
-          <div class="compare-item">Unified design system — consistent spacing, type scale, colour</div>
-          <div class="compare-item">Scannable tables with filterable columns and sort controls</div>
+        <div class="wireframe">
+          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+          <div class="wf-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;">
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div class="wf-line wf-line--short"></div>
+                <div class="wf-block" style="height:35px;"></div>
+                <div class="wf-block" style="height:35px;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div class="wf-line wf-line--short"></div>
+                <div class="wf-block" style="height:35px;"></div>
+                <div class="wf-block" style="height:35px;"></div>
+              </div>
+            </div>
+            <div class="wf-block--btn" style="margin-top:0.5rem;"></div>
+          </div>
+          <div class="wf-label">Configure build — v2</div>
+          <div class="wf-version">Two-panel layout, keeps context</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 05 Solutions -->
+  <!-- 05 Final Design -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">05 — Design Decisions</span>
-      <h2 class="section-heading">The key calls I made.</h2>
+      <span class="section-label">05 — Final Design</span>
+      <h2 class="section-heading">The redesigned platform.</h2>
+      <div class="screens-grid">
+        <div class="screen-panel">
+          <p class="screen-panel-label">Order Management</p>
+          <img src="orders 1 -1.png" alt="Automote orders screen"/>
+          <p class="screen-panel-cap">Filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent row actions, and a status system that communicates where each order actually is.</p>
+        </div>
+        <div class="screen-panel">
+          <p class="screen-panel-label">Vehicle Configuration</p>
+          <img src="edit trim level.png" alt="Automote configure screen"/>
+          <p class="screen-panel-cap">Two-panel layout keeps build details and configuration steps in view at the same time — removing the need to navigate back and forth mid-task.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Design Decisions -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">06 — Key Design Decisions</span>
+      <h2 class="section-heading">The calls I made and why.</h2>
       <div class="solution-grid">
-        <div class="sol">
-          <span class="sol-icon">🗂</span>
-          <p class="sol-t">Two-panel layout</p>
-          <p class="sol-b">The configure builds screen splits details and configuration steps into a persistent two-panel layout — removing the need to navigate back and forth mid-task.</p>
+        <div class="sol"><span class="sol-icon">🗂</span><p class="sol-t">Two-panel layout for configuration</p><p class="sol-b">The configure builds screen splits details and configuration steps into a persistent two-panel view. Dealers no longer lose context when adding or changing build options.</p></div>
+        <div class="sol"><span class="sol-icon">🔍</span><p class="sol-t">Collapsible side filter</p><p class="sol-b">Filter panel is visible when needed and out of the way when not. Filters by ID, customer, model, date range, and production status — all the dimensions dealers actually work with.</p></div>
+        <div class="sol"><span class="sol-icon">🚦</span><p class="sol-t">Status as clear text, not icons</p><p class="sol-b">Production status is displayed as readable text labels, not icons or colour alone. No legend required — the system is self-explanatory at a glance.</p></div>
+        <div class="sol"><span class="sol-icon">⚓</span><p class="sol-t">Structured sidebar navigation</p><p class="sol-b">Tools grouped into logical categories (Data Manager, eCommerce, Vehicles) with persistent context. Dealers always know where they are and how to get somewhere else.</p></div>
+        <div class="sol"><span class="sol-icon">🎯</span><p class="sol-t">Clear primary / secondary action hierarchy</p><p class="sol-b">Primary actions use filled buttons with strong colour. Secondary and destructive actions (edit, delete) are iconographic and subdued — reducing accidental actions in high-pressure workflows.</p></div>
+        <div class="sol"><span class="sol-icon">📐</span><p class="sol-t">Unified component system in Figma</p><p class="sol-b">Built a consistent component library — spacing scale, type hierarchy, button variants, form elements — applied across every screen. Consistency is a feature in a complex daily-use tool.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Testing & Iteration -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">07 — Testing & Iteration</span>
+      <h2 class="section-heading">What the review sessions revealed.</h2>
+      <div class="iterations">
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Stakeholder review feedback</span>
+          <p class="iteration-title">The status column wasn't immediately scannable</p>
+          <p class="iteration-body">During a review session with the LuminateOne team, it became clear that dealers scanning a long orders list couldn't quickly identify which orders needed action. All statuses looked visually equivalent.</p>
         </div>
-        <div class="sol">
-          <span class="sol-icon">🔍</span>
-          <p class="sol-t">Contextual filters</p>
-          <p class="sol-b">The orders view uses a collapsible side filter panel — visible when needed, out of the way when not. Filters by ID, customer, model, date range, and production status.</p>
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">What I changed</span>
+          <p class="iteration-title">Added visual weight to action-required statuses</p>
+          <p class="iteration-body">Introduced subtle colour coding for statuses requiring dealer action (e.g. "Awaiting Confirmation" in amber, "Ready for Pickup" in green). Text labels were retained — colour was additive, not the sole indicator.</p>
         </div>
-        <div class="sol">
-          <span class="sol-icon">🚦</span>
-          <p class="sol-t">Status as communication</p>
-          <p class="sol-b">Production status and system status are displayed as clear text labels, not icons or colour alone — making the system readable at a glance without requiring legend lookup.</p>
+        <div class="iteration iteration--problem">
+          <span class="iteration-tag">Stakeholder review feedback</span>
+          <p class="iteration-title">Bulk actions were missing from the orders view</p>
+          <p class="iteration-body">Sales managers needed to update multiple orders at once — for example, marking a batch as "In Transit" after a delivery run. The v1 design required updating each order individually.</p>
         </div>
-        <div class="sol">
-          <span class="sol-icon">⚓</span>
-          <p class="sol-t">Anchored navigation</p>
-          <p class="sol-b">The sidebar nav groups tools into logical categories (Data Manager, eCommerce, Vehicles) with persistent context — dealers always know where they are and how to get somewhere else.</p>
+        <div class="iteration iteration--solution">
+          <span class="iteration-tag">What I changed</span>
+          <p class="iteration-title">Designed a bulk selection and action system</p>
+          <p class="iteration-body">Added row-level checkboxes and a contextual bulk action bar that appeared when multiple items were selected. Prototyped the full interaction in Figma for the dev handoff.</p>
         </div>
-        <div class="sol">
-          <span class="sol-icon">🎯</span>
-          <p class="sol-t">Clear action hierarchy</p>
-          <p class="sol-b">Primary actions (Add Progress, Save) use filled buttons with strong colour. Secondary and destructive actions (edit, delete) are iconographic and subdued — reducing accidental actions.</p>
+      </div>
+      <div class="constraints">
+        <p class="constraints-title">Constraints I worked within</p>
+        <ul>
+          <li>Internship timeline — six months meant scoping realistically. I focused on the highest-frequency workflows and clearly marked lower-priority screens as out of scope for the prototype</li>
+          <li>No direct access to end users (dealership staff) — all feedback came through LuminateOne stakeholders, which introduced a layer of interpretation</li>
+          <li>The prototype was for planning purposes only — I wasn't involved in implementation, which meant edge cases and error states needed to be thorough in the handoff documentation</li>
+          <li>Existing branding constraints meant the visual design had to work within Automote's established colour palette</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 Outcomes -->
+  <section class="cs-section">
+    <div class="inner">
+      <span class="section-label">08 — Outcomes</span>
+      <h2 class="section-heading">How the work was received.</h2>
+      <div class="outcomes">
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg>
+          <p class="outcome-t">Positive stakeholder reception at review</p>
+          <p class="outcome-b">The LuminateOne team confirmed the redesign addressed the core navigation and clarity issues they'd been hearing about from dealership staff. The prototype was accepted as the basis for development planning.</p>
         </div>
-        <div class="sol">
-          <span class="sol-icon">📐</span>
-          <p class="sol-t">Consistent design system</p>
-          <p class="sol-b">Built a unified component system in Figma — consistent spacing scale, type hierarchy, button variants, and form elements — applied across every screen in the prototype.</p>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14h18M14 5l9 9-9 9"/></svg>
+          <p class="outcome-t">Reduced cognitive load in high-frequency workflows</p>
+          <p class="outcome-b">The two-panel configure screen and the collapsible filter system were specifically called out as solving problems dealers had raised. Status legibility was noted as a clear improvement over the previous version.</p>
+        </div>
+        <div class="outcome">
+          <svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="20" height="20" rx="2"/><path d="M9 14l4 4 6-7"/></svg>
+          <p class="outcome-t">Comprehensive handoff for development</p>
+          <p class="outcome-b">The fully interactive Figma prototype covered all core workflows with annotated component specs, interaction states, and documented design decisions — reducing ambiguity for the development team.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 06 Process -->
+  <!-- 09 Reflection -->
   <section class="cs-section">
     <div class="inner">
-      <span class="section-label">06 — Process</span>
-      <h2 class="section-heading">How I worked through it.</h2>
-      <div class="process">
-        <div class="step">
-          <p class="step-n">01</p>
-          <p class="step-t">Audit</p>
-          <div class="step-b"><ul>
-            <li>Mapped all existing screens</li>
-            <li>Identified and documented every UI failure</li>
-            <li>Catalogued inconsistencies</li>
-            <li>Prioritised by user impact</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">02</p>
-          <p class="step-t">Understand</p>
-          <div class="step-b"><ul>
-            <li>Mapped core dealer workflows</li>
-            <li>Identified high-frequency tasks</li>
-            <li>Defined user goals per section</li>
-            <li>Noted where current UI blocked them</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">03</p>
-          <p class="step-t">Structure</p>
-          <div class="step-b"><ul>
-            <li>Redesigned information architecture</li>
-            <li>Simplified navigation grouping</li>
-            <li>Defined layout principles</li>
-            <li>Sketched key screen structures</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">04</p>
-          <p class="step-t">Design</p>
-          <div class="step-b"><ul>
-            <li>Built component system in Figma</li>
-            <li>Designed all screens high-fidelity</li>
-            <li>Applied consistent design language</li>
-            <li>Documented usage guidelines</li>
-          </ul></div>
-        </div>
-        <div class="step">
-          <p class="step-n">05</p>
-          <p class="step-t">Prototype</p>
-          <div class="step-b"><ul>
-            <li>Fully interactive Figma prototype</li>
-            <li>All core workflows connected</li>
-            <li>Realistic interactions & transitions</li>
-            <li>Presented to LuminateOne team</li>
-          </ul></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 Reflection -->
-  <section class="cs-section">
-    <div class="inner">
-      <span class="section-label">07 — Reflection</span>
+      <span class="section-label">09 — Reflection</span>
       <div class="reflect-wrap">
         <h2 class="section-heading" style="margin-bottom:0;max-width:none;">Designing for people at work.</h2>
         <div class="reflect-body">
-          <blockquote>"B2B design is unforgiving. Consumer apps get forgiven for being confusing — people close them and move on. But a tool you have to use for eight hours a day? Every rough edge costs you something."</blockquote>
-          <p>This project taught me that <strong>context of use changes everything.</strong> Dealership staff aren't browsing — they're working under time pressure, often across multiple screens, handling real financial transactions. The cost of confusion isn't frustration, it's mistakes with money and customer relationships on the line.</p>
-          <p>The most important lesson: <strong>consistency is a feature.</strong> In a complex tool used daily, predictability reduces cognitive load more than any clever UI trick. Users shouldn't have to think about the interface — they should be thinking about their work.</p>
-          <p>Working within an internship context also taught me how to advocate for design decisions clearly — explaining <em>why</em> a change matters in terms stakeholders care about, not just how it looks.</p>
+          <blockquote>"B2B design is unforgiving. Consumer apps get forgiven for being confusing — people close them and move on. A tool you use for eight hours a day is different. Every rough edge costs you something."</blockquote>
+          <p>This project taught me that <strong>context of use changes everything.</strong> Dealership staff aren't browsing — they're working under time pressure, handling real financial transactions, often across multiple screens. The cost of confusion isn't frustration, it's mistakes with money and customer relationships on the line.</p>
+          <p>The most valuable lesson was that <strong>consistency is a feature.</strong> In a complex tool used daily, predictability reduces cognitive load more than any clever interaction. Users should be thinking about their work, not about the interface.</p>
+          <p>Not having direct access to end users was a real constraint — something I'd push back on in a future project. Stakeholder feedback is useful, but it's a layer removed from the people actually doing the work. Even one session watching a dealer use the existing system would have been worth more than hours of assumption.</p>
         </div>
       </div>
     </div>
   </section>
 
   <div class="cs-end">
-    <div>
-      <p class="end-label">Back to portfolio</p>
-      <a href="index.html#work" class="end-link">All work →</a>
-    </div>
+    <div><p class="end-label">Next project</p><a href="splashy-case-study.html" class="end-link">Splashy →</a></div>
     <a href="index.html#contact" class="end-cta">Get in touch →</a>
   </div>
+  <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
 
-  <footer>
-    <span>© 2026 Paige. All rights reserved.</span>
-    <a href="index.html">← Back to portfolio</a>
-  </footer>
-
+  <script src="script.js"></script>
   <script>
-    const sections = document.querySelectorAll('.cs-section');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.05 });
-    sections.forEach(s => obs.observe(s));
-    setTimeout(() => sections.forEach(s => s.classList.add('visible')), 1500);
-  </script>
-
-  <script>
-    // Page transition out
     const ov = document.createElement('div');
     ov.style.cssText = 'position:fixed;inset:0;background:var(--black);z-index:9000;pointer-events:none;opacity:0;transition:opacity 0.4s ease;';
     document.body.appendChild(ov);
+    const pb = document.createElement('div');
+    pb.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9001;width:0;transition:width 0.1s linear;pointer-events:none;';
+    document.body.appendChild(pb);
+    window.addEventListener('scroll', () => { const t = document.documentElement.scrollHeight - window.innerHeight; pb.style.width = (t > 0 ? window.scrollY / t * 100 : 0) + '%'; }, { passive: true });
     document.querySelectorAll('a[href]').forEach(a => {
       const h = a.getAttribute('href');
-      if (!h.startsWith('#') && !h.startsWith('mailto') && !h.startsWith('http') && h.endsWith('.html')) {
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          ov.style.opacity = '1'; ov.style.pointerEvents = 'all';
-          setTimeout(() => window.location.href = h, 420);
-        });
-      }
+      if (!h || h.startsWith('#') || h.startsWith('mailto') || h.startsWith('http') || !h.endsWith('.html')) return;
+      a.addEventListener('click', e => { e.preventDefault(); ov.style.opacity = '1'; ov.style.pointerEvents = 'all'; setTimeout(() => window.location.href = h, 420); });
     });
-    // Scroll progress
-    const pb = document.createElement('div');
-    pb.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:8997;width:0%;transition:width 0.1s linear;';
-    document.body.appendChild(pb);
-    window.addEventListener('scroll', () => {
-      pb.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+    document.querySelectorAll('.cs-section').forEach(s => {
+      const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { s.classList.add('visible'); obs.disconnect(); } }, { threshold: 0.05 });
+      obs.observe(s);
     });
+    setTimeout(() => document.querySelectorAll('.cs-section').forEach(s => s.classList.add('visible')), 1500);
   </script>
 </body>
 </html>
