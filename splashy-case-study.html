@@ -9,14 +9,156 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="cs-shared.css">
   <style>
-    /* Additional page-specific styles that aren't in cs-shared.css */
-    .cs-hero-bg { background: linear-gradient(160deg, #0d2a3a 0%, #0a0a08 65%); }
-    .cs-hero-bg::after { background: radial-gradient(ellipse at 60% 30%, rgba(100,190,210,0.12) 0%, transparent 55%); }
-    
+    /* Hero section styles (not in cs-shared.css) */
+    .cs-hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cs-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #0d2a3a 0%, #0a0a08 65%);
+    }
+    .cs-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 30%, rgba(100,190,210,0.12) 0%, transparent 55%);
+    }
+    .cs-hero-top {
+      position: absolute;
+      top: 6rem;
+      left: 3rem;
+      right: 3rem;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 0.7s 0.3s forwards;
+    }
+    .cs-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .cs-year {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(246,243,238,0.3);
+    }
+    .cs-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .cs-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+    }
+    .cs-title-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .cs-title-line:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .cs-title-line:nth-child(2) {
+      animation-delay: 0.25s;
+      font-style: italic;
+      color: var(--accent);
+    }
+    .cs-hero-meta {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      opacity: 0;
+      animation: fadeIn 0.8s 0.7s forwards;
+      flex-wrap: wrap;
+    }
+    .cs-meta-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(246,243,238,0.3);
+      margin-bottom: 0.4rem;
+    }
+    .cs-meta-value {
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Phone mockup styles */
+    .phones-row {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone-wrap img {
+      width: 100px;
+      height: 216px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 18px;
+      display: block;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease;
+    }
+    .phone-wrap:hover img {
+      transform: translateY(-8px);
+    }
+    .phone-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(246,243,238,0.3);
+      margin-top: 0.8rem;
+      text-align: center;
+    }
     .flow-box--teal {
       background: rgba(100,200,220,0.12);
       border-color: rgba(100,200,220,0.3);
       color: #6ecfe0;
+    }
+
+    @media (max-width: 900px) {
+      .cs-hero {
+        padding: 0 1.5rem 3rem;
+      }
+      .cs-hero-top {
+        left: 1.5rem;
+        right: 1.5rem;
+        top: 5rem;
+      }
+      .cs-hero-meta {
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -72,6 +214,7 @@
     </div>
   </section>
 
+  <!-- Continue with the rest of your sections... -->
   <!-- 02 The Problem -->
   <section class="cs-section">
     <div class="inner">
