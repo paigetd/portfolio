@@ -9,6 +9,7 @@
   --bg: #f7f4ef;
   --card: #ffffff;
   --dark: #141210;
+  --white: #faf7f2;        /* ← CRITICAL: used in case studies */
   --accent: #e8622a;
   --accent2: #f0a44a;
   --muted: #8a7f74;
@@ -1186,6 +1187,8 @@ blockquote {
 .end-cta:hover {
   color: var(--accent);
 }
+
+/* ---------- CASE STUDY SPECIFIC OVERRIDES (keep your inline style overrides) ---------- */
 
 /* ---------- RESPONSIVE (shared) ---------- */
 @media (max-width: 900px) {
