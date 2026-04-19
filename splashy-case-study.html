@@ -1,507 +1,913 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Splashy — Case Study · Paige Simm</title>
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="case-study.css">
-  <style>
-    .cs-hero-bg { background: linear-gradient(160deg, #0d2a3a 0%, #0a0a08 65%); }
-    .cs-hero-bg::after { background: radial-gradient(ellipse at 60% 30%, rgba(100,190,210,0.12) 0%, transparent 55%); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splashy Case Study — Paige Simm</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&f[]=fraunces@400i,700i&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --mint:#00C896;
+  --mint-light:#E8FFF7;
+  --mint-mid:#A8F0DA;
+  --coral:#FF6B6B;
+  --coral-light:#FFF0F0;
+  --amber:#FFB830;
+  --amber-light:#FFF8E6;
+  --ink:#0A0A0F;
+  --ink-80:rgba(10,10,15,0.8);
+  --ink-60:rgba(10,10,15,0.6);
+  --ink-40:rgba(10,10,15,0.4);
+  --ink-20:rgba(10,10,15,0.12);
+  --ink-10:rgba(10,10,15,0.06);
+  --white:#FFFFFF;
+  --off:#F7F7F5;
+  --surface:rgba(255,255,255,0.7);
+  --surface-strong:rgba(255,255,255,0.88);
+  --glass-border:rgba(255,255,255,0.9);
+  --glass-border-subtle:rgba(10,10,15,0.08);
+  --sans:'Satoshi',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+  --r-sm:12px;
+  --r-md:18px;
+  --r-lg:24px;
+  --r-xl:32px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--off);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
 
-    :root { --teal: #6ecfe0; --teal-glow: rgba(100,200,220,0.1); --teal-border: rgba(100,200,220,0.2); }
+/* === NOISE TEXTURE OVERLAY === */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:300px;
+}
 
-    .sec-num {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(5rem, 12vw, 9rem);
-      line-height: 1;
-      color: rgba(255,255,255,0.025);
-      position: absolute;
-      top: 2rem; right: 3rem;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: -0.04em;
-    }
+/* === NAV === */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.85rem 2.5rem;
+  background:rgba(247,247,245,0.75);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--glass-border-subtle);
+}
+.nav-logo{
+  font-family:var(--sans);font-weight:700;font-size:0.95rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-0.01em;
+}
+.nav-links{list-style:none;display:flex;gap:1.8rem;align-items:center}
+.nav-links a{
+  font-size:0.8rem;font-weight:500;color:var(--ink-60);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:2px;
+}
+.hamburger span{
+  display:block;width:20px;height:1.5px;
+  background:var(--ink);border-radius:2px;transition:all 0.3s;
+}
+.mobile-drawer{
+  display:none;position:fixed;inset:0;z-index:99;
+  background:rgba(247,247,245,0.97);
+  backdrop-filter:blur(20px);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+}
+.mobile-drawer.open{display:flex}
+.mobile-drawer a{
+  font-family:var(--serif);font-style:italic;font-size:2.2rem;
+  color:var(--ink);text-decoration:none;transition:color 0.2s;
+}
+.mobile-drawer a:hover{color:var(--mint)}
 
-    /* OVERVIEW */
-    .overview-bento { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; margin-top: 2.5rem; }
-    .ov-main {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 20px;
-      padding: 2.2rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-    .ov-main::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--teal), transparent);
-      opacity: 0.25;
-    }
-    .ov-main p { font-size: 1rem; line-height: 1.85; color: rgba(246,243,238,0.55); margin-bottom: 1rem; }
-    .ov-main p:last-child { margin-bottom: 0; }
-    .ov-main p strong { color: var(--white); font-weight: 500; }
-    .ov-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-    .stat-card {
-      background: var(--teal-glow);
-      border: 1px solid var(--teal-border);
-      border-radius: 16px;
-      padding: 1.4rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s, transform 0.3s;
-      backdrop-filter: blur(8px);
-      display: flex; flex-direction: column; justify-content: space-between; min-height: 110px;
-    }
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, var(--teal), transparent);
-      opacity: 0.3;
-    }
-    .stat-card:hover { background: rgba(100,200,220,0.14); transform: translateY(-2px); }
-    .stat-val { font-family: var(--serif); font-style: italic; font-size: 2.2rem; color: var(--teal); line-height: 1; }
-    .stat-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(246,243,238,0.3); line-height: 1.4; margin-top: 0.5rem; }
+/* === HERO === */
+.hero{
+  min-height:100svh;
+  display:grid;grid-template-rows:1fr auto;
+  padding:calc(4.5rem + 60px) clamp(1.2rem,5vw,3.5rem) 3rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(135deg,#E8FFF7 0%,#F0FFF9 30%,#F7F7F5 60%,#FFF8F0 100%);
+}
+.hero-blob-1{
+  position:absolute;top:-10%;right:-5%;
+  width:55vw;height:55vw;max-width:700px;max-height:700px;
+  background:radial-gradient(circle,rgba(0,200,150,0.18) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-blob-2{
+  position:absolute;bottom:-15%;left:-10%;
+  width:45vw;height:45vw;max-width:600px;max-height:600px;
+  background:radial-gradient(circle,rgba(255,184,48,0.12) 0%,transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--mint);margin-bottom:1.5rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:6px;height:6px;border-radius:50%;
+  background:var(--mint);animation:pulse 2s ease infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
+.hero-title{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(3.2rem,8vw,7.5rem);
+  line-height:1;letter-spacing:-0.03em;color:var(--ink);
+  margin-bottom:0.15em;
+}
+.hero-title span{color:var(--mint)}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.3rem);font-weight:500;
+  color:var(--ink-60);margin-bottom:3rem;max-width:42ch;
+}
+.hero-meta{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0.75rem;
+}
+.meta-pill{
+  background:var(--surface-strong);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(12px);
+  border-radius:var(--r-md);
+  padding:1rem 1.1rem;
+}
+.meta-pill-label{
+  font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--ink-40);margin-bottom:0.3rem;
+}
+.meta-pill-val{font-size:0.82rem;font-weight:600;color:var(--ink-80);line-height:1.35}
 
-    /* PROBLEM */
-    .problem-intro { font-size: 1.1rem; line-height: 1.75; color: rgba(246,243,238,0.5); max-width: 54ch; margin-bottom: 2rem; }
-    .problem-intro strong { color: var(--white); }
-    .prob-bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-    .prob-card {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 18px;
-      padding: 1.8rem;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s, transform 0.3s;
-      backdrop-filter: blur(8px);
-    }
-    .prob-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--teal), transparent);
-      opacity: 0.4;
-    }
-    .prob-card:hover { background: rgba(255,255,255,0.04); transform: translateY(-2px); }
-    .prob-num { font-family: var(--serif); font-style: italic; font-size: 3rem; color: rgba(100,200,220,0.07); line-height: 1; margin-bottom: 0.8rem; }
-    .prob-title { font-size: 0.95rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
-    .prob-body { font-size: 0.82rem; line-height: 1.7; color: rgba(246,243,238,0.42); }
+/* === SCROLL BAR === */
+#progress{
+  position:fixed;top:0;left:0;height:2.5px;z-index:200;
+  background:linear-gradient(90deg,var(--mint),var(--amber));
+  width:0%;transition:width 0.05s linear;
+}
 
-    /* RESEARCH QUOTES */
-    .research-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 5rem; align-items: start; margin-top: 1rem; }
-    .research-intro p { font-size: 1rem; line-height: 1.85; color: rgba(246,243,238,0.52); margin-bottom: 1rem; }
-    .research-intro p strong { color: var(--white); }
-    .insights { display: flex; flex-direction: column; gap: 0.7rem; }
-    .insight-card {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      padding: 1.2rem 1.4rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      transition: background 0.3s;
-    }
-    .insight-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(110,207,224,0.25), transparent);
-    }
-    .insight-card:hover { background: var(--teal-glow); }
-    .insight-q { font-family: var(--serif); font-style: italic; font-size: 0.98rem; color: var(--teal); margin-bottom: 0.5rem; line-height: 1.45; }
-    .insight-a { font-size: 0.78rem; line-height: 1.7; color: rgba(246,243,238,0.42); }
+/* === LAYOUT === */
+.page{padding:0 clamp(1.2rem,5vw,3.5rem);max-width:1100px;margin:0 auto;}
+.section{padding:5rem 0}
+.section+.section{padding-top:0}
 
-    /* USER FLOW */
-    .flow-wrap {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 20px;
-      padding: 2.5rem;
-      margin-top: 2rem;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-    }
-    .flow-wrap::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--teal), transparent);
-      opacity: 0.2;
-    }
-    .flow-note { font-size: 0.72rem; color: rgba(246,243,238,0.28); margin-top: 1.2rem; font-style: italic; }
+/* === SECTION LABEL === */
+.label{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--ink-40);margin-bottom:0.8rem;
+}
+.label-dot{width:5px;height:5px;border-radius:50%;background:var(--mint)}
+.heading{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  line-height:1.1;letter-spacing:-0.025em;color:var(--ink);
+  margin-bottom:2rem;
+}
+.body-text{
+  font-size:0.97rem;font-weight:400;line-height:1.8;
+  color:var(--ink-80);
+}
+.body-text strong{font-weight:700;color:var(--ink)}
 
-    /* WIREFRAMES */
-    .wf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2rem; }
-    .wf-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden; transition: border-color 0.3s, transform 0.3s; backdrop-filter: blur(8px); }
-    .wf-card:hover { border-color: rgba(110,207,224,0.2); transform: translateY(-3px); }
-    .wf-bar { background: rgba(255,255,255,0.04); padding: 0.5rem 0.8rem; display: flex; gap: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .wf-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.1); }
-    .wf-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-    .wf-line { height: 7px; border-radius: 100px; background: rgba(255,255,255,0.07); }
-    .wf-line--s { width: 40%; } .wf-line--m { width: 65%; } .wf-line--f { width: 100%; }
-    .wf-block { height: 50px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.07); }
-    .wf-btn { height: 26px; border-radius: 100px; background: var(--teal-glow); border: 1px solid var(--teal-border); width: 60%; }
-    .wf-label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(246,243,238,0.25); text-align: center; padding: 0.5rem 0.8rem 0.2rem; }
-    .wf-version { font-size: 0.54rem; color: rgba(246,243,238,0.15); padding: 0.3rem 0.8rem 0.8rem; line-height: 1.5; text-align: center; }
+/* === GLASS CARD === */
+.card{
+  background:var(--surface-strong);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-radius:var(--r-xl);
+  position:relative;overflow:hidden;
+}
+.card-sm{border-radius:var(--r-lg)}
+.card-xs{border-radius:var(--r-md)}
 
-    /* PHONES */
-    .phones-showcase {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      margin-top: 2rem;
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-      overflow: hidden;
-    }
-    .phones-showcase::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(110,207,224,0.25), transparent);
-    }
-    .phones-showcase::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(100,190,210,0.05), transparent 70%);
-      pointer-events: none;
-    }
-    .phone-wrap { display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; }
-    .phone-wrap img { width: 100px; height: 216px; object-fit: cover; border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); transition: transform 0.4s; }
-    .phone-wrap:hover img { transform: translateY(-8px); }
-    .phone-label { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-top: 0.8rem; }
+/* === BENTO GRIDS === */
+.bento-2{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.bento-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem}
+.bento-4{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem}
+.bento-main{display:grid;grid-template-columns:1.5fr 1fr;gap:0.75rem;align-items:start}
 
-    /* ITERATIONS */
-    .iter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
-    .iter-card { border-radius: 16px; padding: 1.6rem; position: relative; overflow: hidden; backdrop-filter: blur(8px); }
-    .iter-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; }
-    .iter-card.problem { background: rgba(220,60,60,0.05); border: 1px solid rgba(220,60,60,0.13); }
-    .iter-card.problem::before { background: linear-gradient(90deg, transparent, rgba(220,80,80,0.3), transparent); }
-    .iter-card.solution { background: rgba(80,180,100,0.05); border: 1px solid rgba(80,180,100,0.13); }
-    .iter-card.solution::before { background: linear-gradient(90deg, transparent, rgba(80,200,100,0.25), transparent); }
-    .iter-tag { font-size: 0.56rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.7rem; display: block; }
-    .iter-card.problem .iter-tag { color: rgba(255,110,110,0.75); }
-    .iter-card.solution .iter-tag { color: rgba(90,220,110,0.75); }
-    .iter-title { font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; }
-    .iter-body { font-size: 0.8rem; line-height: 1.7; color: rgba(246,243,238,0.42); }
+/* === 01 OVERVIEW === */
+.overview-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:0.75rem;margin-top:2rem}
+.ov-card{padding:2.2rem}
+.ov-card p{font-size:0.97rem;line-height:1.8;color:var(--ink-80);margin-bottom:1rem}
+.ov-card p:last-child{margin-bottom:0}
+.ov-card p strong{font-weight:700;color:var(--ink)}
 
-    /* CONSTRAINTS */
-    .constraints-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-left: 2px solid rgba(110,207,224,0.4); border-radius: 0 14px 14px 0; padding: 1.4rem 1.6rem; margin-top: 1.5rem; }
-    .constraints-title { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); opacity: 0.7; margin-bottom: 0.8rem; }
-    .constraints-card ul { list-style: none; }
-    .constraints-card li { font-size: 0.8rem; color: rgba(246,243,238,0.4); line-height: 1.6; padding: 0.2rem 0; display: flex; gap: 0.6rem; }
-    .constraints-card li::before { content: '↳'; color: var(--teal); opacity: 0.5; }
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.stat-card{
+  padding:1.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:120px;
+  border-radius:var(--r-lg);
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,200,150,0.12)}
+.stat-card.mint{background:linear-gradient(135deg,var(--mint-light),rgba(168,240,218,0.5));border:1px solid rgba(0,200,150,0.25)}
+.stat-card.coral{background:linear-gradient(135deg,var(--coral-light),rgba(255,180,180,0.3));border:1px solid rgba(255,107,107,0.2)}
+.stat-card.amber{background:linear-gradient(135deg,var(--amber-light),rgba(255,230,150,0.4));border:1px solid rgba(255,184,48,0.25)}
+.stat-card.neutral{background:var(--surface-strong);border:1px solid var(--glass-border)}
+.stat-val{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:2.6rem;line-height:1;color:var(--ink);
+}
+.stat-label{font-size:0.68rem;font-weight:600;letter-spacing:0.06em;color:var(--ink-60);line-height:1.4}
 
-    /* OUTCOMES */
-    .outcomes-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
-    .outcome-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 1.8rem; position: relative; overflow: hidden; transition: background 0.3s, transform 0.3s; backdrop-filter: blur(8px); }
-    .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--teal-border), transparent); opacity: 0.6; }
-    .outcome-card:hover { background: var(--teal-glow); transform: translateY(-2px); }
-    .outcome-icon { color: var(--teal); width: 24px; height: 24px; margin-bottom: 1rem; display: block; }
-    .outcome-title { font-size: 0.88rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
-    .outcome-body { font-size: 0.78rem; line-height: 1.7; color: rgba(246,243,238,0.4); }
+/* === 02 PROBLEM === */
+.problem-intro{
+  font-size:1.05rem;line-height:1.8;color:var(--ink-80);
+  max-width:58ch;margin-bottom:2rem;
+}
+.problem-intro strong{font-weight:700;color:var(--ink)}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.prob-card{
+  padding:1.8rem;
+  transition:transform 0.25s;
+}
+.prob-card:hover{transform:translateY(-2px)}
+.prob-num{
+  font-family:var(--serif);font-style:italic;font-size:3.5rem;
+  font-weight:700;color:var(--ink-10);line-height:1;margin-bottom:0.7rem;
+  user-select:none;
+}
+.prob-title{font-size:0.97rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem}
+.prob-body{font-size:0.88rem;line-height:1.75;color:var(--ink-60)}
 
-    /* REFLECTION */
-    .reflect-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; }
-    .big-quote { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2vw, 1.5rem); line-height: 1.45; color: rgba(246,243,238,0.6); border-left: 2px solid var(--teal); padding: 1rem 0 1rem 1.8rem; margin-bottom: 2rem; position: relative; }
-    .big-quote::before { content: '"'; position: absolute; left: 1.2rem; top: -0.8rem; font-size: 4rem; color: var(--teal); opacity: 0.1; line-height: 1; }
-    .reflect-body p { font-size: 0.95rem; line-height: 1.85; color: rgba(246,243,238,0.5); margin-bottom: 1rem; }
-    .reflect-body p strong { color: var(--white); font-weight: 500; }
+/* === 03 RESEARCH === */
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 4rem;margin-top:1rem;align-items:start}
+.insight-stack{display:flex;flex-direction:column;gap:0.75rem}
+.insight{
+  padding:1.3rem 1.5rem;
+  border-left:3px solid var(--mint);
+  border-radius:0 var(--r-md) var(--r-md) 0;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.insight:hover{border-color:var(--amber);transform:translateX(3px)}
+.insight-q{
+  font-family:var(--serif);font-style:italic;font-size:1rem;
+  color:var(--ink);margin-bottom:0.5rem;line-height:1.4;
+}
+.insight-a{font-size:0.85rem;line-height:1.75;color:var(--ink-60)}
 
-    .cs-end { padding: 4rem 3rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01); }
-    .end-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,243,238,0.22); margin-bottom: 0.4rem; }
-    .end-link { font-family: var(--serif); font-size: 1.8rem; color: var(--white); text-decoration: none; transition: color 0.3s; }
-    .end-link:hover { color: var(--accent); }
-    .end-cta { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.3s; }
-    .end-cta:hover { color: var(--accent); }
+/* === 04 USER FLOW === */
+.flow-card{padding:2.5rem}
+.flow-steps{
+  display:flex;align-items:stretch;gap:0;
+  overflow-x:auto;padding-bottom:0.5rem;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.flow-steps::-webkit-scrollbar{display:none}
+.flow-step{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;
+}
+.flow-box{
+  padding:0.7rem 1.1rem;
+  font-size:0.78rem;font-weight:600;color:var(--ink-80);
+  background:var(--off);
+  border:1px solid var(--glass-border-subtle);
+  border-radius:var(--r-md);
+  white-space:nowrap;text-align:center;
+}
+.flow-box.accent{
+  background:linear-gradient(135deg,var(--mint-light),rgba(168,240,218,0.6));
+  border-color:rgba(0,200,150,0.3);color:var(--ink);
+}
+.flow-box.end{
+  background:var(--mint);border-color:var(--mint);color:white;font-weight:700;
+}
+.flow-connector{
+  display:flex;align-items:center;flex-shrink:0;
+  width:32px;color:var(--ink-20);font-size:0.8rem;
+  padding:0 4px;justify-content:center;
+}
+.flow-note{
+  margin-top:1.5rem;padding:0.85rem 1.2rem;
+  background:rgba(0,200,150,0.08);
+  border:1px solid rgba(0,200,150,0.18);
+  border-radius:var(--r-md);
+  font-size:0.8rem;color:var(--ink-60);font-weight:500;
+}
+.flow-note strong{color:var(--mint);font-weight:700}
 
-    @media (max-width: 768px) {
-      .overview-bento, .research-layout, .prob-bento, .iter-grid, .outcomes-bento, .reflect-layout { grid-template-columns: 1fr; }
-      .wf-grid { grid-template-columns: 1fr 1fr; }
-      .phones-showcase { padding: 1.5rem 1rem; gap: 0.8rem; }
-      .phone-wrap img { width: 72px; height: 156px; }
-      .cs-end { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
-    }
-  </style>
+/* === 05 WIREFRAMES === */
+.wf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:2rem}
+.wf-card{overflow:hidden;transition:transform 0.25s}
+.wf-card:hover{transform:translateY(-4px)}
+.wf-topbar{
+  padding:0.6rem 0.8rem;display:flex;gap:0.4rem;
+  background:var(--off);border-bottom:1px solid var(--glass-border-subtle);
+}
+.wf-dot{width:7px;height:7px;border-radius:50%}
+.wf-dot:nth-child(1){background:#FF5F57}
+.wf-dot:nth-child(2){background:#FEBC2E}
+.wf-dot:nth-child(3){background:#28C840}
+.wf-body{padding:1rem;display:flex;flex-direction:column;gap:0.55rem}
+.wf-line{height:7px;border-radius:10px;background:var(--ink-10)}
+.wf-line.s{width:35%}.wf-line.m{width:60%}.wf-line.f{width:100%}
+.wf-block{
+  height:44px;border-radius:8px;
+  background:var(--ink-10);
+  border:1.5px dashed var(--ink-20);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.52rem;color:var(--ink-40);font-weight:500;
+}
+.wf-btn{
+  height:28px;border-radius:20px;
+  background:rgba(0,200,150,0.15);
+  border:1.5px solid rgba(0,200,150,0.3);
+  width:55%;
+}
+.wf-version-tag{
+  text-align:center;padding:0.5rem 0.8rem 0.9rem;
+  font-size:0.62rem;color:var(--ink-40);font-weight:500;line-height:1.5;
+}
+.wf-screen-label{
+  text-align:center;padding:0.6rem 0.8rem 0.2rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--ink-60);
+}
+
+/* === 06 FINAL DESIGN === */
+.phones-wrap{
+  background:linear-gradient(135deg,var(--mint-light),rgba(247,247,245,0.8));
+  border:1px solid var(--glass-border);
+  border-radius:var(--r-xl);
+  padding:2.5rem 2rem;
+  margin-top:2rem;
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.phones-wrap::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,200,150,0.15),transparent 70%);
+  pointer-events:none;
+}
+.phone-item{display:flex;flex-direction:column;align-items:center;gap:0.7rem;z-index:1}
+.phone-img{
+  width:95px;height:205px;border-radius:16px;
+  object-fit:cover;
+  box-shadow:0 16px 48px rgba(0,0,0,0.15),0 4px 12px rgba(0,0,0,0.08);
+  transition:transform 0.3s;display:block;
+}
+.phone-item:hover .phone-img{transform:translateY(-6px)}
+.phone-stub{
+  width:95px;height:205px;border-radius:16px;
+  background:linear-gradient(160deg,rgba(0,200,150,0.15),rgba(168,240,218,0.08));
+  border:1.5px solid rgba(0,200,150,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.6rem;color:var(--ink-40);text-align:center;padding:0.5rem;
+  font-weight:500;transition:transform 0.3s;
+}
+.phone-item:hover .phone-stub{transform:translateY(-6px)}
+.phone-lbl{font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-40)}
+
+/* === 07 TESTING === */
+.iter-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.5rem}
+.iter-card{padding:1.8rem}
+.iter-tag{
+  font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:0.75rem;display:block;
+}
+.iter-card.problem{
+  background:linear-gradient(135deg,var(--coral-light),rgba(255,255,255,0.6));
+  border:1px solid rgba(255,107,107,0.2);
+}
+.iter-card.problem .iter-tag{color:var(--coral)}
+.iter-card.solution{
+  background:linear-gradient(135deg,var(--mint-light),rgba(255,255,255,0.6));
+  border:1px solid rgba(0,200,150,0.2);
+}
+.iter-card.solution .iter-tag{color:var(--mint)}
+.iter-title{font-size:0.97rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem}
+.iter-body{font-size:0.88rem;line-height:1.75;color:var(--ink-60)}
+
+.constraints-wrap{
+  margin-top:1rem;padding:1.5rem 1.8rem;
+  background:var(--surface-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--r-lg);
+  border-left:3px solid var(--ink-20);
+}
+.constraints-label{
+  font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--ink-40);margin-bottom:0.9rem;
+}
+.constraints-wrap ul{list-style:none}
+.constraints-wrap li{
+  font-size:0.88rem;color:var(--ink-60);line-height:1.65;
+  padding:0.25rem 0;display:flex;gap:0.6rem;align-items:flex-start;
+}
+.constraints-wrap li::before{content:'--';color:var(--ink-20);flex-shrink:0;font-weight:700}
+
+/* === 08 OUTCOMES === */
+.outcomes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem}
+.outcome-card{padding:1.8rem;transition:transform 0.25s}
+.outcome-card:hover{transform:translateY(-3px)}
+.outcome-icon{
+  width:40px;height:40px;border-radius:var(--r-sm);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;font-size:1.1rem;
+}
+.outcome-icon.mint{background:var(--mint-light)}
+.outcome-icon.amber{background:var(--amber-light)}
+.outcome-icon.coral{background:var(--coral-light)}
+.outcome-title{font-size:0.97rem;font-weight:700;color:var(--ink);margin-bottom:0.45rem}
+.outcome-body{font-size:0.85rem;line-height:1.75;color:var(--ink-60)}
+
+/* === 09 NEXT === */
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1.5rem}
+.next-card{padding:1.8rem;transition:transform 0.25s}
+.next-card:hover{transform:translateY(-3px)}
+.next-num{
+  font-family:var(--serif);font-style:italic;font-size:2.2rem;
+  font-weight:700;color:var(--ink-10);line-height:1;margin-bottom:0.7rem;
+}
+.next-title{font-size:0.97rem;font-weight:700;color:var(--ink);margin-bottom:0.45rem}
+.next-body{font-size:0.85rem;line-height:1.75;color:var(--ink-60)}
+
+/* === 10 REFLECTION === */
+.reflect-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:4rem;align-items:start}
+.blockquote{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(1.2rem,2.2vw,1.65rem);
+  line-height:1.45;color:var(--ink);
+  padding:1.5rem 0 1.5rem 1.5rem;
+  border-left:3px solid var(--mint);
+  margin-bottom:2.5rem;
+}
+.reflect-body p{font-size:0.95rem;line-height:1.85;color:var(--ink-60);margin-bottom:1.1rem}
+.reflect-body p:last-child{margin-bottom:0}
+.reflect-body p strong{color:var(--ink);font-weight:700}
+
+/* === END CTA === */
+.end-bar{
+  max-width:1100px;margin:0 auto;
+  padding:4rem clamp(1.2rem,5vw,3.5rem);
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--ink-10);
+  flex-wrap:wrap;gap:1.5rem;
+}
+.end-next-label{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-40);margin-bottom:0.3rem}
+.end-next-link{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:2rem;color:var(--ink);text-decoration:none;
+  transition:color 0.2s;display:block;
+}
+.end-next-link:hover{color:var(--mint)}
+.end-contact{
+  font-size:0.78rem;font-weight:700;color:var(--ink);
+  text-decoration:none;
+  padding:0.75rem 1.4rem;
+  background:var(--ink);color:white;
+  border-radius:100px;
+  transition:background 0.2s,transform 0.2s;
+  letter-spacing:0.02em;
+}
+.end-contact:hover{background:var(--mint);transform:translateY(-2px)}
+
+footer{
+  max-width:1100px;margin:0 auto;
+  padding:1.5rem clamp(1.2rem,5vw,3.5rem);
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--ink-10);flex-wrap:wrap;gap:0.5rem;
+}
+footer span{font-size:0.75rem;color:var(--ink-40);font-weight:500}
+footer a{font-size:0.75rem;color:var(--ink-40);text-decoration:none;font-weight:500;transition:color 0.2s}
+footer a:hover{color:var(--mint)}
+
+/* === FADE IN === */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){
+  .overview-grid,.research-grid,.reflect-grid{grid-template-columns:1fr}
+  .bento-main{grid-template-columns:1fr}
+  .outcomes-grid,.next-grid{grid-template-columns:1fr 1fr}
+  .hero-meta{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav{padding:0.8rem 1.2rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding-top:calc(3.5rem + 56px);padding-left:1.2rem;padding-right:1.2rem}
+  .hero-meta{grid-template-columns:1fr 1fr;gap:0.5rem}
+  .prob-grid,.iter-grid{grid-template-columns:1fr}
+  .outcomes-grid,.next-grid,.bento-2,.bento-3{grid-template-columns:1fr}
+  .wf-grid{grid-template-columns:1fr 1fr}
+  .phones-wrap{gap:0.5rem;padding:1.5rem 1rem}
+  .phone-img,.phone-stub{width:68px;height:148px}
+  .end-bar{flex-direction:column;align-items:flex-start}
+  footer{flex-direction:column;align-items:flex-start}
+  .section{padding:3.5rem 0}
+}
+</style>
 </head>
 <body>
-  <div id="scroll-bar"></div>
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">Paige Simm.</a>
-    <ul class="nav-links">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="index.html#experience">Experience</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="index.html#contact" class="hire-btn">Hire me</a></li>
+<div id="progress"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Paige Simm.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#experience">Experience</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="index.html#about">About</a>
+  <a href="index.html#work">Work</a>
+  <a href="index.html#experience">Experience</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Case Study — UX Research + Mobile App Design</div>
+    <h1 class="hero-title">Splashy:<br><span>Make an</span><br>Impact.</h1>
+    <p class="hero-sub">A gamified iOS app that turns eco-friendly habits into an ocean you can watch come alive.</p>
+    <div class="hero-meta">
+      <div class="meta-pill">
+        <p class="meta-pill-label">Role</p>
+        <p class="meta-pill-val">UX Research + UI Design + Illustration</p>
+      </div>
+      <div class="meta-pill">
+        <p class="meta-pill-label">Platform</p>
+        <p class="meta-pill-val">iOS Mobile App (Figma)</p>
+      </div>
+      <div class="meta-pill">
+        <p class="meta-pill-label">Audience</p>
+        <p class="meta-pill-val">Children aged 6 to 12</p>
+      </div>
+      <div class="meta-pill">
+        <p class="meta-pill-label">Year</p>
+        <p class="meta-pill-val">2023 — University Capstone</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+
+<!-- 01 OVERVIEW -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>01 — Overview</span>
+  <h2 class="heading">Getting kids to actually care about the planet.</h2>
+  <div class="overview-grid">
+    <div class="card ov-card">
+      <p><strong>Splashy</strong> is a gamified iOS app that gets children aged 6 to 12 to build real eco-friendly habits. Kids complete real-world quests, earn sea creatures as rewards, and watch their personal ocean transform from polluted to thriving.</p>
+      <p>The core design challenge: how do you create a meaningful loop between a child sorting recycling in their kitchen and a creature appearing in a digital ocean? Every design decision came back to that gap. Make it too long, too complex, or too invisible, and the product fails.</p>
+      <p>I owned the full process from research to prototype: semi-structured interviews, concept definition, information architecture, UI design across three major iterations, and a fully interactive Figma prototype. Every character and sea creature was <strong>hand-drawn in Adobe Illustrator.</strong></p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card mint">
+        <span class="stat-val">6</span>
+        <span class="stat-label">Children interviewed in the research phase</span>
+      </div>
+      <div class="stat-card coral">
+        <span class="stat-val">3</span>
+        <span class="stat-label">Major design iterations before final</span>
+      </div>
+      <div class="stat-card amber">
+        <span class="stat-val">4</span>
+        <span class="stat-label">Core screens in the final app flow</span>
+      </div>
+      <div class="stat-card neutral">
+        <span class="stat-val">100%</span>
+        <span class="stat-label">Original illustration hand-drawn in Illustrator</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROBLEM -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>02 — The Problem</span>
+  <h2 class="heading">Kids want to help. They just don't know how — or feel like they can.</h2>
+  <p class="problem-intro">Sustainability education for children is largely adult-led and abstract. The gap is not interest — most kids genuinely care about animals and the planet. The gap is <strong>agency and immediacy.</strong> Nothing on the market closes it in a way that respects how children actually think.</p>
+  <div class="prob-grid">
+    <div class="card card-sm prob-card">
+      <div class="prob-num">01</div>
+      <p class="prob-title">Abstract impact</p>
+      <p class="prob-body">Children could not draw a line between their daily actions and environmental outcomes. For a 7-year-old, invisible consequences do not stick.</p>
+    </div>
+    <div class="card card-sm prob-card">
+      <div class="prob-num">02</div>
+      <p class="prob-title">No sense of ownership</p>
+      <p class="prob-body">Existing tools talked at children rather than with them. Nothing felt personalised. Without ownership, sustained engagement does not happen.</p>
+    </div>
+    <div class="card card-sm prob-card">
+      <div class="prob-num">03</div>
+      <p class="prob-title">Rewards came too late</p>
+      <p class="prob-body">Kids operate on short feedback loops. Long-term reward systems built for adults fail at this age entirely. Motivation evaporates before any payoff arrives.</p>
+    </div>
+    <div class="card card-sm prob-card">
+      <div class="prob-num">04</div>
+      <p class="prob-title">No real-world link</p>
+      <p class="prob-body">Apps that lived entirely on-screen missed the point. Behaviour change happens in the physical world, at a tap, in a kitchen, at school.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 RESEARCH -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>03 — Research</span>
+  <h2 class="heading">Talking to the actual users.</h2>
+  <div class="research-grid">
+    <div>
+      <p class="body-text">I conducted semi-structured interviews with six children aged 7 to 11. Rather than asking what features they wanted, I asked about things they already loved: games they played, things they collected, moments that made them feel proud.</p>
+      <br>
+      <p class="body-text">The goal was to understand motivation, not preferences. Three consistent patterns emerged across all six participants and directly determined every major product decision. <strong>None of these ideas came from me.</strong> They came from listening carefully and taking children seriously as research participants.</p>
+    </div>
+    <div class="insight-stack">
+      <div class="card insight">
+        <p class="insight-q">"I want to help but I don't know what to do."</p>
+        <p class="insight-a">Kids had the desire but no pathway. This became the foundation for the quest system: concrete, named, achievable real-world tasks rather than vague environmental messaging.</p>
+      </div>
+      <div class="card insight">
+        <p class="insight-q">"I love collecting things. Like Pokemon."</p>
+        <p class="insight-a">The creature collection mechanic came directly from this. Kids are intrinsically motivated by accumulation and completing a set. Each eco-action unlocks a new creature as an immediate reward.</p>
+      </div>
+      <div class="card insight">
+        <p class="insight-q">"I'd want to show my friends my ocean."</p>
+        <p class="insight-a">The personalised named ocean taps into pride and identity. Your ocean is uniquely yours, shaped by your choices over time, and something worth showing off.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 USER FLOW -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>04 — User Flow</span>
+  <h2 class="heading">The loop had to be ruthlessly short.</h2>
+  <p class="body-text" style="max-width:54ch;margin-bottom:0;">If there were more than three taps between completing a task and seeing a reward, kids would disengage. The entire interaction model was designed around minimising that gap.</p>
+  <div class="card flow-card" style="margin-top:2rem">
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-box">Sign up + questionnaire</div></div>
+      <div class="flow-connector">&#8594;</div>
+      <div class="flow-step"><div class="flow-box accent">View assigned quests</div></div>
+      <div class="flow-connector">&#8594;</div>
+      <div class="flow-step"><div class="flow-box">Complete real-world task</div></div>
+      <div class="flow-connector">&#8594;</div>
+      <div class="flow-step"><div class="flow-box accent">Log progress in app</div></div>
+      <div class="flow-connector">&#8594;</div>
+      <div class="flow-step"><div class="flow-box">Earn creature + Ecopoints</div></div>
+      <div class="flow-connector">&#8594;</div>
+      <div class="flow-step"><div class="flow-box end">Ocean updates</div></div>
+    </div>
+    <div class="flow-note"><strong>Design constraint:</strong> real-world action to visible reward in 3 taps or fewer. This was tested against at every iteration.</div>
+  </div>
+</section>
+
+<!-- 05 WIREFRAMES -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>05 — Wireframes</span>
+  <h2 class="heading">Starting rough. Refining fast.</h2>
+  <p class="body-text" style="max-width:56ch">Low-fidelity wireframes came before any visual work. The priority was testing navigation logic and information hierarchy without investing time in visuals that might change entirely after testing.</p>
+  <div class="wf-grid">
+    <div class="card card-sm wf-card">
+      <div class="wf-topbar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+      <div class="wf-body">
+        <div class="wf-block">Mascot area</div>
+        <div class="wf-line m" style="margin:0 auto"></div>
+        <div class="wf-btn" style="margin:0 auto"></div>
+        <div class="wf-btn" style="margin:0 auto;background:var(--ink-10);border-color:var(--ink-20)"></div>
+      </div>
+      <div class="wf-screen-label">Splash screen</div>
+      <div class="wf-version-tag">v1 — No personality. Kids disengaged immediately.</div>
+    </div>
+    <div class="card card-sm wf-card">
+      <div class="wf-topbar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+      <div class="wf-body">
+        <div class="wf-line s"></div>
+        <div class="wf-block">Quest card</div>
+        <div class="wf-line f"></div>
+        <div class="wf-line m"></div>
+        <div class="wf-line f"></div>
+        <div class="wf-btn"></div>
+      </div>
+      <div class="wf-screen-label">Quest screen v1</div>
+      <div class="wf-version-tag">v1 — Text-heavy. Kids skipped all instructions.</div>
+    </div>
+    <div class="card card-sm wf-card" style="border:2px solid rgba(0,200,150,0.35)">
+      <div class="wf-topbar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+      <div class="wf-body">
+        <div class="wf-line s"></div>
+        <div style="display:flex;align-items:center;gap:0.4rem;height:32px;background:var(--ink-10);border-radius:6px;padding:0 0.5rem">
+          <div style="width:16px;height:16px;border-radius:50%;background:var(--ink-20);flex-shrink:0"></div>
+          <div class="wf-line m" style="margin:0;height:5px"></div>
+        </div>
+        <div style="background:rgba(0,200,150,0.12);border-radius:6px;padding:0.4rem">
+          <div class="wf-line f" style="height:5px;background:rgba(0,200,150,0.35)"></div>
+        </div>
+        <div class="wf-btn"></div>
+      </div>
+      <div class="wf-screen-label">Quest screen v3 ✓</div>
+      <div class="wf-version-tag">v3 — Icon-led. Kids understood without reading a word.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 FINAL DESIGN -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>06 — Final Design</span>
+  <h2 class="heading">The finished product.</h2>
+  <p class="body-text" style="max-width:56ch;margin-bottom:0">Every visual decision reinforces the core loop. The ocean shifts from murky grey to bright and teeming with life as the child completes more quests. The colour palette, illustration style, and interaction patterns were all validated against research insights before finalising.</p>
+  <div class="phones-wrap">
+    <div class="phone-item">
+      <img src="splash screen.png" class="phone-img" alt="Splash screen" onerror="this.outerHTML='<div class=\'phone-stub\'>Splash screen</div>'">
+      <span class="phone-lbl">Splash</span>
+    </div>
+    <div class="phone-item">
+      <img src="fish - medium.png" class="phone-img" alt="Ocean building" onerror="this.outerHTML='<div class=\'phone-stub\'>Ocean building</div>'">
+      <span class="phone-lbl">Ocean — building</span>
+    </div>
+    <div class="phone-item">
+      <img src="fish.png" class="phone-img" alt="Ocean thriving" onerror="this.outerHTML='<div class=\'phone-stub\'>Ocean thriving</div>'">
+      <span class="phone-lbl">Ocean — thriving</span>
+    </div>
+    <div class="phone-item">
+      <img src="quests active good.png" class="phone-img" alt="Active quests" onerror="this.outerHTML='<div class=\'phone-stub\'>Active quests</div>'">
+      <span class="phone-lbl">Active quests</span>
+    </div>
+    <div class="phone-item">
+      <img src="log drag.png" class="phone-img" alt="Log screen" onerror="this.outerHTML='<div class=\'phone-stub\'>Waste log</div>'">
+      <span class="phone-lbl">Waste log</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 TESTING -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>07 — Testing + Iteration</span>
+  <h2 class="heading">What didn't work. What I changed. Why.</h2>
+  <p class="body-text" style="max-width:54ch;margin-bottom:0">I tested early prototypes with three of the original research participants. Kids are the most direct usability testers you will ever work with. They do not soften their reactions.</p>
+  <div class="iter-grid">
+    <div class="card card-sm iter-card problem">
+      <span class="iter-tag">Problem found in testing</span>
+      <p class="iter-title">Quest screen had too much text</p>
+      <p class="iter-body">Children skipped reading the instructions entirely and just tapped whatever button was biggest. The original layout assumed a reading level and attention span that the target age group does not have. This was not a reading problem. It was a design problem.</p>
+    </div>
+    <div class="card card-sm iter-card solution">
+      <span class="iter-tag">How I fixed it</span>
+      <p class="iter-title">Icon-led cards with one primary action</p>
+      <p class="iter-body">Reduced copy by roughly 60%, moved critical information into iconography, made the progress bar the dominant visual element. After the redesign, all three participants understood the screen without reading anything. Task completion time dropped significantly.</p>
+    </div>
+    <div class="card card-sm iter-card problem">
+      <span class="iter-tag">Problem found in testing</span>
+      <p class="iter-title">The ocean did not feel different enough early on</p>
+      <p class="iter-body">Children could not distinguish between the dirty and slightly-less-dirty ocean states. The transition was too gradual. Without a clear before/after moment, completing a quest felt meaningless and the reward loop broke down entirely.</p>
+    </div>
+    <div class="card card-sm iter-card solution">
+      <span class="iter-tag">How I fixed it</span>
+      <p class="iter-title">Distinct milestone states tied to creature unlocks</p>
+      <p class="iter-body">Defined three clearly differentiated ocean states with dramatically different visual palettes. Each state transition is tied to a creature unlock, creating a deliberate reward event rather than an imperceptible gradient shift. Kids immediately noticed and reacted to the change.</p>
+    </div>
+  </div>
+  <div class="constraints-wrap">
+    <p class="constraints-label">Constraints + Scope Decisions</p>
+    <ul>
+      <li>University timeline meant one semester from research to prototype, with no time for extended testing cycles or multiple participant recruitment rounds</li>
+      <li>Parental dashboard was intentionally out of scope but flagged as a critical requirement for any real-world version — no responsible children's app ships without it</li>
+      <li>Quest content was manually curated for MVP scope — a production version would need a scalable editorial or generation system</li>
+      <li>Long-term engagement mechanics like daily streaks and social features were deprioritised to keep focus on proving the core loop</li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </nav>
-  <div class="mobile-drawer" id="mobileDrawer">
-    <a href="index.html#about">About</a><a href="index.html#work">Work</a>
-    <a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a>
   </div>
+</section>
 
-  <div class="cs-hero splashy">
-    <div class="cs-hero-bg"></div>
-    <div class="cs-hero-top">
-      <span class="cs-eyebrow">Case Study — UX Research · Mobile App Design</span>
-      <span class="cs-year">2023 · University Capstone</span>
-    </div>
-    <div class="cs-hero-content">
-      <h1 class="cs-title">
-        <span class="cs-title-line">Splashy:</span>
-        <span class="cs-title-line">Make an Impact.</span>
-      </h1>
-      <div class="cs-hero-meta">
-        <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX Research · UI Design · Illustration</p></div>
-        <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">iOS Mobile App (Figma)</p></div>
-        <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 6 to 12</p></div>
-        <div><p class="cs-meta-label">Illustration</p><p class="cs-meta-value">All artwork hand-drawn in Illustrator</p></div>
+<!-- 08 OUTCOMES -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>08 — Outcomes</span>
+  <h2 class="heading">What the testing showed.</h2>
+  <div class="outcomes-grid">
+    <div class="card card-sm outcome-card">
+      <div class="outcome-icon mint">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#00C896" stroke-width="1.5"/><path d="M6 9l2.5 2.5 4-4.5" stroke="#00C896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
+      <p class="outcome-title">Reward system grasped without instruction</p>
+      <p class="outcome-body">All three test participants understood the quest-to-ocean connection without any explanation. The visual feedback loop was legible enough that onboarding copy became unnecessary — a strong signal the design was working at the right level.</p>
+    </div>
+    <div class="card card-sm outcome-card">
+      <div class="outcome-icon amber">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l7 4v6L9 16 2 12V6z" stroke="#FFB830" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="outcome-title">Collection mechanic created unprompted motivation</p>
+      <p class="outcome-body">Kids asked "what's the next creature I can get?" without being prompted — one of the clearest signals in usability testing that a mechanic has genuinely taken hold and is driving intrinsic motivation.</p>
+    </div>
+    <div class="card card-sm outcome-card">
+      <div class="outcome-icon coral">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="5" width="14" height="10" rx="1.5" stroke="#FF6B6B" stroke-width="1.5"/><path d="M6 5V4a2 2 0 0 1 2-2v0a2 2 0 0 1 2 2v1M10 5V4a2 2 0 0 1 2-2v0a2 2 0 0 1 2 2v1" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <p class="outcome-title">Simplified UI cut task completion time dramatically</p>
+      <p class="outcome-body">After the quest screen redesign, children completed the log progress action in under 10 seconds consistently, versus repeated hesitation and wrong taps in v1. Removing text in favour of iconography solved the usability problem that text had created.</p>
     </div>
   </div>
+</section>
 
-  <!-- 01 OVERVIEW -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">01</span>
-      <span class="section-label">Overview</span>
-      <h2 class="section-heading">Getting kids to care about<br>the planet, without lecturing them.</h2>
-      <div class="overview-bento">
-        <div class="ov-main">
-          <p>For my university capstone, I designed <strong>Splashy</strong>, a gamified mobile app that encourages children to adopt eco-friendly habits in their everyday lives. Kids complete real-world quests, earn ocean creatures as rewards, and watch their personal ocean transform from polluted to thriving.</p>
-          <p>The project ran for one semester and required original user research, defining the product concept, designing and iterating on the UI, and producing a fully interactive Figma prototype. Every character, creature, and illustration was <strong>hand-drawn in Adobe Illustrator.</strong></p>
-        </div>
-        <div class="ov-stats">
-          <div class="stat-card"><span class="stat-val">6</span><span class="stat-label">Children interviewed in research phase</span></div>
-          <div class="stat-card"><span class="stat-val">3</span><span class="stat-label">Major design iterations before final</span></div>
-          <div class="stat-card"><span class="stat-val">4</span><span class="stat-label">Core screens in the app flow</span></div>
-          <div class="stat-card"><span class="stat-val">100%</span><span class="stat-label">Illustration hand-drawn in Illustrator</span></div>
-        </div>
-      </div>
+<!-- 09 IF I CONTINUED -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>09 — If I Continued</span>
+  <h2 class="heading">What a v2 would need.</h2>
+  <p class="body-text" style="max-width:54ch;margin-bottom:0">The MVP proved the core loop works. A real product would need three things before it could responsibly launch to children.</p>
+  <div class="next-grid">
+    <div class="card card-sm next-card">
+      <div class="next-num">01</div>
+      <p class="next-title">Parental dashboard</p>
+      <p class="next-body">A parallel app layer for parents to review quest progress, approve completions, and manage content. Non-negotiable for a children's product — COPPA compliance and parental controls need to exist from day one.</p>
     </div>
-  </section>
-
-  <!-- 02 PROBLEM -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">02</span>
-      <span class="section-label">The Problem</span>
-      <h2 class="section-heading">Kids want to help. They just<br>don't know how.</h2>
-      <p class="problem-intro">Sustainability education for children is largely adult-led and abstract. The gap isn't interest — most kids genuinely care about animals and nature. The gap is <strong>agency and immediacy.</strong></p>
-      <div class="prob-bento">
-        <div class="prob-card"><div class="prob-num">01</div><p class="prob-title">Abstract impact</p><p class="prob-body">Children couldn't see the connection between their actions and environmental outcomes. The cause-and-effect was invisible.</p></div>
-        <div class="prob-card"><div class="prob-num">02</div><p class="prob-title">No ownership</p><p class="prob-body">Existing tools talked at kids rather than with them. Nothing felt personalised or theirs.</p></div>
-        <div class="prob-card"><div class="prob-num">03</div><p class="prob-title">Delayed rewards</p><p class="prob-body">Kids need immediate, tangible feedback. Long-term reward systems don't work for this age group.</p></div>
-        <div class="prob-card"><div class="prob-num">04</div><p class="prob-title">No real-world link</p><p class="prob-body">Apps that lived entirely on-screen missed the point. Behaviour change needed to happen in the physical world.</p></div>
-      </div>
+    <div class="card card-sm next-card">
+      <div class="next-num">02</div>
+      <p class="next-title">Scalable quest system</p>
+      <p class="next-body">Manual curation works for a prototype. A live product needs a content management system with difficulty scaling and category filtering. Seasonal quests tied to real environmental events would add meaningful depth.</p>
     </div>
-  </section>
-
-  <!-- 03 RESEARCH -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">03</span>
-      <span class="section-label">Research</span>
-      <h2 class="section-heading">Talking to the actual users.</h2>
-      <div class="research-layout">
-        <div class="research-intro">
-          <p>I conducted semi-structured interviews with six children aged 7 to 11. Rather than asking what features they wanted, I asked about things they already loved: games they played, things they collected, what made them feel proud.</p>
-          <p>The sessions revealed three consistent patterns that directly shaped the product. The best design decisions weren't mine — they came from listening.</p>
-        </div>
-        <div class="insights">
-          <div class="insight-card"><p class="insight-q">"I want to help but I don't know what to do."</p><p class="insight-a">Kids had the desire but no clear pathway. This became the foundation for the quest system, with concrete, achievable tasks tied to real-world actions.</p></div>
-          <div class="insight-card"><p class="insight-q">"I love collecting things. Like Pokémon."</p><p class="insight-a">The creature collection mechanic came directly from this. Kids are motivated by accumulation and the satisfaction of completing a set.</p></div>
-          <div class="insight-card"><p class="insight-q">"I'd want to show my friends my ocean."</p><p class="insight-a">The personalised, named ocean taps into pride and identity. Your ocean is uniquely yours and reflects your real-world behaviour over time.</p></div>
-        </div>
-      </div>
+    <div class="card card-sm next-card">
+      <div class="next-num">03</div>
+      <p class="next-title">Longitudinal testing</p>
+      <p class="next-body">The biggest open question: do habits stick beyond the first session? A 4 to 6 week diary study with families is the minimum needed to measure whether Splashy changes real-world behaviour or just generates in-app engagement.</p>
     </div>
-  </section>
-
-  <!-- 04 USER FLOW -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">04</span>
-      <span class="section-label">User Flow</span>
-      <h2 class="section-heading">Real-world action to in-app reward.</h2>
-      <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);max-width:55ch;line-height:1.7;">The loop between real-world action and reward needed to be short and satisfying, or kids would disengage.</p>
-      <div class="flow-wrap">
-        <div class="user-flow">
-          <div class="flow-step"><div class="flow-box">Sign up + questionnaire</div></div>
-          <div class="flow-arrow"></div>
-          <div class="flow-step"><div class="flow-box flow-box--teal">View assigned quests</div></div>
-          <div class="flow-arrow"></div>
-          <div class="flow-step"><div class="flow-box">Complete real-world task</div></div>
-          <div class="flow-arrow"></div>
-          <div class="flow-step"><div class="flow-box flow-box--teal">Log progress in app</div></div>
-          <div class="flow-arrow"></div>
-          <div class="flow-step"><div class="flow-box">Earn creature + Ecopoints</div></div>
-          <div class="flow-arrow"></div>
-          <div class="flow-step"><div class="flow-box flow-box--accent">Ocean updates</div></div>
-        </div>
-        <p class="flow-note">Loop must be short. Real-world action → visual reward in 3 taps or fewer.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 WIREFRAMES -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">05</span>
-      <span class="section-label">Wireframes</span>
-      <h2 class="section-heading">Starting rough, refining fast.</h2>
-      <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);max-width:55ch;line-height:1.7;margin-bottom:0.5rem;">Sketched initial layouts before moving into Figma. Early versions were deliberately simplified to test navigation logic before investing in visuals.</p>
-      <div class="wf-grid">
-        <div class="wf-card">
-          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-          <div class="wf-body">
-            <div class="wf-block" style="height:55px;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:rgba(255,255,255,0.15);">Mascot</div>
-            <div class="wf-line wf-line--m" style="margin:0 auto;"></div>
-            <div class="wf-btn" style="margin:0.3rem auto;"></div>
-            <div class="wf-btn" style="margin:0 auto;background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);"></div>
-          </div>
-          <div class="wf-label">Splash / Onboarding</div>
-          <div class="wf-version">v1 — Functional but no personality, kids disengaged</div>
-        </div>
-        <div class="wf-card">
-          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-          <div class="wf-body">
-            <div class="wf-line wf-line--s"></div>
-            <div class="wf-block wf-block-tall" style="height:50px;display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:rgba(255,255,255,0.15);">Quest card</div>
-            <div class="wf-line wf-line--f"></div>
-            <div class="wf-line wf-line--m"></div>
-            <div class="wf-btn"></div>
-          </div>
-          <div class="wf-label">Quest Screen — v1</div>
-          <div class="wf-version">v1 — Text-heavy layout, kids skipped instructions entirely</div>
-        </div>
-        <div class="wf-card">
-          <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-          <div class="wf-body">
-            <div class="wf-line wf-line--s"></div>
-            <div class="wf-block" style="height:32px;display:flex;align-items:center;padding:0 0.5rem;gap:0.4rem;">
-              <div style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.08);flex-shrink:0;"></div>
-              <div class="wf-line wf-line--m" style="margin:0;"></div>
-            </div>
-            <div class="wf-line wf-line--f"></div>
-            <div style="background:rgba(100,200,220,0.06);border-radius:6px;padding:0.4rem;">
-              <div class="wf-line wf-line--f" style="height:5px;background:rgba(100,200,220,0.2);"></div>
-            </div>
-            <div class="wf-btn"></div>
-          </div>
-          <div class="wf-label">Quest Screen — v3</div>
-          <div class="wf-version">v3 — Icon-led, minimal text, kids understood immediately</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 FINAL DESIGN -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">06</span>
-      <span class="section-label">Final Design</span>
-      <h2 class="section-heading">The finished product.</h2>
-      <div class="phones-showcase">
-        <div class="phone-wrap"><img src="splash screen.png" alt="Splash screen" onerror="this.style.display='none'"/><p class="phone-label">Splash screen</p></div>
-        <div class="phone-wrap"><img src="fish - medium.png" alt="Ocean building" onerror="this.style.display='none'"/><p class="phone-label">Ocean building</p></div>
-        <div class="phone-wrap"><img src="fish.png" alt="Ocean thriving" onerror="this.style.display='none'"/><p class="phone-label">Ocean thriving</p></div>
-        <div class="phone-wrap"><img src="quests active good.png" alt="Active quests" onerror="this.style.display='none'"/><p class="phone-label">Active quests</p></div>
-        <div class="phone-wrap"><img src="log drag.png" alt="Log screen" onerror="this.style.display='none'"/><p class="phone-label">Waste sorting log</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 TESTING -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">07</span>
-      <span class="section-label">Testing & Iteration</span>
-      <h2 class="section-heading">What didn't work, and what I changed.</h2>
-      <p style="font-size:0.9rem;color:rgba(255,255,255,0.4);max-width:52ch;line-height:1.7;margin-bottom:1.5rem;">I tested early prototypes with three of the original research participants. Their responses were direct — kids don't sugarcoat feedback.</p>
-      <div class="iter-grid">
-        <div class="iter-card problem"><span class="iter-tag">Problem found in testing</span><p class="iter-title">Quest screen had too much text</p><p class="iter-body">Children skipped reading the instructions entirely and just tapped buttons. Original layout assumed a reading level and attention span the age group didn't have.</p></div>
-        <div class="iter-card solution"><span class="iter-tag">How I fixed it</span><p class="iter-title">Simplified to icon-led cards with one key action</p><p class="iter-body">Reduced text by 60%, moved key information into iconography, made the progress bar the dominant visual element. Retested — kids understood the screen within seconds.</p></div>
-        <div class="iter-card problem"><span class="iter-tag">Problem found in testing</span><p class="iter-title">The ocean didn't feel different enough early on</p><p class="iter-body">Children couldn't tell the difference between the dirty and slightly-less-dirty ocean states. The transition felt invisible, removing the reward feeling entirely.</p></div>
-        <div class="iter-card solution"><span class="iter-tag">How I fixed it</span><p class="iter-title">Added distinct milestone states with creature unlocks</p><p class="iter-body">Defined three clear ocean states (polluted, recovering, thriving) with obvious visual differences. Tied creature unlocks to each milestone so progress felt tangible.</p></div>
-      </div>
-      <div class="constraints-card">
-        <p class="constraints-title">Constraints</p>
-        <ul>
-          <li>University timeline — one semester from research to prototype, no time for extended testing cycles</li>
-          <li>No parental dashboard in scope, though noted as a critical requirement for any real-world version</li>
-          <li>Quest content manually curated — a scalable generation system would be needed for a real product</li>
-          <li>Long-term engagement mechanics (streaks, social features) deprioritised for MVP scope</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 08 OUTCOMES -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">08</span>
-      <span class="section-label">Outcomes</span>
-      <h2 class="section-heading">What the testing showed.</h2>
-      <div class="outcomes-bento">
-        <div class="outcome-card"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg><p class="outcome-title">Reward system understood immediately</p><p class="outcome-body">All three test participants grasped the quest-to-ocean connection without explanation. The visual feedback loop was clear enough to require no instructions.</p></div>
-        <div class="outcome-card"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/></svg><p class="outcome-title">Collection mechanic drove engagement</p><p class="outcome-body">Kids asked "what's the next creature?" unprompted — a strong signal the collection mechanic was creating genuine motivation to complete quests.</p></div>
-        <div class="outcome-card"><svg class="outcome-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg><p class="outcome-title">Simplified UI improved task completion</p><p class="outcome-body">After the quest screen redesign, children completed the "add progress" action in under 10 seconds, compared to repeated confusion in v1 testing.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 09 REFLECTION -->
-  <section class="cs-section">
-    <div class="inner" style="position:relative">
-      <span class="sec-num">09</span>
-      <span class="section-label">Reflection</span>
-      <div class="reflect-layout">
-        <div><h2 class="section-heading">What this taught me.</h2></div>
-        <div>
-          <div class="big-quote">Designing for children is humbling. Every assumption you have about how users think gets stripped away the moment you actually talk to them.</div>
-          <div class="reflect-body">
-            <p>The biggest lesson was that <strong>research isn't optional, it's structural.</strong> I started with assumptions about what kids needed. The interviews showed me something completely different. The collection mechanic came from a child mentioning Pokémon. The named ocean came from a kid saying they'd want to show their friends.</p>
-            <p>I also learned how different it is to design for a non-adult audience. Typography, touch targets, reward timing, information density — everything needs rethinking from the ground up. <strong>Simplicity isn't dumbing down, it's doing the hard design work so the user doesn't have to.</strong></p>
-            <p>If I were to continue this project, the next priorities would be a parental dashboard, scalable quest generation, and longitudinal testing to measure whether the habits actually stuck beyond a first session.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="cs-end">
-    <div><p class="end-label">Next project</p><a href="hunza-case-study.html" class="end-link">Hunza & LuxR →</a></div>
-    <a href="index.html#contact" class="end-cta">Get in touch →</a>
   </div>
-  <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
-  <script src="script.js"></script>
+</section>
+
+<!-- 10 REFLECTION -->
+<section class="section fade-in">
+  <span class="label"><span class="label-dot"></span>10 — Reflection</span>
+  <h2 class="heading">What this taught me.</h2>
+  <div class="reflect-grid">
+    <div>
+      <div class="blockquote">Designing for children is humbling. Every assumption you have about how users think gets stripped away the moment you actually talk to them.</div>
+    </div>
+    <div class="reflect-body">
+      <p>The biggest lesson from this project was that <strong>research is not a phase you complete before design. It is structural to every outcome.</strong> I came in with assumptions about what children needed from a sustainability app. The interviews showed me something completely different. The creature collection mechanic came from a child mentioning Pokemon unprompted. The named personalised ocean came from a kid saying they'd want to show their friends. Those were not features I invented. They were features I heard.</p>
+      <p>I also learned how fundamentally different it is to design for a non-adult audience. <strong>Simplicity in this context is not dumbing things down. It is doing the hard design work so the user does not have to.</strong> Typography sizing, touch target dimensions, reward timing, information density, reading level — every single decision has to be reexamined from scratch when your user is 8 years old. Nothing transfers from adult UX patterns without scrutiny.</p>
+      <p>The constraints were real and shaped the project honestly. A one-semester timeline means you can prove the concept or prove the details, rarely both. Splashy proved the concept: the loop works, the mechanic creates genuine motivation, and the visual system communicates without words. What comes next is harder and more important work.</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<div class="end-bar">
+  <div>
+    <p class="end-next-label">Next project</p>
+    <a href="hunza-case-study.html" class="end-next-link">Hunza + LuxR →</a>
+  </div>
+  <a href="index.html#contact" class="end-contact">Get in touch</a>
+</div>
+
+<footer>
+  <span>© 2026 Paige Simm.</span>
+  <a href="index.html">Back to portfolio</a>
+</footer>
+
+<script>
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  document.getElementById('progress').style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+});
+
+// Hamburger
+const ham=document.getElementById('hamburger');
+const drawer=document.getElementById('mobileDrawer');
+ham.addEventListener('click',()=>drawer.classList.toggle('open'));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+
+// Fade in on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
