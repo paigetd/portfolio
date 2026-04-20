@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Splashy — Case Study · Paige Simm</title>
+<title>Splashy: Educational App for Kids · Paige Simm UX Portfolio</title>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
@@ -39,13 +39,13 @@
     <div class="cs-hero-meta">
       <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX Research · UI Design · Illustration</p></div>
       <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">iOS Mobile App (Figma)</p></div>
-      <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 6 to 12</p></div>
+      <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 8 to 12</p></div>
       <div><p class="cs-meta-label">Illustration</p><p class="cs-meta-value">All artwork hand-drawn in Illustrator</p></div>
     </div>
   </div>
 </div>
 
-<!-- SECTION 01: Overview (unchanged) -->
+<!-- SECTION 01: Overview & Research Foundation -->
 <section class="cs-section" id="s1">
   <div class="inner" style="position:relative">
     <span class="sec-num">01</span>
@@ -54,14 +54,14 @@
     <div class="two-col">
       <div class="body-text">
         <p><strong>Splashy</strong> is a gamified iOS app that turns eco-friendly habits into something a child actually wants to do. Kids complete real-world quests, earn sea creatures as rewards, and watch their personal ocean transform from polluted to thriving.</p>
-        <p>The design challenge was making the feedback loop short enough to matter to a 9-year-old. Every decision came back to one question: how many taps between doing something good in the real world and seeing it on screen?</p>
-        <p>I owned the full process: semi-structured user research, concept definition, information architecture, UI design through three major iterations, and a fully interactive Figma prototype. Every character and sea creature was <strong>hand-drawn in Adobe Illustrator.</strong></p>
+        <p>The core insight driving this project came from research: <strong>traditional environmental education increases knowledge but doesn't change attitudes</strong> (Rice et al., 2024). Kids know plastic is bad. What they lack is a tangible connection between their actions and the outcome. Splashy closes that gap.</p>
+        <p>I owned the full process: user research with primary school children, competitive analysis of educational apps, persona development, wireframing, three major design iterations, original illustration in Adobe Illustrator, and a fully interactive Figma prototype.</p>
       </div>
       <div>
         <div class="stat-row">
           <div class="stat-pill"><span class="stat-pill-val" data-target="6">6</span><span class="stat-pill-label">Children interviewed in research</span></div>
           <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">Major design iterations</span></div>
-          <div class="stat-pill"><span class="stat-pill-val" data-target="4">4</span><span class="stat-pill-label">Core screens in final flow</span></div>
+          <div class="stat-pill"><span class="stat-pill-val" data-target="2">2</span><span class="stat-pill-label">Personas developed</span></div>
           <div class="stat-pill"><span class="stat-pill-val">100%</span><span class="stat-pill-label">Original illustration</span></div>
         </div>
       </div>
@@ -69,76 +69,242 @@
   </div>
 </section>
 
-<!-- SECTION 02: The Problem (unchanged) -->
+<!-- SECTION 02: Research Foundation -->
 <section class="cs-section" id="s2">
   <div class="inner" style="position:relative">
     <span class="sec-num">02</span>
-    <span class="section-label">The Problem</span>
-    <h2 class="section-heading">Kids want to help. They just don't know how.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">Sustainability education for children is largely adult-led and abstract. The gap is not interest — most kids genuinely care about the planet. The gap is <strong style="color:var(--dark)">agency and immediacy.</strong></p>
-    <div class="problem-grid">
-      <div class="prob"><div class="prob-n">01</div><p class="prob-t">Abstract impact</p><p class="prob-b">Children could not connect daily actions to environmental outcomes. For a 7-year-old, invisible consequences don't stick.</p></div>
-      <div class="prob"><div class="prob-n">02</div><p class="prob-t">No sense of ownership</p><p class="prob-b">Existing tools talked at children rather than with them. Nothing felt personalised. Without ownership, engagement doesn't happen.</p></div>
-      <div class="prob"><div class="prob-n">03</div><p class="prob-t">Rewards came too late</p><p class="prob-b">Kids operate on short feedback loops. Long-term reward systems built for adults fail completely at this age.</p></div>
-      <div class="prob"><div class="prob-n">04</div><p class="prob-t">No real-world link</p><p class="prob-b">Apps that lived entirely on-screen missed the point. Behaviour change happens at a tap, in a kitchen, at school.</p></div>
+    <span class="section-label">Research Foundation</span>
+    <h2 class="section-heading">Evidence that shaped the direction.</h2>
+    
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem">
+      <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px">
+        <p style="font-size:2rem;margin-bottom:0.5rem">📊</p>
+        <p style="font-weight:600;margin-bottom:0.5rem">Plastic production</p>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">From 2 million tonnes in 1950 to over 450 million tonnes in 2019. 1-2 million tonnes enter oceans annually. (Ritchie, Samborska & Roser, 2023)</p>
+      </div>
+      <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px">
+        <p style="font-size:2rem;margin-bottom:0.5rem">📚</p>
+        <p style="font-weight:600;margin-bottom:0.5rem">Knowledge ≠ Attitude</p>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">Traditional conservation education increased knowledge but didn't change attitudes. Emotional connection matters. (Rice et al., 2024)</p>
+      </div>
+      <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px">
+        <p style="font-size:2rem;margin-bottom:0.5rem">🎮</p>
+        <p style="font-weight:600;margin-bottom:0.5rem">Gamification works</p>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">Gamification increases learning outcomes, especially for primary students in offline-adjacent environments. (Li, Ma & Shi, 2023)</p>
+      </div>
+    </div>
+
+    <!-- Competitive Analysis -->
+    <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;margin:2rem 0 1rem">Competitive Analysis</h3>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem">
+      <div style="padding:1.5rem;background:rgba(0,0,0,0.02);border-radius:12px">
+        <p style="font-weight:600;margin-bottom:0.5rem">Earth Hero</p>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">Tracks environmental impact with carbon calculators and goal setting. But data is presented as graphs and charts — unengaging for children. Not targeted at kids.</p>
+        <p style="font-size:0.85rem;color:var(--accent);margin-top:0.8rem"><strong>Takeaway:</strong> Visualisation needs to be immediate and emotional, not abstract.</p>
+      </div>
+      <div style="padding:1.5rem;background:rgba(0,0,0,0.02);border-radius:12px">
+        <p style="font-weight:600;margin-bottom:0.5rem">Duolingo ABC & Khan Academy Kids</p>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">Simple UI, colourful mascots, voice-over guidance, and tactile feedback. Designed for children who may not be strong readers yet.</p>
+        <p style="font-size:0.85rem;color:var(--accent);margin-top:0.8rem"><strong>Takeaway:</strong> Interface should work without reading. Icons and characters do the heavy lifting.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 03: Research (unchanged) -->
+<!-- SECTION 03: Personas -->
 <section class="cs-section" id="s3">
   <div class="inner" style="position:relative">
     <span class="sec-num">03</span>
-    <span class="section-label">Research</span>
-    <h2 class="section-heading">Talking to the actual users.</h2>
-    <div class="two-col">
-      <div class="body-text">
-        <p>I ran semi-structured interviews with six children aged 7 to 11. Rather than asking what features they wanted, I asked about things they already loved: games they played, things they collected, moments that made them feel proud.</p>
-        <p>Three consistent patterns emerged across all six participants and directly determined every major product decision. <strong>None of these ideas came from me.</strong> They came from listening carefully and taking children seriously as research participants.</p>
+    <span class="section-label">Personas</span>
+    <h2 class="section-heading">Who I was designing for.</h2>
+    
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:2rem">
+      <div style="background:rgba(168,222,234,0.08);padding:1.8rem;border-radius:16px">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+          <div style="width:50px;height:50px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:1.2rem">L</div>
+          <div><p style="font-weight:600;font-size:1.1rem">Liam</p><p style="font-size:0.85rem;color:var(--muted)">Age 10 · Year 6 · Primary User</p></div>
+        </div>
+        <p style="font-size:0.9rem;line-height:1.6;margin-bottom:1rem">Loves exploring nature, spends time outdoors, enjoys games with rewards. Interested in how his actions impact the world.</p>
+        <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem">Goals</p>
+        <ul style="font-size:0.85rem;line-height:1.6;color:var(--muted);margin-bottom:1rem;padding-left:1.2rem">
+          <li>Find out how to protect the environment</li>
+          <li>See visual feedback on his impact</li>
+        </ul>
+        <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem">Limitations</p>
+        <ul style="font-size:0.85rem;line-height:1.6;color:var(--muted);padding-left:1.2rem">
+          <li>Staying focused with distractions</li>
+          <li>Finding activities that align with his interests</li>
+        </ul>
       </div>
-      <div class="insights">
-        <div class="insight"><p class="insight-q">"I want to help but I don't know what to do."</p><p class="insight-a">Kids had the desire but no pathway. This became the foundation for the quest system: concrete, named, achievable real-world tasks rather than vague environmental messaging.</p></div>
-        <div class="insight"><p class="insight-q">"I love collecting things. Like Pokemon."</p><p class="insight-a">The creature collection mechanic came directly from this. Kids are intrinsically motivated by accumulation and completing a set. Each eco-action unlocks a new creature as an immediate reward.</p></div>
-        <div class="insight"><p class="insight-q">"I'd want to show my friends my ocean."</p><p class="insight-a">The personalised named ocean taps into pride and identity. Your ocean is uniquely yours, shaped by your choices over time, and something worth showing off.</p></div>
+      <div style="background:rgba(168,222,234,0.08);padding:1.8rem;border-radius:16px">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+          <div style="width:50px;height:50px;border-radius:50%;background:#5a7d8c;display:flex;align-items:center;justify-content:center;color:white;font-weight:600;font-size:1.2rem">S</div>
+          <div><p style="font-weight:600;font-size:1.1rem">Susan</p><p style="font-size:0.85rem;color:var(--muted)">Age 45 · Primary School Teacher · Secondary User</p></div>
+        </div>
+        <p style="font-size:0.9rem;line-height:1.6;margin-bottom:1rem">Looking for digital tools to teach environmental topics. Wants resources that align with curriculum and engage students.</p>
+        <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem">Goals</p>
+        <ul style="font-size:0.85rem;line-height:1.6;color:var(--muted);margin-bottom:1rem;padding-left:1.2rem">
+          <li>Find resources for environmental teaching</li>
+          <li>Engage students with interactive activities</li>
+        </ul>
+        <p style="font-weight:600;font-size:0.85rem;margin-bottom:0.3rem">Limitations</p>
+        <ul style="font-size:0.85rem;line-height:1.6;color:var(--muted);padding-left:1.2rem">
+          <li>Limited access to class-wide tools</li>
+          <li>Resources must align with NZ curriculum</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 04: User Flow (unchanged) -->
+<!-- SECTION 04: User Flow -->
 <section class="cs-section" id="s4">
   <div class="inner" style="position:relative">
     <span class="sec-num">04</span>
     <span class="section-label">User Flow</span>
-    <h2 class="section-heading">The loop had to be ruthlessly short.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">If there were more than three taps between completing a task and seeing a reward, kids would disengage. The entire interaction model was designed around closing that gap.</p>
-    <div class="user-flow" style="margin-top:1.5rem">
-      <div class="flow-step"><div class="flow-box">Sign up + questionnaire</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">View quests</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">Complete real-world task</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Log progress</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">Earn creature + Ecopoints</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Ocean updates</div></div>
+    <h2 class="section-heading">Mapping the journey.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">Before designing screens, I mapped how users would move through the app. This helped me understand where features should sit and how to minimise friction.</p>
+    
+    <div class="screen-full" style="max-width:800px;margin:0 auto 1rem">
+      <img src="splashyuserflow.jpg" alt="Splashy user flow diagram" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>User flow diagram</div>'">
     </div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-style:italic">Design constraint: real-world action to visible reward in 3 taps or fewer.</p>
+    <p class="screen-cap" style="text-align:center">User flow diagram — mapping the journey from onboarding through quest completion to reward.</p>
   </div>
 </section>
 
-<!-- SECTION 05: Early Designs — What Didn't Work -->
+<!-- SECTION 05: Logo Development -->
 <section class="cs-section" id="s5">
   <div class="inner" style="position:relative">
     <span class="sec-num">05</span>
+    <span class="section-label">Logo Development</span>
+    <h2 class="section-heading">From rough concept to final mark.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">The logo needed to feel friendly, signal environmental themes, and work at app-icon scale. This took several rounds of iteration.</p>
+    
+    <!-- Early Drafts -->
+    <div style="margin-bottom:2rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.2rem;margin-bottom:1rem">Early Explorations</h3>
+      <div class="screen-full">
+        <img src="splashydraftlogos.jpg" alt="Early logo concept sketches" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Early logo sketches</div>'">
+      </div>
+      <p class="screen-cap">Initial sketches exploring fish concepts. The fish-in-a-bag felt too negative. The heart-shaped sprout fin (concept 3) became the foundation.</p>
+    </div>
+
+    <!-- Refined Drafts -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+      <div>
+        <div class="screen-full">
+          <img src="logodraftalmostfinal.jpg" alt="Refined logo drafts" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Refined logo drafts</div>'">
+        </div>
+        <p class="screen-cap">Refined vector drafts — experimenting with outline weight and composition.</p>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="refinedlogodrafts.jpg" alt="Further logo refinement" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Further refinement</div>'">
+        </div>
+        <p class="screen-cap">Final refinements — incorporating the recycling arrow motif and earth element.</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(168,222,234,0.08);padding:1.5rem;border-radius:12px;margin-top:1rem">
+      <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> I initially wanted the same no-outline minimalism as the rest of the app, but found that thick outlines created a much more inviting and friendly feel — essential for a children's app. The final logo combines the fish, leaf fin, and recycling arrow to communicate "saving the earth" without words.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06: Wireframing -->
+<section class="cs-section" id="s6">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">06</span>
+    <span class="section-label">Wireframing</span>
+    <h2 class="section-heading">Structuring before styling.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">I created paper prototypes and low-fidelity wireframes to test navigation logic and information hierarchy before investing in visuals.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1rem">
+      <div>
+        <div class="screen-full">
+          <img src="splashywireframe1.jpg" alt="Wireframe screen 1" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Wireframe 1</div>'">
+        </div>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="splashywireframe2.jpg" alt="Wireframe screen 2" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Wireframe 2</div>'">
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+      <div>
+        <div class="screen-full">
+          <img src="splashywireframe3.jpg" alt="Wireframe screen 3" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Wireframe 3</div>'">
+        </div>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="splashywireframe4.jpg" alt="Wireframe screen 4" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Wireframe 4</div>'">
+        </div>
+      </div>
+    </div>
+    <p class="screen-cap" style="margin-top:1rem">Paper prototypes and early wireframes testing layout, navigation, and quest flow.</p>
+
+    <div style="background:rgba(200,60,60,0.05);padding:1.5rem;border-radius:12px;margin-top:1.5rem;border-left:3px solid #c44">
+      <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)"><strong style="color:#c44">Key feedback from wireframe testing:</strong> The reward for levelling up and the reward for decreasing plastic usage being the same didn't make sense. I separated them — plastic reduction cleans the ocean; levelling up unlocks new fish. Bottom navigation icons felt boring — I explored more creative navigation solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07: Asset Creation -->
+<section class="cs-section" id="s7">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">07</span>
+    <span class="section-label">Asset Creation</span>
+    <h2 class="section-heading">Building the visual world.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">All illustrations were hand-drawn in Adobe Illustrator. The fish characters and ocean environment set the visual tone for the entire app.</p>
+    
+    <div class="screen-full" style="margin-bottom:1.5rem">
+      <img src="intialassets.jpg" alt="Initial asset creation" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Asset creation</div>'">
+    </div>
+    <p class="screen-cap">Initial fish character designs and environmental assets. Each fish species was designed to feel collectible.</p>
+
+    <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px;margin-top:1rem">
+      <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)">I researched ocean environments and fish designs extensively — including watching Finding Nemo to study species variety, colour palettes, and underwater landscapes. The art style combines flat design minimalism with the depth and colour of games like Hungry Shark World.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08: High-Fidelity Drafts -->
+<section class="cs-section" id="s8">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">08</span>
+    <span class="section-label">High-Fidelity Drafts</span>
+    <h2 class="section-heading">Bringing the wireframes to life.</h2>
+    
+    <div class="screen-full" style="margin-bottom:1.5rem">
+      <img src="initialhighfidelity.jpg" alt="Initial high-fidelity screens" onerror="this.outerHTML='<div class=\'screen-full-stub\'>High-fidelity drafts</div>'">
+    </div>
+    <p class="screen-cap">First high-fidelity drafts — testing colour, typography, and the integration of illustrated assets into the UI.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:1.5rem 0">
+      <div>
+        <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.1rem;margin-bottom:0.8rem">Typefaces</h3>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)"><strong>Fredoka One</strong> — friendly, rounded, appeals to children<br>
+        <strong>Open Sans / Lato</strong> — clean readability for body text and UI elements</p>
+      </div>
+      <div>
+        <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.1rem;margin-bottom:0.8rem">Colour Palette</h3>
+        <p style="font-size:0.9rem;line-height:1.6;color:var(--muted)">Muted, green-based blues with orange accents. White and sandy beige for cards and backgrounds. Fun but not overwhelming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09: Early Designs — What Didn't Work -->
+<section class="cs-section" id="s9">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">09</span>
     <span class="section-label">Early Designs</span>
     <h2 class="section-heading">The versions that taught me what not to do.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Before arriving at the final design, I built several iterations that failed in specific, instructive ways. Each version revealed something essential about designing for children that I hadn't understood.</p>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Before arriving at the final design, I built several iterations that failed in specific, instructive ways.</p>
     
-    <!-- Problematic Home Screen -->
-    <div style="margin-bottom:2.5rem">
+    <div style="margin-bottom:2rem">
       <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Home Screen — Early Version</h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
         <div>
@@ -147,201 +313,134 @@
           </div>
         </div>
         <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> This version had too many competing elements. The ocean was small, the mascot felt disconnected, and there was no clear primary action. Kids didn't know where to look first.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Children need a single focal point. When everything competes for attention, they engage with nothing. The ocean had to be the star.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> Too many competing elements. The ocean was small, the mascot felt disconnected, and there was no clear primary action. Kids didn't know where to look first.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Children need a single focal point. The ocean had to be the star.</p>
         </div>
       </div>
     </div>
 
-    <!-- Sorting Screen -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Sorting Screen — Draft</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="sorting.png" alt="Sorting screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Sorting screen</div>'">
-          </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem">
+      <div>
+        <div class="screen-full">
+          <img src="sorting.png" alt="Sorting screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Sorting</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The sorting interaction required too many decisions. Kids got stuck deciding which category each item belonged to — the cognitive load was too high for a 7-year-old.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Environmental education shouldn't require perfect classification. The act of trying matters more than getting it exactly right.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:#c44">Problem:</strong> Too many decisions — cognitive load too high.</p>
       </div>
-    </div>
-
-    <!-- Everyday Items -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Everyday Items — Draft</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="everyday items.png" alt="Everyday items screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Everyday items</div>'">
-          </div>
+      <div>
+        <div class="screen-full">
+          <img src="everyday items.png" alt="Everyday items draft" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Everyday items</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The visual language was too abstract. Kids couldn't connect illustrated items to real-world objects they might actually encounter.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> For children, recognisability trumps aesthetic cohesion. Items need to look like what they actually are, not like a unified illustration set.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:#c44">Problem:</strong> Visuals too abstract — kids couldn't connect to real objects.</p>
       </div>
-    </div>
-
-    <!-- Counting Plastic -->
-    <div>
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Counting Plastic — Draft</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="counting plastic.png" alt="Counting plastic screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Counting plastic</div>'">
-          </div>
+      <div>
+        <div class="screen-full">
+          <img src="counting plastic.png" alt="Counting plastic draft" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Counting plastic</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The input mechanism was fiddly. Tapping small increment buttons frustrated younger children, and the visual feedback didn't feel rewarding enough.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Every interaction needs to feel like progress, not data entry. Kids should feel like they're playing, not reporting.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:#c44">Problem:</strong> Input mechanism fiddly — felt like data entry, not play.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 06: Iteration Toward Better -->
-<section class="cs-section" id="s6">
+<!-- SECTION 10: Iteration Toward Better -->
+<section class="cs-section" id="s10">
   <div class="inner" style="position:relative">
-    <span class="sec-num">06</span>
+    <span class="sec-num">10</span>
     <span class="section-label">Iteration</span>
     <h2 class="section-heading">Learning from what broke.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Each failed version pointed toward the same solution: simplify, make the ocean the hero, and ensure every action has immediate visual payoff. These revised screens show the turning point.</p>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Each failed version pointed toward the same solution: simplify, make the ocean the hero, and ensure every action has immediate visual payoff.</p>
     
-    <!-- Welcome Splash -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Welcome Screen — Revised</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="welcome splash.png" alt="Welcome splash screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Welcome splash</div>'">
-          </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem">
+      <div>
+        <div class="screen-full">
+          <img src="welcome splash.png" alt="Welcome splash screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Welcome</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> The mascot became the welcoming presence, with a single clear call to action. No competing elements, no confusion about what to do next.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">The hand-drawn whale creates immediate emotional connection. Kids see a character, not an interface.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:var(--accent)">Revised:</strong> Single clear CTA, mascot as welcoming presence.</p>
       </div>
-    </div>
-
-    <!-- Account Screen -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Account Screen — Revised</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="account.png" alt="Account screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Account screen</div>'">
-          </div>
+      <div>
+        <div class="screen-full">
+          <img src="account.png" alt="Account screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Account</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> The profile became visual and personal. Avatar selection, ocean naming, and progress tracking all in one glanceable view.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">Ownership is established here — this is <em>your</em> ocean, <em>your</em> creatures, <em>your</em> impact.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:var(--accent)">Revised:</strong> Visual profile — avatar, ocean naming, progress tracking.</p>
       </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div>
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Results Screen — Revised</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <div class="screen-full" style="max-width:320px;margin:0 auto">
-            <img src="results.png" alt="Results screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Results screen</div>'">
-          </div>
+      <div>
+        <div class="screen-full">
+          <img src="results.png" alt="Results screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Results</div>'">
         </div>
-        <div style="display:flex;flex-direction:column;justify-content:center">
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> Impact became visual and cumulative. Instead of abstract numbers, kids see their ocean transform and their creature collection grow.</p>
-          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">The celebration moment is immediate — complete a quest, see the result instantly. No waiting, no ambiguity.</p>
-        </div>
+        <p class="screen-cap"><strong style="color:var(--accent)">Revised:</strong> Impact visualised — ocean transforms, creatures grow.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 07: Final Delivered Design -->
-<section class="cs-section" id="s7">
+<!-- SECTION 11: Final Design -->
+<section class="cs-section" id="s11">
   <div class="inner" style="position:relative">
-    <span class="sec-num">07</span>
+    <span class="sec-num">11</span>
     <span class="section-label">Final Design</span>
     <h2 class="section-heading">The version that worked.</h2>
     <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After three major iterations, the final design incorporated everything I'd learned. The ocean is the hero, quests are icon-led and scannable, and every interaction feels like progress, not work.</p>
     
-    <!-- Quests Done Good — Two Versions -->
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:2rem">
       <div>
         <div class="screen-full">
           <img src="quests done good (1).png" alt="Quests screen final version" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Quests screen — final</div>'">
         </div>
-        <p class="screen-cap"><strong>Quests screen — final delivered version.</strong> Icon-led cards, one clear primary action per quest, and visual progress indicators that don't require reading.</p>
+        <p class="screen-cap"><strong>Quests screen — final.</strong> Icon-led cards, one clear primary action per quest, visual progress indicators that don't require reading.</p>
       </div>
       <div>
         <div class="screen-full">
           <img src="quests done good.png" alt="Quests screen alternate view" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Quests screen — alternate</div>'">
         </div>
-        <p class="screen-cap"><strong>Quest detail view.</strong> When kids want more information, it's there — but the screen works perfectly even if they never read a word.</p>
+        <p class="screen-cap"><strong>Quest detail view.</strong> When kids want more information, it's there — but the screen works even if they never read a word.</p>
       </div>
     </div>
-
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06);font-style:italic">The final prototype included fully interactive quest logging, creature unlock animations, and ocean state transitions — everything needed to test the core loop with real users.</p>
   </div>
 </section>
 
-<!-- SECTION 08: Testing + Iteration (updated with specific examples) -->
-<section class="cs-section" id="s8">
+<!-- SECTION 12: Testing + Iteration -->
+<section class="cs-section" id="s12">
   <div class="inner" style="position:relative">
-    <span class="sec-num">08</span>
+    <span class="sec-num">12</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What didn't work. What I changed. Why.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">Tested early prototypes with three of the original research participants. Kids are the most direct usability testers you will ever work with.</p>
     <div class="iterations">
-      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">Quest screen had too much text</p><p class="iteration-body">Children skipped reading instructions entirely and tapped whatever button was biggest. The original layout assumed a reading level and attention span the target age group doesn't have. This was not a reading problem. It was a design problem.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Icon-led cards with one primary action</p><p class="iteration-body">Reduced copy by roughly 60%, moved critical information into iconography, and made the progress bar the dominant visual element. After the redesign, all three participants understood the screen without reading anything.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">The ocean didn't feel different enough early on</p><p class="iteration-body">Children could not distinguish between the dirty and slightly-less-dirty ocean states. Without a clear before/after moment, completing a quest felt meaningless and the reward loop broke down entirely.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Distinct milestone states tied to creature unlocks</p><p class="iteration-body">Defined three clearly differentiated ocean states with dramatically different visual palettes. Each state transition is tied to a creature unlock, creating a deliberate reward moment. Kids immediately noticed and reacted.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">Home screen had no clear entry point</p><p class="iteration-body">The early home screen (shown in Section 05) scattered attention across too many elements. Kids hesitated, tapped randomly, and often ended up in the wrong place.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Single focal point with clear primary action</p><p class="iteration-body">Made the ocean the dominant visual element. One clear CTA: "View Quests." Everything else became secondary. Task completion time dropped significantly.</p></div>
-    </div>
-    <div class="constraints">
-      <p class="constraints-title">Constraints + Scope Decisions</p>
-      <ul>
-        <li>University timeline meant one semester from research to prototype, with no time for extended testing cycles</li>
-        <li>Parental dashboard was intentionally out of scope but flagged as critical for any real-world version</li>
-        <li>Quest content was manually curated for MVP scope; a production version would need a scalable editorial system</li>
-        <li>Long-term engagement mechanics like daily streaks were deprioritised to keep focus on proving the core loop</li>
-      </ul>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">Quest screen had too much text</p><p class="iteration-body">Children skipped reading entirely and tapped whatever button was biggest. The layout assumed a reading level the target age group doesn't have.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Icon-led cards with one primary action</p><p class="iteration-body">Reduced copy by ~60%, moved critical information into iconography, made the progress bar the dominant visual element.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">The ocean didn't feel different enough</p><p class="iteration-body">Children couldn't distinguish between dirty and slightly-less-dirty ocean states. The reward loop broke down.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Distinct milestone states</p><p class="iteration-body">Defined three clearly differentiated ocean states tied to creature unlocks. Kids immediately noticed and reacted.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem — wireframe feedback</span><p class="iteration-title">Rewards were confusing</p><p class="iteration-body">Levelling up and reducing plastic gave the same reward. Users didn't understand what drove what.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Separated reward systems</p><p class="iteration-body">Plastic reduction cleans the ocean. Levelling up unlocks new fish. Cosmetic items from quests. Clear, distinct incentives.</p></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 09: Outcomes -->
-<section class="cs-section" id="s9">
+<!-- SECTION 13: Outcomes -->
+<section class="cs-section" id="s13">
   <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+    <span class="sec-num">13</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">What the testing showed.</h2>
     <div class="outcomes">
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Reward system grasped without instruction</p><p class="outcome-b">All three test participants understood the quest-to-ocean connection without any explanation. The visual feedback loop was legible enough that onboarding copy became unnecessary.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/></svg></div><div><p class="outcome-t">Collection mechanic created unprompted motivation</p><p class="outcome-b">Kids asked "what's the next creature I can get?" without being prompted — one of the clearest signals in usability testing that a mechanic has genuinely taken hold.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Simplified UI cut task completion time dramatically</p><p class="outcome-b">After the quest screen redesign, children completed the log progress action in under 10 seconds consistently, versus repeated hesitation and wrong taps in v1.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Reward system grasped without instruction</p><p class="outcome-b">All test participants understood the quest-to-ocean connection without explanation. The visual feedback loop was legible enough that onboarding copy became unnecessary.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/></svg></div><div><p class="outcome-t">Collection mechanic created unprompted motivation</p><p class="outcome-b">Kids asked "what's the next creature I can get?" without being prompted — a clear signal that the mechanic had taken hold.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Simplified UI cut task completion time</p><p class="outcome-b">After the quest screen redesign, children completed the log progress action in under 10 seconds consistently.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 10: Reflection -->
-<section class="cs-section" id="s10">
+<!-- SECTION 14: Reflection -->
+<section class="cs-section" id="s14">
   <div class="inner" style="position:relative">
-    <span class="sec-num">10</span>
+    <span class="sec-num">14</span>
     <span class="section-label">Reflection</span>
     <h2 class="section-heading">What this taught me.</h2>
     <div class="reflect-wrap">
       <blockquote>Designing for children is humbling. Every assumption about how users think gets stripped away the moment you <em>actually</em> talk to them.</blockquote>
       <div class="reflect-body">
-        <p>The biggest lesson was that <strong>research is not a phase you complete before design — it is structural to every outcome.</strong> The creature collection mechanic came from a child mentioning Pokemon unprompted. The named ocean came from a kid saying they'd want to show their friends. Those were not features I invented. They were features I heard.</p>
+        <p>The biggest lesson was that <strong>research is not a phase you complete before design — it is structural to every outcome.</strong> The creature collection mechanic came from a child mentioning Pokemon. The named ocean came from a kid saying they'd want to show their friends. Those were not features I invented. They were features I heard.</p>
         <p>I also learned how fundamentally different it is to design for a non-adult audience. <strong>Simplicity is not dumbing things down. It is doing the hard design work so the user does not have to.</strong> Touch target dimensions, reward timing, information density — every decision has to be reexamined from scratch when your user is 8 years old.</p>
-        <p>A one-semester timeline means you can prove the concept or prove the details, rarely both. Splashy proved the concept: the loop works, the mechanic creates genuine motivation, and the visual system communicates without words.</p>
+        <p>The process of moving from academic proposal through multiple milestones to final prototype taught me that <strong>iteration based on feedback is where the real work happens.</strong> My first drafts focused too much on aesthetics. Mentor feedback pushed me to think about interaction first — breaking each component down and understanding how users would actually use it before combining them.</p>
       </div>
     </div>
   </div>
