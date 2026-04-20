@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automote — Case Study · Paige Simm</title>
+<title>Automote: B2B Desktop App Redesign · Paige Simm UX Portfolio</title>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<!-- SECTION 01: Overview (unchanged) -->
+<!-- SECTION 01: Overview -->
 <section class="cs-section" id="s1">
   <div class="inner" style="position:relative">
     <span class="sec-num">01</span>
@@ -69,28 +69,205 @@
   </div>
 </section>
 
-<!-- SECTION 02: The Problem (unchanged) -->
+<!-- SECTION 02: Brief & User Analysis -->
 <section class="cs-section" id="s2">
   <div class="inner" style="position:relative">
     <span class="sec-num">02</span>
-    <span class="section-label">The Problem</span>
-    <h2 class="section-heading">Six problems that made a hard job harder.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">Dealership staff use Automote for hours every day. Managing dozens of orders, tracking vehicles through production pipelines, configuring complex builds. <strong style="color:var(--dark)">Every friction point compounds across hundreds of interactions.</strong></p>
-    <ul class="pain-list">
-      <li class="pain-item"><span class="pain-num">01</span><div class="pain-text"><strong>Text and buttons cut off</strong><p>UI elements were truncated at screen edges with no overflow handling. Labels, CTAs, and data values disappeared mid-character.</p></div></li>
-      <li class="pain-item"><span class="pain-num">02</span><div class="pain-text"><strong>Navigation required too many steps</strong><p>Too many clicks to reach common actions. Hierarchy was flat and unlabelled — users had to memorise locations rather than discover them.</p></div></li>
-      <li class="pain-item"><span class="pain-num">03</span><div class="pain-text"><strong>No visual CTA hierarchy</strong><p>Primary actions weren't distinguishable from secondary ones. Everything looked the same weight — unclear what to do next.</p></div></li>
-      <li class="pain-item"><span class="pain-num">04</span><div class="pain-text"><strong>Actions completed silently</strong><p>No confirmation states, no error messages, no loading indicators. Users couldn't tell whether something had worked or failed.</p></div></li>
-      <li class="pain-item"><span class="pain-num">05</span><div class="pain-text"><strong>Layout broke on different screens</strong><p>Built for one fixed resolution. On any other display, components collapsed or overlapped unpredictably.</p></div></li>
-      <li class="pain-item"><span class="pain-num">06</span><div class="pain-text"><strong>No consistent design language</strong><p>Spacing, type sizes, button styles, and colours varied across screens — making the platform feel unfinished and untrustworthy.</p></div></li>
-    </ul>
+    <span class="section-label">Brief & User Analysis</span>
+    <h2 class="section-heading">Understanding who I was designing for.</h2>
+    
+    <div style="background:rgba(0,0,0,0.02);padding:1.8rem;border-radius:16px;margin-bottom:2rem">
+      <p style="font-size:1.1rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong>The typical user:</strong> An admin who is knowledgeable and uses computers daily, but wouldn't understand developer environments. This creates problems when information is laid out in a way that isn't easily understandable.</p>
+      <p style="font-size:1rem;line-height:1.7;color:var(--muted)">The end goal was to have a system that the user can look at and instantly understand where they need to navigate — without clicking through several screens to figure out what headings mean. It also needed to be clearer what was being displayed to end users/customers, as there was potential to add things without realising if they were published or not.</p>
+    </div>
+
+    <div class="two-col" style="margin-bottom:2rem">
+      <div>
+        <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.2rem;margin-bottom:1rem">The Brief</h3>
+        <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)">Re-design the inventory manager for Hyundai's web applications. I was given free rein in terms of direction and design process — a level of trust that meant I had to be rigorous in justifying every decision.</p>
+      </div>
+      <div>
+        <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.2rem;margin-bottom:1rem">Core Requirements</h3>
+        <ul style="font-size:0.95rem;line-height:1.8;color:var(--muted);padding-left:1.2rem">
+          <li>Add a landing page with clear navigation</li>
+          <li>Add content filters on every page with sort functionality</li>
+          <li>Organise content in logical, labelled groups</li>
+          <li>Enable bulk selection and editing</li>
+          <li>Clarify what information is customer-facing vs internal</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SECTION 03: Core User Flow (unchanged) -->
+<!-- SECTION 03: Identifying Issues in the Current UI -->
 <section class="cs-section" id="s3">
   <div class="inner" style="position:relative">
     <span class="sec-num">03</span>
+    <span class="section-label">UI Audit</span>
+    <h2 class="section-heading">Annotating what was broken.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Before designing anything, I annotated the existing interface to identify specific issues. This wasn't about aesthetics — it was about understanding where the interface failed the user.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:1.5rem">
+      <div>
+        <div class="screen-full">
+          <img src="problemidentification.jpg" alt="Annotated screenshot identifying UI issues" onerror="this.outerHTML='<div class=\'screen-full-stub\'>UI audit annotations — part 1</div>'">
+        </div>
+        <p class="screen-cap">Issue identification: navigation complexity, unclear labelling, and missing hierarchy.</p>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="problemidentification2.jpg" alt="Further UI issue annotations" onerror="this.outerHTML='<div class=\'screen-full-stub\'>UI audit annotations — part 2</div>'">
+        </div>
+        <p class="screen-cap">Further issues: content organisation, visibility settings, and bulk action limitations.</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px;margin-top:1rem">
+      <p style="font-size:0.9rem;color:var(--muted)"><strong style="color:var(--dark)">Key findings from the audit:</strong> Labels didn't need to all be displayed at once. Trim level labels didn't need to include the full model name. Photos should sit left-aligned for better visual flow. Some information could be hidden under accordions closed by default. Clear labelling was needed to distinguish customer-facing content from internal notes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: Initial Wireframing -->
+<section class="cs-section" id="s4">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">04</span>
+    <span class="section-label">Wireframing</span>
+    <h2 class="section-heading">Sketching the structure before the pixels.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">Based on the audit, I created wireframe sketches for nearly every element in the interface — selecting, editing, filtering, and organising content.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:1.5rem">
+      <div>
+        <div class="screen-full">
+          <img src="filter wireframing.jpg" alt="Filter wireframe sketches" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Filter wireframe — version 1</div>'">
+        </div>
+        <p class="screen-cap">Initial filter concept — a filter button approach.</p>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="filter wireframing 2.jpg" alt="Filter wireframe iteration" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Filter wireframe — version 2</div>'">
+        </div>
+        <p class="screen-cap">Refined filter — persistent panel rather than modal, based on mentor feedback.</p>
+      </div>
+    </div>
+
+    <div style="background:rgba(232,98,42,0.05);padding:1.5rem;border-radius:12px;border-left:3px solid var(--accent)">
+      <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">Mentor feedback that changed my approach:</strong> My initial sketches included a filter button, but my mentor pushed me to think more deeply about how the user would actually interact with it. What type of filter made sense? Should it be a dropdown, a sidebar, or something else? This forced me to break each component down — search, filter, tags — and consider interaction before combining them into full pages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 05: Complete Wireframes -->
+<section class="cs-section" id="s5">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">05</span>
+    <span class="section-label">Complete Wireframes</span>
+    <h2 class="section-heading">Bringing the pieces together.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">The individual components — filters, selection states, content organisation — were combined into complete page layouts showing default and selection states.</p>
+    
+    <div class="wireframes">
+      <div class="wireframe">
+        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+        <div class="wf-body">
+          <div style="display:grid;grid-template-columns:70px 1fr;gap:0.4rem;height:60px">
+            <div class="wf-block"></div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem;padding-top:0.2rem">
+              <div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div><div class="wf-line wf-line--short"></div>
+            </div>
+          </div>
+          <div class="wf-line wf-line--full"></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div>
+        </div>
+        <div class="wf-label">Orders list — default state</div>
+        <div class="wf-version">Clean, scannable, with filter panel collapsed</div>
+      </div>
+      <div class="wireframe">
+        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+        <div class="wf-body">
+          <div style="display:grid;grid-template-columns:60px 1fr;gap:0.5rem">
+            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--full" style="height:5px;"></div><div class="wf-block" style="height:70px;"></div></div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem"><div style="display:flex;gap:0.3rem;"><div class="wf-line" style="width:40%;height:5px;"></div><div class="wf-line" style="width:40%;height:5px;"></div></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div></div>
+          </div>
+        </div>
+        <div class="wf-label">Orders list — with filter panel</div>
+        <div class="wf-version">Filter panel expanded, showing active selections</div>
+      </div>
+      <div class="wireframe" style="border:2px solid var(--accent)">
+        <div class="wf-bar" style="background:rgba(232,98,42,0.07)"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
+        <div class="wf-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem">
+            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--short"></div><div class="wf-block" style="height:30px;"></div><div class="wf-block" style="height:30px;"></div></div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--short"></div><div class="wf-block" style="height:30px;"></div><div class="wf-block" style="height:30px;"></div></div>
+          </div>
+          <div class="wf-block--btn" style="margin-top:0.5rem;"></div>
+        </div>
+        <div class="wf-label" style="color:var(--accent)">Selection state — bulk actions</div>
+        <div class="wf-version">Contextual action bar appears when items selected</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06: High-Fidelity Drafts -->
+<section class="cs-section" id="s6">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">06</span>
+    <span class="section-label">High-Fidelity Drafts</span>
+    <h2 class="section-heading">From wireframes to Figma.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">Using the wireframes as a foundation, I built high-fidelity drafts in Figma. This stage revealed interaction details that sketches couldn't capture.</p>
+    
+    <!-- Accessories Before -->
+    <div style="margin-bottom:2rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Starting Point: Accessories Interface (Before)</h3>
+      <div class="screen-full" style="max-width:900px;margin:0 auto 0.75rem">
+        <img src="accessoriesbefore.jpg" alt="Accessories interface before redesign" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>Accessories interface — before redesign</div>'">
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:700px;margin:0 auto;text-align:center">The original accessories management screen — unclear labelling, no distinction between internal and customer-facing fields, and no visual hierarchy.</p>
+    </div>
+
+    <!-- Draft Iterations -->
+    <div style="margin-bottom:2rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Draft Iterations — Testing Interactions</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:0.75rem">
+        <div>
+          <div class="screen-full">
+            <img src="filter 1 - 9.png" alt="Filter panel high-fidelity draft" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Filter panel — draft</div>'">
+          </div>
+          <p class="screen-cap">Filter panel draft — collapsible, with clear active states</p>
+        </div>
+        <div>
+          <div class="screen-full">
+            <img src="config steps.png" alt="Configuration steps overview" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Config steps — draft</div>'">
+          </div>
+          <p class="screen-cap">Configuration steps — showing progress through multi-step workflows</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem">
+        <div>
+          <div class="screen-full">
+            <img src="adding config 1 -1.png" alt="Adding configuration options" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Adding config — draft</div>'">
+          </div>
+          <p class="screen-cap">Adding configuration — inline selection with immediate feedback</p>
+        </div>
+        <div>
+          <div class="screen-full">
+            <img src="editing config 1 - 1.png" alt="Editing configuration draft" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Editing config — draft</div>'">
+          </div>
+          <p class="screen-cap">Editing interface — persistent context during changes</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(0,0,0,0.02);padding:1.5rem;border-radius:12px;margin-top:1rem">
+      <p style="font-size:0.95rem;line-height:1.7;color:var(--dark)"><strong>What I learned moving from wireframes to high-fidelity:</strong> My first drafts focused too much on making the interface look good without enough consideration for how users would actually interact with each element. Using mentor feedback, I broke every component down — search, filter, tags — and thought through the interaction before combining them. It was the first time I really saw how theory from my coursework — personas, wireframes, interaction design — applied in a real-world setting with real constraints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07: Core User Flow -->
+<section class="cs-section" id="s7">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">07</span>
     <span class="section-label">Core User Flow</span>
     <h2 class="section-heading">Updating order status — from 5 steps to 2.</h2>
     <p style="font-size:0.95rem;color:var(--muted);max-width:55ch;line-height:1.75">Order status updates were the most frequent dealer action. Previously required navigating away, making the change, then returning. Redesigned to inline editing with immediate confirmation.</p>
@@ -111,203 +288,137 @@
   </div>
 </section>
 
-<!-- SECTION 04: Wireframes (unchanged) -->
-<section class="cs-section" id="s4">
+<!-- SECTION 08: Final Delivered Design -->
+<section class="cs-section" id="s8">
   <div class="inner" style="position:relative">
-    <span class="sec-num">04</span>
-    <span class="section-label">Wireframes</span>
-    <h2 class="section-heading">Structuring before styling.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:55ch;line-height:1.75;margin-bottom:0">Wireframed all key screens before moving to high-fidelity. Goal was to validate information architecture and layout logic without the distraction of visual decisions.</p>
-    <div class="wireframes">
-      <div class="wireframe">
-        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div style="display:grid;grid-template-columns:70px 1fr;gap:0.4rem;height:60px">
-            <div class="wf-block"></div>
-            <div style="display:flex;flex-direction:column;gap:0.3rem;padding-top:0.2rem">
-              <div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div><div class="wf-line wf-line--short"></div>
-            </div>
-          </div>
-          <div class="wf-line wf-line--full"></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div>
-        </div>
-        <div class="wf-label">Orders list — v1</div>
-        <div class="wf-version">No filtering made large order lists unmanageable</div>
-      </div>
-      <div class="wireframe">
-        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div style="display:grid;grid-template-columns:60px 1fr;gap:0.5rem">
-            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--full" style="height:5px;"></div><div class="wf-block" style="height:70px;"></div></div>
-            <div style="display:flex;flex-direction:column;gap:0.3rem"><div style="display:flex;gap:0.3rem;"><div class="wf-line" style="width:40%;height:5px;"></div><div class="wf-line" style="width:40%;height:5px;"></div></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div></div>
-          </div>
-        </div>
-        <div class="wf-label">Orders + filter panel — v2</div>
-        <div class="wf-version">Collapsible filter panel introduced for high-volume workflows</div>
-      </div>
-      <div class="wireframe" style="border:2px solid var(--accent)">
-        <div class="wf-bar" style="background:rgba(232,98,42,0.07)"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem">
-            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--short"></div><div class="wf-block" style="height:30px;"></div><div class="wf-block" style="height:30px;"></div></div>
-            <div style="display:flex;flex-direction:column;gap:0.3rem"><div class="wf-line wf-line--short"></div><div class="wf-block" style="height:30px;"></div><div class="wf-block" style="height:30px;"></div></div>
-          </div>
-          <div class="wf-block--btn" style="margin-top:0.5rem;"></div>
-        </div>
-        <div class="wf-label" style="color:var(--accent)">Configure build (Final)</div>
-        <div class="wf-version">Two-panel layout keeps order context visible during config</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEW SECTION: High-Fidelity Drafts -->
-<section class="cs-section" id="s5">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">05</span>
-    <span class="section-label">High-Fidelity Drafts</span>
-    <h2 class="section-heading">Iterating toward the right user flow.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After wireframes were validated, I built high-fidelity drafts of core interactions. These exploratory screens helped me understand exactly how users would move through configuration workflows — and revealed where the experience still needed refinement.</p>
-    
-    <!-- Filter Screen -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Filtering System — High-Fidelity Draft</h3>
-      <div class="screen-full" style="max-width:900px;margin:0 auto 0.75rem">
-        <img src="filter 1 - 9.png" alt="Filter panel high-fidelity draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>Filter panel — high-fidelity draft</div>'">
-      </div>
-      <p style="font-size:0.85rem;color:var(--muted);max-width:700px;margin:0 auto;text-align:center">The collapsible filter panel in its draft stage. This exploration confirmed the panel needed to stay visible during scrolling and that filter chips should show active selections at a glance.</p>
-    </div>
-
-    <!-- Configuration Steps Flow -->
-    <div style="margin-bottom:2.5rem">
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Configuration Workflow — Draft Sequence</h3>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:0.75rem">
-        <div>
-          <div class="screen-full">
-            <img src="config steps.png" alt="Configuration steps overview" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Config steps draft</div>'">
-          </div>
-          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem;text-align:center">Step progression — showing users where they are in multi-step configuration</p>
-        </div>
-        <div>
-          <div class="screen-full">
-            <img src="adding config 1 -1.png" alt="Adding configuration options" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Adding config draft</div>'">
-          </div>
-          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem;text-align:center">Adding options — inline selection with immediate visual feedback</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Editing Configuration -->
-    <div>
-      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Editing Flow — High-Fidelity Draft</h3>
-      <div class="screen-full" style="max-width:900px;margin:0 auto 0.75rem">
-        <img src="editing config 1 - 1.png" alt="Editing configuration draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>Editing config draft</div>'">
-      </div>
-      <p style="font-size:0.85rem;color:var(--muted);max-width:700px;margin:0 auto;text-align:center">The editing interface draft. This screen revealed that users needed persistent visibility of the original build while making changes — leading to the two-panel layout in the final design.</p>
-    </div>
-
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06);font-style:italic">These drafts were essential for pressure-testing the user flow. Building them in high fidelity early exposed edge cases that wireframes had hidden — particularly around state persistence and undo actions.</p>
-  </div>
-</section>
-
-<!-- SECTION 06: Final Delivered Design -->
-<section class="cs-section" id="s6">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">06</span>
+    <span class="sec-num">08</span>
     <span class="section-label">Final Delivered Design</span>
     <h2 class="section-heading">The redesigned platform.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After iterating through high-fidelity drafts, the final version incorporated everything I'd learned. Cleaner visual hierarchy, clearer status communication, and workflows that respected how dealers actually work.</p>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After iterating through drafts and incorporating mentor feedback, the final version delivered on all core requirements.</p>
     
-    <!-- Final Screens Grid -->
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:1.5rem">
-      <!-- Orders List -->
       <div>
         <div class="screen-full">
           <img src="orders 1 -1 (1).png" alt="Final orders list screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Orders management — final</div>'">
         </div>
-        <p class="screen-cap"><strong>Orders management — final delivered version.</strong> Filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent row actions, scannable status indicators.</p>
+        <p class="screen-cap"><strong>Orders management — final.</strong> Filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent row actions, scannable status indicators.</p>
       </div>
-      
-      <!-- Edit Orders -->
       <div>
         <div class="screen-full">
           <img src="edit orders.png" alt="Final edit orders screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Edit orders — final</div>'">
         </div>
-        <p class="screen-cap"><strong>Order detail and editing — final delivered version.</strong> Inline status updates with confirmation states. No more navigating away to make a simple change.</p>
+        <p class="screen-cap"><strong>Order detail and editing — final.</strong> Inline status updates with confirmation states. No more navigating away to make a simple change.</p>
       </div>
     </div>
 
-    <!-- Full-width Inventory Screen -->
     <div style="margin-top:2rem">
       <div class="screen-full" style="max-width:1000px;margin-left:auto;margin-right:auto">
         <img src="inventory 1 -1.png" alt="Final inventory dashboard" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:350px\'>Inventory dashboard — final</div>'">
       </div>
-      <p class="screen-cap" style="max-width:700px;margin-left:auto;margin-right:auto"><strong>Inventory dashboard — final delivered version.</strong> High-level overview of stock, incoming orders, and vehicles in production. The filter panel from earlier drafts evolved into a persistent sidebar that maintains context across views.</p>
+      <p class="screen-cap" style="max-width:700px;margin-left:auto;margin-right:auto"><strong>Inventory dashboard — final.</strong> High-level overview of stock, incoming orders, and vehicles in production.</p>
     </div>
-
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">The final prototype included fully interactive components, hover states, loading indicators, and confirmation dialogs — everything the development team needed to build with confidence.</p>
   </div>
 </section>
 
-<!-- SECTION 07: Key Design Decisions -->
-<section class="cs-section" id="s7">
+<!-- SECTION 09: The Problem (Detailed) -->
+<section class="cs-section" id="s9">
   <div class="inner" style="position:relative">
-    <span class="sec-num">07</span>
+    <span class="sec-num">09</span>
+    <span class="section-label">The Problems Solved</span>
+    <h2 class="section-heading">Six problems that made a hard job harder.</h2>
+    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">Dealership staff use Automote for hours every day. <strong style="color:var(--dark)">Every friction point compounds across hundreds of interactions.</strong></p>
+    <ul class="pain-list">
+      <li class="pain-item"><span class="pain-num">01</span><div class="pain-text"><strong>Text and buttons cut off</strong><p>UI elements truncated at screen edges. Labels and data values disappeared mid-character — staff couldn't read critical information without resizing windows.</p></div></li>
+      <li class="pain-item"><span class="pain-num">02</span><div class="pain-text"><strong>Navigation required too many steps</strong><p>Too many clicks to reach common actions. Users had to memorise locations rather than discover them.</p></div></li>
+      <li class="pain-item"><span class="pain-num">03</span><div class="pain-text"><strong>No visual CTA hierarchy</strong><p>Primary actions weren't distinguishable from secondary ones. Users hesitated, clicked wrong buttons, and had to undo actions.</p></div></li>
+      <li class="pain-item"><span class="pain-num">04</span><div class="pain-text"><strong>Actions completed silently</strong><p>No confirmation states, no error messages, no loading indicators. Users couldn't tell whether something had worked or failed.</p></div></li>
+      <li class="pain-item"><span class="pain-num">05</span><div class="pain-text"><strong>Layout broke on different screens</strong><p>Built for one fixed resolution. On any other display, components collapsed or overlapped unpredictably.</p></div></li>
+      <li class="pain-item"><span class="pain-num">06</span><div class="pain-text"><strong>No consistent design language</strong><p>Spacing, type sizes, button styles, and colours varied across screens — making the platform feel unfinished and untrustworthy.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 10: Key Design Decisions -->
+<section class="cs-section" id="s10">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">10</span>
     <span class="section-label">Key Design Decisions</span>
     <h2 class="section-heading">The calls I made and why.</h2>
     <div class="decisions-grid">
-      <div class="decision-card"><span class="decision-icon">🗂</span><p class="decision-title">Two-panel configuration</p><p class="decision-body">Details and configuration steps in a persistent split view. Dealers never lose context when adding or changing build options.</p></div>
-      <div class="decision-card"><span class="decision-icon">🔍</span><p class="decision-title">Collapsible side filter</p><p class="decision-body">Visible when needed, out of the way when not. Filters by ID, customer, model, date range, and production status.</p></div>
-      <div class="decision-card"><span class="decision-icon">🚦</span><p class="decision-title">Status as clear text</p><p class="decision-body">Production status displayed as readable text labels, not icons or colour alone. No legend required — self-explanatory at a glance.</p></div>
-      <div class="decision-card"><span class="decision-icon">⚓</span><p class="decision-title">Structured sidebar nav</p><p class="decision-body">Tools grouped into logical categories with persistent context. Dealers always know where they are and how to get somewhere else.</p></div>
-      <div class="decision-card"><span class="decision-icon">🎯</span><p class="decision-title">Primary / secondary hierarchy</p><p class="decision-body">Primary actions use filled buttons with strong colour. Destructive actions are subdued — reducing accidental irreversible actions.</p></div>
-      <div class="decision-card"><span class="decision-icon">📐</span><p class="decision-title">Unified component system</p><p class="decision-body">Spacing scale, type hierarchy, button variants, form elements — applied consistently across every screen. Consistency is a feature.</p></div>
+      <div class="decision-card"><span class="decision-icon">🗂</span><p class="decision-title">Two-panel configuration</p><p class="decision-body">Details and configuration steps in a persistent split view. Dealers never lose context.</p></div>
+      <div class="decision-card"><span class="decision-icon">🔍</span><p class="decision-title">Collapsible side filter</p><p class="decision-body">Visible when needed, out of the way when not. Filters by ID, customer, model, date, and status.</p></div>
+      <div class="decision-card"><span class="decision-icon">🚦</span><p class="decision-title">Status as clear text</p><p class="decision-body">Production status displayed as readable text labels, not icons or colour alone. Self-explanatory.</p></div>
+      <div class="decision-card"><span class="decision-icon">⚓</span><p class="decision-title">Structured sidebar nav</p><p class="decision-body">Tools grouped into logical categories. Dealers always know where they are.</p></div>
+      <div class="decision-card"><span class="decision-icon">🎯</span><p class="decision-title">Primary / secondary hierarchy</p><p class="decision-body">Primary actions use filled buttons. Destructive actions are subdued — reducing errors.</p></div>
+      <div class="decision-card"><span class="decision-icon">📐</span><p class="decision-title">Unified component system</p><p class="decision-body">Spacing scale, type hierarchy, button variants — applied consistently. Consistency is a feature.</p></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 08: Testing + Iteration -->
-<section class="cs-section" id="s8">
+<!-- SECTION 11: Testing + Iteration -->
+<section class="cs-section" id="s11">
   <div class="inner" style="position:relative">
-    <span class="sec-num">08</span>
+    <span class="sec-num">11</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What the review sessions revealed.</h2>
     <div class="iterations">
-      <div class="iteration iteration--problem"><span class="iteration-tag">Stakeholder review</span><p class="iteration-title">Status column wasn't scannable</p><p class="iteration-body">Dealers scanning a long orders list couldn't quickly identify which orders needed action. All statuses looked visually equivalent.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added visual weight to action-required statuses</p><p class="iteration-body">Introduced subtle colour coding for statuses requiring dealer action. Text labels retained — colour was additive, not the sole indicator.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Stakeholder review</span><p class="iteration-title">Bulk actions were missing</p><p class="iteration-body">Sales managers needed to update multiple orders at once. The v1 design required updating each order individually.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Designed a bulk selection and action system</p><p class="iteration-body">Added row-level checkboxes and a contextual bulk action bar that appeared when multiple items were selected. Full interaction prototyped in Figma.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Stakeholder review</span><p class="iteration-title">Status column wasn't scannable</p><p class="iteration-body">Dealers scanning a long orders list couldn't quickly identify which orders needed action.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added visual weight to action-required statuses</p><p class="iteration-body">Introduced subtle colour coding. Text labels retained — colour was additive, not the sole indicator.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Stakeholder review</span><p class="iteration-title">Bulk actions were missing</p><p class="iteration-body">Sales managers needed to update multiple orders at once. v1 required individual updates.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Designed a bulk selection and action system</p><p class="iteration-body">Added row-level checkboxes and a contextual bulk action bar that appeared when multiple items were selected.</p></div>
     </div>
     <div class="constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
-        <li>Internship timeline — six months meant scoping realistically. Focused on highest-frequency workflows</li>
-        <li>No direct access to end users — all feedback came through LuminateOne stakeholders</li>
-        <li>Prototype for planning purposes only — not involved in implementation, so edge cases needed to be thorough</li>
-        <li>Existing branding constraints meant the visual design had to work within Automote's established colour palette</li>
+        <li>Internship timeline — six months. Focused on highest-frequency workflows</li>
+        <li>No direct access to end users — feedback came through LuminateOne stakeholders</li>
+        <li>Prototype for planning purposes only — edge cases needed to be thorough</li>
+        <li>Existing branding constraints — design had to work within Automote's established palette</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SECTION 09: Outcomes -->
-<section class="cs-section" id="s9">
+<!-- SECTION 12: Outcomes -->
+<section class="cs-section" id="s12">
   <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+    <span class="sec-num">12</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">How the work was received.</h2>
     <div class="outcomes">
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Key pain points confirmed solved</p><p class="outcome-b">LuminateOne confirmed the redesign addressed navigation and clarity issues previously raised by dealership staff. Approved as the basis for development without further revision rounds.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 14h18M14 5l9 9-9 9"/></svg></div><div><p class="outcome-t">Reduced cognitive load specifically called out</p><p class="outcome-b">The two-panel configure screen and collapsible filter system were specifically noted as solving problems dealers had raised. Status legibility noted as a clear improvement.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="20" height="20" rx="2"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Prototype reduced dev ambiguity</p><p class="outcome-b">Fully interactive prototype with annotated specs, interaction states, and documented decisions. Enabled clearer implementation planning and reduced design-dev back-and-forth.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Key pain points confirmed solved</p><p class="outcome-b">LuminateOne confirmed the redesign addressed navigation and clarity issues. Approved as the basis for development without further revision rounds.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 14h18M14 5l9 9-9 9"/></svg></div><div><p class="outcome-t">Reduced cognitive load specifically called out</p><p class="outcome-b">The two-panel configure screen and collapsible filter system were noted as solving real dealer problems.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="20" height="20" rx="2"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Prototype reduced dev ambiguity</p><p class="outcome-b">Fully interactive prototype with annotated specs and documented decisions enabled clearer implementation planning.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 10: Reflection -->
-<section class="cs-section" id="s10">
+<!-- SECTION 13: Midway Reflection (Internship Learning) -->
+<section class="cs-section" id="s13">
   <div class="inner" style="position:relative">
-    <span class="sec-num">10</span>
-    <span class="section-label">Reflection</span>
+    <span class="sec-num">13</span>
+    <span class="section-label">Midway Reflection</span>
+    <h2 class="section-heading">What the internship taught me about real-world UX.</h2>
+    
+    <div style="background:rgba(232,98,42,0.03);padding:2rem;border-radius:20px;margin-bottom:2rem">
+      <p style="font-size:1.1rem;line-height:1.8;color:var(--dark);margin-bottom:1.5rem">From the process of getting from brief to completed Figma prototype, I learned a lot — particularly about refining my UX skills in a real commercial environment.</p>
+      
+      <p style="font-size:1rem;line-height:1.8;color:var(--dark);margin-bottom:1.5rem"><strong>My first drafts focused too much on making the interface look good without enough consideration for how the user would actually interact with each element.</strong> Using the feedback I got from my mentor, I broke each component down — search, filter, tags — and thought about how the user would interact with these elements before combining them to create the actual pages.</p>
+      
+      <p style="font-size:1rem;line-height:1.8;color:var(--dark);">It was interesting to see how the theory work from all the classes I had taken — creating personas, wireframing, interaction design — actually applied in a real-world setting. The gap between academic exercises and commercial work is real, but the foundation matters. The process works if you actually use it.</p>
+    </div>
+
+    <div class="reflect-wrap">
+      <blockquote>The biggest shift was learning to prioritise interaction over aesthetics. A beautiful interface that's hard to use is still a failure. A functional interface that's clear and efficient — that's what users actually need.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 14: Reflection (Final) -->
+<section class="cs-section" id="s14">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">14</span>
+    <span class="section-label">Final Reflection</span>
     <h2 class="section-heading">Designing for people at work.</h2>
     <div class="reflect-wrap">
       <blockquote>B2B design is unforgiving. Consumer apps get forgiven for being confusing — people close them and move on. A tool you use for <em>eight hours a day</em> is different.</blockquote>
