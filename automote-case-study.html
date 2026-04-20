@@ -44,6 +44,8 @@
     </div>
   </div>
 </div>
+
+<!-- SECTION 01: Overview (unchanged) -->
 <section class="cs-section" id="s1">
   <div class="inner" style="position:relative">
     <span class="sec-num">01</span>
@@ -66,6 +68,8 @@
     </div>
   </div>
 </section>
+
+<!-- SECTION 02: The Problem (unchanged) -->
 <section class="cs-section" id="s2">
   <div class="inner" style="position:relative">
     <span class="sec-num">02</span>
@@ -82,6 +86,8 @@
     </ul>
   </div>
 </section>
+
+<!-- SECTION 03: Core User Flow (unchanged) -->
 <section class="cs-section" id="s3">
   <div class="inner" style="position:relative">
     <span class="sec-num">03</span>
@@ -104,6 +110,8 @@
     <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-style:italic">Previously: no filter system, no inline editing, no confirmation. Every status update required navigating away and back.</p>
   </div>
 </section>
+
+<!-- SECTION 04: Wireframes (unchanged) -->
 <section class="cs-section" id="s4">
   <div class="inner" style="position:relative">
     <span class="sec-num">04</span>
@@ -151,28 +159,99 @@
     </div>
   </div>
 </section>
+
+<!-- NEW SECTION: High-Fidelity Drafts -->
 <section class="cs-section" id="s5">
   <div class="inner" style="position:relative">
     <span class="sec-num">05</span>
-    <span class="section-label">Final Design</span>
-    <h2 class="section-heading">The redesigned platform.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">Two screens solved the most frequent dealer workflows. The orders list with its filter panel, and the two-panel vehicle configuration screen that keeps context always visible.</p>
-    <div class="screen-duo">
-      <div>
-        <div class="screen-full"><img src="orders 1 -1.png" alt="Automote orders screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Orders management screen</div>'"></div>
-        <p class="screen-cap">Order management — filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent row actions, a status system that communicates where each order actually is.</p>
+    <span class="section-label">High-Fidelity Drafts</span>
+    <h2 class="section-heading">Iterating toward the right user flow.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After wireframes were validated, I built high-fidelity drafts of core interactions. These exploratory screens helped me understand exactly how users would move through configuration workflows — and revealed where the experience still needed refinement.</p>
+    
+    <!-- Filter Screen -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Filtering System — High-Fidelity Draft</h3>
+      <div class="screen-full" style="max-width:900px;margin:0 auto 0.75rem">
+        <img src="filter 1 - 9.png" alt="Filter panel high-fidelity draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>Filter panel — high-fidelity draft</div>'">
       </div>
-      <div>
-        <div class="screen-full"><img src="edit trim level.png" alt="Automote configure screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Vehicle configuration screen</div>'"></div>
-        <p class="screen-cap">Vehicle configuration — two-panel layout keeps build details and configuration steps in view simultaneously. No more navigating away mid-task.</p>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:700px;margin:0 auto;text-align:center">The collapsible filter panel in its draft stage. This exploration confirmed the panel needed to stay visible during scrolling and that filter chips should show active selections at a glance.</p>
+    </div>
+
+    <!-- Configuration Steps Flow -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Configuration Workflow — Draft Sequence</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:0.75rem">
+        <div>
+          <div class="screen-full">
+            <img src="config steps.png" alt="Configuration steps overview" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Config steps draft</div>'">
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem;text-align:center">Step progression — showing users where they are in multi-step configuration</p>
+        </div>
+        <div>
+          <div class="screen-full">
+            <img src="adding config 1 -1.png" alt="Adding configuration options" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Adding config draft</div>'">
+          </div>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.5rem;text-align:center">Adding options — inline selection with immediate visual feedback</p>
+        </div>
       </div>
     </div>
-    <p style="font-size:0.78rem;color:var(--muted);margin-top:1.5rem;font-style:italic">Tip: add more screen captures here — dashboard, status detail panel, bulk selection mode, and mobile views will strengthen this section considerably.</p>
+
+    <!-- Editing Configuration -->
+    <div>
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Editing Flow — High-Fidelity Draft</h3>
+      <div class="screen-full" style="max-width:900px;margin:0 auto 0.75rem">
+        <img src="editing config 1 - 1.png" alt="Editing configuration draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:300px\'>Editing config draft</div>'">
+      </div>
+      <p style="font-size:0.85rem;color:var(--muted);max-width:700px;margin:0 auto;text-align:center">The editing interface draft. This screen revealed that users needed persistent visibility of the original build while making changes — leading to the two-panel layout in the final design.</p>
+    </div>
+
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06);font-style:italic">These drafts were essential for pressure-testing the user flow. Building them in high fidelity early exposed edge cases that wireframes had hidden — particularly around state persistence and undo actions.</p>
   </div>
 </section>
+
+<!-- SECTION 06: Final Delivered Design -->
 <section class="cs-section" id="s6">
   <div class="inner" style="position:relative">
     <span class="sec-num">06</span>
+    <span class="section-label">Final Delivered Design</span>
+    <h2 class="section-heading">The redesigned platform.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After iterating through high-fidelity drafts, the final version incorporated everything I'd learned. Cleaner visual hierarchy, clearer status communication, and workflows that respected how dealers actually work.</p>
+    
+    <!-- Final Screens Grid -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:1.5rem">
+      <!-- Orders List -->
+      <div>
+        <div class="screen-full">
+          <img src="orders 1 -1 (1).png" alt="Final orders list screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Orders management — final</div>'">
+        </div>
+        <p class="screen-cap"><strong>Orders management — final delivered version.</strong> Filterable by ID, customer, model, date, and production status. Clear hierarchy, consistent row actions, scannable status indicators.</p>
+      </div>
+      
+      <!-- Edit Orders -->
+      <div>
+        <div class="screen-full">
+          <img src="edit orders.png" alt="Final edit orders screen" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Edit orders — final</div>'">
+        </div>
+        <p class="screen-cap"><strong>Order detail and editing — final delivered version.</strong> Inline status updates with confirmation states. No more navigating away to make a simple change.</p>
+      </div>
+    </div>
+
+    <!-- Full-width Inventory Screen -->
+    <div style="margin-top:2rem">
+      <div class="screen-full" style="max-width:1000px;margin-left:auto;margin-right:auto">
+        <img src="inventory 1 -1.png" alt="Final inventory dashboard" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:350px\'>Inventory dashboard — final</div>'">
+      </div>
+      <p class="screen-cap" style="max-width:700px;margin-left:auto;margin-right:auto"><strong>Inventory dashboard — final delivered version.</strong> High-level overview of stock, incoming orders, and vehicles in production. The filter panel from earlier drafts evolved into a persistent sidebar that maintains context across views.</p>
+    </div>
+
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">The final prototype included fully interactive components, hover states, loading indicators, and confirmation dialogs — everything the development team needed to build with confidence.</p>
+  </div>
+</section>
+
+<!-- SECTION 07: Key Design Decisions -->
+<section class="cs-section" id="s7">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">07</span>
     <span class="section-label">Key Design Decisions</span>
     <h2 class="section-heading">The calls I made and why.</h2>
     <div class="decisions-grid">
@@ -185,9 +264,11 @@
     </div>
   </div>
 </section>
-<section class="cs-section" id="s7">
+
+<!-- SECTION 08: Testing + Iteration -->
+<section class="cs-section" id="s8">
   <div class="inner" style="position:relative">
-    <span class="sec-num">07</span>
+    <span class="sec-num">08</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What the review sessions revealed.</h2>
     <div class="iterations">
@@ -207,9 +288,11 @@
     </div>
   </div>
 </section>
-<section class="cs-section" id="s8">
+
+<!-- SECTION 09: Outcomes -->
+<section class="cs-section" id="s9">
   <div class="inner" style="position:relative">
-    <span class="sec-num">08</span>
+    <span class="sec-num">09</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">How the work was received.</h2>
     <div class="outcomes">
@@ -219,9 +302,11 @@
     </div>
   </div>
 </section>
-<section class="cs-section" id="s9">
+
+<!-- SECTION 10: Reflection -->
+<section class="cs-section" id="s10">
   <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+    <span class="sec-num">10</span>
     <span class="section-label">Reflection</span>
     <h2 class="section-heading">Designing for people at work.</h2>
     <div class="reflect-wrap">
@@ -234,6 +319,7 @@
     </div>
   </div>
 </section>
+
 <div style="border-top:1px solid rgba(0,0,0,0.06)">
   <div class="cs-end"><div><p class="end-label">Next project</p><a href="splashy-case-study.html" class="end-link">Splashy →</a></div><a href="index.html#contact" class="end-cta">Get in touch</a></div>
 </div>
