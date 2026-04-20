@@ -7,6 +7,219 @@
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
+<style>
+/* ---- ONE-PERSON BADGE ---- */
+.solo-banner {
+  background: linear-gradient(135deg, rgba(232,98,42,0.1), rgba(240,164,74,0.08));
+  border: 1px solid rgba(232,98,42,0.25);
+  border-radius: 20px;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.solo-icon {
+  width: 44px; height: 44px;
+  background: rgba(232,98,42,0.12);
+  border: 1px solid rgba(232,98,42,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 1.1rem;
+}
+.solo-text strong {
+  display: block;
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--accent); margin-bottom: 0.2rem;
+  letter-spacing: 0.02em;
+}
+.solo-text p {
+  font-size: 0.8rem; color: rgba(0,0,0,0.52); line-height: 1.55; margin: 0;
+}
+
+/* ---- PERSONA CARDS ---- */
+.persona-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem; margin-top: 1.5rem;
+}
+.persona-card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 20px; padding: 1.6rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.persona-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+.persona-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1rem;
+}
+.persona-card:nth-child(1) .persona-avatar { background: rgba(80,120,200,0.12); }
+.persona-card:nth-child(2) .persona-avatar { background: rgba(232,98,42,0.1); }
+.persona-card:nth-child(3) .persona-avatar { background: rgba(92,186,120,0.12); }
+.persona-role {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
+}
+.persona-name { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
+.persona-goal {
+  font-size: 0.78rem; line-height: 1.6; color: rgba(0,0,0,0.55);
+  padding: 0.6rem 0.8rem;
+  background: rgba(232,98,42,0.05);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 0.8rem;
+}
+.persona-pain {
+  font-size: 0.75rem; line-height: 1.6; color: rgba(0,0,0,0.45);
+}
+.persona-pain strong { color: var(--dark); font-weight: 700; }
+
+/* ---- FLOW DIAGRAM ---- */
+.flow-diagram {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+}
+.flow-diagram-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  align-items: start;
+  min-width: 640px;
+}
+.flow-col {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  position: relative;
+}
+.flow-col:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -0.6rem; top: 1.1rem;
+  font-size: 1rem; color: rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.flow-node {
+  background: white; border-radius: 14px;
+  padding: 0.7rem 0.8rem;
+  text-align: center; width: 100%;
+  font-size: 0.72rem; font-weight: 600; color: var(--dark);
+  border: 1px solid rgba(0,0,0,0.08);
+  line-height: 1.35;
+}
+.flow-node.accent { background: var(--accent); color: white; border-color: var(--accent); }
+.flow-node.soft { background: rgba(240,164,74,0.12); border-color: rgba(240,164,74,0.3); color: var(--dark); }
+.flow-branch { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; }
+.flow-branch-node {
+  background: rgba(255,255,255,0.8); border-radius: 10px;
+  padding: 0.5rem 0.7rem; font-size: 0.66rem; font-weight: 600;
+  color: rgba(0,0,0,0.6); border: 1px solid rgba(0,0,0,0.07);
+  text-align: center; line-height: 1.3;
+}
+.flow-branch-node.a { background: rgba(80,120,200,0.08); border-color: rgba(80,120,200,0.2); color: rgba(40,60,120,0.8); }
+.flow-branch-node.b { background: rgba(232,98,42,0.07); border-color: rgba(232,98,42,0.2); color: rgba(140,50,10,0.75); }
+.flow-branch-node.c { background: rgba(92,186,120,0.08); border-color: rgba(92,186,120,0.2); color: rgba(30,100,50,0.75); }
+.flow-label {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(0,0,0,0.3); text-align: center;
+}
+.flow-note-inline {
+  font-size: 0.75rem; color: var(--muted); font-style: italic;
+  margin-top: 1.2rem; text-align: center;
+}
+
+/* ---- SKETCH / WIREFRAME SECTION ---- */
+.sketch-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem;
+}
+.sketch-card {
+  background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.85); border-radius: 20px;
+  overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+}
+.sketch-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.sketch-canvas {
+  background: #fdfaf5; padding: 1.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  min-height: 160px; display: flex; flex-direction: column; gap: 0.5rem;
+  position: relative;
+}
+/* pencil-sketch-look elements */
+.sk-rect {
+  border: 1.5px solid rgba(0,0,0,0.18); border-radius: 4px;
+  background: transparent;
+}
+.sk-line { height: 2px; background: rgba(0,0,0,0.12); border-radius: 2px; }
+.sk-line.s { width: 40%; } .sk-line.m { width: 65%; } .sk-line.f { width: 100%; }
+.sk-label-sm { font-size: 0.48rem; color: rgba(0,0,0,0.3); font-family: monospace; }
+.sk-box-label {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-size: 0.5rem; color: rgba(0,0,0,0.2); text-align: center;
+  font-family: monospace; letter-spacing: 0.05em;
+  border: 1px dashed rgba(0,0,0,0.15); padding: 0.3rem 0.5rem; border-radius: 4px;
+}
+.sketch-info { padding: 0.9rem 1rem; }
+.sketch-iteration {
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
+}
+.sketch-desc { font-size: 0.78rem; color: rgba(0,0,0,0.55); line-height: 1.55; }
+.sketch-outcome {
+  font-size: 0.7rem; color: var(--muted); margin-top: 0.4rem; font-style: italic;
+}
+
+/* ---- RESEARCH CALLOUTS ---- */
+.research-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem;
+  margin-top: 1.5rem;
+}
+.research-method {
+  background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.85); border-radius: 20px;
+  padding: 1.6rem;
+}
+.research-icon { font-size: 1.3rem; margin-bottom: 0.7rem; }
+.research-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+.research-body { font-size: 0.84rem; line-height: 1.72; color: var(--muted); }
+.research-findings { margin-top: 0.75rem; list-style: none; }
+.research-findings li {
+  font-size: 0.78rem; color: rgba(0,0,0,0.55); padding: 0.25rem 0;
+  display: flex; gap: 0.5rem;
+}
+.research-findings li::before { content: '↳'; color: var(--accent); font-weight: 700; }
+
+/* ---- SQL IMPACT BADGE ---- */
+.sql-impact {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;
+}
+.impact-badge {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 100px; font-size: 0.72rem; font-weight: 700;
+}
+.impact-badge.green {
+  background: rgba(92,186,120,0.12); border: 1px solid rgba(92,186,120,0.3); color: #2a7a42;
+}
+.impact-badge.orange {
+  background: rgba(232,98,42,0.1); border: 1px solid rgba(232,98,42,0.25); color: var(--accent);
+}
+.impact-badge.blue {
+  background: rgba(80,120,200,0.1); border: 1px solid rgba(80,120,200,0.25); color: #3a5fcc;
+}
+.impact-badge::before { content: '●'; font-size: 0.5rem; }
+
+@media (max-width: 768px) {
+  .persona-grid, .sketch-grid { grid-template-columns: 1fr; }
+  .research-grid { grid-template-columns: 1fr; }
+  .flow-diagram-inner { grid-template-columns: 1fr; min-width: unset; }
+  .flow-col::after { display: none; }
+}
+</style>
 </head>
 <body>
 <div id="reading-progress"></div>
@@ -25,10 +238,11 @@
   <a href="index.html#about">About</a><a href="index.html#work">Work</a>
   <a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a>
 </div>
+
 <div class="cs-hero hunza">
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-top">
-    <span class="cs-eyebrow">Case Study — UX/UI · Web Development · SQL</span>
+    <span class="cs-eyebrow">Case Study — UX/UI · Web Development · SQL · Print · Social</span>
     <span class="cs-year">2023–2024 · Hunza Outdoor Lighting</span>
   </div>
   <div class="cs-hero-content">
@@ -37,7 +251,7 @@
       <span class="cs-title-line">LuxR.</span>
     </h1>
     <div class="cs-hero-meta">
-      <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX/UI, Development, Illustration</p></div>
+      <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">Sole designer, developer + marketer</p></div>
       <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">WordPress · HTML/CSS/JS/PHP</p></div>
       <div><p class="cs-meta-label">Scope</p><p class="cs-meta-value">Brand Merge · Full Redesign · SQL Fix</p></div>
       <div><p class="cs-meta-label">Users</p><p class="cs-meta-value">Architects · Homeowners · Trade</p></div>
@@ -45,17 +259,26 @@
   </div>
 </div>
 
-<!-- SECTION 01: Overview -->
+<!-- 01 OVERVIEW -->
 <section class="cs-section" id="s1">
   <div class="inner" style="position:relative">
     <span class="sec-num">01</span>
     <span class="section-label">Overview</span>
-    <h2 class="section-heading">Two brands, one site, a lot of problems to fix.</h2>
+    <h2 class="section-heading">Two brands, one site, one person to fix everything.</h2>
+
+    <div class="solo-banner">
+      <div class="solo-icon">🙋</div>
+      <div class="solo-text">
+        <strong>I was the entire marketing and digital team.</strong>
+        <p>No agency. No design lead. No developer to hand off to. Every decision, every line of code, every illustration, every spec sheet, every social post — researched, designed, built, and shipped by me. This was not a collaborative project with a team. It was a one-person overhaul of a live premium brand's entire digital and print presence.</p>
+      </div>
+    </div>
+
     <div class="two-col">
       <div class="body-text">
         <p>Hunza Lighting and LuxR are two distinct premium outdoor lighting brands that needed to be merged onto a single website without losing the identity of either. I was brought on as Marketing Coordinator and ended up leading the full digital overhaul — from UX strategy through to building and maintaining the site in WordPress with custom HTML, CSS, JS, and PHP.</p>
         <p>This wasn't a greenfield project. The existing Hunza site had real structural problems, a broken product database, and three different user audiences all being served the same generic experience. <strong>Everything had to work properly, not just look good.</strong></p>
-        <p>Mid-project I also uncovered and fixed a database-level pricing bug via SQL — products showing incorrect prices on a site where individual fixtures cost thousands of dollars is not a minor issue.</p>
+        <p>Mid-project I also uncovered and fixed a database-level pricing bug via SQL — products showing incorrect prices on a site where individual fixtures cost thousands of dollars is not a minor issue. I found it, diagnosed it, and fixed it myself.</p>
       </div>
       <div>
         <div class="stat-row">
@@ -69,56 +292,239 @@
   </div>
 </section>
 
-<!-- SECTION 02: The Problem -->
+<!-- 02 DISCOVERY + RESEARCH -->
 <section class="cs-section" id="s2">
   <div class="inner" style="position:relative">
     <span class="sec-num">02</span>
+    <span class="section-label">Discovery + Research</span>
+    <h2 class="section-heading">Before designing anything, I had to understand everyone.</h2>
+    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">I started with a site audit and direct conversations with the sales team and distributors — the people closest to the customers. Three distinct user types emerged, each with fundamentally different goals and mental models for what a lighting brand's website should do.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-avatar">📐</div>
+        <p class="persona-role">Persona 01</p>
+        <p class="persona-name">The Architect</p>
+        <p class="persona-goal">"I need technical data fast. Give me IP ratings, beam angles, IES files, and installation specs — then get out of my way."</p>
+        <p class="persona-pain"><strong>Blocked by:</strong> Specs buried in generic product tabs. No CAD downloads on product pages. Can't compare multiple fixtures quickly.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-avatar">🏡</div>
+        <p class="persona-role">Persona 02</p>
+        <p class="persona-name">The Homeowner</p>
+        <p class="persona-goal">"I want to see what this looks like installed. Help me imagine it in my garden and tell me how to find a local installer."</p>
+        <p class="persona-pain"><strong>Blocked by:</strong> No inspirational photography. No project gallery. Distributor finder buried or non-existent.</p>
+      </div>
+      <div class="persona-card">
+        <div class="persona-avatar">📦</div>
+        <p class="persona-role">Persona 03</p>
+        <p class="persona-name">The Distributor</p>
+        <p class="persona-goal">"I'm ordering in bulk. I need trade login access, current pricing, and spec sheets I can send to my customers immediately."</p>
+        <p class="persona-pain"><strong>Blocked by:</strong> No trade portal. Generic contact form instead of a dedicated trade enquiry path. Resources page impossible to scan.</p>
+      </div>
+    </div>
+
+    <div class="research-grid" style="margin-top:2rem">
+      <div class="research-method">
+        <div class="research-icon">🗣</div>
+        <p class="research-title">Stakeholder interviews</p>
+        <p class="research-body">Spoke directly with the Hunza sales team and key distributors to understand what customers were asking for and where they were falling off.</p>
+        <ul class="research-findings">
+          <li>Architects leaving before finding spec data</li>
+          <li>Distributors emailing for documents that should be self-serve</li>
+          <li>LuxR generating brand confusion post-acquisition</li>
+        </ul>
+      </div>
+      <div class="research-method">
+        <div class="research-icon">🔍</div>
+        <p class="research-title">Site audit</p>
+        <p class="research-body">Audited every page of the existing site for information architecture, broken functionality, and UX failures before writing a single design brief.</p>
+        <ul class="research-findings">
+          <li>Database pricing errors across a subset of products</li>
+          <li>Navigation hierarchy serving no audience clearly</li>
+          <li>No mobile-optimised product pages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE PROBLEM -->
+<section class="cs-section" id="s3">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">03</span>
     <span class="section-label">The Problem</span>
     <h2 class="section-heading">A premium brand let down by its own website.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">Before touching design, I audited the existing site. Visual issues were obvious. But digging deeper revealed structural problems no amount of good design could paper over. <strong style="color:var(--dark)">The site was actively losing enquiries.</strong></p>
+    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">The audit surfaced problems at every level — visual, structural, and technical. The site was <strong style="color:var(--dark)">actively losing enquiries</strong> and no one had the bandwidth to see it until I joined and looked properly.</p>
     <div class="problem-grid">
       <div class="prob"><div class="prob-n">01</div><p class="prob-t">No audience distinction</p><p class="prob-b">Architects, homeowners, and trade distributors all landed on the same page. No differentiated path forward for anyone.</p></div>
       <div class="prob"><div class="prob-n">02</div><p class="prob-t">Visual design undercut the brand</p><p class="prob-b">Hunza products are precision-engineered and expensive. The website looked cheap. Every page was actively damaging trust.</p></div>
-      <div class="prob"><div class="prob-n">03</div><p class="prob-t">Broken product database</p><p class="prob-b">SKU conflicts were causing products to display incorrect pricing — a serious problem where individual fixtures cost thousands of dollars.</p></div>
+      <div class="prob"><div class="prob-n">03</div><p class="prob-t">Broken product database</p><p class="prob-b">SKU conflicts caused products to display incorrect pricing — a serious problem where individual fixtures cost thousands of dollars.</p></div>
       <div class="prob"><div class="prob-n">04</div><p class="prob-t">Two brands, no unified home</p><p class="prob-b">LuxR existed as a separate site with minimal presence. Neither brand was benefiting from the relationship.</p></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 03: User Flow -->
-<section class="cs-section" id="s3">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">03</span>
-    <span class="section-label">User Flow</span>
-    <h2 class="section-heading">From landing to enquiry in 3 clicks.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:55ch;line-height:1.75">The original site had one path for everyone. The redesign introduced audience-based entry points — users self-select their context and are routed to relevant content immediately.</p>
-    <div class="user-flow" style="margin-top:1.5rem">
-      <div class="flow-step"><div class="flow-box">Homepage</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Select audience</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">Browse by application</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">View specs + docs</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Enquire or find distributor</div></div>
-    </div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-style:italic">Previously: 6 clicks to enquiry. Redesigned to 3.</p>
-  </div>
-</section>
-
-<!-- SECTION 04: Before + After — Product Page -->
+<!-- 04 USER FLOW DIAGRAM -->
 <section class="cs-section" id="s4">
   <div class="inner" style="position:relative">
     <span class="sec-num">04</span>
+    <span class="section-label">User Flow</span>
+    <h2 class="section-heading">One site, three different journeys.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">The redesign introduced audience-based entry points at the homepage level. Users self-select their context immediately and are routed to content built specifically for them — no more one-size-fits-all navigation.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-diagram-inner">
+        <div class="flow-col">
+          <div class="flow-node accent">Homepage</div>
+          <div class="flow-label">Entry</div>
+        </div>
+        <div class="flow-col">
+          <div class="flow-node soft">Audience select</div>
+          <div class="flow-label">Split point</div>
+        </div>
+        <div class="flow-col">
+          <div class="flow-branch">
+            <div class="flow-branch-node a">Architect section</div>
+            <div class="flow-branch-node b">Homeowner section</div>
+            <div class="flow-branch-node c">Trade / Distributor</div>
+          </div>
+          <div class="flow-label">Tailored paths</div>
+        </div>
+        <div class="flow-col">
+          <div class="flow-branch">
+            <div class="flow-branch-node a">Specs + CAD files</div>
+            <div class="flow-branch-node b">Gallery + find installer</div>
+            <div class="flow-branch-node c">Trade portal + pricing</div>
+          </div>
+          <div class="flow-label">Audience-specific content</div>
+        </div>
+        <div class="flow-col">
+          <div class="flow-node accent">Enquiry</div>
+          <div class="flow-label">Conversion</div>
+        </div>
+      </div>
+      <p class="flow-note-inline">Previously: 6 clicks to enquiry with no audience differentiation. Redesigned to 3 clicks via a tailored path.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 WIREFRAMES / ITERATION -->
+<section class="cs-section" id="s5">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">05</span>
+    <span class="section-label">Wireframes + Iteration</span>
+    <h2 class="section-heading">Structuring before styling. Getting layout right first.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">I wireframed all key page templates before writing a line of code. The goal was to pressure-test the information hierarchy for each user type before investing time in visual design — a constraint that saved significant rework later.</p>
+
+    <div class="sketch-grid">
+      <!-- Product page wireframe -->
+      <div class="sketch-card">
+        <div class="sketch-canvas">
+          <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:0.5rem;height:100%">
+            <div style="display:flex;flex-direction:column;gap:0.4rem">
+              <div class="sk-rect" style="height:70px;display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Product hero img</span></div>
+              <div class="sk-line f"></div>
+              <div class="sk-line m"></div>
+              <div style="display:flex;gap:0.3rem">
+                <div class="sk-rect" style="height:14px;width:50%;"></div>
+                <div class="sk-rect" style="height:14px;width:40%;"></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.4rem">
+              <div class="sk-line s"></div>
+              <div class="sk-line f"></div>
+              <div class="sk-line m"></div>
+              <div class="sk-rect" style="height:22px;display:flex;align-items:center;padding:0 0.3rem"><span class="sk-label-sm">IP / wattage / beam</span></div>
+              <div class="sk-rect" style="height:18px;background:rgba(232,98,42,0.12);border:1px solid rgba(232,98,42,0.3)"></div>
+              <div class="sk-line f"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sketch-info">
+          <p class="sketch-iteration">Product page — v1</p>
+          <p class="sketch-desc">Two-column layout surfacing specs prominently for architects. Hero image left, key data + CTA right — no tabs hiding critical information.</p>
+          <p class="sketch-outcome">Outcome: specs visible without a single click.</p>
+        </div>
+      </div>
+
+      <!-- Navigation wireframe -->
+      <div class="sketch-card">
+        <div class="sketch-canvas">
+          <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
+            <div style="display:flex;gap:0.5rem;align-items:center">
+              <div class="sk-rect" style="width:50px;height:14px;"></div>
+              <div style="flex:1"></div>
+              <div style="display:flex;gap:0.3rem">
+                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
+                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
+                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-top:0.3rem">
+              <div class="sk-rect" style="height:40px;background:rgba(80,120,200,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Architects</span></div>
+              <div class="sk-rect" style="height:40px;background:rgba(232,98,42,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Homeowners</span></div>
+              <div class="sk-rect" style="height:40px;background:rgba(92,186,120,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Trade</span></div>
+            </div>
+            <div class="sk-line f"></div>
+            <div class="sk-line m"></div>
+            <div class="sk-line f"></div>
+          </div>
+        </div>
+        <div class="sketch-info">
+          <p class="sketch-iteration">Homepage — audience split v2</p>
+          <p class="sketch-desc">Audience selector introduced above the fold. Three clear pathways — colour-coded for quick orientation. Tested against the three personas before finalising.</p>
+          <p class="sketch-outcome">Outcome: users self-routing within seconds of landing.</p>
+        </div>
+      </div>
+
+      <!-- Resources wireframe -->
+      <div class="sketch-card">
+        <div class="sketch-canvas">
+          <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
+            <div style="display:flex;gap:0.4rem">
+              <div class="sk-rect" style="flex:1;height:18px;display:flex;align-items:center;padding:0 0.3rem"><span class="sk-label-sm">🔍 Search resources</span></div>
+            </div>
+            <div style="display:flex;gap:0.3rem">
+              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px;background:rgba(232,98,42,0.12);border-color:rgba(232,98,42,0.3)"><span class="sk-label-sm">Spec sheets</span></div>
+              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px"><span class="sk-label-sm">Guides</span></div>
+              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px"><span class="sk-label-sm">CAD</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.3rem">
+              <div style="display:flex;gap:0.4rem;align-items:center">
+                <div class="sk-rect" style="width:20px;height:20px;flex-shrink:0;background:rgba(232,98,42,0.08)"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:0.2rem"><div class="sk-line f" style="height:5px"></div><div class="sk-line m" style="height:4px"></div></div>
+                <div class="sk-rect" style="width:30px;height:16px;"></div>
+              </div>
+              <div style="display:flex;gap:0.4rem;align-items:center">
+                <div class="sk-rect" style="width:20px;height:20px;flex-shrink:0;background:rgba(80,120,200,0.08)"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:0.2rem"><div class="sk-line f" style="height:5px"></div><div class="sk-line m" style="height:4px"></div></div>
+                <div class="sk-rect" style="width:30px;height:16px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sketch-info">
+          <p class="sketch-iteration">Resources hub — v3 (final)</p>
+          <p class="sketch-desc">Filter-by-type tabs, search bar, and row-based file list with download button always visible. Iterated twice after distributor feedback on earlier versions.</p>
+          <p class="sketch-outcome">Outcome: distributors finding files in seconds, not minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 BEFORE + AFTER: PRODUCT PAGE -->
+<section class="cs-section" id="s6">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">06</span>
     <span class="section-label">Before + After</span>
     <h2 class="section-heading">Product page — from cluttered to clear.</h2>
     <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The product page is where purchase decisions happen. The original version buried critical specification data, had no clear visual hierarchy, and failed to communicate the premium nature of the product.</p>
-    
     <div class="ba-grid">
       <div class="ba-panel">
         <div class="ba-header"><span>Original Product Page</span><span class="ba-tag before">Before</span></div>
-        <img src="productpagebefore.png" alt="Original Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original product page — cluttered layout with poor information hierarchy</div>'">
+        <img src="productpagebefore.png" alt="Original Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original product page — cluttered layout, poor hierarchy</div>'">
         <p class="ba-caption"><strong>Problems:</strong> Specifications buried in tabs, no visual breathing room, technical drawings hard to locate, enquiry CTA lost in the noise.</p>
       </div>
       <div class="ba-panel">
@@ -127,70 +533,72 @@
         <p class="ba-caption"><strong>Solutions:</strong> Specs surfaced prominently, technical drawings accessible immediately, clear visual hierarchy, enquiry CTA distinct and always visible.</p>
       </div>
     </div>
-    
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">The redesigned product page treats specifications as primary content, not secondary. For architects and specifiers, the data is the product — hiding it behind tabs was a fundamental misunderstanding of the user.</p>
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">For architects and specifiers, the data is the product — hiding it behind tabs was a fundamental misunderstanding of the user. The redesign treats specifications as primary content.</p>
   </div>
 </section>
 
-<!-- SECTION 05: Before + After — Resources & Downloads -->
-<section class="cs-section" id="s5">
+<!-- 07 BEFORE + AFTER: DOWNLOADS -->
+<section class="cs-section" id="s7">
   <div class="inner" style="position:relative">
-    <span class="sec-num">05</span>
+    <span class="sec-num">07</span>
     <span class="section-label">Before + After</span>
     <h2 class="section-heading">Downloads — making technical resources findable.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Architects and trade distributors need spec sheets, installation guides, and IES files. The original downloads section was a wall of links with no organisation.</p>
-    
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Architects and trade distributors need spec sheets, installation guides, and IES files. The original downloads section was a wall of inconsistently named links with no organisation.</p>
     <div class="ba-grid">
       <div class="ba-panel">
         <div class="ba-header"><span>Original Downloads</span><span class="ba-tag before">Before</span></div>
-        <img src="downloadsafter.png" alt="Original downloads page showing cluttered layout" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads page — wall of links</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> No categorisation, files named inconsistently, no preview of what each download contained, impossible to scan.</p>
+        <img src="downloadsbefore.png" alt="Original downloads page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads — wall of unsorted links, impossible to scan</div>'">
+        <p class="ba-caption"><strong>Problems:</strong> No categorisation, files named inconsistently, no preview of what each download contained.</p>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned Resources</span><span class="ba-tag after">After</span></div>
-        <img src="downloadsafter.png" alt="Redesigned resources hub with clear categories" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources — categorised and scannable</div>'">
+        <img src="downloadsafter.png" alt="Redesigned resources hub" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources hub — categorised, filtered, scannable</div>'">
         <p class="ba-caption"><strong>Solutions:</strong> Grouped by document type, clear file labelling, visual icons for quick scanning, separate sections for spec sheets vs installation guides.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 06: Before + After — Distributors Page -->
-<section class="cs-section" id="s6">
+<!-- 08 BEFORE + AFTER: DISTRIBUTORS -->
+<section class="cs-section" id="s8">
   <div class="inner" style="position:relative">
-    <span class="sec-num">06</span>
+    <span class="sec-num">08</span>
     <span class="section-label">Before + After</span>
     <h2 class="section-heading">Distributors — a page that actually works for trade.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The distributors page is critical for trade users — it's where they find stockists, access trade pricing, and get technical support. The original version was a single paragraph and a generic contact form.</p>
-    
-    <div style="margin-bottom:2rem">
-      <div class="ba-panel" style="max-width:100%;margin-bottom:1rem">
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The distributors page is critical for trade users. The original version was a single paragraph and a generic contact form — a page that told trade buyers the brand didn't take them seriously.</p>
+    <div class="ba-grid">
+      <div class="ba-panel">
         <div class="ba-header"><span>Original Distributors Page</span><span class="ba-tag before">Before</span></div>
-        <p style="padding:1rem;background:rgba(0,0,0,0.02);border-radius:0 0 12px 12px;font-size:0.9rem;color:var(--muted)">A single paragraph of text and a generic contact form. No stockist locator, no trade-specific information, no differentiation from the standard contact page.</p>
+        <div style="padding:1.5rem;background:rgba(0,0,0,0.02);min-height:180px;display:flex;align-items:center;justify-content:center">
+          <p style="font-size:0.85rem;color:rgba(0,0,0,0.4);text-align:center;max-width:28ch;line-height:1.6;font-style:italic">"A single paragraph of text and a generic contact form. No stockist locator, no trade pricing, no differentiation from the standard enquiry page."</p>
+        </div>
+        <p class="ba-caption"><strong>Problems:</strong> No stockist locator, no trade-specific information, no resources portal, indistinguishable from the consumer contact page.</p>
+      </div>
+      <div class="ba-panel">
+        <div class="ba-header"><span>Redesigned Distributors Hub</span><span class="ba-tag after">After</span></div>
+        <img src="distributorsafter.png" alt="Redesigned distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:180px\'>Redesigned distributors hub — stockist locator, trade portal, resources</div>'">
+        <p class="ba-caption"><strong>Solutions:</strong> Stockist locator with region filtering, dedicated trade login portal, technical resources surfaced prominently, clear trade-specific language and pathways.</p>
       </div>
     </div>
-    
-    <div class="ba-panel" style="max-width:100%">
-      <div class="ba-header"><span>Redesigned Distributors Hub</span><span class="ba-tag after">After</span></div>
-      <img src="distributorsafter.png" alt="Redesigned distributors page with stockist locator and trade resources" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:300px\'>Redesigned distributors hub — comprehensive trade portal</div>'">
-      <p class="ba-caption" style="padding:1rem 0 0"><strong>Solutions:</strong> Stockist locator with region filtering, dedicated trade login portal, technical resources surfaced prominently, clear differentiation from consumer pages.</p>
-    </div>
-    
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">Trade users now have a destination built for them — not an afterthought. The stockist locator alone saves distributors hours of manual enquiries every week.</p>
   </div>
 </section>
 
-<!-- SECTION 07: Technical Challenge -->
-<section class="cs-section" id="s7">
+<!-- 09 TECHNICAL CHALLENGE -->
+<section class="cs-section" id="s9">
   <div class="inner" style="position:relative">
-    <span class="sec-num">07</span>
+    <span class="sec-num">09</span>
     <span class="section-label">Technical Challenge</span>
-    <h2 class="section-heading">The problem design alone couldn't fix.</h2>
+    <h2 class="section-heading">The problem design alone couldn't fix — and that I found and fixed alone.</h2>
     <div class="sql-highlight">
       <div class="sql-text">
         <p>Midway through the project I discovered a significant number of products displaying incorrect prices. For a brand where individual fixtures can cost several thousand dollars, this wasn't a minor bug — it was a <strong>trust and revenue issue.</strong></p>
-        <p>After investigating via phpMyAdmin, I identified duplicate and conflicting SKU entries causing the pricing logic to pull from wrong records. I wrote a targeted SQL query to identify all affected SKUs, corrected the database entries, and added validation to prevent the conflict recurring.</p>
-        <p><strong>Result:</strong> Pricing corrected across all affected products. No further pricing discrepancies reported in the months following.</p>
+        <p>No one else had noticed. I found it during a routine product audit, investigated the database via phpMyAdmin, identified duplicate and conflicting SKU entries causing the pricing logic to pull from wrong records, and wrote a targeted SQL query to identify and correct all affected SKUs.</p>
+        <p>I then added validation logic to prevent the conflict recurring — so the fix wasn't just a patch, it was a safeguard.</p>
+        <div class="sql-impact">
+          <div class="impact-badge green">Pricing corrected site-wide</div>
+          <div class="impact-badge orange">Zero recurrence post-fix</div>
+          <div class="impact-badge blue">Found and fixed solo — no dev support</div>
+        </div>
       </div>
       <div class="sql-block">
         <div class="sql-block-header">
@@ -218,90 +626,103 @@
   </div>
 </section>
 
-<!-- SECTION 08: My Role -->
-<section class="cs-section" id="s8">
+<!-- 10 MY ROLE -->
+<section class="cs-section" id="s10">
   <div class="inner" style="position:relative">
-    <span class="sec-num">08</span>
+    <span class="sec-num">10</span>
     <span class="section-label">My Role</span>
-    <h2 class="section-heading">What I actually owned.</h2>
+    <h2 class="section-heading">Everything. I did everything.</h2>
+
+    <div class="solo-banner" style="margin-bottom:1.5rem">
+      <div class="solo-icon">⚡</div>
+      <div class="solo-text">
+        <strong>There was no team. There was no agency. There was just me.</strong>
+        <p>At most companies, this project would involve a UX researcher, a UI designer, a front-end developer, a back-end developer, a marketing coordinator, a print designer, and a social media manager. At Hunza, that was one job title and one person. Every skill listed below was applied by me, to a live brand, under real business pressure.</p>
+      </div>
+    </div>
+
     <div class="role-bento">
       <div class="role-list-card">
         <ul class="role-list">
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Led the full UX/UI redesign — from audit through to a live, maintained production site</li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP</li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Identified and fixed a database-level pricing bug using SQL via phpMyAdmin</li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Redesigned all print collateral — spec sheets, installation guides, catalogues — in InDesign</li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Created all social graphics hand-drawn in Illustrator, managed content end-to-end</li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span>Collaborated with distributors and sales reps to validate design decisions</li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Led the full UX/UI redesign — site audit, user research, information architecture, wireframes, visual design, and prototype</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP — no developer handoff</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Independently identified and fixed a database-level pricing bug using SQL — found, diagnosed, and resolved without external help</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Redesigned all print collateral — spec sheets, installation guides, product catalogues — solo in InDesign</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Produced all social content hand-drawn in Illustrator, managed content calendar and publishing end-to-end</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Conducted stakeholder interviews with distributors and sales reps to validate every major design decision</span></li>
         </ul>
       </div>
       <div class="tools-card">
         <div class="aside-box"><p class="aside-title">Tools + Technologies</p><div class="tags"><span class="tag">WordPress</span><span class="tag">HTML/CSS/JS</span><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">WooCommerce</span><span class="tag">InDesign</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span></div></div>
+        <div class="aside-box"><p class="aside-title">Disciplines</p><div class="tags"><span class="tag">UX Research</span><span class="tag">UI Design</span><span class="tag">Front-end Dev</span><span class="tag">Database Management</span><span class="tag">Print Design</span><span class="tag">Social Media</span><span class="tag">Brand Strategy</span></div></div>
         <div class="aside-box"><p class="aside-title">Audiences Served</p><div class="tags"><span class="tag">Architects</span><span class="tag">Homeowners</span><span class="tag">Trade</span><span class="tag">Commercial Specifiers</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 09: Testing + Iteration -->
-<section class="cs-section" id="s9">
+<!-- 11 TESTING + ITERATION -->
+<section class="cs-section" id="s11">
   <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+    <span class="sec-num">11</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What changed after feedback.</h2>
     <div class="iterations">
       <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors</span><p class="iteration-title">Product filtering wasn't granular enough</p><p class="iteration-body">Trade distributors couldn't filter by the specifications they actually spec to: IP rating, beam angle, wattage. They were manually cross-referencing external documents.</p></div>
       <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added technical spec filtering to product listings</p><p class="iteration-body">Extended the filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt like an afterthought</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel absorbed rather than featured.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Created brand-specific section pages for LuxR within the unified structure — retaining shared navigation while giving LuxR its own visual identity and product pages.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — architects</span><p class="iteration-title">Technical drawings were hard to find</p><p class="iteration-body">Specifiers needed quick access to CAD files and IES data. The original site buried these in a generic downloads folder with no preview.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Surfaced technical resources on product pages</p><p class="iteration-body">Moved spec sheets, installation guides, and CAD downloads to a prominent position on each product page. No more hunting through a separate downloads section.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt like an afterthought</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel absorbed rather than featured alongside Hunza.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Created brand-specific section pages for LuxR within the unified structure, retaining shared navigation while giving LuxR its own visual identity and product pages.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — architects</span><p class="iteration-title">Technical drawings were hard to find</p><p class="iteration-body">Specifiers needed quick access to CAD files and IES data. The original site buried these in a generic downloads folder with no preview or categorisation.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Surfaced technical resources on each product page</p><p class="iteration-body">Moved spec sheets, installation guides, and CAD downloads to a prominent position on each product page. No more hunting through a separate downloads section mid-specification.</p></div>
     </div>
     <div class="constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
-        <li>No dedicated dev resource — design and build were both my responsibility, scope had to be realistic</li>
+        <li>No dedicated dev resource — design and build were both my sole responsibility at all times</li>
         <li>Existing WooCommerce data couldn't be fully restructured without breaking live integrations</li>
         <li>Brand guidelines for both Hunza and LuxR were loose, requiring interpretation rather than strict application</li>
-        <li>The site had to remain live and functional throughout the redesign — no clean-slate opportunity</li>
+        <li>The site had to remain live and fully functional throughout the entire redesign — no opportunity for a clean slate</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- SECTION 10: Outcomes -->
-<section class="cs-section" id="s10">
+<!-- 12 OUTCOMES -->
+<section class="cs-section" id="s12">
   <div class="inner" style="position:relative">
-    <span class="sec-num">10</span>
+    <span class="sec-num">12</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">What it actually delivered.</h2>
     <div class="outcomes">
       <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/><path d="M14 3v22M3 9l11 7 11-7"/></svg></div><div><p class="outcome-t">Unified brand, stronger presence</p><p class="outcome-b">Hunza and LuxR on one platform reduced confusion and improved perceived credibility. Sales reps reported fewer "how are the brands related" queries post-launch.</p></div></div>
       <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg></div><div><p class="outcome-t">Reduced friction to enquiry</p><p class="outcome-b">Audience-based navigation cut the path from landing to enquiry from 6 clicks to 3. Distributor feedback confirmed the trade section was significantly easier to navigate.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Pricing errors resolved</p><p class="outcome-b">The SQL fix corrected pricing on all affected products. No further pricing discrepancies reported in the months following, removing a significant trust and revenue risk.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Pricing errors resolved</p><p class="outcome-b">The SQL fix corrected pricing on all affected products. No further pricing discrepancies in the months following — a trust and revenue issue identified and eliminated by me, alone.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 11: Reflection -->
-<section class="cs-section" id="s11">
+<!-- 13 REFLECTION -->
+<section class="cs-section" id="s13">
   <div class="inner" style="position:relative">
-    <span class="sec-num">11</span>
+    <span class="sec-num">13</span>
     <span class="section-label">Reflection</span>
     <h2 class="section-heading">What I took away.</h2>
     <div class="reflect-wrap">
       <blockquote>Merging two brands isn't just a design challenge. It's a negotiation between identities, audiences, and business reality. Getting it right meant <em>listening before designing.</em></blockquote>
       <div class="reflect-body">
-        <p>This project taught me that <strong>the hardest problems aren't visual, they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they needed, and how two distinct brands could share space without one feeling secondary.</p>
+        <p>This project taught me that <strong>the hardest problems aren't visual, they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they needed, and how two distinct brands could share space without one feeling secondary. That took research, not assumptions.</p>
         <p>Working directly with distributors and sales reps changed design decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually need is always larger than expected.</strong></p>
-        <p>The SQL fix was also a reminder that a designer who can move across the stack — from research through to database query — is a different kind of resource. Problems don't stay in their lanes. Neither should you.</p>
+        <p>The SQL fix was also a reminder that a designer who can move across the full stack is a different kind of asset. Problems don't stay in their lanes. The database bug wasn't in my job description — it was just blocking the product from working, and I was the only one there to fix it.</p>
       </div>
     </div>
   </div>
 </section>
 
 <div style="border-top:1px solid rgba(0,0,0,0.06)">
-  <div class="cs-end"><div><p class="end-label">Next project</p><a href="automote-case-study.html" class="end-link">Automote →</a></div><a href="index.html#contact" class="end-cta">Get in touch</a></div>
+  <div class="cs-end">
+    <div><p class="end-label">Next project</p><a href="automote-case-study.html" class="end-link">Automote →</a></div>
+    <a href="index.html#contact" class="end-cta">Get in touch</a>
+  </div>
 </div>
 <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
 <script src="script.js"></script>
