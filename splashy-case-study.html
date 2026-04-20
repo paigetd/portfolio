@@ -44,6 +44,8 @@
     </div>
   </div>
 </div>
+
+<!-- SECTION 01: Overview (unchanged) -->
 <section class="cs-section" id="s1">
   <div class="inner" style="position:relative">
     <span class="sec-num">01</span>
@@ -66,6 +68,8 @@
     </div>
   </div>
 </section>
+
+<!-- SECTION 02: The Problem (unchanged) -->
 <section class="cs-section" id="s2">
   <div class="inner" style="position:relative">
     <span class="sec-num">02</span>
@@ -80,6 +84,8 @@
     </div>
   </div>
 </section>
+
+<!-- SECTION 03: Research (unchanged) -->
 <section class="cs-section" id="s3">
   <div class="inner" style="position:relative">
     <span class="sec-num">03</span>
@@ -98,6 +104,8 @@
     </div>
   </div>
 </section>
+
+<!-- SECTION 04: User Flow (unchanged) -->
 <section class="cs-section" id="s4">
   <div class="inner" style="position:relative">
     <span class="sec-num">04</span>
@@ -120,68 +128,171 @@
     <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-style:italic">Design constraint: real-world action to visible reward in 3 taps or fewer.</p>
   </div>
 </section>
+
+<!-- SECTION 05: Early Designs — What Didn't Work -->
 <section class="cs-section" id="s5">
   <div class="inner" style="position:relative">
     <span class="sec-num">05</span>
-    <span class="section-label">Wireframes</span>
-    <h2 class="section-heading">Starting rough. Refining fast.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">Low-fidelity wireframes came before any visual work. Testing navigation logic and information hierarchy without investing in visuals that might change after testing.</p>
-    <div class="wireframes">
-      <div class="wireframe">
-        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div class="wf-block" style="font-size:0.55rem;color:rgba(0,0,0,0.3)">Mascot</div>
-          <div class="wf-line wf-line--med" style="margin:0 auto"></div>
-          <div class="wf-block--btn" style="margin:0.3rem auto"></div>
-          <div class="wf-block--btn" style="margin:0 auto;background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.1)"></div>
+    <span class="section-label">Early Designs</span>
+    <h2 class="section-heading">The versions that taught me what not to do.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Before arriving at the final design, I built several iterations that failed in specific, instructive ways. Each version revealed something essential about designing for children that I hadn't understood.</p>
+    
+    <!-- Problematic Home Screen -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Home Screen — Early Version</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="homescreen - bad.png" alt="Early home screen design" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Early home screen</div>'">
+          </div>
         </div>
-        <div class="wf-label">Splash / Onboarding</div>
-        <div class="wf-version">v1 — No personality. Kids disengaged immediately.</div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> This version had too many competing elements. The ocean was small, the mascot felt disconnected, and there was no clear primary action. Kids didn't know where to look first.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Children need a single focal point. When everything competes for attention, they engage with nothing. The ocean had to be the star.</p>
+        </div>
       </div>
-      <div class="wireframe">
-        <div class="wf-bar"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div class="wf-line wf-line--short"></div>
-          <div class="wf-block" style="font-size:0.55rem;color:rgba(0,0,0,0.3)">Quest card</div>
-          <div class="wf-line wf-line--full"></div><div class="wf-line wf-line--med"></div><div class="wf-line wf-line--full"></div>
-          <div class="wf-block--btn"></div>
+    </div>
+
+    <!-- Sorting Screen -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Sorting Screen — Draft</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="sorting.png" alt="Sorting screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Sorting screen</div>'">
+          </div>
         </div>
-        <div class="wf-label">Quest Screen v1</div>
-        <div class="wf-version">v1 — Text-heavy. Kids skipped all instructions.</div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The sorting interaction required too many decisions. Kids got stuck deciding which category each item belonged to — the cognitive load was too high for a 7-year-old.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Environmental education shouldn't require perfect classification. The act of trying matters more than getting it exactly right.</p>
+        </div>
       </div>
-      <div class="wireframe" style="border:2px solid var(--accent)">
-        <div class="wf-bar" style="background:rgba(232,98,42,0.07)"><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div></div>
-        <div class="wf-body">
-          <div class="wf-line wf-line--short"></div>
-          <div class="wf-block" style="height:28px;display:flex;align-items:center;padding:0 0.5rem;gap:0.4rem"><div style="width:14px;height:14px;border-radius:50%;background:rgba(0,0,0,0.1);flex-shrink:0"></div><div class="wf-line wf-line--med" style="margin:0;height:5px"></div></div>
-          <div style="background:rgba(232,98,42,0.1);border-radius:8px;padding:0.4rem"><div class="wf-line wf-line--full" style="height:5px;background:rgba(232,98,42,0.35)"></div></div>
-          <div class="wf-block--btn"></div>
+    </div>
+
+    <!-- Everyday Items -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Everyday Items — Draft</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="everyday items.png" alt="Everyday items screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Everyday items</div>'">
+          </div>
         </div>
-        <div class="wf-label" style="color:var(--accent)">Quest Screen v3 (Final)</div>
-        <div class="wf-version">v3 — Icon-led. Kids understood without reading a word.</div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The visual language was too abstract. Kids couldn't connect illustrated items to real-world objects they might actually encounter.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> For children, recognisability trumps aesthetic cohesion. Items need to look like what they actually are, not like a unified illustration set.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counting Plastic -->
+    <div>
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Counting Plastic — Draft</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="counting plastic.png" alt="Counting plastic screen draft" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Counting plastic</div>'">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:#c44">What was wrong:</strong> The input mechanism was fiddly. Tapping small increment buttons frustrated younger children, and the visual feedback didn't feel rewarding enough.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)"><strong style="color:var(--accent)">What I learned:</strong> Every interaction needs to feel like progress, not data entry. Kids should feel like they're playing, not reporting.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- SECTION 06: Iteration Toward Better -->
 <section class="cs-section" id="s6">
   <div class="inner" style="position:relative">
     <span class="sec-num">06</span>
-    <span class="section-label">Final Design</span>
-    <h2 class="section-heading">The finished product.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">Every visual decision reinforces the core loop. The ocean shifts from murky grey to bright and teeming with life. All illustration, characters, and sea creatures are hand-drawn originals.</p>
-    <div class="phones-showcase">
-      <div class="phone-item"><img src="splash screen.png" alt="Splash screen" onerror="this.outerHTML='<div class=\'phone-stub\'>Splash<br>screen</div>'"><span class="phone-lbl">Splash</span></div>
-      <div class="phone-item"><img src="fish - medium.png" alt="Ocean building" onerror="this.outerHTML='<div class=\'phone-stub\'>Ocean<br>building</div>'"><span class="phone-lbl">Ocean — building</span></div>
-      <div class="phone-item"><img src="fish.png" alt="Ocean thriving" onerror="this.outerHTML='<div class=\'phone-stub\'>Ocean<br>thriving</div>'"><span class="phone-lbl">Ocean — thriving</span></div>
-      <div class="phone-item"><img src="quests active good.png" alt="Active quests" onerror="this.outerHTML='<div class=\'phone-stub\'>Active<br>quests</div>'"><span class="phone-lbl">Quests</span></div>
-      <div class="phone-item"><img src="log drag.png" alt="Waste log" onerror="this.outerHTML='<div class=\'phone-stub\'>Waste<br>log</div>'"><span class="phone-lbl">Waste log</span></div>
+    <span class="section-label">Iteration</span>
+    <h2 class="section-heading">Learning from what broke.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Each failed version pointed toward the same solution: simplify, make the ocean the hero, and ensure every action has immediate visual payoff. These revised screens show the turning point.</p>
+    
+    <!-- Welcome Splash -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Welcome Screen — Revised</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="welcome splash.png" alt="Welcome splash screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Welcome splash</div>'">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> The mascot became the welcoming presence, with a single clear call to action. No competing elements, no confusion about what to do next.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">The hand-drawn whale creates immediate emotional connection. Kids see a character, not an interface.</p>
+        </div>
+      </div>
     </div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;font-style:italic;text-align:center">Tip: add onboarding, creature unlock, and profile screens to fill this section out further.</p>
+
+    <!-- Account Screen -->
+    <div style="margin-bottom:2.5rem">
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Account Screen — Revised</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="account.png" alt="Account screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Account screen</div>'">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> The profile became visual and personal. Avatar selection, ocean naming, and progress tracking all in one glanceable view.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">Ownership is established here — this is <em>your</em> ocean, <em>your</em> creatures, <em>your</em> impact.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div>
+      <h3 style="font-family:'Clash Display',sans-serif;font-weight:500;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:1rem">Results Screen — Revised</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+        <div>
+          <div class="screen-full" style="max-width:320px;margin:0 auto">
+            <img src="results.png" alt="Results screen" onerror="this.outerHTML='<div class=\'screen-full-stub\' style=\'min-height:400px\'>Results screen</div>'">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center">
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark);margin-bottom:1rem"><strong style="color:var(--accent)">What changed:</strong> Impact became visual and cumulative. Instead of abstract numbers, kids see their ocean transform and their creature collection grow.</p>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--dark)">The celebration moment is immediate — complete a quest, see the result instantly. No waiting, no ambiguity.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- SECTION 07: Final Delivered Design -->
 <section class="cs-section" id="s7">
   <div class="inner" style="position:relative">
     <span class="sec-num">07</span>
+    <span class="section-label">Final Design</span>
+    <h2 class="section-heading">The version that worked.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">After three major iterations, the final design incorporated everything I'd learned. The ocean is the hero, quests are icon-led and scannable, and every interaction feels like progress, not work.</p>
+    
+    <!-- Quests Done Good — Two Versions -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:2rem">
+      <div>
+        <div class="screen-full">
+          <img src="quests done good (1).png" alt="Quests screen final version" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Quests screen — final</div>'">
+        </div>
+        <p class="screen-cap"><strong>Quests screen — final delivered version.</strong> Icon-led cards, one clear primary action per quest, and visual progress indicators that don't require reading.</p>
+      </div>
+      <div>
+        <div class="screen-full">
+          <img src="quests done good.png" alt="Quests screen alternate view" onerror="this.outerHTML='<div class=\'screen-full-stub\'>Quests screen — alternate</div>'">
+        </div>
+        <p class="screen-cap"><strong>Quest detail view.</strong> When kids want more information, it's there — but the screen works perfectly even if they never read a word.</p>
+      </div>
+    </div>
+
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06);font-style:italic">The final prototype included fully interactive quest logging, creature unlock animations, and ocean state transitions — everything needed to test the core loop with real users.</p>
+  </div>
+</section>
+
+<!-- SECTION 08: Testing + Iteration (updated with specific examples) -->
+<section class="cs-section" id="s8">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">08</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What didn't work. What I changed. Why.</h2>
     <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">Tested early prototypes with three of the original research participants. Kids are the most direct usability testers you will ever work with.</p>
@@ -190,6 +301,8 @@
       <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Icon-led cards with one primary action</p><p class="iteration-body">Reduced copy by roughly 60%, moved critical information into iconography, and made the progress bar the dominant visual element. After the redesign, all three participants understood the screen without reading anything.</p></div>
       <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">The ocean didn't feel different enough early on</p><p class="iteration-body">Children could not distinguish between the dirty and slightly-less-dirty ocean states. Without a clear before/after moment, completing a quest felt meaningless and the reward loop broke down entirely.</p></div>
       <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Distinct milestone states tied to creature unlocks</p><p class="iteration-body">Defined three clearly differentiated ocean states with dramatically different visual palettes. Each state transition is tied to a creature unlock, creating a deliberate reward moment. Kids immediately noticed and reacted.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">Home screen had no clear entry point</p><p class="iteration-body">The early home screen (shown in Section 05) scattered attention across too many elements. Kids hesitated, tapped randomly, and often ended up in the wrong place.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Single focal point with clear primary action</p><p class="iteration-body">Made the ocean the dominant visual element. One clear CTA: "View Quests." Everything else became secondary. Task completion time dropped significantly.</p></div>
     </div>
     <div class="constraints">
       <p class="constraints-title">Constraints + Scope Decisions</p>
@@ -202,9 +315,11 @@
     </div>
   </div>
 </section>
-<section class="cs-section" id="s8">
+
+<!-- SECTION 09: Outcomes -->
+<section class="cs-section" id="s9">
   <div class="inner" style="position:relative">
-    <span class="sec-num">08</span>
+    <span class="sec-num">09</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">What the testing showed.</h2>
     <div class="outcomes">
@@ -214,9 +329,11 @@
     </div>
   </div>
 </section>
-<section class="cs-section" id="s9">
+
+<!-- SECTION 10: Reflection -->
+<section class="cs-section" id="s10">
   <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+    <span class="sec-num">10</span>
     <span class="section-label">Reflection</span>
     <h2 class="section-heading">What this taught me.</h2>
     <div class="reflect-wrap">
@@ -229,6 +346,7 @@
     </div>
   </div>
 </section>
+
 <div style="border-top:1px solid rgba(0,0,0,0.06)">
   <div class="cs-end"><div><p class="end-label">Next project</p><a href="hunza-case-study.html" class="end-link">Hunza &amp; LuxR →</a></div><a href="index.html#contact" class="end-cta">Get in touch</a></div>
 </div>
