@@ -37,6 +37,27 @@
   font-size: 0.8rem; color: rgba(0,0,0,0.52); line-height: 1.55; margin: 0;
 }
 
+/* ---- LEGACY BADGE ---- */
+.legacy-banner {
+  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.legacy-icon {
+  font-size: 1.5rem;
+}
+.legacy-text p {
+  font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5; margin: 0;
+}
+.legacy-text strong {
+  color: var(--dark); font-weight: 700;
+}
+
 /* ---- PERSONA CARDS ---- */
 .persona-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
@@ -149,7 +170,6 @@
   min-height: 160px; display: flex; flex-direction: column; gap: 0.5rem;
   position: relative;
 }
-/* pencil-sketch-look elements */
 .sk-rect {
   border: 1.5px solid rgba(0,0,0,0.18); border-radius: 4px;
   background: transparent;
@@ -157,12 +177,6 @@
 .sk-line { height: 2px; background: rgba(0,0,0,0.12); border-radius: 2px; }
 .sk-line.s { width: 40%; } .sk-line.m { width: 65%; } .sk-line.f { width: 100%; }
 .sk-label-sm { font-size: 0.48rem; color: rgba(0,0,0,0.3); font-family: monospace; }
-.sk-box-label {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  font-size: 0.5rem; color: rgba(0,0,0,0.2); text-align: center;
-  font-family: monospace; letter-spacing: 0.05em;
-  border: 1px dashed rgba(0,0,0,0.15); padding: 0.3rem 0.5rem; border-radius: 4px;
-}
 .sketch-info { padding: 0.9rem 1rem; }
 .sketch-iteration {
   font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
@@ -213,6 +227,49 @@
 }
 .impact-badge::before { content: '●'; font-size: 0.5rem; }
 
+/* ---- STATUS BANNER ---- */
+.status-banner {
+  background: rgba(92,186,120,0.08);
+  border: 1px solid rgba(92,186,120,0.25);
+  border-radius: 16px;
+  padding: 1.2rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.status-icon {
+  width: 40px; height: 40px;
+  background: rgba(92,186,120,0.15);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.status-text strong {
+  font-size: 0.85rem; font-weight: 700; color: #2a7a42;
+  display: block; margin-bottom: 0.2rem;
+}
+.status-text p {
+  font-size: 0.8rem; color: rgba(0,0,0,0.55); line-height: 1.5;
+}
+
+/* ---- PRESENTATION QUOTE ---- */
+.presentation-quote {
+  background: linear-gradient(135deg, rgba(232,98,42,0.06), rgba(240,164,74,0.04));
+  border-left: 4px solid var(--accent);
+  padding: 1.8rem 2rem;
+  border-radius: 0 20px 20px 0;
+  margin: 2rem 0;
+}
+.presentation-quote p {
+  font-size: 1.1rem; line-height: 1.7; color: var(--dark);
+  font-style: italic;
+}
+.presentation-quote .attribution {
+  font-size: 0.85rem; color: var(--muted);
+  margin-top: 1rem; font-style: normal;
+}
+
 @media (max-width: 768px) {
   .persona-grid, .sketch-grid { grid-template-columns: 1fr; }
   .research-grid { grid-template-columns: 1fr; }
@@ -261,6 +318,16 @@
   height: 324px;
 }
 
+/* ---- DISTRIBUTOR GRID FIX ---- */
+.distributor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.distributor-grid .ba-panel {
+  margin-bottom: 0;
+}
 </style>
 </head>
 <body>
@@ -308,11 +375,26 @@
     <span class="section-label">Overview</span>
     <h2 class="section-heading">Two brands, one site, one person to fix everything.</h2>
 
+    <div class="legacy-banner">
+      <div class="legacy-icon">🌏</div>
+      <div class="legacy-text">
+        <p><strong>Hunza has been manufacturing premium outdoor lighting for over 30 years.</strong> It's a multinational company with distributors covering the entire world — from New Zealand and Australia to Europe, North America, and the Middle East. The website wasn't just a brochure. It was the digital face of a global brand with real revenue and reputation on the line.</p>
+      </div>
+    </div>
+
     <div class="solo-banner">
       <div class="solo-icon">🙋</div>
       <div class="solo-text">
         <strong>I was the entire marketing and digital team.</strong>
         <p>No agency. No design lead. No developer to hand off to. Every decision, every line of code, every illustration, every spec sheet, every social post — researched, designed, built, and shipped by me. This was not a collaborative project with a team. It was a one-person overhaul of a live premium brand's entire digital and print presence.</p>
+      </div>
+    </div>
+
+    <div class="status-banner">
+      <div class="status-icon">🚀</div>
+      <div class="status-text">
+        <strong>Ready for launch — validated by real users</strong>
+        <p>The redesign is complete and ready to go live. It hasn't launched yet, but it's been through multiple rounds of refinement based on direct feedback from the people who will actually use it — including international distributors who flew in to see it in person.</p>
       </div>
     </div>
 
@@ -362,7 +444,7 @@
         <p class="persona-role">Persona 03</p>
         <p class="persona-name">The Distributor</p>
         <p class="persona-goal">"I'm ordering in bulk. I need trade login access, current pricing, and spec sheets I can send to my customers immediately."</p>
-        <p class="persona-pain"><strong>Blocked by:</strong> No trade portal. Generic contact form instead of a dedicated trade enquiry path. Resources page impossible to scan.</p>
+        <p class="persona-pain"><strong>Blocked by:</strong> No trade portal that worked. Generic contact form instead of a dedicated trade enquiry path. Resources page impossible to scan.</p>
       </div>
     </div>
 
@@ -460,7 +542,6 @@
     <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">I wireframed all key page templates before writing a line of code. The goal was to pressure-test the information hierarchy for each user type before investing time in visual design — a constraint that saved significant rework later.</p>
 
     <div class="sketch-grid">
-      <!-- Product page wireframe -->
       <div class="sketch-card">
         <div class="sketch-canvas">
           <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:0.5rem;height:100%">
@@ -490,7 +571,6 @@
         </div>
       </div>
 
-      <!-- Navigation wireframe -->
       <div class="sketch-card">
         <div class="sketch-canvas">
           <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
@@ -520,7 +600,6 @@
         </div>
       </div>
 
-      <!-- Resources wireframe -->
       <div class="sketch-card">
         <div class="sketch-canvas">
           <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
@@ -556,8 +635,7 @@
   </div>
 </section>
 
-<!-- 06 BEFORE + AFTER: PRODUCT PAGE -->
-<!-- HOMEPAGE B/A — inserted before product page B/A -->
+<!-- HOMEPAGE BEFORE/AFTER -->
 <section class="cs-section" id="s5b">
   <div class="inner" style="position:relative">
     <span class="sec-num">05b</span>
@@ -568,24 +646,25 @@
       <div>
         <div class="ba-panel" style="margin-bottom:1rem">
           <div class="ba-header"><span>Original Hunza</span><span class="ba-tag before">Before</span></div>
-          <img src="hunza-before.png" alt="Original Hunza site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block">
+          <img src="hunza-before.png" alt="Original Hunza site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original Hunza site — generic layout, no audience distinction</div>'">
           <p class="ba-caption">Generic layout, no audience distinction. Visual design actively damaging trust for a precision-engineered premium brand.</p>
         </div>
         <div class="ba-panel">
           <div class="ba-header"><span>Original LuxR</span><span class="ba-tag before">Before</span></div>
-          <img src="luxr-before.png" alt="Original LuxR site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block">
+          <img src="luxr-before.png" alt="Original LuxR site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR site — separate, minimal presence</div>'">
           <p class="ba-caption">LuxR as a separate, minimal site — disconnected from Hunza, no brand presence of its own.</p>
         </div>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned — unified platform</span><span class="ba-tag after">After</span></div>
-        <img src="hunza-after.png" alt="Redesigned Hunza + LuxR" style="width:100%;height:auto;min-height:440px;object-fit:cover;display:block">
+        <img src="hunza-after.png" alt="Redesigned Hunza + LuxR" style="width:100%;height:auto;min-height:440px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:440px\'>Redesigned unified platform — dark, refined, audience-based navigation</div>'">
         <p class="ba-caption">One unified platform. Dark, refined visual language. Audience-based navigation. Both brands coexist with distinct identities under the same roof.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- 06 BEFORE + AFTER: PRODUCT PAGE -->
 <section class="cs-section" id="s6">
   <div class="inner" style="position:relative">
     <span class="sec-num">06</span>
@@ -595,12 +674,12 @@
     <div class="ba-grid">
       <div class="ba-panel">
         <div class="ba-header"><span>Original Product Page</span><span class="ba-tag before">Before</span></div>
-        <img src="productpagebefore.png" alt="Original Hunza product page" onerror="this.style.display='none'">
+        <img src="productpagebefore.png" alt="Original Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original product page — specs buried in tabs, cluttered layout</div>'">
         <p class="ba-caption"><strong>Problems:</strong> Specifications buried in tabs, no visual breathing room, technical drawings hard to locate, enquiry CTA lost in the noise.</p>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned Product Page</span><span class="ba-tag after">After</span></div>
-        <img src="productpageafter.jpg" alt="Redesigned Hunza product page" onerror="this.style.display='none'">
+        <img src="productpageafter.jpg" alt="Redesigned Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned product page — specs surfaced, clean hierarchy</div>'">
         <p class="ba-caption"><strong>Solutions:</strong> Specs surfaced prominently, technical drawings accessible immediately, clear visual hierarchy, enquiry CTA distinct and always visible.</p>
       </div>
     </div>
@@ -613,18 +692,18 @@
   <div class="inner" style="position:relative">
     <span class="sec-num">07</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Downloads — making technical resources findable.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Architects and trade distributors need spec sheets, installation guides, and IES files. The original downloads section was a wall of inconsistently named links with no organisation.</p>
+    <h2 class="section-heading">Downloads — from unusable to functional.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Architects and trade distributors need spec sheets, installation guides, and IES files. The original downloads section looked like it had filters and search — but <strong>none of it actually worked.</strong> Users had to manually scroll through thousands of files with no way to narrow them down.</p>
     <div class="ba-grid">
       <div class="ba-panel">
         <div class="ba-header"><span>Original Downloads</span><span class="ba-tag before">Before</span></div>
-        <img src="downloadsbefore.png" alt="Original downloads page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads — wall of unsorted links, impossible to scan</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> No categorisation, files named inconsistently, no preview of what each download contained.</p>
+        <img src="downloadsbefore.png" alt="Original downloads page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads — filters and search were non-functional. Manual scrolling through thousands of files.</div>'">
+        <p class="ba-caption"><strong>Problems:</strong> Filters and search didn't work. Thousands of unsorted files. No categorisation. Distributors had to manually hunt for what they needed — or just email us instead.</p>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned Resources</span><span class="ba-tag after">After</span></div>
-        <img src="downloadsafter.png" alt="Redesigned resources hub" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources hub — categorised, filtered, scannable</div>'">
-        <p class="ba-caption"><strong>Solutions:</strong> Grouped by document type, clear file labelling, visual icons for quick scanning, separate sections for spec sheets vs installation guides.</p>
+        <img src="downloadsafter.png" alt="Redesigned resources hub" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources hub — categorised, filtered, actually functional</div>'">
+        <p class="ba-caption"><strong>Solutions:</strong> Functional filters and search. Grouped by document type. Clear file labelling. Visual icons for quick scanning. Separate sections for spec sheets vs installation guides.</p>
       </div>
     </div>
   </div>
@@ -635,22 +714,43 @@
   <div class="inner" style="position:relative">
     <span class="sec-num">08</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Distributors — a page that actually works for trade.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The distributors page is critical for trade users. The original version was a single paragraph and a generic contact form — a page that told trade buyers the brand didn't take them seriously.</p>
-    <div class="ba-grid">
+    <h2 class="section-heading">Distributors — a portal that actually works.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The distributors page is critical for trade users — it's where they find stockists, access trade pricing, and get technical support. <strong>Hunza had a trade portal before, but all the pricing was wrong so no one used it.</strong> LuxR had nothing. Neither worked.</p>
+    
+    <div class="distributor-grid">
       <div class="ba-panel">
-        <div class="ba-header"><span>Original Distributors Page</span><span class="ba-tag before">Before</span></div>
-        <div style="padding:1.5rem;background:rgba(0,0,0,0.02);min-height:180px;display:flex;align-items:center;justify-content:center">
-          <p style="font-size:0.85rem;color:rgba(0,0,0,0.4);text-align:center;max-width:28ch;line-height:1.6;font-style:italic">"A single paragraph of text and a generic contact form. No stockist locator, no trade pricing, no differentiation from the standard enquiry page."</p>
-        </div>
-        <p class="ba-caption"><strong>Problems:</strong> No stockist locator, no trade-specific information, no resources portal, indistinguishable from the consumer contact page.</p>
+        <div class="ba-header"><span>Original Hunza Distributors</span><span class="ba-tag before">Before</span></div>
+        <img src="distributor beforehunza.png" alt="Original Hunza distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original Hunza distributors — trade portal existed but pricing was wrong so nobody used it</div>'">
+        <p class="ba-caption"><strong>Problems:</strong> Trade portal existed but pricing data was incorrect — completely unusable. Distributors had abandoned it entirely.</p>
       </div>
       <div class="ba-panel">
-        <div class="ba-header"><span>Redesigned Distributors Hub</span><span class="ba-tag after">After</span></div>
-        <img src="distributorsafter.png" alt="Redesigned distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:180px\'>Redesigned distributors hub — stockist locator, trade portal, resources</div>'">
-        <p class="ba-caption"><strong>Solutions:</strong> Stockist locator with region filtering, dedicated trade login portal, technical resources surfaced prominently, clear trade-specific language and pathways.</p>
+        <div class="ba-header"><span>Original LuxR Distributors</span><span class="ba-tag before">Before</span></div>
+        <img src="distributorbefore.png" alt="Original LuxR distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR distributors — bare page with no trade functionality</div>'">
+        <p class="ba-caption"><strong>Problems:</strong> Bare page. No trade portal. No stockist locator. No differentiation from the consumer contact page.</p>
       </div>
     </div>
+
+    <div class="ba-panel" style="margin-top:1rem">
+      <div class="ba-header"><span>Redesigned Distributors Hub</span><span class="ba-tag after">After</span></div>
+      <img src="distributorsafter.png" alt="Redesigned distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:240px\'>Redesigned distributors hub — stockist locator, functional trade portal, resources</div>'">
+      <p class="ba-caption"><strong>Solutions:</strong> Functional trade portal with accurate pricing. Stockist locator with region filtering. Technical resources surfaced prominently. Clear trade-specific language and pathways.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08b PRESENTATION + VALIDATION -->
+<section class="cs-section" id="s8b">
+  <div class="inner" style="position:relative">
+    <span class="sec-num">08b</span>
+    <span class="section-label">Validation</span>
+    <h2 class="section-heading">Presented to the people who matter most.</h2>
+    
+    <div class="presentation-quote">
+      <p>"When our international distributors flew in from overseas and came to the factory, I presented the redesign to them directly. These are the people who actually sell Hunza products around the world — they know what their customers need better than anyone. Every single one loved it. Only positive feedback."</p>
+      <div class="attribution">— Multiple distributor presentations, 2024</div>
+    </div>
+
+    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-top:1rem">I've had many meetings showcasing the redesign and refining it based on real feedback. The validation didn't come from stakeholders in a boardroom — it came from the distributors who deal with architects, homeowners, and trade buyers every single day. They saw exactly what I was trying to solve, and they confirmed it worked.</p>
   </div>
 </section>
 
@@ -708,7 +808,7 @@
       <div class="solo-icon">⚡</div>
       <div class="solo-text">
         <strong>There was no team. There was no agency. There was just me.</strong>
-        <p>At most companies, this project would involve a UX researcher, a UI designer, a front-end developer, a back-end developer, a marketing coordinator, a print designer, and a social media manager. At Hunza, that was one job title and one person. Every skill listed below was applied by me, to a live brand, under real business pressure.</p>
+        <p>At most companies, this project would involve a UX researcher, a UI designer, a front-end developer, a back-end developer, a marketing coordinator, a print designer, and a social media manager. At Hunza, that was one job title and one person. Every skill listed below was applied by me, to a live brand with over 30 years of history and distributors worldwide, under real business pressure.</p>
       </div>
     </div>
 
@@ -720,7 +820,7 @@
           <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Independently identified and fixed a database-level pricing bug using SQL — found, diagnosed, and resolved without external help</span></li>
           <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Redesigned all print collateral — spec sheets, installation guides, product catalogues — solo in InDesign</span></li>
           <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Produced all social content hand-drawn in Illustrator, managed content calendar and publishing end-to-end</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Conducted stakeholder interviews with distributors and sales reps to validate every major design decision</span></li>
+          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Presented the redesign to international distributors who flew in to the factory — validated by the people who actually sell the products</span></li>
         </ul>
       </div>
       <div class="tools-card">
@@ -743,8 +843,8 @@
       <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added technical spec filtering to product listings</p><p class="iteration-body">Extended the filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page.</p></div>
       <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt like an afterthought</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel absorbed rather than featured alongside Hunza.</p></div>
       <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Created brand-specific section pages for LuxR within the unified structure, retaining shared navigation while giving LuxR its own visual identity and product pages.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — architects</span><p class="iteration-title">Technical drawings were hard to find</p><p class="iteration-body">Specifiers needed quick access to CAD files and IES data. The original site buried these in a generic downloads folder with no preview or categorisation.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Surfaced technical resources on each product page</p><p class="iteration-body">Moved spec sheets, installation guides, and CAD downloads to a prominent position on each product page. No more hunting through a separate downloads section mid-specification.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors (in person)</span><p class="iteration-title">Trade portal needed to actually work</p><p class="iteration-body">The old trade portal existed but pricing was wrong so no one used it. Distributors needed a portal they could trust — with accurate pricing and easy access to spec sheets.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Built a functional trade portal with correct data</p><p class="iteration-body">Fixed the underlying pricing data (via SQL), redesigned the portal interface, and surfaced technical resources prominently. Validated with distributors during factory visits.</p></div>
     </div>
     <div class="constraints">
       <p class="constraints-title">Constraints</p>
@@ -767,7 +867,7 @@
     <div class="outcomes">
       <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/><path d="M14 3v22M3 9l11 7 11-7"/></svg></div><div><p class="outcome-t">Unified brand, stronger presence</p><p class="outcome-b">Hunza and LuxR on one platform reduced confusion and improved perceived credibility. Sales reps reported fewer "how are the brands related" queries post-launch.</p></div></div>
       <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg></div><div><p class="outcome-t">Reduced friction to enquiry</p><p class="outcome-b">Audience-based navigation cut the path from landing to enquiry from 6 clicks to 3. Distributor feedback confirmed the trade section was significantly easier to navigate.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Pricing errors resolved</p><p class="outcome-b">The SQL fix corrected pricing on all affected products. No further pricing discrepancies in the months following — a trust and revenue issue identified and eliminated by me, alone.</p></div></div>
+      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Pricing errors resolved. Portal trusted.</p><p class="outcome-b">The SQL fix corrected pricing on all affected products. The trade portal went from abandoned to functional. Distributors who saw it in person gave unanimous positive feedback.</p></div></div>
     </div>
   </div>
 </section>
@@ -782,8 +882,9 @@
       <blockquote>Merging two brands isn't just a design challenge. It's a negotiation between identities, audiences, and business reality. Getting it right meant <em>listening before designing.</em></blockquote>
       <div class="reflect-body">
         <p>This project taught me that <strong>the hardest problems aren't visual, they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they needed, and how two distinct brands could share space without one feeling secondary. That took research, not assumptions.</p>
-        <p>Working directly with distributors and sales reps changed design decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually need is always larger than expected.</strong></p>
+        <p>Working directly with distributors and sales reps — especially presenting to international distributors when they visited the factory — changed design decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually need is always larger than expected.</strong></p>
         <p>The SQL fix was also a reminder that a designer who can move across the full stack is a different kind of asset. Problems don't stay in their lanes. The database bug wasn't in my job description — it was just blocking the product from working, and I was the only one there to fix it.</p>
+        <p>Presenting to a room of international distributors who've been selling Hunza products for decades and hearing unanimous positive feedback — that's validation you can't get from a portfolio review. It confirmed I'd solved real problems for real people.</p>
       </div>
     </div>
   </div>
