@@ -1,4 +1,10 @@
-
+/* ============================================================
+   PAIGE SIMM — CASE STUDY BASE STYLES
+   Replaces the original case-study.css
+   Works with style.css (vars: --bg, --card, --dark, --white,
+   --accent, --accent2, --muted, --border, --serif, --sans,
+   --glass-bg, --glass-border, --glass-shadow)
+   ============================================================ */
 
 body {
   background: linear-gradient(145deg, #faf7f2 0%, #f0ebe1 100%);
@@ -590,4 +596,95 @@ footer a:hover { color: var(--accent); }
   .stat-row { gap: 0.5rem; }
   .stat-pill { padding: 0.7rem 1.1rem; }
   .stat-pill-val { font-size: 1.5rem; }
+}
+
+/* =====================================================
+   IMAGE SIZING FIXES — appended
+   ===================================================== */
+
+/* Before/after panels: never collapse, images never squash */
+.ba-panel img {
+  width: 100%;
+  height: auto;          /* KEY FIX: was collapsing to 0 */
+  min-height: 220px;
+  object-fit: cover;
+  display: block;
+}
+.ba-img-stub {
+  min-height: 240px;    /* bigger stub when image missing */
+}
+
+/* Screen full images: height auto, not fixed */
+.screen-full img {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.screen-full-stub {
+  min-height: 320px;
+}
+
+/* Phone showcase: bigger and not fixed-height collapsed */
+.phones-showcase {
+  padding: 3rem 2rem 2.5rem;
+}
+.phone-item img {
+  width: 150px;
+  height: 324px;         /* 2:1 ratio at 150px wide */
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 28px 64px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.12);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.phone-item:nth-child(even) img   { transform: translateY(12px); }
+.phone-item:hover img              { transform: translateY(-12px) scale(1.02); }
+.phone-item:nth-child(even):hover img { transform: translateY(0) scale(1.02); }
+.phone-stub {
+  width: 150px;
+  height: 324px;
+  min-height: unset;
+}
+
+/* Desktop screen duo: reasonable height */
+.screen-duo {
+  gap: 1.2rem;
+}
+.screen-duo .screen-full img {
+  min-height: 280px;
+  max-height: 480px;
+}
+
+/* Wireframe cards: a bit taller */
+.wf-body {
+  padding: 1.2rem;
+  min-height: 140px;
+}
+
+/* Stat row pills: slightly bigger on desktop */
+.stat-pill {
+  padding: 1rem 1.8rem;
+}
+.stat-pill-val {
+  font-size: 2.2rem;
+}
+
+/* Section breathing room */
+.cs-section {
+  padding: 5.5rem 3rem;
+}
+
+/* Larger section headings */
+.section-heading {
+  font-size: clamp(1.9rem, 3.2vw, 3rem);
+}
+
+/* Mobile fixes */
+@media (max-width: 640px) {
+  .phone-item img, .phone-stub { width: 110px; height: 238px; }
+  .phones-showcase { padding: 1.5rem 0.75rem; gap: 0.6rem; }
+  .ba-panel img { min-height: 160px; }
+  .screen-full-stub { min-height: 200px; }
 }
