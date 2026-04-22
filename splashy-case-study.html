@@ -273,7 +273,34 @@ body::before {
 .fd-note { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-top: 1.5rem; text-align: center; }
 
 /* ============================================================
-   BEFORE / AFTER — image panels
+   IMAGE PANELS — consistent with Hunza styling
+   ============================================================ */
+.img-panel {
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-radius: 18px;
+  overflow: hidden; box-shadow: var(--g-shadow);
+  transition: transform 0.3s;
+}
+.img-panel:hover { transform: translateY(-3px); }
+.img-panel img {
+  width: 100%; height: 340px;          /* fixed height for consistency */
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.img-caption {
+  padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted);
+  line-height: 1.55; border-top: 1px solid rgba(0,0,0,0.05);
+}
+.img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* For the concept development sketches */
+.sketch-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.sketch-panel img { height: 280px; }  /* slightly shorter for sketches */
+
+/* ============================================================
+   BEFORE / AFTER — image panels (retained for compatibility)
    ============================================================ */
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .ba-panel {
@@ -295,13 +322,8 @@ body::before {
 .ba-tag.before { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.4); }
 .ba-tag.after  { background: rgba(22,142,158,0.12); color: var(--ocean-primary); }
 .ba-panel img {
-  width: 100%; height: auto; min-height: 220px; object-fit: cover; display: block;
-}
-.ba-img-stub {
-  width: 100%; min-height: 220px; background: rgba(0,0,0,0.03);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.68rem; color: rgba(0,0,0,0.22); font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
+  width: 100%; height: 340px;
+  object-fit: cover; object-position: top; display: block;
 }
 .ba-caption { padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted); line-height: 1.55; }
 
@@ -566,7 +588,7 @@ footer a:hover { color: var(--ocean-primary); }
   .decision-grid { grid-template-columns: 1fr 1fr; }
   .two-col { grid-template-columns: 1fr; gap: 2rem; }
   .ocean-system-grid { grid-template-columns: 1fr; }
-  .ba-grid { grid-template-columns: 1fr; }
+  .ba-grid, .img-grid-2, .img-grid-3, .sketch-grid { grid-template-columns: 1fr; }
   .iterations { grid-template-columns: 1fr; }
   .decision-compare { grid-template-columns: 1fr; }
 }
@@ -736,25 +758,25 @@ footer a:hover { color: var(--ocean-primary); }
   </div>
 </section>
 
-<!-- 05 CONCEPT DEVELOPMENT -->
+<!-- 05 CONCEPT DEVELOPMENT — updated with consistent image panels -->
 <section class="cs-section" id="s5">
   <div class="inner">
     <span class="sec-num">05</span>
     <span class="section-label">Concept Development</span>
     <h2 class="section-heading">From sketch to final mark.</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-top:1.5rem;">
-      <figure class="gc" style="padding:0; overflow:hidden;">
-        <img src="splashywireframe1.jpg" alt="Initial concept sketches" style="width:100%; height:auto; display:block;">
-        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 01 · Initial explorations</figcaption>
-      </figure>
-      <figure class="gc" style="padding:0; overflow:hidden;">
-        <img src="splashywireframe2.jpg" alt="Refined sketch directions" style="width:100%; height:auto; display:block;">
-        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 02 · Refined directions</figcaption>
-      </figure>
-      <figure class="gc" style="padding:0; overflow:hidden;">
-        <img src="splashywireframe3.jpg" alt="Logo drafts" style="width:100%; height:auto; display:block;">
-        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 03 · Illustrator drafts</figcaption>
-      </figure>
+    <div class="sketch-grid">
+      <div class="img-panel sketch-panel">
+        <img src="splashywireframe1.jpg" alt="Initial concept sketches">
+        <p class="img-caption">Stage 01 · Initial explorations</p>
+      </div>
+      <div class="img-panel sketch-panel">
+        <img src="splashywireframe2.jpg" alt="Refined sketch directions">
+        <p class="img-caption">Stage 02 · Refined directions</p>
+      </div>
+      <div class="img-panel sketch-panel">
+        <img src="splashywireframe3.jpg" alt="Logo drafts">
+        <p class="img-caption">Stage 03 · Illustrator drafts</p>
+      </div>
     </div>
   </div>
 </section>
@@ -765,10 +787,10 @@ footer a:hover { color: var(--ocean-primary); }
     <span class="sec-num">06</span>
     <span class="section-label">Illustration</span>
     <h2 class="section-heading">Building the world.</h2>
-    <figure class="gc" style="padding:0; overflow:hidden; margin-top:1.5rem;">
-      <img src="intialassets.jpg" alt="Initial creature asset set" style="width:100%; height:auto; display:block; min-height:240px; object-fit:cover;">
-      <figcaption style="padding:0.8rem 1.2rem; font-size:0.75rem; color:var(--muted);">Initial creature set — each tied to a specific eco-action category</figcaption>
-    </figure>
+    <div class="img-panel" style="margin-top:1.5rem;">
+      <img src="intialassets.jpg" alt="Initial creature asset set">
+      <p class="img-caption">Initial creature set — each tied to a specific eco-action category</p>
+    </div>
   </div>
 </section>
 
