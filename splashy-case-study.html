@@ -8,74 +8,585 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
 <style>
-.cs-hero.splashy .cs-title-line:first-child { color: var(--dark); }
-.cs-hero.splashy .cs-eyebrow { color: var(--accent); }
-.cs-hero.splashy .cs-year { color: rgba(0,0,0,0.45); }
-.cs-hero.splashy .cs-meta-label { color: rgba(0,0,0,0.45); }
+/* ============================================================
+   UNIFIED GLASS SYSTEM — SPLASHY (ocean variant)
+   ============================================================ */
+:root {
+  /* Glass tokens */
+  --g-bg:          rgba(255,255,255,0.52);
+  --g-bg-strong:   rgba(255,255,255,0.72);
+  --g-bg-muted:    rgba(255,255,255,0.28);
+  --g-border:      rgba(255,255,255,0.72);
+  --g-border-sub:  rgba(255,255,255,0.38);
+  --g-blur:        blur(18px) saturate(160%);
+  --g-shadow:      0 4px 24px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+  --g-shadow-lift: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+
+  /* Splashy ocean palette — teal + coral */
+  --ocean-primary: #168e9e;
+  --ocean-accent:  #e8622a;
+  --ocean-muted:   #5b8c8f;
+  --ocean-light:   rgba(168,222,234,0.15);
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND — ocean variant
+   ============================================================ */
+body {
+  background: #f0f5f4;
+  min-height: 100vh;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80vw 60vh at 15% 20%, rgba(22,142,158,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60vw 50vh at 85% 75%, rgba(232,98,42,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50vw 40vh at 50% 50%, rgba(168,222,234,0.12) 0%, transparent 65%),
+    #f0f5f4;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
+
+/* ============================================================
+   BASE CARD SYSTEM
+   ============================================================ */
+.gc {
+  background: var(--g-bg);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border);
+  border-radius: 22px;
+  box-shadow: var(--g-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gc::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  pointer-events: none;
+}
+.gc:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+
+.gc-muted {
+  background: var(--g-bg-muted);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--g-border-sub);
+  border-radius: 16px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav { background: rgba(240,245,244,0.78); backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.5); }
+.nav.scrolled { background: rgba(240,245,244,0.92); }
+
+/* ============================================================
+   HERO — Splashy variant
+   ============================================================ */
+.cs-hero.splashy { color: var(--dark); }
+.cs-hero.splashy .cs-title-line:first-child { color: var(--ocean-primary); }
+.cs-hero.splashy .cs-eyebrow { color: var(--ocean-accent); }
+.cs-hero.splashy .cs-year { color: rgba(0,0,0,0.4); }
+.cs-hero.splashy .cs-meta-label { color: rgba(0,0,0,0.4); }
 .cs-hero.splashy .cs-meta-value { color: var(--dark); font-weight: 500; }
 .cs-hero.splashy .cs-hero-meta { border-top-color: rgba(0,0,0,0.08); }
 
-/* image grid helpers */
-.img-row { display:grid; gap:1rem; margin-top:1.5rem; }
-.img-row.cols-2 { grid-template-columns:1fr 1fr; }
-.img-row.cols-3 { grid-template-columns:1fr 1fr 1fr; }
-.img-row.cols-4 { grid-template-columns:1fr 1fr 1fr 1fr; }
-.img-card {
-  border-radius:16px; overflow:hidden;
-  background:rgba(255,255,255,0.65);
-  border:1px solid rgba(255,255,255,0.85);
-  transition:transform 0.3s, box-shadow 0.3s;
-}
-.img-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.1); }
-.img-card img { width:100%; height:auto; display:block; min-height:120px; object-fit:cover; }
-.img-cap { font-size:0.72rem; color:var(--muted); padding:0.65rem 0.9rem; border-top:1px solid rgba(0,0,0,0.06); line-height:1.5; }
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.cs-section { background: transparent; }
+.inner { position: relative; }
 
-/* full-bleed image */
-.img-full { border-radius:16px; overflow:hidden; margin-top:1.5rem; background:rgba(255,255,255,0.65); border:1px solid rgba(255,255,255,0.85); }
-.img-full img { width:100%; height:auto; display:block; min-height:200px; object-fit:cover; }
-.img-full .img-cap { border-top:1px solid rgba(0,0,0,0.06); }
+.section-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ocean-accent);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--ocean-accent);
+}
 
-/* concept row — logo drafts */
-.concept-strip {
-  display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1.5rem;
+/* ============================================================
+   TOP SUMMARY
+   ============================================================ */
+.top-summary {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 2.5rem 0 0;
+  border: 1px solid rgba(0,0,0,0.06);
 }
-.concept-card {
-  border-radius:16px; overflow:hidden;
-  background:white; border:1px solid var(--border);
-  transition:transform 0.3s;
+.ts-cell {
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur);
+  padding: 1.6rem 1.8rem;
 }
-.concept-card:hover { transform:translateY(-3px); }
-.concept-card img { width:100%; height:auto; min-height:160px; object-fit:cover; display:block; }
-.concept-tag { font-size:0.6rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); padding:0.6rem 0.8rem 0.2rem; }
-.concept-label { font-size:0.75rem; color:var(--muted); padding:0.1rem 0.8rem 0.7rem; }
+.ts-label {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ocean-accent);
+  margin-bottom: 0.55rem;
+}
+.ts-text { font-size: 0.92rem; line-height: 1.55; color: var(--dark); font-weight: 300; }
+.ts-text strong { font-weight: 700; }
 
-/* wireframe grid */
-.wf-photo-grid {
-  display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.75rem; margin-top:1.5rem;
+/* ============================================================
+   STAT ROW
+   ============================================================ */
+.stat-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+.stat-pill {
+  background: var(--g-bg-strong); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border);
+  border-radius: 100px; padding: 0.9rem 1.6rem;
+  display: flex; align-items: baseline; gap: 0.6rem;
+  box-shadow: var(--g-shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
-.wf-photo-card {
-  border-radius:14px; overflow:hidden;
-  background:rgba(255,255,255,0.65); border:1px solid rgba(255,255,255,0.85);
-  transition:transform 0.3s;
+.stat-pill:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+.stat-pill-val {
+  font-family: var(--serif); font-style: italic;
+  font-size: 2rem; color: var(--ocean-primary); line-height: 1;
 }
-.wf-photo-card:hover { transform:translateY(-4px); }
-.wf-photo-card img { width:100%; height:auto; min-height:140px; object-fit:cover; display:block; }
-.wf-photo-label { font-size:0.58rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:0.5rem 0.7rem; text-align:center; }
+.stat-pill-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
 
-@media (max-width:768px) {
-  .img-row.cols-2,.img-row.cols-3,.img-row.cols-4 { grid-template-columns:1fr 1fr; }
-  .wf-photo-grid { grid-template-columns:1fr 1fr; }
-  .concept-strip { grid-template-columns:1fr 1fr; }
+/* ============================================================
+   EDITORIAL PEAK — oversized stat (ocean variant)
+   ============================================================ */
+.editorial-peak {
+  padding: 4.5rem 3rem;
+  text-align: center; position: relative;
+  margin: 0 -3rem;
 }
-@media (max-width:480px) {
-  .img-row.cols-3,.img-row.cols-4 { grid-template-columns:1fr; }
-  .wf-photo-grid { grid-template-columns:1fr 1fr; }
+.editorial-peak-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(22,142,158,0.08) 0%, rgba(168,222,234,0.04) 100%);
+  border-top: 1px solid rgba(22,142,158,0.12);
+  border-bottom: 1px solid rgba(22,142,158,0.12);
+}
+.editorial-peak-number {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: 1; color: var(--ocean-primary);
+  display: block; margin-bottom: 0.2rem;
+}
+.editorial-peak-label {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--muted);
+  letter-spacing: 0.06em; font-weight: 300;
+}
+.editorial-peak-sub {
+  font-size: 0.75rem; color: rgba(0,0,0,0.3); margin-top: 0.3rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ============================================================
+   PERSONAS
+   ============================================================ */
+.persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 1.5rem; }
+.persona-card { padding: 1.4rem; }
+.persona-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; margin-bottom: 0.8rem;
+}
+.persona-card:nth-child(1) .persona-avatar { background: rgba(22,142,158,0.12); border: 1px solid rgba(22,142,158,0.2); }
+.persona-card:nth-child(2) .persona-avatar { background: rgba(232,98,42,0.1); border: 1px solid rgba(232,98,42,0.2); }
+.persona-card:nth-child(3) .persona-avatar { background: rgba(92,186,120,0.12); border: 1px solid rgba(92,186,120,0.2); }
+.persona-name { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.persona-goal {
+  font-size: 0.78rem; line-height: 1.55; color: var(--dark); font-weight: 300;
+  font-family: var(--serif); font-style: italic;
+  padding: 0.4rem 0.7rem; margin-bottom: 0.6rem;
+  border-left: 2px solid var(--ocean-primary);
+  background: rgba(22,142,158,0.04);
+  border-radius: 0 8px 8px 0;
+}
+.persona-observed { font-size: 0.74rem; line-height: 1.6; color: rgba(0,0,0,0.45); font-weight: 300; }
+
+/* ============================================================
+   FLOW DIAGRAM
+   ============================================================ */
+.flow-diagram {
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-radius: 22px;
+  box-shadow: var(--g-shadow);
+  padding: 2.5rem 2rem; margin-top: 1.5rem; overflow-x: auto;
+}
+.flow-diagram::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+}
+.fd-inner {
+  display: grid; grid-template-columns: auto 32px auto 32px auto 32px auto 32px auto;
+  gap: 0; align-items: center; min-width: 620px;
+}
+.fd-node {
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+}
+.fd-box {
+  padding: 0.65rem 1rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;
+  line-height: 1.3; text-align: center; white-space: nowrap;
+}
+.fd-box.root {
+  background: var(--ocean-primary); color: white; border: none;
+  box-shadow: 0 4px 16px rgba(22,142,158,0.35);
+  font-size: 0.82rem; padding: 0.75rem 1.2rem;
+}
+.fd-box.pivot {
+  background: rgba(168,222,234,0.15); border: 1.5px solid rgba(22,142,158,0.4);
+  color: var(--dark);
+}
+.fd-box.end {
+  background: var(--ocean-primary); color: white; border: none;
+  box-shadow: 0 4px 16px rgba(22,142,158,0.3);
+}
+.fd-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.28); }
+.fd-branch { display: flex; flex-direction: column; gap: 0.45rem; }
+.fd-branch-box {
+  padding: 0.45rem 0.75rem; border-radius: 9px;
+  font-size: 0.68rem; font-weight: 600; line-height: 1.3; text-align: center;
+}
+.fd-branch-box.arch { background: rgba(22,142,158,0.1); border: 1px solid rgba(22,142,158,0.25); color: rgba(10,80,90,0.85); }
+.fd-branch-box.home { background: rgba(232,98,42,0.08); border: 1px solid rgba(232,98,42,0.22); color: rgba(140,50,10,0.8); }
+.fd-branch-box.trade { background: rgba(92,186,120,0.1); border: 1px solid rgba(92,186,120,0.25); color: rgba(30,100,50,0.85); }
+.fd-content-box {
+  padding: 0.35rem 0.6rem; border-radius: 7px;
+  font-size: 0.62rem; font-weight: 500; color: rgba(0,0,0,0.55); background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.06); text-align: center; line-height: 1.3;
+}
+.fd-arrow {
+  display: flex; align-items: center; justify-content: center; height: 100%;
+}
+.fd-arrow svg { opacity: 0.3; }
+.fd-note { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-top: 1.5rem; text-align: center; }
+
+/* ============================================================
+   BEFORE / AFTER — image panels
+   ============================================================ */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.ba-panel {
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-radius: 18px;
+  overflow: hidden; box-shadow: var(--g-shadow);
+  transition: transform 0.3s;
+}
+.ba-panel:hover { transform: translateY(-3px); }
+.ba-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.ba-header span:first-child { font-size: 0.72rem; font-weight: 500; color: rgba(0,0,0,0.45); }
+.ba-tag {
+  font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.22rem 0.7rem; border-radius: 100px;
+}
+.ba-tag.before { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.4); }
+.ba-tag.after  { background: rgba(22,142,158,0.12); color: var(--ocean-primary); }
+.ba-panel img {
+  width: 100%; height: auto; min-height: 220px; object-fit: cover; display: block;
+}
+.ba-img-stub {
+  width: 100%; min-height: 220px; background: rgba(0,0,0,0.03);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; color: rgba(0,0,0,0.22); font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.ba-caption { padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted); line-height: 1.55; }
+
+/* ============================================================
+   PROBLEM GRID
+   ============================================================ */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.prob { padding: 1.6rem; border-top: 3px solid var(--ocean-primary); }
+.prob:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+.prob-n { font-family: var(--serif); font-style: italic; font-size: 2.8rem; color: rgba(22,142,158,0.12); line-height: 1; margin-bottom: 0.6rem; }
+.prob-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.prob-b { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   OCEAN SYSTEM SECTION — dark glass variant (like SQL section)
+   ============================================================ */
+.ocean-section-wrap {
+  margin: 0 -3rem;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #0a2025 0%, #061012 100%);
+  position: relative; overflow: hidden;
+}
+.ocean-section-wrap::before {
+  content: '';
+  position: absolute; top: -30%; right: -15%;
+  width: 50vw; height: 50vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(22,142,158,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.ocean-section-wrap::after {
+  content: '';
+  position: absolute; bottom: -20%; left: -10%;
+  width: 35vw; height: 35vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,222,234,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.ocean-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+.ocean-section-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ocean-accent); margin-bottom: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.ocean-section-label::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--ocean-accent); }
+.ocean-heading {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #f0f5f4; line-height: 1.1; margin-bottom: 1rem;
+}
+.ocean-system-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem; margin: 2rem 0 1rem;
+}
+.ocean-stage-card {
+  background: rgba(255,255,255,0.04); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+  padding: 1.8rem 1.5rem; text-align: center;
+}
+.ocean-stage-icon { font-size: 3rem; margin-bottom: 1rem; }
+.ocean-stage-name { font-weight: 700; color: #f0f5f4; margin-bottom: 0.5rem; font-size: 1.1rem; }
+.ocean-stage-trigger {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ocean-primary); padding: 0.3rem 0.8rem;
+  background: rgba(22,142,158,0.15); border-radius: 100px; display: inline-block;
+  margin-bottom: 0.75rem;
+}
+.ocean-stage-principle {
+  font-size: 0.75rem; color: rgba(240,245,244,0.5); font-style: italic;
+}
+
+/* ============================================================
+   PHONE SHOWCASE — Splashy variant
+   ============================================================ */
+.phones-showcase {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+  margin: 2rem 0;
+}
+.phone-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.phone-item img {
+  width: 160px; height: auto; border-radius: 28px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s;
+}
+.phone-item img:hover { transform: translateY(-6px); }
+.phone-lbl {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ============================================================
+   DECISION TRADEOFF
+   ============================================================ */
+.decision-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  background: var(--g-bg-strong); border-radius: 20px; padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+.decision-option {
+  padding: 1rem; border-radius: 12px;
+}
+.decision-option.kept { background: rgba(92,186,120,0.06); border: 1px solid rgba(92,186,120,0.15); }
+.decision-option.dropped { background: rgba(200,60,60,0.04); border: 1px solid rgba(200,60,60,0.1); }
+.decision-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.kept .decision-label { color: #2a7a42; }
+.dropped .decision-label { color: #a33; }
+
+/* ============================================================
+   DECISIONS GRID
+   ============================================================ */
+.decision-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.decision-card { padding: 1.6rem; }
+.decision-icon { font-size: 1.4rem; margin-bottom: 0.9rem; display: block; }
+.decision-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.decision-body { font-size: 0.84rem; line-height: 1.65; color: var(--muted); font-weight: 300; margin-bottom: 0.75rem; }
+.decision-why {
+  font-size: 0.73rem; color: var(--ocean-primary); font-style: italic;
+  border-top: 1px solid rgba(22,142,158,0.12); padding-top: 0.6rem;
+}
+
+/* ============================================================
+   ITERATIONS
+   ============================================================ */
+.iterations { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.iteration { border-radius: 18px; padding: 1.5rem; }
+.iteration--problem {
+  background: rgba(220,60,60,0.05); border: 1px solid rgba(220,60,60,0.15);
+  border-left: 3px solid rgba(220,60,60,0.5);
+}
+.iteration--solution {
+  background: rgba(80,180,100,0.05); border: 1px solid rgba(80,180,100,0.15);
+  border-left: 3px solid rgba(80,180,100,0.5);
+}
+.iteration-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
+.iteration--problem .iteration-tag { color: rgba(200,50,50,0.8); }
+.iteration--solution .iteration-tag { color: rgba(50,160,80,0.85); }
+.iteration-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.iteration-body { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   CONSTRAINTS
+   ============================================================ */
+.constraints { padding: 1.5rem 1.8rem; margin-top: 1rem; }
+.constraints-title { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ocean-primary); margin-bottom: 0.9rem; }
+.constraints ul { list-style: none; }
+.constraints li {
+  font-size: 0.87rem; color: rgba(0,0,0,0.55); line-height: 1.65; font-weight: 300;
+  padding: 0.3rem 0; display: flex; gap: 0.6rem; align-items: flex-start;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.constraints li:last-child { border-bottom: none; }
+.constraints li::before { content: '→'; color: var(--ocean-primary); font-weight: 700; flex-shrink: 0; }
+
+/* ============================================================
+   OUTCOMES
+   ============================================================ */
+.outcomes { display: flex; flex-direction: column; gap: 0.6rem; }
+.outcome {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  padding: 1.3rem 1.5rem;
+  border-left: 3px solid var(--ocean-primary);
+  border-radius: 0 16px 16px 0;
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-left: 3px solid var(--ocean-primary);
+  box-shadow: var(--g-shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.outcome:hover { transform: translateX(4px); box-shadow: var(--g-shadow-lift); }
+.outcome-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.outcome-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+.outcome-b { font-size: 0.85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   FULL-BLEED BLOCKQUOTE
+   ============================================================ */
+.cs-blockquote-peak {
+  margin: 0 -3rem;
+  padding: 4rem 3rem;
+  position: relative;
+  background: rgba(22,142,158,0.04);
+  border-top: 1px solid rgba(22,142,158,0.1);
+  border-bottom: 1px solid rgba(22,142,158,0.1);
+  text-align: left;
+}
+.cs-blockquote-peak-inner { max-width: 1100px; margin: 0 auto; }
+.cs-blockquote-peak blockquote {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.35; color: var(--dark);
+  border: none; background: none; padding: 0; border-radius: 0;
+  margin: 0;
+}
+.cs-blockquote-peak blockquote em { color: var(--ocean-primary); }
+.cs-blockquote-peak .attr {
+  font-size: 0.75rem; color: var(--muted); margin-top: 1.2rem;
+  letter-spacing: 0.06em; font-weight: 300;
+}
+
+/* ============================================================
+   PROOF QUOTE
+   ============================================================ */
+.proof-quote {
+  background: rgba(92,186,120,0.06); border: 1px solid rgba(92,186,120,0.2);
+  border-radius: 20px; padding: 1.8rem 2rem; margin: 2rem 0;
+}
+.proof-quote p { font-size: 1rem; line-height: 1.6; color: var(--dark); font-style: italic; }
+.proof-quote .attribution { font-size: 0.8rem; color: var(--muted); margin-top: 0.8rem; font-style: normal; }
+.proof-quote .attribution::before { content: '— '; }
+
+/* ============================================================
+   TWO COL
+   ============================================================ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 5rem; align-items: start; margin-top: 1rem; }
+.body-text p { font-size: 0.97rem; line-height: 1.85; color: rgba(0,0,0,0.58); font-weight: 300; margin-bottom: 1rem; }
+.body-text p strong { font-weight: 700; color: var(--dark); }
+.body-text p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   INSIGHTS
+   ============================================================ */
+.insights { display: flex; flex-direction: column; gap: 1rem; }
+.insight {
+  background: var(--g-bg-muted); backdrop-filter: blur(8px);
+  border: 1px solid var(--g-border-sub); border-radius: 16px;
+  padding: 1.2rem;
+}
+.insight-q {
+  font-family: var(--serif); font-style: italic; font-weight: 600;
+  font-size: 0.95rem; color: var(--dark); margin-bottom: 0.5rem;
+}
+.insight-a {
+  font-size: 0.8rem; line-height: 1.6; color: var(--muted);
+}
+
+/* ============================================================
+   END + FOOTER
+   ============================================================ */
+.cs-end {
+  max-width: 1100px; margin: 0 auto; padding: 4rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.end-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.end-link { font-family: var(--serif); font-size: 2rem; text-decoration: none; color: var(--dark); display: block; transition: color 0.2s; }
+.end-link:hover { color: var(--ocean-primary); }
+.end-cta { background: var(--dark); color: white; padding: 0.7rem 1.5rem; border-radius: 40px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
+.end-cta:hover { background: var(--ocean-primary); transform: translateY(-2px); }
+footer { background: transparent; border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 3rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; }
+footer span, footer a { font-size: 0.72rem; color: rgba(0,0,0,0.3); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--ocean-primary); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .top-summary { grid-template-columns: 1fr; gap: 0; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .decision-grid { grid-template-columns: 1fr 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  .ocean-system-grid { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .iterations { grid-template-columns: 1fr; }
+  .decision-compare { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cs-section { padding: 3.5rem 1.5rem; }
+  .editorial-peak, .ocean-section-wrap, .cs-blockquote-peak { margin: 0 -1.5rem; padding: 3rem 1.5rem; }
+  .decision-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .cs-end { padding: 2.5rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; }
+  .fd-inner { grid-template-columns: 1fr; min-width: unset; }
+  .fd-arrow { display: none; }
 }
 </style>
 </head>
 <body>
+
 <div id="reading-progress"></div>
 <div id="section-dots"></div>
+
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">Paige Simm.</a>
   <ul class="nav-links">
@@ -91,6 +602,7 @@
   <a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a>
 </div>
 
+<!-- HERO -->
 <div class="cs-hero splashy">
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-top">
@@ -106,78 +618,93 @@
       <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">UX Research · UI Design · Illustration</p></div>
       <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">iOS Mobile App (Figma)</p></div>
       <div><p class="cs-meta-label">Audience</p><p class="cs-meta-value">Children aged 6 to 12</p></div>
-      <div><p class="cs-meta-label">Illustration</p><p class="cs-meta-value">All artwork hand-drawn in Illustrator</p></div>
+      <div><p class="cs-meta-label">Constraint</p><p class="cs-meta-value">3-tap action→reward loop</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP SUMMARY STRIP -->
+<div style="padding: 0 3rem; max-width: 1100px; margin: 0 auto;">
+  <div class="top-summary">
+    <div class="ts-cell">
+      <p class="ts-label">Problem</p>
+      <p class="ts-text">Kids want to help but lack immediate feedback. <strong>Invisible consequences don't stick.</strong> Existing tools talk at children, not with them.</p>
+    </div>
+    <div class="ts-cell">
+      <p class="ts-label">Solution</p>
+      <p class="ts-text">Gamified quest system. <strong>Personal ocean that transforms.</strong> Creature collection mechanic. 3-tap action→reward loop.</p>
+    </div>
+    <div class="ts-cell">
+      <p class="ts-label">Impact</p>
+      <p class="ts-text">Task completion <strong>under 10 sec.</strong> Zero instruction needed. <strong>"What's the next creature?"</strong> — unprompted motivation.</p>
     </div>
   </div>
 </div>
 
 <!-- 01 OVERVIEW -->
 <section class="cs-section" id="s1">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">01</span>
     <span class="section-label">Overview</span>
-    <h2 class="section-heading">Getting kids to care about the planet, without lecturing them.</h2>
+    <h2 class="section-heading">Turning eco-anxiety into action.</h2>
     <div class="two-col">
       <div class="body-text">
-        <p><strong>Splashy</strong> is a gamified iOS app that turns eco-friendly habits into something a child actually wants to do. Kids complete real-world quests, earn sea creatures as rewards, and watch their personal ocean transform from polluted to thriving.</p>
-        <p>The design challenge was making the feedback loop short enough to matter to a 9-year-old. Every decision came back to one question: how many taps between doing something good in the real world and seeing it on screen?</p>
-        <p>I owned the full process: semi-structured user research, concept definition, information architecture, UI design through three major iterations, and a fully interactive Figma prototype. Every character and sea creature was <strong>hand-drawn in Adobe Illustrator.</strong></p>
+        <p><strong>Splashy</strong> is a gamified iOS app that makes sustainable habits tangible for children. Complete real-world quests, earn sea creatures, and watch a personal ocean transform from polluted to thriving.</p>
+        <p>The core challenge: make the feedback loop short enough to matter to a 9-year-old. Every decision answered one question: how many taps between doing good and seeing it on screen?</p>
+        <p>Six children interviewed. Three rounds of testing. All illustration hand-drawn in Adobe Illustrator.</p>
       </div>
       <div>
         <div class="stat-row">
-          <div class="stat-pill"><span class="stat-pill-val" data-target="6">6</span><span class="stat-pill-label">Children interviewed in research</span></div>
-          <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">Major design iterations</span></div>
-          <div class="stat-pill"><span class="stat-pill-val" data-target="4">4</span><span class="stat-pill-label">Core screens in final flow</span></div>
-          <div class="stat-pill"><span class="stat-pill-val">100%</span><span class="stat-pill-label">Original illustration</span></div>
+          <div class="stat-pill"><span class="stat-pill-val" data-target="6">6</span><span class="stat-pill-label">Children interviewed</span></div>
+          <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">Rounds of testing</span></div>
+          <div class="stat-pill"><span class="stat-pill-val">3 taps</span><span class="stat-pill-label">Action→reward constraint</span></div>
+          <div class="stat-pill"><span class="stat-pill-val">1 sem</span><span class="stat-pill-label">Timeline</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- EDITORIAL PEAK -->
+<div class="editorial-peak">
+  <div class="editorial-peak-bg"></div>
+  <div style="position:relative;z-index:1">
+    <span class="editorial-peak-number">&lt;10 sec</span>
+    <p class="editorial-peak-label">Task completion time after quest screen redesign</p>
+    <p class="editorial-peak-sub">Previously: hesitation and wrong taps · After: consistent under 10 seconds</p>
+  </div>
+</div>
+
 <!-- 02 PROBLEM + RESEARCH -->
 <section class="cs-section" id="s2">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">02</span>
     <span class="section-label">Problem + Research</span>
-    <h2 class="section-heading">Evidence that shaped the direction.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">Sustainability education for children is largely adult-led and abstract. The gap is not interest — the gap is <strong style="color:var(--dark)">agency and immediacy.</strong> Research confirmed this before any design work started.</p>
-
-    <div class="img-row cols-2">
-      <div class="img-card">
-        <img src="problemidentitification.jpg" alt="Problem identification research">
-        <p class="img-cap">Initial problem identification — mapping where existing tools fail children</p>
-      </div>
-      <div class="img-card">
-        <img src="problemidentification2.jpg" alt="Problem identification stage 2">
-        <p class="img-cap">Synthesising research findings into core design problems</p>
-      </div>
-    </div>
-
-    <div class="problem-grid" style="margin-top:1rem">
-      <div class="prob"><div class="prob-n">01</div><p class="prob-t">Abstract impact</p><p class="prob-b">Children could not connect daily actions to environmental outcomes. Invisible consequences don't stick.</p></div>
-      <div class="prob"><div class="prob-n">02</div><p class="prob-t">No ownership</p><p class="prob-b">Existing tools talked at children rather than with them. Without ownership, engagement doesn't happen.</p></div>
-      <div class="prob"><div class="prob-n">03</div><p class="prob-t">Rewards too late</p><p class="prob-b">Kids operate on short feedback loops. Long-term reward systems built for adults fail completely at this age.</p></div>
-      <div class="prob"><div class="prob-n">04</div><p class="prob-t">No real-world link</p><p class="prob-b">Apps that lived entirely on-screen missed the point. Behaviour change happens in the physical world.</p></div>
+    <h2 class="section-heading">What the evidence showed.</h2>
+    <p style="font-size:0.97rem;line-height:1.85;color:rgba(0,0,0,0.55);font-weight:300;max-width:58ch;margin-bottom:0">Sustainability education for children is adult-led and abstract. Most children interviewed expressed a desire to help but had no clear path to act on it.</p>
+    <div class="problem-grid">
+      <div class="gc prob"><div class="prob-n">01</div><p class="prob-t">Abstract impact</p><p class="prob-b">Most children struggled to connect daily actions to outcomes. Invisible consequences didn't stick.</p></div>
+      <div class="gc prob"><div class="prob-n">02</div><p class="prob-t">No ownership</p><p class="prob-b">Tools talked at children. Without personal stake, engagement faded quickly.</p></div>
+      <div class="gc prob"><div class="prob-n">03</div><p class="prob-t">Rewards too late</p><p class="prob-b">Long-term rewards failed. Children needed immediate, visible feedback.</p></div>
+      <div class="gc prob"><div class="prob-n">04</div><p class="prob-t">No real-world link</p><p class="prob-b">Screen-only apps missed the point. Behaviour change happens offline.</p></div>
     </div>
   </div>
 </section>
 
 <!-- 03 RESEARCH INSIGHTS -->
 <section class="cs-section" id="s3">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">03</span>
     <span class="section-label">Research</span>
-    <h2 class="section-heading">Who we're designing for.</h2>
+    <h2 class="section-heading">Listening before designing.</h2>
     <div class="two-col">
       <div class="body-text">
-        <p>Semi-structured interviews with six children aged 7 to 11. Rather than asking what features they wanted, I asked about things they already loved: games they played, things they collected, moments that made them feel proud.</p>
-        <p>Three consistent patterns emerged across all six. <strong>None of these ideas came from me.</strong> They came from listening carefully.</p>
+        <p>Semi-structured interviews with six children aged 7–11. I asked about games they loved, things they collected, and moments that made them proud — not feature wishlists.</p>
+        <p>Two patterns emerged consistently. Neither came from me.</p>
       </div>
       <div class="insights">
-        <div class="insight"><p class="insight-q">"I want to help but I don't know what to do."</p><p class="insight-a">Kids had the desire but no pathway. This became the foundation for the quest system: concrete, named, achievable real-world tasks.</p></div>
-        <div class="insight"><p class="insight-q">"I love collecting things. Like Pokemon."</p><p class="insight-a">The creature collection mechanic came directly from this. Each eco-action unlocks a new creature as an immediate, tangible reward.</p></div>
-        <div class="insight"><p class="insight-q">"I'd want to show my friends my ocean."</p><p class="insight-a">The personalised named ocean taps into pride and identity — uniquely yours, shaped by your choices over time.</p></div>
+        <div class="insight"><p class="insight-q">"I love collecting things. Like Pokemon."</p><p class="insight-a">The creature collection mechanic came directly from this.</p></div>
+        <div class="insight"><p class="insight-q">"I'd want to show my friends my ocean."</p><p class="insight-a">The named ocean taps into pride and social identity.</p></div>
       </div>
     </div>
   </div>
@@ -185,135 +712,143 @@
 
 <!-- 04 USER FLOW -->
 <section class="cs-section" id="s4">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">04</span>
     <span class="section-label">User Flow</span>
-    <h2 class="section-heading">Mapping the journey.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">The loop between real-world action and reward needed to be three taps or fewer. This diagram was the north star for every interaction decision.</p>
-
-    <div class="img-full">
-      <img src="splashyuserflow.jpg" alt="Splashy user flow diagram">
-      <p class="img-cap">Full user flow — from sign-up through to quest completion and ocean update. Designed to keep the action-reward loop as short as possible.</p>
+    <h2 class="section-heading">Mapping the three-tap constraint.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">The loop between real-world action and visible reward had to be three taps or fewer. This constraint drove every interaction decision.</p>
+    <div class="flow-diagram">
+      <div class="fd-inner">
+        <div class="fd-node"><div class="fd-box root">Sign up</div><div class="fd-label">Entry</div></div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node"><div class="fd-box pivot">View quests</div><div class="fd-label">Decision</div></div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node"><div class="fd-box">Complete task</div><div class="fd-label">Offline action</div></div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node"><div class="fd-box pivot">Log progress</div><div class="fd-label">1 tap</div></div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node"><div class="fd-box end">Earn creature</div><div class="fd-label">Reward</div></div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node"><div class="fd-box end">Ocean updates</div><div class="fd-label">Visual feedback</div></div>
+      </div>
+      <p class="fd-note">Designed for minimal friction between real-world action and visible reward. Three taps or fewer.</p>
     </div>
-
-    <div class="user-flow" style="margin-top:1.5rem">
-      <div class="flow-step"><div class="flow-box">Sign up + questionnaire</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">View quests</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">Complete real-world task</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Log progress</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box">Earn creature + Ecopoints</div></div>
-      <div class="flow-arrow"></div>
-      <div class="flow-step"><div class="flow-box flow-box--accent">Ocean updates</div></div>
-    </div>
-    <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-style:italic">Design constraint: real-world action to visible reward in 3 taps or fewer.</p>
   </div>
 </section>
 
-<!-- 05 CONCEPT + LOGO DEVELOPMENT -->
+<!-- 05 CONCEPT DEVELOPMENT -->
 <section class="cs-section" id="s5">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">05</span>
     <span class="section-label">Concept Development</span>
-    <h2 class="section-heading">From rough concepts to final mark.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">The visual identity went through multiple rounds before landing on something that felt genuinely playful without being childish. Every logo iteration hand-drawn before moving into Illustrator.</p>
-
-    <div class="concept-strip">
-      <div class="concept-card">
-        <img src="splashywireframe1.jpg" alt="Initial concept sketches">
-        <p class="concept-tag">Stage 01</p>
-        <p class="concept-label">Initial concept explorations</p>
-      </div>
-      <div class="concept-card">
-        <img src="splashywireframe2.jpg" alt="Refined sketches">
-        <p class="concept-tag">Stage 02</p>
-        <p class="concept-label">Refined directions</p>
-      </div>
-      <div class="concept-card">
-        <img src="splashywireframe3.jpg" alt="Logo drafts">
-        <p class="concept-tag">Stage 03</p>
-        <p class="concept-label">Logo drafts in Illustrator</p>
-      </div>
-    </div>
-
-    <div class="img-row cols-2" style="margin-top:1rem">
-      <div class="img-card">
-        <img src="splashywireframe4.jpg" alt="Final wireframe directions">
-        <p class="img-cap">Further screen architecture explorations</p>
-      </div>
-      <div class="img-card">
-        <img src="splashyuserflow.jpg" alt="Logo almost final">
-        <p class="img-cap">Finalising the visual language before hi-fi</p>
-      </div>
+    <h2 class="section-heading">From sketch to final mark.</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-top:1.5rem;">
+      <figure class="gc" style="padding:0; overflow:hidden;">
+        <img src="splashywireframe1.jpg" alt="Initial concept sketches" style="width:100%; height:auto; display:block;">
+        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 01 · Initial explorations</figcaption>
+      </figure>
+      <figure class="gc" style="padding:0; overflow:hidden;">
+        <img src="splashywireframe2.jpg" alt="Refined sketch directions" style="width:100%; height:auto; display:block;">
+        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 02 · Refined directions</figcaption>
+      </figure>
+      <figure class="gc" style="padding:0; overflow:hidden;">
+        <img src="splashywireframe3.jpg" alt="Logo drafts" style="width:100%; height:auto; display:block;">
+        <figcaption style="padding:0.6rem 0.9rem; font-size:0.7rem; color:var(--muted);">Stage 03 · Illustrator drafts</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- 06 ILLUSTRATION ASSETS -->
+<!-- 06 ILLUSTRATION -->
 <section class="cs-section" id="s6">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">06</span>
     <span class="section-label">Illustration</span>
-    <h2 class="section-heading">Building the visual world.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">Every creature, character, and environmental asset was hand-drawn in Adobe Illustrator. The illustration style had to feel warm and approachable for children while maintaining enough visual sophistication that it wouldn't feel cheap.</p>
-
-    <div class="img-full">
-      <img src="intialassets.jpg" alt="Initial creature and asset illustrations">
-      <p class="img-cap">Initial creature asset set — all hand-drawn in Adobe Illustrator. Each creature tied to a specific eco-action category.</p>
-    </div>
+    <h2 class="section-heading">Building the world.</h2>
+    <figure class="gc" style="padding:0; overflow:hidden; margin-top:1.5rem;">
+      <img src="intialassets.jpg" alt="Initial creature asset set" style="width:100%; height:auto; display:block; min-height:240px; object-fit:cover;">
+      <figcaption style="padding:0.8rem 1.2rem; font-size:0.75rem; color:var(--muted);">Initial creature set — each tied to a specific eco-action category</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- 07 FINAL DESIGN -->
-<section class="cs-section" id="s7">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">07</span>
-    <span class="section-label">Final Design</span>
-    <h2 class="section-heading">Bringing the world to life.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">Every visual decision reinforces the core loop. The ocean shifts from murky grey to bright and teeming with life as the child completes more quests.</p>
-
-    <div class="phones-showcase">
-      <div class="phone-item">
-        <img src="splash screen.png" alt="Splash screen">
-        <span class="phone-lbl">Splash</span>
+<!-- 07 OCEAN SYSTEM — dark glass section -->
+<div class="ocean-section-wrap">
+  <div class="ocean-inner">
+    <span class="ocean-section-label">07 · System Design</span>
+    <h2 class="ocean-heading">Ocean state progression.</h2>
+    <div class="ocean-system-grid">
+      <div class="ocean-stage-card">
+        <div class="ocean-stage-icon">🌫️</div>
+        <div class="ocean-stage-name">Polluted</div>
+        <div class="ocean-stage-trigger">0–5 quests</div>
+        <div class="ocean-stage-principle">Immediate visibility of problem</div>
       </div>
-      <div class="phone-item">
-        <img src="fish - medium.png" alt="Ocean building">
-        <span class="phone-lbl">Ocean — building</span>
+      <div class="ocean-stage-card">
+        <div class="ocean-stage-icon">🌿</div>
+        <div class="ocean-stage-name">Recovering</div>
+        <div class="ocean-stage-trigger">6–15 quests</div>
+        <div class="ocean-stage-principle">Progress feels attainable</div>
       </div>
-      <div class="phone-item">
-        <img src="fish.png" alt="Ocean thriving">
-        <span class="phone-lbl">Ocean — thriving</span>
-      </div>
-      <div class="phone-item">
-        <img src="quests active good.png" alt="Active quests">
-        <span class="phone-lbl">Quests</span>
-      </div>
-      <div class="phone-item">
-        <img src="log drag.png" alt="Waste log">
-        <span class="phone-lbl">Waste log</span>
+      <div class="ocean-stage-card">
+        <div class="ocean-stage-icon">🐠</div>
+        <div class="ocean-stage-name">Thriving</div>
+        <div class="ocean-stage-trigger">16+ quests</div>
+        <div class="ocean-stage-principle">Aspirational, earned identity</div>
       </div>
     </div>
+    <!-- Tradeoff inside dark section -->
+    <div class="decision-compare" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+      <div class="decision-option dropped">
+        <div class="decision-label">Option A (dropped)</div>
+        <p style="font-size:0.9rem; color:rgba(240,245,244,0.7);">Continuous gradient — ocean gradually changes with each quest. Tested but children didn't notice incremental shifts.</p>
+      </div>
+      <div class="decision-option kept">
+        <div class="decision-label">Option B (kept)</div>
+        <p style="font-size:0.9rem; color:rgba(240,245,244,0.7);">Three distinct milestone states with creature unlock animations. Creates deliberate, noticeable reward moments.</p>
+      </div>
+    </div>
+    <p style="font-size:0.9rem; color:rgba(240,245,244,0.5); margin-top:1.5rem;">Thresholds based on observed engagement during prototype testing. 0–5 quests established baseline; 6–15 felt like progress; 16+ required sustained effort — mapping to variable rewards with escalating value.</p>
   </div>
-</section>
+</div>
 
-<!-- 08 TESTING -->
+<!-- 08 FINAL DESIGN -->
 <section class="cs-section" id="s8">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">08</span>
-    <span class="section-label">Testing + Iteration</span>
-    <h2 class="section-heading">What didn't work. What I changed. Why.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:54ch;line-height:1.75;margin-bottom:0">Tested early prototypes with three of the original research participants. Kids are the most direct usability testers you will ever work with.</p>
-    <div class="iterations">
-      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">Quest screen had too much text</p><p class="iteration-body">Children skipped reading instructions entirely and tapped whatever button was biggest. Not a reading problem — a design problem.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Icon-led cards with one primary action</p><p class="iteration-body">Reduced copy by roughly 60%, moved critical information into iconography. After the redesign, all three participants understood without reading anything.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Problem found in testing</span><p class="iteration-title">The ocean didn't feel different enough early on</p><p class="iteration-body">Children could not distinguish between dirty and slightly-less-dirty states. Without a clear moment, completing a quest felt meaningless.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">How I fixed it</span><p class="iteration-title">Distinct milestone states tied to creature unlocks</p><p class="iteration-body">Three clearly differentiated ocean states with dramatically different visual palettes. Each tied to a creature unlock — a deliberate reward moment.</p></div>
+    <span class="section-label">Final Design</span>
+    <h2 class="section-heading">The interface.</h2>
+    <div class="phones-showcase">
+      <div class="phone-item"><img src="splash screen.png" alt="Splash screen"><span class="phone-lbl">Splash</span></div>
+      <div class="phone-item"><img src="fish - medium.png" alt="Ocean building"><span class="phone-lbl">Building</span></div>
+      <div class="phone-item"><img src="fish.png" alt="Ocean thriving"><span class="phone-lbl">Thriving</span></div>
+      <div class="phone-item"><img src="quests active good.png" alt="Active quests"><span class="phone-lbl">Quests</span></div>
+      <div class="phone-item"><img src="log drag.png" alt="Waste log"><span class="phone-lbl">Log</span></div>
     </div>
-    <div class="constraints">
+  </div>
+</section>
+
+<!-- FULL-BLEED BLOCKQUOTE -->
+<div class="cs-blockquote-peak">
+  <div class="cs-blockquote-peak-inner">
+    <blockquote>After the quest screen redesign, one child completed five tasks without a single question. <em>Before, they'd stop and ask what to do after every tap.</em></blockquote>
+    <p class="attr">Observation from final prototype testing</p>
+  </div>
+</div>
+
+<!-- 09 TESTING -->
+<section class="cs-section" id="s9">
+  <div class="inner">
+    <span class="sec-num">09</span>
+    <span class="section-label">Testing + Iteration</span>
+    <h2 class="section-heading">What didn't work.</h2>
+    <div class="iterations">
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem</span><p class="iteration-title">Quest screen had too much text</p><p class="iteration-body">Two of three children skipped reading entirely and tapped the largest button.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">Fix</span><p class="iteration-title">Icon-led cards</p><p class="iteration-body">Reduced copy ~60%. All three were able to complete quests without reading after the change.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Problem</span><p class="iteration-title">Ocean changes weren't noticeable</p><p class="iteration-body">Children didn't distinguish between early ocean states. Completing quests felt meaningless.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">Fix</span><p class="iteration-title">Three distinct states with unlock moments</p><p class="iteration-body">Tied each transition to a creature unlock animation. The difference became unmistakable.</p></div>
+    </div>
+    <div class="gc constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
         <li>University timeline — one semester from research to prototype</li>
@@ -325,40 +860,46 @@
   </div>
 </section>
 
-<!-- 09 OUTCOMES -->
-<section class="cs-section" id="s9">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
+<!-- 10 OUTCOMES -->
+<section class="cs-section" id="s10">
+  <div class="inner">
+    <span class="sec-num">10</span>
     <span class="section-label">Outcomes</span>
-    <h2 class="section-heading">What the testing showed.</h2>
+    <h2 class="section-heading">What testing showed.</h2>
     <div class="outcomes">
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M9 14l4 4 6-7"/></svg></div><div><p class="outcome-t">Reward system grasped without instruction</p><p class="outcome-b">All three test participants understood the quest-to-ocean connection without any explanation — the visual feedback loop was legible enough that onboarding copy became unnecessary.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/></svg></div><div><p class="outcome-t">Collection mechanic created unprompted motivation</p><p class="outcome-b">Kids asked "what's the next creature?" without being prompted — one of the clearest signals in usability testing that a mechanic has genuinely taken hold.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Simplified UI cut task completion time dramatically</p><p class="outcome-b">After the quest screen redesign, children completed the log progress action in under 10 seconds consistently, versus repeated hesitation and wrong taps in v1.</p></div></div>
+      <div class="outcome"><span class="outcome-icon">✓</span><div><p class="outcome-t">No instruction needed</p><p class="outcome-b">All three participants grasped the quest-to-ocean connection without explanation.</p></div></div>
+      <div class="outcome"><span class="outcome-icon">✓</span><div><p class="outcome-t">Unprompted motivation</p><p class="outcome-b">Two of three asked "what's the next creature?" without prompting.</p></div></div>
+      <div class="outcome"><span class="outcome-icon">✓</span><div><p class="outcome-t">Task time reduced</p><p class="outcome-b">Log progress action completed in under 10 seconds consistently after redesign.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- 10 REFLECTION -->
-<section class="cs-section" id="s10">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">10</span>
+<!-- 11 REFLECTION -->
+<section class="cs-section" id="s11">
+  <div class="inner">
+    <span class="sec-num">11</span>
     <span class="section-label">Reflection</span>
-    <h2 class="section-heading">What this taught me.</h2>
-    <div class="reflect-wrap">
-      <blockquote>Designing for children is humbling. Every assumption about how users think gets stripped away the moment you <em>actually</em> talk to them.</blockquote>
-      <div class="reflect-body">
-        <p>The biggest lesson was that <strong>research is not a phase you complete before design — it is structural to every outcome.</strong> The creature collection mechanic came from a child mentioning Pokemon unprompted. The named ocean came from a kid saying they'd want to show their friends. Those were not features I invented. They were features I heard.</p>
-        <p><strong>Simplicity is not dumbing things down. It is doing the hard design work so the user does not have to.</strong> Touch target dimensions, reward timing, information density — every decision has to be reexamined when your user is 8 years old. Nothing transfers from adult UX without scrutiny.</p>
+    <h2 class="section-heading">What I got wrong at first.</h2>
+    <div class="two-col">
+      <div class="body-text">
+        <p><strong>I initially designed for the child I imagined, not the one I met.</strong> The first quest screen assumed a reading level and attention span that didn't exist. Watching a child skip every word and tap randomly was humbling. That failure forced the icon-led redesign.</p>
+      </div>
+      <div class="body-text">
+        <p><strong>Research is structural, not preliminary.</strong> The creature collection mechanic came from a child mentioning Pokemon. The named ocean came from a child wanting to show friends. I didn't invent those features — I heard them and built accordingly.</p>
+        <p>If I were to do this again: I'd test with children earlier, even with rough paper prototypes, rather than waiting for high-fidelity. The feedback is immediate and brutal in the best way.</p>
       </div>
     </div>
   </div>
 </section>
 
 <div style="border-top:1px solid rgba(0,0,0,0.06)">
-  <div class="cs-end"><div><p class="end-label">Next project</p><a href="hunza-case-study.html" class="end-link">Hunza &amp; LuxR →</a></div><a href="index.html#contact" class="end-cta">Get in touch</a></div>
+  <div class="cs-end">
+    <div><p class="end-label">Next project</p><a href="hunza-case-study.html" class="end-link">Hunza &amp; LuxR →</a></div>
+    <a href="index.html#contact" class="end-cta">Get in touch</a>
+  </div>
 </div>
 <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
+
 <script src="script.js"></script>
 </body>
 </html>
