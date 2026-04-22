@@ -225,10 +225,8 @@ body::before {
 .flow-after .flow-step-num { background: rgba(80,180,100,0.1); color: rgba(50,160,80,0.85); }
 
 /* ============================================================
-   IMAGE PANELS — gc only
+   IMAGE PANELS — gc only (consistent with Hunza)
    ============================================================ */
-.img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
-.img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .img-panel {
   background: var(--g-bg); backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-border); border-radius: 18px;
@@ -237,12 +235,19 @@ body::before {
 }
 .img-panel:hover { transform: translateY(-3px); }
 .img-panel img {
-  width: 100%; height: auto; min-height: 200px; object-fit: cover; display: block;
+  width: 100%; height: 360px;          /* fixed height for consistency */
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
 .img-caption {
   padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted);
   line-height: 1.55; border-top: 1px solid rgba(0,0,0,0.05);
 }
+.img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+
+/* Screen badge (used in before/after labels) */
 .screen-badge {
   display: inline-flex; align-items: center; gap: 0.4rem;
   font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
