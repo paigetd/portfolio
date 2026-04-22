@@ -19,6 +19,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <a href="#contact" class="hire-btn">Hire me</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -31,26 +32,21 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <!-- Replace the existing #hero section content with this -->
+  <!-- HERO (simplified) -->
   <section id="hero">
     <div class="hero-bg-blob"></div>
     <div class="hero-bg-blob2"></div>
     <div class="hero-bg-blob3"></div>
 
     <div class="hero-top">
-      <span class="hero-tag">Interface Designer · New Zealand</span>
-      </span>
+      <span class="hero-tag">Interface Designer · Auckland, NZ</span>
+      <span class="available-badge"><span class="dot-pulse"></span> Open to work</span>
     </div>
 
-    <!-- Headshot + floating pills (top right) -->
     <div class="hero-extras">
       <div class="hero-headshot">
-        <!-- Drop your photo in as headshot.jpg and swap the placeholder below -->
-        <!-- <img src="headshot.jpg" alt="Paige Simm"> -->
         <div class="hero-headshot-placeholder">put<br>photo<br>here</div>
       </div>
-      <div class="glass-pill"><span class="glass-pill-dot"></span>Auckland, NZ</div>
-      <div class="glass-pill"><span class="glass-pill-dot"></span>Open to work</div>
     </div>
 
     <div>
@@ -59,10 +55,21 @@
         <span class="hero-name-line" id="nameLine2">Simm.</span>
       </h1>
 
-   
+      <!-- Single strong positioning line -->
+      <p class="hero-positioning">
+        I design interfaces for teams building internal tools, SaaS platforms, and complex web systems.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-val">5→2</span><span class="hero-stat-label">Steps to update<br>order status</span></div>
+        <div class="hero-stat"><span class="hero-stat-val">−40%</span><span class="hero-stat-label">Support emails<br>post‑redesign</span></div>
+        <div class="hero-stat"><span class="hero-stat-val">SQL</span><span class="hero-stat-label">Database fix<br>restored pricing</span></div>
+      </div>
+
       <div class="hero-bottom">
         <p class="hero-text">
-          <strong>Interface designer</strong> with a knack for front-end. I make things look good, work well, and feel considered. Website rebuilds, UX research, print, social; whatever it takes.
+          <strong>Interface designer focused on outcomes, not just visuals.</strong> 
+          I reduce friction, remove steps, and ship clean work that actually gets used.
         </p>
         <a href="#work" class="hero-scroll">
           See the work
@@ -74,8 +81,7 @@
     </div>
   </section>
 
-  
-
+  <!-- ABOUT -->
   <section id="about">
     <div class="about-grid">
       <div class="reveal">
@@ -84,9 +90,9 @@
       </div>
       <div>
         <div class="reveal about-text" style="transition-delay: 100ms">
-          <p>Hey, I'm Paige Simm. I'm a 24-year-old interface designer based in Auckland with a <strong>Bachelor of Design (Interface Design)</strong> from the University of Waikato. I have a habit of making things look significantly better than I found them.</p>
-          <p>Most recently I was a <strong>Marketing Coordinator at a Hunza Outdoor Lighting</strong> where I rebuilt their website from scratch, fixed a database-level pricing bug with SQL, ran social media, and made sure everything from spec sheets to in-building signage felt polished.</p>
-          <p>I sit at the intersection of <strong>visual design and front-end development</strong>. Equally comfortable in Figma or a code editor. Every graphic, illustration, and image across my work is <strong>hand-drawn by me in Illustrator.</strong></p>
+          <p>Hey, I'm Paige Simm — a 24-year-old interface designer based in Auckland with a <strong>Bachelor of Design (Interface Design)</strong> from the University of Waikato. I have a habit of making things look significantly better than I found them.</p>
+          <p>Most recently I was a <strong>Marketing Coordinator at Hunza Outdoor Lighting</strong> where I rebuilt their website from scratch, fixed a database‑level pricing bug with SQL, ran social media, and made sure everything from spec sheets to in‑building signage felt polished.</p>
+          <p>I sit at the intersection of <strong>visual design and front‑end development</strong>. Equally comfortable in Figma or a code editor. Every graphic, illustration, and image across my work is <strong>hand‑drawn by me in Illustrator.</strong></p>
         </div>
         <div class="skills-grid">
           <span class="skill-tag">UI / UX Design</span>
@@ -102,15 +108,45 @@
           <span class="skill-tag">Signage & Wayfinding</span>
           <span class="skill-tag">Illustration</span>
         </div>
+        <div class="workflow-note reveal" style="transition-delay: 200ms;">
+          <p class="workflow-label">How I work</p>
+          <p class="workflow-text">Figma → user flow mapping → wireframes → interactive prototype → handoff specs. I write HTML/CSS/JS when needed to close the loop between design and build.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- DESIGN APPROACH (formerly principles, now more strategic) -->
+  <section class="approach-strip">
+    <div class="approach-header reveal">
+      <span class="section-label">Design approach</span>
+      <h2 class="section-heading">How I solve interface problems.</h2>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item reveal">
+        <span class="approach-icon">↓</span>
+        <p class="approach-title">Reduce steps before adding features</p>
+        <p class="approach-sub">Every click is a decision. Fewer decisions means faster work. Applied in Automote: 5→2 steps.</p>
+      </div>
+      <div class="approach-item reveal" style="transition-delay: 80ms">
+        <span class="approach-icon">⇢</span>
+        <p class="approach-title">Design for scanning, not reading</p>
+        <p class="approach-sub">Users skim. Hierarchy does the heavy lifting. Applied in Hunza product pages.</p>
+      </div>
+      <div class="approach-item reveal" style="transition-delay: 160ms">
+        <span class="approach-icon">◈</span>
+        <p class="approach-title">Systems over screens</p>
+        <p class="approach-sub">Consistent patterns reduce cognitive load. Applied across all three case studies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
   <section id="work">
     <div class="work-header">
       <div class="reveal">
         <span class="section-label">Selected work</span>
-        <h2 class="section-heading">Things I've made.</h2>
+        <h2 class="section-heading">Things I've made <em>better.</em></h2>
       </div>
       <div class="reveal">
         <a href="#contact" class="view-all">Get in touch →</a>
@@ -124,9 +160,14 @@
             <img src="hunza-after.png" alt="Hunza redesign" loading="lazy">
           </div>
           <div class="card-content">
-            <div class="card-meta"><span class="card-num">01</span><span class="card-cat">UX/UI · Web Development</span></div>
+            <div class="card-meta">
+              <span class="card-num">01</span>
+              <span class="card-cat">UX/UI · Web Development · 6‑month solo rebuild</span>
+            </div>
             <h3 class="card-title">Hunza & LuxR<br><em>Website Redesign</em></h3>
-            <p class="card-desc">Two premium lighting brands, one unified site. End-to-end UX/UI plus a SQL database fix that unblocked accurate pricing across all products.</p>
+            <p class="card-context">Two premium lighting brands across a fragmented WordPress setup. No audience routing. Broken pricing database.</p>
+            <p class="card-desc">Merged brands into one platform. Fixed SQL pricing bug that IT contractor couldn't solve. Reduced support emails by ~40%.</p>
+            <p class="card-insight">→ Introduced audience‑based routing — users self‑select and find relevant content immediately.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0.8rem;">
               <span class="exp-tag">WordPress</span><span class="exp-tag">HTML/CSS/JS</span><span class="exp-tag">SQL</span><span class="exp-tag">Brand Merge</span>
             </div>
@@ -145,9 +186,14 @@
             </div>
           </div>
           <div class="card-content">
-            <div class="card-meta"><span class="card-num">02</span><span class="card-cat">B2B UX/UI · Internship</span></div>
+            <div class="card-meta">
+              <span class="card-num">02</span>
+              <span class="card-cat">B2B UX/UI · 6‑month Internship</span>
+            </div>
             <h3 class="card-title">Automote<br><em>Dealer Platform</em></h3>
-            <p class="card-desc">Redesigned a broken dealership management tool. Six pain points fixed, fully interactive Figma prototype delivered.</p>
+            <p class="card-context">Legacy internal tool with high daily usage but low usability. Six core pain points identified.</p>
+            <p class="card-desc">Redesigned core workflows. Order status updates reduced from 5 steps to 2. Fully interactive Figma prototype delivered.</p>
+            <p class="card-insight">→ Introduced persistent split‑panel layout — eliminated mid‑task navigation.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;">
               <span class="exp-tag">Figma</span><span class="exp-tag">B2B UX</span><span class="exp-tag">Design Systems</span>
             </div>
@@ -165,9 +211,14 @@
             <img src="quests active good.png" alt="Splashy quests" class="phone-mock" loading="lazy">
           </div>
           <div class="card-content">
-            <div class="card-meta"><span class="card-num">03</span><span class="card-cat">UX Research · Mobile · Capstone</span></div>
+            <div class="card-meta">
+              <span class="card-num">03</span>
+              <span class="card-cat">UX Research · Mobile · Capstone</span>
+            </div>
             <h3 class="card-title">Splashy<br><em>Kids Sustainability App</em></h3>
-            <p class="card-desc">Gamified eco-habits for children. Research-led, creature collection mechanics, all illustration hand-drawn in Illustrator.</p>
+            <p class="card-context">Research‑led capstone exploring behaviour change in children aged 6–12.</p>
+            <p class="card-desc">Led UX research with six children. Designed creature collection mechanics. All illustration hand‑drawn.</p>
+            <p class="card-insight">→ 3‑tap action→reward loop based on observed attention spans. Task time under 10 sec.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;">
               <span class="exp-tag">UX Research</span><span class="exp-tag">Figma</span><span class="exp-tag">Illustration</span>
             </div>
@@ -183,7 +234,7 @@
           <div class="card-content">
             <span class="card-cat">Print Design · InDesign</span>
             <h3 class="card-title">Product Catalogues & Spec Sheets</h3>
-            <p class="card-desc">Lighting spec sheets redesigned from scratch. Clean, precise, hand-illustrated.</p>
+            <p class="card-desc">Lighting spec sheets redesigned from scratch. Clean, precise, hand‑illustrated.</p>
           </div>
         </div>
       </div>
@@ -202,13 +253,14 @@
           <div class="card-content">
             <span class="card-cat">Social Media · Brand · Illustration</span>
             <h3 class="card-title">Social Graphics & Brand Identity</h3>
-            <p class="card-desc">Social content for a luxury lighting brand. Every graphic hand-drawn in Illustrator.</p>
+            <p class="card-desc">Social content for a luxury lighting brand. Every graphic hand‑drawn in Illustrator.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="exp-grid">
       <div class="reveal sticky-head">
@@ -216,24 +268,25 @@
         <h2 class="section-heading">Where I've been.</h2>
       </div>
       <div>
-        <div class="reveal exp-item"><div><div class="exp-date">2025 – Present</div><div class="exp-company">Hunza Outdoor Lighting</div><div class="exp-role">Marketing Coordinator</div></div><div><div class="exp-desc">Led the full website redesign and ongoing maintenance (WordPress, HTML, CSS, JS, PHP). Fixed a database pricing bug via SQL. Redesigned spec sheets and catalogues in InDesign, created all social graphics hand-drawn in Illustrator.</div><div class="exp-tags"><span class="exp-tag">WordPress</span><span class="exp-tag">HTML/CSS/JS</span><span class="exp-tag">SQL</span><span class="exp-tag">InDesign</span><span class="exp-tag">Illustrator</span></div></div></div>
-        <div class="reveal exp-item" style="transition-delay: 80ms"><div><div class="exp-date">2023 – 2024</div><div class="exp-company">LuminateOne</div><div class="exp-role">UI/UX Design Intern · 6 months</div></div><div><div class="exp-desc">Redesigned Automote, a dealer management platform used daily by car dealerships. Delivered a fully interactive Figma prototype covering core workflows, accepted as the basis for development planning.</div><div class="exp-tags"><span class="exp-tag">Figma</span><span class="exp-tag">UX/UI</span><span class="exp-tag">B2B Design</span><span class="exp-tag">Prototyping</span></div></div></div>
+        <div class="reveal exp-item"><div><div class="exp-date">2025 – Present</div><div class="exp-company">Hunza Outdoor Lighting</div><div class="exp-role">Marketing Coordinator</div></div><div><div class="exp-desc">Led full website redesign and ongoing maintenance (WordPress, HTML, CSS, JS, PHP). Fixed a database pricing bug via SQL that external IT couldn't resolve. Reduced support emails ~40% by making resources self‑serve.</div><div class="exp-tags"><span class="exp-tag">WordPress</span><span class="exp-tag">HTML/CSS/JS</span><span class="exp-tag">SQL</span><span class="exp-tag">InDesign</span><span class="exp-tag">Illustrator</span></div></div></div>
+        <div class="reveal exp-item" style="transition-delay: 80ms"><div><div class="exp-date">2023 – 2024</div><div class="exp-company">LuminateOne</div><div class="exp-role">UI/UX Design Intern · 6 months</div></div><div><div class="exp-desc">Redesigned Automote, a dealer management platform used daily by car dealerships. Delivered fully interactive Figma prototype covering core workflows; accepted as development basis without revision.</div><div class="exp-tags"><span class="exp-tag">Figma</span><span class="exp-tag">UX/UI</span><span class="exp-tag">B2B Design</span><span class="exp-tag">Prototyping</span></div></div></div>
         <div class="reveal exp-item" style="transition-delay: 160ms"><div><div class="exp-date">2019 – 2022</div><div class="exp-company">NZ Post</div><div class="exp-role">Parcel Sorter + Design</div></div><div><div class="exp-desc">Three years of operational work with informal design contributions on the side. When you're a designer you just can't help it.</div><div class="exp-tags"><span class="exp-tag">Design</span><span class="exp-tag">Operations</span></div></div></div>
         <div class="reveal exp-item" style="transition-delay: 240ms"><div><div class="exp-date">2021 – 2024</div><div class="exp-company">University of Waikato</div><div class="exp-role">BDes — Interface Design</div></div><div><div class="exp-desc">Graduated with a major in Interface Design. Studied UX research, visual systems, typography, interaction design, and the theory behind why good design works.</div><div class="exp-tags"><span class="exp-tag">UX Research</span><span class="exp-tag">Interface Design</span><span class="exp-tag">Typography</span></div></div></div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-left reveal">
       <span class="section-label">Get in touch</span>
       <h2 class="contact-heading">Let's make<br>something <em>good.</em></h2>
     </div>
     <div class="contact-right reveal" style="transition-delay: 150ms">
+      <p class="contact-availability">Currently available for UX/UI or product design roles in NZ or remote.</p>
       <p class="contact-sub">Open to new roles, freelance work, and anything interesting. If you've made it this far, we're probably a good match.</p>
       <div class="contact-links">
         <a href="mailto:paige.simm@icloud.com" class="contact-link">paige.simm@icloud.com<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 14L14 2M14 2H6M14 2v8"/></svg></a>
-       
         <a href="#" class="contact-link">Download CV<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 2v9M3 11l5 3 5-3M2 14h12"/></svg></a>
       </div>
     </div>
@@ -245,5 +298,20 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Subtle parallax on hero blobs
+    (function() {
+      const blobs = document.querySelectorAll('.hero-bg-blob, .hero-bg-blob2, .hero-bg-blob3');
+      if (!blobs.length) return;
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        blobs.forEach((blob, i) => {
+          const speed = 0.03 + (i * 0.02);
+          const y = scrolled * speed;
+          blob.style.transform = `translateY(${y}px)`;
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
