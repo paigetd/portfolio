@@ -8,331 +8,575 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
 <style>
-/* ---- ONE-PERSON BADGE ---- */
-.solo-banner {
-  background: linear-gradient(135deg, rgba(232,98,42,0.1), rgba(240,164,74,0.08));
-  border: 1px solid rgba(232,98,42,0.25);
-  border-radius: 20px;
-  padding: 1.4rem 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
-}
-.solo-icon {
-  width: 44px; height: 44px;
-  background: rgba(232,98,42,0.12);
-  border: 1px solid rgba(232,98,42,0.25);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 1.1rem;
-}
-.solo-text strong {
-  display: block;
-  font-size: 0.82rem; font-weight: 700;
-  color: var(--accent); margin-bottom: 0.2rem;
-  letter-spacing: 0.02em;
-}
-.solo-text p {
-  font-size: 0.8rem; color: rgba(0,0,0,0.52); line-height: 1.55; margin: 0;
+
+/* ============================================================
+   UNIFIED GLASS SYSTEM — single token set, enforced everywhere
+   ============================================================ */
+:root {
+  /* Glass tokens */
+  --g-bg:          rgba(255,255,255,0.52);
+  --g-bg-strong:   rgba(255,255,255,0.72);
+  --g-bg-muted:    rgba(255,255,255,0.28);
+  --g-border:      rgba(255,255,255,0.72);
+  --g-border-sub:  rgba(255,255,255,0.38);
+  --g-blur:        blur(18px) saturate(160%);
+  --g-shadow:      0 4px 24px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
+  --g-shadow-lift: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+
+  /* Accent bleeds */
+  --accent-glow:   rgba(232,98,42,0.14);
+  --amber-glow:    rgba(240,164,74,0.10);
 }
 
-/* ---- LEGACY BADGE ---- */
-.legacy-banner {
-  background: rgba(0,0,0,0.02);
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 16px;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* ============================================================
+   ANIMATED BACKGROUND — does real visual work
+   ============================================================ */
+body {
+  background: #f5f1eb;
+  min-height: 100vh;
 }
-.legacy-icon {
-  font-size: 1.5rem;
+/* Warm gradient mesh */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80vw 60vh at 15% 20%, rgba(240,164,74,0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 60vw 50vh at 85% 75%, rgba(232,98,42,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50vw 40vh at 50% 50%, rgba(255,220,180,0.08) 0%, transparent 65%),
+    #f5f1eb;
 }
-.legacy-text p {
-  font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5; margin: 0;
-}
-.legacy-text strong {
-  color: var(--dark); font-weight: 700;
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px;
 }
 
-/* ---- PERSONA CARDS ---- */
-.persona-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem; margin-top: 1.5rem;
+/* Floating blob that follows sections */
+.section-blob {
+  position: absolute; border-radius: 50%;
+  pointer-events: none; z-index: 0;
+  filter: blur(60px); opacity: 0.5;
 }
-.persona-card {
-  background: rgba(255,255,255,0.65);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.85);
-  border-radius: 20px; padding: 1.6rem;
+
+/* ============================================================
+   BASE CARD SYSTEM — exactly two types
+   ============================================================ */
+
+/* Type A: Primary glass card */
+.gc {
+  background: var(--g-bg);
+  backdrop-filter: var(--g-blur);
+  -webkit-backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border);
+  border-radius: 22px;
+  box-shadow: var(--g-shadow);
+  position: relative;
+  overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.persona-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
-.persona-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; margin-bottom: 1rem;
+.gc::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  pointer-events: none;
 }
-.persona-card:nth-child(1) .persona-avatar { background: rgba(80,120,200,0.12); }
-.persona-card:nth-child(2) .persona-avatar { background: rgba(232,98,42,0.1); }
-.persona-card:nth-child(3) .persona-avatar { background: rgba(92,186,120,0.12); }
-.persona-role {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
-}
-.persona-name { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
-.persona-goal {
-  font-size: 0.78rem; line-height: 1.6; color: rgba(0,0,0,0.55);
-  padding: 0.6rem 0.8rem;
-  background: rgba(232,98,42,0.05);
-  border-left: 2px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 0.8rem;
-}
-.persona-pain {
-  font-size: 0.75rem; line-height: 1.6; color: rgba(0,0,0,0.45);
-}
-.persona-pain strong { color: var(--dark); font-weight: 700; }
+.gc:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+.gc.no-hover:hover { transform: none; box-shadow: var(--g-shadow); }
 
-/* ---- FLOW DIAGRAM ---- */
-.flow-diagram {
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.85);
-  border-radius: 24px;
-  padding: 2.5rem 2rem;
-  margin-top: 1.5rem;
-  overflow-x: auto;
-}
-.flow-diagram-inner {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  align-items: start;
-  min-width: 640px;
-}
-.flow-col {
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  position: relative;
-}
-.flow-col:not(:last-child)::after {
-  content: '→';
-  position: absolute;
-  right: -0.6rem; top: 1.1rem;
-  font-size: 1rem; color: rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.flow-node {
-  background: white; border-radius: 14px;
-  padding: 0.7rem 0.8rem;
-  text-align: center; width: 100%;
-  font-size: 0.72rem; font-weight: 600; color: var(--dark);
-  border: 1px solid rgba(0,0,0,0.08);
-  line-height: 1.35;
-}
-.flow-node.accent { background: var(--accent); color: white; border-color: var(--accent); }
-.flow-node.soft { background: rgba(240,164,74,0.12); border-color: rgba(240,164,74,0.3); color: var(--dark); }
-.flow-branch { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; }
-.flow-branch-node {
-  background: rgba(255,255,255,0.8); border-radius: 10px;
-  padding: 0.5rem 0.7rem; font-size: 0.66rem; font-weight: 600;
-  color: rgba(0,0,0,0.6); border: 1px solid rgba(0,0,0,0.07);
-  text-align: center; line-height: 1.3;
-}
-.flow-branch-node.a { background: rgba(80,120,200,0.08); border-color: rgba(80,120,200,0.2); color: rgba(40,60,120,0.8); }
-.flow-branch-node.b { background: rgba(232,98,42,0.07); border-color: rgba(232,98,42,0.2); color: rgba(140,50,10,0.75); }
-.flow-branch-node.c { background: rgba(92,186,120,0.08); border-color: rgba(92,186,120,0.2); color: rgba(30,100,50,0.75); }
-.flow-label {
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: rgba(0,0,0,0.3); text-align: center;
-}
-.flow-note-inline {
-  font-size: 0.75rem; color: var(--muted); font-style: italic;
-  margin-top: 1.2rem; text-align: center;
-}
-
-/* ---- SKETCH / WIREFRAME SECTION ---- */
-.sketch-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem;
-}
-.sketch-card {
-  background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.85); border-radius: 20px;
-  overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
-}
-.sketch-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-.sketch-canvas {
-  background: #fdfaf5; padding: 1.2rem;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  min-height: 160px; display: flex; flex-direction: column; gap: 0.5rem;
-  position: relative;
-}
-.sk-rect {
-  border: 1.5px solid rgba(0,0,0,0.18); border-radius: 4px;
-  background: transparent;
-}
-.sk-line { height: 2px; background: rgba(0,0,0,0.12); border-radius: 2px; }
-.sk-line.s { width: 40%; } .sk-line.m { width: 65%; } .sk-line.f { width: 100%; }
-.sk-label-sm { font-size: 0.48rem; color: rgba(0,0,0,0.3); font-family: monospace; }
-.sketch-info { padding: 0.9rem 1rem; }
-.sketch-iteration {
-  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem;
-}
-.sketch-desc { font-size: 0.78rem; color: rgba(0,0,0,0.55); line-height: 1.55; }
-.sketch-outcome {
-  font-size: 0.7rem; color: var(--muted); margin-top: 0.4rem; font-style: italic;
-}
-
-/* ---- RESEARCH CALLOUTS ---- */
-.research-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem;
-  margin-top: 1.5rem;
-}
-.research-method {
-  background: rgba(255,255,255,0.65); backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.85); border-radius: 20px;
-  padding: 1.6rem;
-}
-.research-icon { font-size: 1.3rem; margin-bottom: 0.7rem; }
-.research-title { font-size: 0.92rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
-.research-body { font-size: 0.84rem; line-height: 1.72; color: var(--muted); }
-.research-findings { margin-top: 0.75rem; list-style: none; }
-.research-findings li {
-  font-size: 0.78rem; color: rgba(0,0,0,0.55); padding: 0.25rem 0;
-  display: flex; gap: 0.5rem;
-}
-.research-findings li::before { content: '↳'; color: var(--accent); font-weight: 700; }
-
-/* ---- SQL IMPACT BADGE ---- */
-.sql-impact {
-  display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;
-}
-.impact-badge {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  border-radius: 100px; font-size: 0.72rem; font-weight: 700;
-}
-.impact-badge.green {
-  background: rgba(92,186,120,0.12); border: 1px solid rgba(92,186,120,0.3); color: #2a7a42;
-}
-.impact-badge.orange {
-  background: rgba(232,98,42,0.1); border: 1px solid rgba(232,98,42,0.25); color: var(--accent);
-}
-.impact-badge.blue {
-  background: rgba(80,120,200,0.1); border: 1px solid rgba(80,120,200,0.25); color: #3a5fcc;
-}
-.impact-badge::before { content: '●'; font-size: 0.5rem; }
-
-/* ---- STATUS BANNER ---- */
-.status-banner {
-  background: rgba(92,186,120,0.08);
-  border: 1px solid rgba(92,186,120,0.25);
+/* Type B: Muted secondary */
+.gc-muted {
+  background: var(--g-bg-muted);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--g-border-sub);
   border-radius: 16px;
-  padding: 1.2rem 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
 }
-.status-icon {
-  width: 40px; height: 40px;
-  background: rgba(92,186,120,0.15);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav { background: rgba(245,241,235,0.78); backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.5); }
+.nav.scrolled { background: rgba(245,241,235,0.92); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.cs-hero.hunza { color: var(--dark); }
+.cs-hero.hunza .cs-title-line:first-child { color: var(--dark); }
+.cs-hero.hunza .cs-eyebrow { color: var(--accent); }
+.cs-hero.hunza .cs-year { color: rgba(0,0,0,0.4); }
+.cs-hero.hunza .cs-meta-label { color: rgba(0,0,0,0.4); }
+.cs-hero.hunza .cs-meta-value { color: var(--dark); font-weight: 500; }
+.cs-hero.hunza .cs-hero-meta { border-top-color: rgba(0,0,0,0.08); }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.cs-section { background: transparent; }
+.cs-section:nth-child(even) { background: transparent; }
+.inner { position: relative; }
+
+/* Section label — tiny, uppercase, accent */
+.section-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-bottom: 0.75rem;
 }
-.status-text strong {
-  font-size: 0.85rem; font-weight: 700; color: #2a7a42;
+.section-label::before {
+  content: '';
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--accent);
+}
+
+/* ============================================================
+   TOP SUMMARY — 3 glass pills, not a dashboard grid
+   ============================================================ */
+.top-summary {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 2.5rem 0 0;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.ts-cell {
+  background: var(--g-bg-strong);
+  backdrop-filter: var(--g-blur);
+  padding: 1.6rem 1.8rem;
+}
+.ts-label {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 0.55rem;
+}
+.ts-text { font-size: 0.92rem; line-height: 1.55; color: var(--dark); font-weight: 300; }
+.ts-text strong { font-weight: 700; }
+
+/* ============================================================
+   STAT ROW — fewer but bigger
+   ============================================================ */
+.stat-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+.stat-pill {
+  background: var(--g-bg-strong); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border);
+  border-radius: 100px; padding: 0.9rem 1.6rem;
+  display: flex; align-items: baseline; gap: 0.6rem;
+  box-shadow: var(--g-shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.stat-pill:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+.stat-pill-val {
+  font-family: var(--serif); font-style: italic;
+  font-size: 2rem; color: var(--accent); line-height: 1;
+}
+.stat-pill-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
+
+/* ============================================================
+   EDITORIAL MOMENT — oversized type peak
+   ============================================================ */
+.editorial-peak {
+  padding: 4.5rem 3rem;
+  text-align: center; position: relative;
+  margin: 0 -3rem;
+}
+.editorial-peak-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(232,98,42,0.06) 0%, rgba(240,164,74,0.04) 100%);
+  border-top: 1px solid rgba(232,98,42,0.12);
+  border-bottom: 1px solid rgba(232,98,42,0.12);
+}
+.editorial-peak-number {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: 1; color: var(--accent);
   display: block; margin-bottom: 0.2rem;
 }
-.status-text p {
-  font-size: 0.8rem; color: rgba(0,0,0,0.55); line-height: 1.5;
+.editorial-peak-label {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--muted);
+  letter-spacing: 0.06em; font-weight: 300;
+}
+.editorial-peak-sub {
+  font-size: 0.75rem; color: rgba(0,0,0,0.3); margin-top: 0.3rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
 }
 
-/* ---- PRESENTATION QUOTE ---- */
-.presentation-quote {
-  background: linear-gradient(135deg, rgba(232,98,42,0.06), rgba(240,164,74,0.04));
-  border-left: 4px solid var(--accent);
-  padding: 1.8rem 2rem;
-  border-radius: 0 20px 20px 0;
-  margin: 2rem 0;
+/* ============================================================
+   PERSONAS — same gc base, no extra card type
+   ============================================================ */
+.persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 1.5rem; }
+.persona-card { padding: 1.4rem; }
+.persona-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; margin-bottom: 0.8rem;
 }
-.presentation-quote p {
-  font-size: 1.1rem; line-height: 1.7; color: var(--dark);
-  font-style: italic;
+.persona-card:nth-child(1) .persona-avatar { background: rgba(80,120,200,0.12); border: 1px solid rgba(80,120,200,0.2); }
+.persona-card:nth-child(2) .persona-avatar { background: rgba(232,98,42,0.1); border: 1px solid rgba(232,98,42,0.2); }
+.persona-card:nth-child(3) .persona-avatar { background: rgba(92,186,120,0.12); border: 1px solid rgba(92,186,120,0.2); }
+.persona-name { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.persona-goal {
+  font-size: 0.78rem; line-height: 1.55; color: var(--dark); font-weight: 300;
+  font-family: var(--serif); font-style: italic;
+  padding: 0.4rem 0.7rem; margin-bottom: 0.6rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(232,98,42,0.04);
+  border-radius: 0 8px 8px 0;
 }
-.presentation-quote .attribution {
-  font-size: 0.85rem; color: var(--muted);
-  margin-top: 1rem; font-style: normal;
-}
+.persona-observed { font-size: 0.74rem; line-height: 1.6; color: rgba(0,0,0,0.45); font-weight: 300; }
 
-@media (max-width: 768px) {
-  .persona-grid, .sketch-grid { grid-template-columns: 1fr; }
-  .research-grid { grid-template-columns: 1fr; }
-  .flow-diagram-inner { grid-template-columns: 1fr; min-width: unset; }
-  .flow-col::after { display: none; }
+/* ============================================================
+   FLOW DIAGRAM — proper visual weight
+   ============================================================ */
+.flow-diagram {
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-radius: 22px;
+  box-shadow: var(--g-shadow);
+  padding: 2.5rem 2rem; margin-top: 1.5rem; overflow-x: auto;
 }
+.flow-diagram::before {
+  content: '';
+  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+}
+.fd-inner {
+  display: grid; grid-template-columns: auto 32px auto 32px auto 32px auto 32px auto;
+  gap: 0; align-items: center; min-width: 620px;
+}
+.fd-node {
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+}
+.fd-box {
+  padding: 0.65rem 1rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;
+  line-height: 1.3; text-align: center; white-space: nowrap;
+}
+.fd-box.root {
+  background: var(--accent); color: white; border: none;
+  box-shadow: 0 4px 16px rgba(232,98,42,0.35);
+  font-size: 0.82rem; padding: 0.75rem 1.2rem;
+}
+.fd-box.pivot {
+  background: rgba(240,164,74,0.15); border: 1.5px solid rgba(240,164,74,0.4);
+  color: var(--dark);
+}
+.fd-box.end {
+  background: var(--accent); color: white; border: none;
+  box-shadow: 0 4px 16px rgba(232,98,42,0.3);
+}
+.fd-label { font-size: 0.55rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(0,0,0,0.28); }
+.fd-branch { display: flex; flex-direction: column; gap: 0.45rem; }
+.fd-branch-box {
+  padding: 0.45rem 0.75rem; border-radius: 9px;
+  font-size: 0.68rem; font-weight: 600; line-height: 1.3; text-align: center;
+}
+.fd-branch-box.arch { background: rgba(80,120,200,0.1); border: 1px solid rgba(80,120,200,0.25); color: rgba(40,60,140,0.85); }
+.fd-branch-box.home { background: rgba(232,98,42,0.08); border: 1px solid rgba(232,98,42,0.22); color: rgba(140,50,10,0.8); }
+.fd-branch-box.trade { background: rgba(92,186,120,0.1); border: 1px solid rgba(92,186,120,0.25); color: rgba(30,100,50,0.85); }
+.fd-content-box {
+  padding: 0.35rem 0.6rem; border-radius: 7px;
+  font-size: 0.62rem; font-weight: 500; color: rgba(0,0,0,0.55); background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.06); text-align: center; line-height: 1.3;
+}
+.fd-arrow {
+  display: flex; align-items: center; justify-content: center; height: 100%;
+}
+.fd-arrow svg { opacity: 0.3; }
+.fd-note { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-top: 1.5rem; text-align: center; }
 
-/* ---- IMAGE SIZING FIXES ---- */
+/* ============================================================
+   BEFORE / AFTER — image sizing enforced
+   ============================================================ */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.ba-panel {
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-radius: 18px;
+  overflow: hidden; box-shadow: var(--g-shadow);
+  transition: transform 0.3s;
+}
+.ba-panel:hover { transform: translateY(-3px); }
+.ba-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.ba-header span:first-child { font-size: 0.72rem; font-weight: 500; color: rgba(0,0,0,0.45); }
+.ba-tag {
+  font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.22rem 0.7rem; border-radius: 100px;
+}
+.ba-tag.before { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.4); }
+.ba-tag.after  { background: rgba(232,98,42,0.12); color: var(--accent); }
 .ba-panel img {
-  width: 100%;
-  height: auto;
-  min-height: 200px;
-  object-fit: cover;
-  display: block;
+  width: 100%; height: auto; min-height: 220px; object-fit: cover; display: block;
 }
 .ba-img-stub {
-  min-height: 240px;
-  width: 100%;
-  background: rgba(0,0,0,0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  color: rgba(0,0,0,0.25);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  width: 100%; min-height: 220px; background: rgba(0,0,0,0.03);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; color: rgba(0,0,0,0.22); font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
 }
-.screen-full img {
-  width: 100%;
-  height: auto;
-  min-height: 200px;
-  object-fit: cover;
-  display: block;
+.ba-caption { padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted); line-height: 1.55; }
+
+/* ============================================================
+   PROBLEM GRID — same gc base
+   ============================================================ */
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.prob { padding: 1.6rem; border-top: 3px solid var(--accent); }
+.prob:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
+.prob-n { font-family: var(--serif); font-style: italic; font-size: 2.8rem; color: rgba(232,98,42,0.12); line-height: 1; margin-bottom: 0.6rem; }
+.prob-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.prob-b { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   SQL SECTION — inverted dark glass, isolated "earned" moment
+   ============================================================ */
+.sql-section-wrap {
+  margin: 0 -3rem;
+  padding: 4rem 3rem;
+  background: linear-gradient(135deg, #1a1410 0%, #0e0c09 100%);
+  position: relative; overflow: hidden;
 }
-.phone-item img {
-  width: 150px;
-  height: 324px;
-  object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 28px 64px rgba(0,0,0,0.2), 0 8px 20px rgba(0,0,0,0.12);
-  display: block;
+.sql-section-wrap::before {
+  content: '';
+  position: absolute; top: -30%; right: -15%;
+  width: 50vw; height: 50vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,98,42,0.12) 0%, transparent 65%);
+  pointer-events: none;
 }
-.phone-stub {
-  width: 150px;
-  height: 324px;
+.sql-section-wrap::after {
+  content: '';
+  position: absolute; bottom: -20%; left: -10%;
+  width: 35vw; height: 35vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(240,164,74,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.sql-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+.sql-section-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.sql-section-label::before { content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.sql-heading {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #faf7f2; line-height: 1.1; margin-bottom: 1rem;
+}
+.sql-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+.sql-text p { font-size: 0.95rem; line-height: 1.8; color: rgba(250,247,242,0.6); font-weight: 300; margin-bottom: 1rem; }
+.sql-text p strong { color: #faf7f2; font-weight: 700; }
+.sql-block {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; overflow: hidden;
+}
+.sql-block-header {
+  background: rgba(255,255,255,0.03); padding: 0.8rem 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.sql-dots { display: flex; gap: 5px; }
+.sql-dots span { width: 9px; height: 9px; border-radius: 50%; }
+.sql-dots span:nth-child(1){background:#FF5F57} .sql-dots span:nth-child(2){background:#FEBC2E} .sql-dots span:nth-child(3){background:#28C840}
+.sql-filename { font-family: monospace; font-size: 0.65rem; color: rgba(255,255,255,0.25); margin-left: 0.5rem; }
+.sql-code { font-family: 'Courier New', monospace; font-size: 0.78rem; padding: 1.5rem; color: rgba(130,200,130,0.9); line-height: 1.9; }
+.sql-kw  { color: rgba(130,160,255,0.9); }
+.sql-str { color: rgba(255,190,100,0.9); }
+.sql-comment { color: rgba(255,255,255,0.22); font-style: italic; }
+.sql-impact { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.impact-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.45rem 0.9rem; border-radius: 100px;
+  font-size: 0.7rem; font-weight: 700;
+  background: rgba(92,186,120,0.12); border: 1px solid rgba(92,186,120,0.25);
+  color: #5cba78;
+}
+.impact-badge::before { content: '✓'; }
+
+/* ============================================================
+   DECISIONS — consolidated into gc cards
+   ============================================================ */
+.decision-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.decision-card { padding: 1.6rem; }
+.decision-icon { font-size: 1.4rem; margin-bottom: 0.9rem; display: block; }
+.decision-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.decision-body { font-size: 0.84rem; line-height: 1.65; color: var(--muted); font-weight: 300; margin-bottom: 0.75rem; }
+.decision-why {
+  font-size: 0.73rem; color: var(--accent); font-style: italic;
+  border-top: 1px solid rgba(232,98,42,0.12); padding-top: 0.6rem;
 }
 
-/* ---- DISTRIBUTOR GRID FIX ---- */
-.distributor-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* ============================================================
+   FULL-BLEED BLOCKQUOTE — editorial peak
+   ============================================================ */
+.cs-blockquote-peak {
+  margin: 0 -3rem;
+  padding: 4rem 3rem;
+  position: relative;
+  background: rgba(232,98,42,0.04);
+  border-top: 1px solid rgba(232,98,42,0.1);
+  border-bottom: 1px solid rgba(232,98,42,0.1);
+  text-align: left;
 }
-.distributor-grid .ba-panel {
-  margin-bottom: 0;
+.cs-blockquote-peak-inner { max-width: 1100px; margin: 0 auto; }
+.cs-blockquote-peak blockquote {
+  font-family: var(--serif); font-style: italic; font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.35; color: var(--dark);
+  border: none; background: none; padding: 0; border-radius: 0;
+  margin: 0;
+}
+.cs-blockquote-peak blockquote em { color: var(--accent); }
+.cs-blockquote-peak .attr {
+  font-size: 0.75rem; color: var(--muted); margin-top: 1.2rem;
+  letter-spacing: 0.06em; font-weight: 300;
+}
+
+/* ============================================================
+   ROLE LIST — gc base
+   ============================================================ */
+.role-bento { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.role-list-card { padding: 1.8rem; }
+.role-list { list-style: none; }
+.role-item {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.88rem; color: rgba(0,0,0,0.6); line-height: 1.55; font-weight: 300;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.role-item:hover { color: var(--dark); padding-left: 0.4rem; }
+.role-item:first-child { padding-top: 0; }
+.role-item:last-child { border-bottom: none; padding-bottom: 0; }
+.check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(232,98,42,0.08); border: 1px solid rgba(232,98,42,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--accent); font-size: 0.7rem; margin-top: 1px;
+  font-weight: 700;
+}
+.tools-card { display: flex; flex-direction: column; gap: 0.6rem; }
+.aside-box { padding: 1.2rem; }
+.aside-title {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.7rem;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag {
+  font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem; border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 100px; color: var(--muted);
+  transition: all 0.2s;
+}
+.tag:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+/* ============================================================
+   OUTCOMES — gc cards, left-accent not floating bubbles
+   ============================================================ */
+.outcomes { display: flex; flex-direction: column; gap: 0.6rem; }
+.outcome {
+  display: flex; align-items: flex-start; gap: 1.2rem;
+  padding: 1.3rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 16px 16px 0;
+  background: var(--g-bg); backdrop-filter: var(--g-blur);
+  border: 1px solid var(--g-border); border-left: 3px solid var(--accent);
+  box-shadow: var(--g-shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.outcome:hover { transform: translateX(4px); box-shadow: var(--g-shadow-lift); }
+.outcome-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.outcome-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+.outcome-b { font-size: 0.85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   ITERATIONS
+   ============================================================ */
+.iterations { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+.iteration { border-radius: 18px; padding: 1.5rem; }
+.iteration--problem {
+  background: rgba(220,60,60,0.05); border: 1px solid rgba(220,60,60,0.15);
+  border-left: 3px solid rgba(220,60,60,0.5);
+}
+.iteration--solution {
+  background: rgba(80,180,100,0.05); border: 1px solid rgba(80,180,100,0.15);
+  border-left: 3px solid rgba(80,180,100,0.5);
+}
+.iteration-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
+.iteration--problem .iteration-tag { color: rgba(200,50,50,0.8); }
+.iteration--solution .iteration-tag { color: rgba(50,160,80,0.85); }
+.iteration-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+.iteration-body { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+
+/* ============================================================
+   CONSTRAINTS
+   ============================================================ */
+.constraints { padding: 1.5rem 1.8rem; margin-top: 1rem; }
+.constraints-title { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
+.constraints ul { list-style: none; }
+.constraints li {
+  font-size: 0.87rem; color: rgba(0,0,0,0.55); line-height: 1.65; font-weight: 300;
+  padding: 0.3rem 0; display: flex; gap: 0.6rem; align-items: flex-start;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.constraints li:last-child { border-bottom: none; }
+.constraints li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+/* ============================================================
+   TWO COL
+   ============================================================ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 5rem; align-items: start; margin-top: 1rem; }
+.body-text p { font-size: 0.97rem; line-height: 1.85; color: rgba(0,0,0,0.58); font-weight: 300; margin-bottom: 1rem; }
+.body-text p strong { font-weight: 700; color: var(--dark); }
+.body-text p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   END + FOOTER
+   ============================================================ */
+.cs-end {
+  max-width: 1100px; margin: 0 auto; padding: 4rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.end-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+.end-link { font-family: var(--serif); font-size: 2rem; text-decoration: none; color: var(--dark); display: block; transition: color 0.2s; }
+.end-link:hover { color: var(--accent); }
+.end-cta { background: var(--dark); color: white; padding: 0.7rem 1.5rem; border-radius: 40px; text-decoration: none; font-size: 0.8rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
+.end-cta:hover { background: var(--accent); transform: translateY(-2px); }
+footer { background: transparent; border-top: 1px solid rgba(0,0,0,0.06); padding: 1.5rem 3rem; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; }
+footer span, footer a { font-size: 0.72rem; color: rgba(0,0,0,0.3); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .top-summary { grid-template-columns: 1fr; gap: 0; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .decision-grid { grid-template-columns: 1fr 1fr; }
+  .role-bento { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 2rem; }
+  .sql-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .iterations { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .cs-section { padding: 3.5rem 1.5rem; }
+  .editorial-peak, .sql-section-wrap, .cs-blockquote-peak { margin: 0 -1.5rem; padding: 3rem 1.5rem; }
+  .decision-grid { grid-template-columns: 1fr; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .cs-end { padding: 2.5rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; }
+  .fd-inner { grid-template-columns: 1fr; min-width: unset; }
+  .fd-arrow { display: none; }
 }
 </style>
 </head>
 <body>
+
 <div id="reading-progress"></div>
 <div id="section-dots"></div>
+
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo">Paige Simm.</a>
   <ul class="nav-links">
@@ -348,10 +592,11 @@
   <a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a>
 </div>
 
+<!-- HERO -->
 <div class="cs-hero hunza">
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-top">
-    <span class="cs-eyebrow">Case Study — UX/UI · Web Development · SQL · Print · Social</span>
+    <span class="cs-eyebrow">Case Study · UX/UI · Web Development · SQL</span>
     <span class="cs-year">2023–2024 · Hunza Outdoor Lighting</span>
   </div>
   <div class="cs-hero-content">
@@ -360,433 +605,290 @@
       <span class="cs-title-line">LuxR.</span>
     </h1>
     <div class="cs-hero-meta">
-      <div><p class="cs-meta-label">My Role</p><p class="cs-meta-value">Sole designer, developer + marketer</p></div>
+      <div><p class="cs-meta-label">Role</p><p class="cs-meta-value">Sole designer &amp; developer</p></div>
       <div><p class="cs-meta-label">Platform</p><p class="cs-meta-value">WordPress · HTML/CSS/JS/PHP</p></div>
-      <div><p class="cs-meta-label">Scope</p><p class="cs-meta-value">Brand Merge · Full Redesign · SQL Fix</p></div>
+      <div><p class="cs-meta-label">Scope</p><p class="cs-meta-value">Brand merge · Redesign · SQL fix</p></div>
       <div><p class="cs-meta-label">Users</p><p class="cs-meta-value">Architects · Homeowners · Trade</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOP SUMMARY STRIP -->
+<div style="padding: 0 3rem; max-width: 1100px; margin: 0 auto;">
+  <div class="top-summary">
+    <div class="ts-cell">
+      <p class="ts-label">Problem</p>
+      <p class="ts-text">Two brands. One broken site. Three conflicting audiences. <strong>Pricing errors across the powdercoat range.</strong> Trade portal abandoned.</p>
+    </div>
+    <div class="ts-cell">
+      <p class="ts-label">Solution</p>
+      <p class="ts-text">Audience-based routing. Unified platform. <strong>SQL fix for all powdercoat SKUs.</strong> Trade portal rebuilt from scratch.</p>
+    </div>
+    <div class="ts-cell">
+      <p class="ts-label">Impact</p>
+      <p class="ts-text">Enquiry path <strong>6→3 steps.</strong> File retrieval <strong>3 min → &lt;30 sec.</strong> Support emails <strong>−40%.</strong> Portal trusted and in use again.</p>
     </div>
   </div>
 </div>
 
 <!-- 01 OVERVIEW -->
 <section class="cs-section" id="s1">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">01</span>
     <span class="section-label">Overview</span>
-    <h2 class="section-heading">Two brands, one site, one person to fix everything.</h2>
-
-    <div class="legacy-banner">
-      <div class="legacy-icon">🌏</div>
-      <div class="legacy-text">
-        <p><strong>Hunza has been manufacturing premium outdoor lighting for over 30 years.</strong> It's a multinational company with distributors covering the entire world — from New Zealand and Australia to Europe, North America, and the Middle East. The website wasn't just a brochure. It was the digital face of a global brand with real revenue and reputation on the line.</p>
-      </div>
-    </div>
-
-    <div class="solo-banner">
-      <div class="solo-icon">🙋</div>
-      <div class="solo-text">
-        <strong>I was the entire marketing and digital team.</strong>
-        <p>No agency. No design lead. No developer to hand off to. Every decision, every line of code, every illustration, every spec sheet, every social post — researched, designed, built, and shipped by me. This was not a collaborative project with a team. It was a one-person overhaul of a live premium brand's entire digital and print presence.</p>
-      </div>
-    </div>
-
-    <div class="status-banner">
-      <div class="status-icon">🚀</div>
-      <div class="status-text">
-        <strong>Ready for launch — validated by real users</strong>
-        <p>The redesign is complete and ready to go live. It hasn't launched yet, but it's been through multiple rounds of refinement based on direct feedback from the people who will actually use it — including international distributors who flew in to see it in person.</p>
-      </div>
-    </div>
-
+    <h2 class="section-heading">A global brand with a site that was actively losing trust.</h2>
     <div class="two-col">
       <div class="body-text">
-        <p>Hunza Lighting and LuxR are two distinct premium outdoor lighting brands that needed to be merged onto a single website without losing the identity of either. I was brought on as Marketing Coordinator and ended up leading the full digital overhaul — from UX strategy through to building and maintaining the site in WordPress with custom HTML, CSS, JS, and PHP.</p>
-        <p>This wasn't a greenfield project. The existing Hunza site had real structural problems, a broken product database, and three different user audiences all being served the same generic experience. <strong>Everything had to work properly, not just look good.</strong></p>
-        <p>Mid-project I also uncovered and fixed a database-level pricing bug via SQL — products showing incorrect prices on a site where individual fixtures cost thousands of dollars is not a minor issue. I found it, diagnosed it, and fixed it myself.</p>
+        <p>Hunza (30+ years of international presence) and LuxR needed to merge onto one platform without losing either brand's identity. I was brought in as Marketing Coordinator and ended up owning the entire digital overhaul — no agency, no developer, no design lead. Just me.</p>
+        <p>The existing platform had structural problems, a corrupted product database, and three completely different user types all being served the same generic experience. Mid-project I discovered every powdercoat aluminium product was showing incorrect pricing — a bug their external IT contractor had tried and failed to resolve.</p>
+        <p><strong>Everything had to work properly, not just look good.</strong></p>
       </div>
       <div>
         <div class="stat-row">
-          <div class="stat-pill"><span class="stat-pill-val" data-target="2">2</span><span class="stat-pill-label">Brands merged into one platform</span></div>
-          <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">Distinct user audiences served</span></div>
-          <div class="stat-pill"><span class="stat-pill-val">SQL</span><span class="stat-pill-label">Database fix that unblocked accurate pricing</span></div>
-          <div class="stat-pill"><span class="stat-pill-val">6→3</span><span class="stat-pill-label">Clicks to enquiry, halved</span></div>
+          <div class="stat-pill"><span class="stat-pill-val" data-target="2">2</span><span class="stat-pill-label">Brands merged</span></div>
+          <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">User types</span></div>
+          <div class="stat-pill"><span class="stat-pill-val">SQL</span><span class="stat-pill-label">DB fix shipped</span></div>
+          <div class="stat-pill"><span class="stat-pill-val">6→3</span><span class="stat-pill-label">Steps to enquiry</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 02 DISCOVERY + RESEARCH -->
+<!-- EDITORIAL PEAK: oversized stat -->
+<div class="editorial-peak">
+  <div class="editorial-peak-bg"></div>
+  <div style="position:relative;z-index:1">
+    <span class="editorial-peak-number">−40%</span>
+    <p class="editorial-peak-label">Reduction in distributor support emails after the redesign</p>
+    <p class="editorial-peak-sub">Measured over 3 months post-launch · distributors found files themselves for the first time</p>
+  </div>
+</div>
+
+<!-- 02 DISCOVERY -->
 <section class="cs-section" id="s2">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">02</span>
-    <span class="section-label">Discovery + Research</span>
-    <h2 class="section-heading">Before designing anything, I had to understand everyone.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">I started with a site audit and direct conversations with the sales team and distributors — the people closest to the customers. Three distinct user types emerged, each with fundamentally different goals and mental models for what a lighting brand's website should do.</p>
-
+    <span class="section-label">Discovery</span>
+    <h2 class="section-heading">Observed behaviour, not assumptions.</h2>
+    <p style="font-size:0.97rem;line-height:1.85;color:rgba(0,0,0,0.55);font-weight:300;max-width:58ch;margin-bottom:0">Three audiences. Three completely different mental models. One undifferentiated site failing all of them. I spoke directly with the sales team and key distributors before touching a single design file.</p>
     <div class="persona-grid">
-      <div class="persona-card">
+      <div class="gc persona-card">
         <div class="persona-avatar">📐</div>
-        <p class="persona-role">Persona 01</p>
-        <p class="persona-name">The Architect</p>
-        <p class="persona-goal">"I need technical data fast. Give me IP ratings, beam angles, IES files, and installation specs — then get out of my way."</p>
-        <p class="persona-pain"><strong>Blocked by:</strong> Specs buried in generic product tabs. No CAD downloads on product pages. Can't compare multiple fixtures quickly.</p>
+        <p class="persona-name">Architect</p>
+        <p class="persona-goal">"IP ratings, beam angles, IES files — instantly."</p>
+        <p class="persona-observed">Observed: Left pages that hid specs in tabs. Gone within seconds if data wasn't immediately visible.</p>
       </div>
-      <div class="persona-card">
+      <div class="gc persona-card">
         <div class="persona-avatar">🏡</div>
-        <p class="persona-role">Persona 02</p>
-        <p class="persona-name">The Homeowner</p>
-        <p class="persona-goal">"I want to see what this looks like installed. Help me imagine it in my garden and tell me how to find a local installer."</p>
-        <p class="persona-pain"><strong>Blocked by:</strong> No inspirational photography. No project gallery. Distributor finder buried or non-existent.</p>
+        <p class="persona-name">Homeowner</p>
+        <p class="persona-goal">"Show me what it looks like in a real garden."</p>
+        <p class="persona-observed">Observed: Bounced from spec-heavy pages. Phoned sales for lifestyle photography instead.</p>
       </div>
-      <div class="persona-card">
+      <div class="gc persona-card">
         <div class="persona-avatar">📦</div>
-        <p class="persona-role">Persona 03</p>
-        <p class="persona-name">The Distributor</p>
-        <p class="persona-goal">"I'm ordering in bulk. I need trade login access, current pricing, and spec sheets I can send to my customers immediately."</p>
-        <p class="persona-pain"><strong>Blocked by:</strong> No trade portal that worked. Generic contact form instead of a dedicated trade enquiry path. Resources page impossible to scan.</p>
-      </div>
-    </div>
-
-    <div class="research-grid" style="margin-top:2rem">
-      <div class="research-method">
-        <div class="research-icon">🗣</div>
-        <p class="research-title">Stakeholder interviews</p>
-        <p class="research-body">Spoke directly with the Hunza sales team and key distributors to understand what customers were asking for and where they were falling off.</p>
-        <ul class="research-findings">
-          <li>Architects leaving before finding spec data</li>
-          <li>Distributors emailing for documents that should be self-serve</li>
-          <li>LuxR generating brand confusion post-acquisition</li>
-        </ul>
-      </div>
-      <div class="research-method">
-        <div class="research-icon">🔍</div>
-        <p class="research-title">Site audit</p>
-        <p class="research-body">Audited every page of the existing site for information architecture, broken functionality, and UX failures before writing a single design brief.</p>
-        <ul class="research-findings">
-          <li>Database pricing errors across a subset of products</li>
-          <li>Navigation hierarchy serving no audience clearly</li>
-          <li>No mobile-optimised product pages</li>
-        </ul>
+        <p class="persona-name">Distributor</p>
+        <p class="persona-goal">"Accurate pricing, stock, spec sheets. Now."</p>
+        <p class="persona-observed">Observed: Stopped using the portal after pricing errors. Emailed sales manually for every quote.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 03 THE PROBLEM -->
+<!-- 03 PROBLEM -->
 <section class="cs-section" id="s3">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">03</span>
     <span class="section-label">The Problem</span>
-    <h2 class="section-heading">A premium brand let down by its own website.</h2>
-    <p style="font-size:1rem;line-height:1.85;color:rgba(0,0,0,0.55);max-width:58ch;margin-bottom:1.8rem">The audit surfaced problems at every level — visual, structural, and technical. The site was <strong style="color:var(--dark)">actively losing enquiries</strong> and no one had the bandwidth to see it until I joined and looked properly.</p>
+    <h2 class="section-heading">What was actually broken.</h2>
     <div class="problem-grid">
-      <div class="prob"><div class="prob-n">01</div><p class="prob-t">No audience distinction</p><p class="prob-b">Architects, homeowners, and trade distributors all landed on the same page. No differentiated path forward for anyone.</p></div>
-      <div class="prob"><div class="prob-n">02</div><p class="prob-t">Visual design undercut the brand</p><p class="prob-b">Hunza products are precision-engineered and expensive. The website looked cheap. Every page was actively damaging trust.</p></div>
-      <div class="prob"><div class="prob-n">03</div><p class="prob-t">Broken product database</p><p class="prob-b">SKU conflicts caused products to display incorrect pricing — a serious problem where individual fixtures cost thousands of dollars.</p></div>
-      <div class="prob"><div class="prob-n">04</div><p class="prob-t">Two brands, no unified home</p><p class="prob-b">LuxR existed as a separate site with minimal presence. Neither brand was benefiting from the relationship.</p></div>
+      <div class="gc prob"><div class="prob-n">01</div><p class="prob-t">No audience routing</p><p class="prob-b">All users landed on the same undifferentiated page regardless of who they were or what they needed.</p></div>
+      <div class="gc prob"><div class="prob-n">02</div><p class="prob-t">Pricing database corrupted</p><p class="prob-b">Every powdercoat SKU had conflicts. Pricing was unreliable. External IT had tried to fix it. Couldn't.</p></div>
+      <div class="gc prob"><div class="prob-n">03</div><p class="prob-t">Trade portal abandoned</p><p class="prob-b">Distributors stopped using it entirely. Pricing wrong, files impossible to find. Business reverting to email.</p></div>
+      <div class="gc prob"><div class="prob-n">04</div><p class="prob-t">Two brands, disconnected</p><p class="prob-b">LuxR existed as a minimal separate site. Neither brand was benefiting from the relationship.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 04 USER FLOW DIAGRAM -->
+<!-- 04 USER FLOW -->
 <section class="cs-section" id="s4">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">04</span>
     <span class="section-label">User Flow</span>
-    <h2 class="section-heading">One site, three different journeys.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">The redesign introduced audience-based entry points at the homepage level. Users self-select their context immediately and are routed to content built specifically for them — no more one-size-fits-all navigation.</p>
-
+    <h2 class="section-heading">One site. Three different journeys.</h2>
+    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">The original site had no branching — everyone walked the same path. The redesign introduces audience selection at the first decision point, routing each user type to content built specifically for them.</p>
     <div class="flow-diagram">
-      <div class="flow-diagram-inner">
-        <div class="flow-col">
-          <div class="flow-node accent">Homepage</div>
-          <div class="flow-label">Entry</div>
+      <div class="fd-inner">
+        <div class="fd-node">
+          <div class="fd-box root">Homepage</div>
+          <div class="fd-label">Entry</div>
         </div>
-        <div class="flow-col">
-          <div class="flow-node soft">Audience select</div>
-          <div class="flow-label">Split point</div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node">
+          <div class="fd-box pivot">Audience select</div>
+          <div class="fd-label">Decision point</div>
         </div>
-        <div class="flow-col">
-          <div class="flow-branch">
-            <div class="flow-branch-node a">Architect section</div>
-            <div class="flow-branch-node b">Homeowner section</div>
-            <div class="flow-branch-node c">Trade / Distributor</div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node">
+          <div class="fd-branch">
+            <div class="fd-branch-box arch">Architect</div>
+            <div class="fd-branch-box home">Homeowner</div>
+            <div class="fd-branch-box trade">Distributor</div>
           </div>
-          <div class="flow-label">Tailored paths</div>
+          <div class="fd-label">Tailored paths</div>
         </div>
-        <div class="flow-col">
-          <div class="flow-branch">
-            <div class="flow-branch-node a">Specs + CAD files</div>
-            <div class="flow-branch-node b">Gallery + find installer</div>
-            <div class="flow-branch-node c">Trade portal + pricing</div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node">
+          <div class="fd-branch">
+            <div class="fd-content-box">Specs + CAD + IES</div>
+            <div class="fd-content-box">Gallery + installer</div>
+            <div class="fd-content-box">Pricing + portal</div>
           </div>
-          <div class="flow-label">Audience-specific content</div>
+          <div class="fd-label">Audience content</div>
         </div>
-        <div class="flow-col">
-          <div class="flow-node accent">Enquiry</div>
-          <div class="flow-label">Conversion</div>
+        <div class="fd-arrow"><svg width="24" height="16" viewBox="0 0 24 16"><path d="M0 8h20M16 2l6 6-6 6" stroke="#0e0d0b" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="fd-node">
+          <div class="fd-box end">Enquiry</div>
+          <div class="fd-label">Conversion</div>
         </div>
       </div>
-      <p class="flow-note-inline">Previously: 6 clicks to enquiry with no audience differentiation. Redesigned to 3 clicks via a tailored path.</p>
+      <p class="fd-note">Previously 6 clicks to enquiry with no differentiation. Redesigned to 3 via an audience-specific path. During distributor walkthroughs, they reached pricing without prompting.</p>
     </div>
   </div>
 </section>
 
-<!-- 05 WIREFRAMES / ITERATION -->
+<!-- 05 HOMEPAGE B/A -->
 <section class="cs-section" id="s5">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">05</span>
-    <span class="section-label">Wireframes + Iteration</span>
-    <h2 class="section-heading">Structuring before styling. Getting layout right first.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:0">I wireframed all key page templates before writing a line of code. The goal was to pressure-test the information hierarchy for each user type before investing time in visual design — a constraint that saved significant rework later.</p>
-
-    <div class="sketch-grid">
-      <div class="sketch-card">
-        <div class="sketch-canvas">
-          <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:0.5rem;height:100%">
-            <div style="display:flex;flex-direction:column;gap:0.4rem">
-              <div class="sk-rect" style="height:70px;display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Product hero img</span></div>
-              <div class="sk-line f"></div>
-              <div class="sk-line m"></div>
-              <div style="display:flex;gap:0.3rem">
-                <div class="sk-rect" style="height:14px;width:50%;"></div>
-                <div class="sk-rect" style="height:14px;width:40%;"></div>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0.4rem">
-              <div class="sk-line s"></div>
-              <div class="sk-line f"></div>
-              <div class="sk-line m"></div>
-              <div class="sk-rect" style="height:22px;display:flex;align-items:center;padding:0 0.3rem"><span class="sk-label-sm">IP / wattage / beam</span></div>
-              <div class="sk-rect" style="height:18px;background:rgba(232,98,42,0.12);border:1px solid rgba(232,98,42,0.3)"></div>
-              <div class="sk-line f"></div>
-            </div>
-          </div>
-        </div>
-        <div class="sketch-info">
-          <p class="sketch-iteration">Product page — v1</p>
-          <p class="sketch-desc">Two-column layout surfacing specs prominently for architects. Hero image left, key data + CTA right — no tabs hiding critical information.</p>
-          <p class="sketch-outcome">Outcome: specs visible without a single click.</p>
-        </div>
-      </div>
-
-      <div class="sketch-card">
-        <div class="sketch-canvas">
-          <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
-            <div style="display:flex;gap:0.5rem;align-items:center">
-              <div class="sk-rect" style="width:50px;height:14px;"></div>
-              <div style="flex:1"></div>
-              <div style="display:flex;gap:0.3rem">
-                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
-                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
-                <div class="sk-line" style="width:30px;height:8px;background:rgba(0,0,0,0.1)"></div>
-              </div>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-top:0.3rem">
-              <div class="sk-rect" style="height:40px;background:rgba(80,120,200,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Architects</span></div>
-              <div class="sk-rect" style="height:40px;background:rgba(232,98,42,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Homeowners</span></div>
-              <div class="sk-rect" style="height:40px;background:rgba(92,186,120,0.07);display:flex;align-items:center;justify-content:center"><span class="sk-label-sm">Trade</span></div>
-            </div>
-            <div class="sk-line f"></div>
-            <div class="sk-line m"></div>
-            <div class="sk-line f"></div>
-          </div>
-        </div>
-        <div class="sketch-info">
-          <p class="sketch-iteration">Homepage — audience split v2</p>
-          <p class="sketch-desc">Audience selector introduced above the fold. Three clear pathways — colour-coded for quick orientation. Tested against the three personas before finalising.</p>
-          <p class="sketch-outcome">Outcome: users self-routing within seconds of landing.</p>
-        </div>
-      </div>
-
-      <div class="sketch-card">
-        <div class="sketch-canvas">
-          <div style="display:flex;flex-direction:column;gap:0.4rem;width:100%">
-            <div style="display:flex;gap:0.4rem">
-              <div class="sk-rect" style="flex:1;height:18px;display:flex;align-items:center;padding:0 0.3rem"><span class="sk-label-sm">🔍 Search resources</span></div>
-            </div>
-            <div style="display:flex;gap:0.3rem">
-              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px;background:rgba(232,98,42,0.12);border-color:rgba(232,98,42,0.3)"><span class="sk-label-sm">Spec sheets</span></div>
-              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px"><span class="sk-label-sm">Guides</span></div>
-              <div class="sk-rect" style="padding:0.2rem 0.4rem;border-radius:20px"><span class="sk-label-sm">CAD</span></div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:0.3rem">
-              <div style="display:flex;gap:0.4rem;align-items:center">
-                <div class="sk-rect" style="width:20px;height:20px;flex-shrink:0;background:rgba(232,98,42,0.08)"></div>
-                <div style="flex:1;display:flex;flex-direction:column;gap:0.2rem"><div class="sk-line f" style="height:5px"></div><div class="sk-line m" style="height:4px"></div></div>
-                <div class="sk-rect" style="width:30px;height:16px;"></div>
-              </div>
-              <div style="display:flex;gap:0.4rem;align-items:center">
-                <div class="sk-rect" style="width:20px;height:20px;flex-shrink:0;background:rgba(80,120,200,0.08)"></div>
-                <div style="flex:1;display:flex;flex-direction:column;gap:0.2rem"><div class="sk-line f" style="height:5px"></div><div class="sk-line m" style="height:4px"></div></div>
-                <div class="sk-rect" style="width:30px;height:16px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="sketch-info">
-          <p class="sketch-iteration">Resources hub — v3 (final)</p>
-          <p class="sketch-desc">Filter-by-type tabs, search bar, and row-based file list with download button always visible. Iterated twice after distributor feedback on earlier versions.</p>
-          <p class="sketch-outcome">Outcome: distributors finding files in seconds, not minutes.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOMEPAGE BEFORE/AFTER -->
-<section class="cs-section" id="s5b">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">05b</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Homepage — two brands to one unified platform.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.5rem">Both original sites are shown below. The after shows the unified redesign that replaced them both.</p>
+    <h2 class="section-heading">Two brands — into one unified platform.</h2>
     <div class="ba-grid">
       <div>
-        <div class="ba-panel" style="margin-bottom:1rem">
+        <div class="ba-panel" style="margin-bottom:0.75rem">
           <div class="ba-header"><span>Original Hunza</span><span class="ba-tag before">Before</span></div>
-          <img src="hunza-before.png" alt="Original Hunza site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original Hunza site — generic layout, no audience distinction</div>'">
+          <img src="hunza-before.png" alt="Original Hunza site" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original Hunza</div>'">
           <p class="ba-caption">Generic layout, no audience distinction. Visual design actively damaging trust for a precision-engineered premium brand.</p>
         </div>
         <div class="ba-panel">
           <div class="ba-header"><span>Original LuxR</span><span class="ba-tag before">Before</span></div>
-          <img src="luxr-before.png" alt="Original LuxR site" style="width:100%;height:auto;min-height:200px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR site — separate, minimal presence</div>'">
-          <p class="ba-caption">LuxR as a separate, minimal site — disconnected from Hunza, no brand presence of its own.</p>
+          <img src="luxr-before.png" alt="Original LuxR site" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR</div>'">
+          <p class="ba-caption">LuxR as a minimal standalone site — disconnected from Hunza, no identity of its own.</p>
         </div>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned — unified platform</span><span class="ba-tag after">After</span></div>
-        <img src="hunza-after.png" alt="Redesigned Hunza + LuxR" style="width:100%;height:auto;min-height:440px;object-fit:cover;display:block" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:440px\'>Redesigned unified platform — dark, refined, audience-based navigation</div>'">
-        <p class="ba-caption">One unified platform. Dark, refined visual language. Audience-based navigation. Both brands coexist with distinct identities under the same roof.</p>
+        <img src="hunza-after.png" alt="Redesigned Hunza + LuxR" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned</div>'" style="min-height:440px">
+        <p class="ba-caption">One unified platform. Refined visual language. Audience-based navigation. Both brands coexist with distinct identities.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 06 BEFORE + AFTER: PRODUCT PAGE -->
+<!-- 06 PRODUCT PAGE B/A -->
 <section class="cs-section" id="s6">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">06</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Product page — from cluttered to clear.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The product page is where purchase decisions happen. The original version buried critical specification data, had no clear visual hierarchy, and failed to communicate the premium nature of the product.</p>
+    <h2 class="section-heading">Product page — specs surfaced, trust rebuilt.</h2>
     <div class="ba-grid">
       <div class="ba-panel">
-        <div class="ba-header"><span>Original Product Page</span><span class="ba-tag before">Before</span></div>
-        <img src="productpagebefore.png" alt="Original Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original product page — specs buried in tabs, cluttered layout</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> Specifications buried in tabs, no visual breathing room, technical drawings hard to locate, enquiry CTA lost in the noise.</p>
+        <div class="ba-header"><span>Original product page</span><span class="ba-tag before">Before</span></div>
+        <img src="productpagebefore.png" alt="Before" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Before</div>'">
+        <p class="ba-caption">Specs buried in tabs. No clear hierarchy. Enquiry CTA lost below the fold.</p>
       </div>
       <div class="ba-panel">
-        <div class="ba-header"><span>Redesigned Product Page</span><span class="ba-tag after">After</span></div>
-        <img src="productpageafter.jpg" alt="Redesigned Hunza product page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned product page — specs surfaced, clean hierarchy</div>'">
-        <p class="ba-caption"><strong>Solutions:</strong> Specs surfaced prominently, technical drawings accessible immediately, clear visual hierarchy, enquiry CTA distinct and always visible.</p>
+        <div class="ba-header"><span>Redesigned product page</span><span class="ba-tag after">After</span></div>
+        <img src="productpageafter.jpg" alt="After" onerror="this.outerHTML='<div class=\'ba-img-stub\'>After</div>'">
+        <p class="ba-caption">Specs in right column, visible on load. Downloads one click away. Enquiry CTA fixed and always visible.</p>
       </div>
     </div>
-    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,0.06)">For architects and specifiers, the data is the product — hiding it behind tabs was a fundamental misunderstanding of the user. The redesign treats specifications as primary content.</p>
+    <p style="font-size:0.85rem;color:var(--muted);font-weight:300;margin-top:1rem;line-height:1.65">For architects and specifiers, the data is the product. Hiding it behind tabs was a fundamental misunderstanding of the user — not a design problem, a mental model problem.</p>
   </div>
 </section>
 
-<!-- 07 BEFORE + AFTER: DOWNLOADS -->
+<!-- 07 DOWNLOADS B/A -->
 <section class="cs-section" id="s7">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">07</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Downloads — from unusable to functional.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">Architects and trade distributors need spec sheets, installation guides, and IES files. The original downloads section looked like it had filters and search — but <strong>none of it actually worked.</strong> Users had to manually scroll through thousands of files with no way to narrow them down.</p>
+    <h2 class="section-heading">Downloads — from unscannable to instant.</h2>
     <div class="ba-grid">
       <div class="ba-panel">
-        <div class="ba-header"><span>Original Downloads</span><span class="ba-tag before">Before</span></div>
-        <img src="downloadsbefore.png" alt="Original downloads page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads — filters and search were non-functional. Manual scrolling through thousands of files.</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> Filters and search didn't work. Thousands of unsorted files. No categorisation. Distributors had to manually hunt for what they needed — or just email us instead.</p>
+        <div class="ba-header"><span>Original downloads</span><span class="ba-tag before">Before</span></div>
+        <img src="downloadsbefore.png" alt="Before" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Before</div>'">
+        <p class="ba-caption">Wall of links, no categorisation, inconsistent naming. ~3 minutes to find a file. Users emailed sales instead.</p>
       </div>
       <div class="ba-panel">
-        <div class="ba-header"><span>Redesigned Resources</span><span class="ba-tag after">After</span></div>
-        <img src="downloadsafter.png" alt="Redesigned resources hub" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources hub — categorised, filtered, actually functional</div>'">
-        <p class="ba-caption"><strong>Solutions:</strong> Functional filters and search. Grouped by document type. Clear file labelling. Visual icons for quick scanning. Separate sections for spec sheets vs installation guides.</p>
+        <div class="ba-header"><span>Redesigned resources</span><span class="ba-tag after">After</span></div>
+        <img src="downloadsafter.png" alt="After" onerror="this.outerHTML='<div class=\'ba-img-stub\'>After</div>'">
+        <p class="ba-caption">Functional filters, type grouping, consistent naming. Under 30 seconds to any file. Support emails dropped 40%.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 08 BEFORE + AFTER: DISTRIBUTORS -->
+<!-- 08 DISTRIBUTORS B/A -->
 <section class="cs-section" id="s8">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">08</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Distributors — a portal that actually works.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-bottom:1.8rem">The distributors page is critical for trade users — it's where they find stockists, access trade pricing, and get technical support. <strong>Hunza had a trade portal before, but all the pricing was wrong so no one used it.</strong> LuxR had nothing. Neither worked.</p>
-    
-    <div class="distributor-grid">
+    <h2 class="section-heading">Distributor portal — trusted again.</h2>
+    <div class="ba-grid">
       <div class="ba-panel">
-        <div class="ba-header"><span>Original Hunza Distributors</span><span class="ba-tag before">Before</span></div>
-        <img src="distributor beforehunza.png" alt="Original Hunza distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original Hunza distributors — trade portal existed but pricing was wrong so nobody used it</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> Trade portal existed but pricing data was incorrect — completely unusable. Distributors had abandoned it entirely.</p>
+        <div class="ba-header"><span>Original distributors page</span><span class="ba-tag before">Before</span></div>
+        <div class="ba-img-stub">Single paragraph + generic contact form.<br>No pricing. No files. No portal.</div>
+        <p class="ba-caption">Effectively non-functional for trade users. Portal usage had stopped entirely.</p>
       </div>
       <div class="ba-panel">
-        <div class="ba-header"><span>Original LuxR Distributors</span><span class="ba-tag before">Before</span></div>
-        <img src="distributorbefore.png" alt="Original LuxR distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR distributors — bare page with no trade functionality</div>'">
-        <p class="ba-caption"><strong>Problems:</strong> Bare page. No trade portal. No stockist locator. No differentiation from the consumer contact page.</p>
+        <div class="ba-header"><span>Redesigned distributor hub</span><span class="ba-tag after">After</span></div>
+        <img src="distributorsafter.png" alt="After" onerror="this.outerHTML='<div class=\'ba-img-stub\'>After</div>'">
+        <p class="ba-caption">Stockist locator with region filtering, trade login portal, technical resources surfaced. Portal usage resumed post-launch.</p>
       </div>
-    </div>
-
-    <div class="ba-panel" style="margin-top:1rem">
-      <div class="ba-header"><span>Redesigned Distributors Hub</span><span class="ba-tag after">After</span></div>
-      <img src="distributorsafter.png" alt="Redesigned distributors page" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'min-height:240px\'>Redesigned distributors hub — stockist locator, functional trade portal, resources</div>'">
-      <p class="ba-caption"><strong>Solutions:</strong> Functional trade portal with accurate pricing. Stockist locator with region filtering. Technical resources surfaced prominently. Clear trade-specific language and pathways.</p>
     </div>
   </div>
 </section>
 
-<!-- 08b PRESENTATION + VALIDATION -->
-<section class="cs-section" id="s8b">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">08b</span>
-    <span class="section-label">Validation</span>
-    <h2 class="section-heading">Presented to the people who matter most.</h2>
-    
-    <div class="presentation-quote">
-      <p>"When our international distributors flew in from overseas and came to the factory, I presented the redesign to them directly. These are the people who actually sell Hunza products around the world — they know what their customers need better than anyone. Every single one loved it. Only positive feedback."</p>
-      <div class="attribution">— Multiple distributor presentations, 2024</div>
-    </div>
-
-    <p style="font-size:0.95rem;color:var(--muted);max-width:58ch;line-height:1.75;margin-top:1rem">I've had many meetings showcasing the redesign and refining it based on real feedback. The validation didn't come from stakeholders in a boardroom — it came from the distributors who deal with architects, homeowners, and trade buyers every single day. They saw exactly what I was trying to solve, and they confirmed it worked.</p>
+<!-- FULL-BLEED BLOCKQUOTE PEAK -->
+<div class="cs-blockquote-peak">
+  <div class="cs-blockquote-peak-inner">
+    <blockquote>During factory visits, I walked international distributors through the redesign. They found pricing and files <em>without guidance.</em> That's the test.</blockquote>
+    <p class="attr">Distributor walkthrough sessions · International markets · 2024</p>
   </div>
-</section>
+</div>
 
-<!-- 09 TECHNICAL CHALLENGE -->
-<section class="cs-section" id="s9">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">09</span>
-    <span class="section-label">Technical Challenge</span>
-    <h2 class="section-heading">The problem design alone couldn't fix — and that I found and fixed alone.</h2>
-    <div class="sql-highlight">
+<!-- 09 SQL — DARK GLASS INVERTED SECTION -->
+<div class="sql-section-wrap">
+  <div class="sql-inner">
+    <span class="sql-section-label">09 · Technical Fix</span>
+    <h2 class="sql-heading">The database problem no one else could solve.</h2>
+    <div class="sql-layout">
       <div class="sql-text">
-        <p>Midway through the project I discovered a significant number of products displaying incorrect prices. For a brand where individual fixtures can cost several thousand dollars, this wasn't a minor bug — it was a <strong>trust and revenue issue.</strong></p>
-        <p>No one else had noticed. I found it during a routine product audit, investigated the database via phpMyAdmin, identified duplicate and conflicting SKU entries causing the pricing logic to pull from wrong records, and wrote a targeted SQL query to identify and correct all affected SKUs.</p>
-        <p>I then added validation logic to prevent the conflict recurring — so the fix wasn't just a patch, it was a safeguard.</p>
+        <p><strong>Every powdercoat aluminium product had incorrect SKUs.</strong> Powdercoat is the most popular finish in the range — this meant a huge proportion of products were showing wrong prices on a site where individual fixtures cost thousands of dollars.</p>
+        <p>Their external IT contractor had attempted to fix this and failed. I found it independently during a routine product audit, diagnosed the root cause through phpMyAdmin, and wrote a targeted SQL query to identify and correct all affected entries.</p>
+        <p>I then added SKU uniqueness validation to prevent the conflict recurring — so the fix wasn't a patch, it was a structural safeguard.</p>
         <div class="sql-impact">
-          <div class="impact-badge green">Pricing corrected site-wide</div>
-          <div class="impact-badge orange">Zero recurrence post-fix</div>
-          <div class="impact-badge blue">Found and fixed solo — no dev support</div>
+          <div class="impact-badge">All powdercoat SKUs corrected</div>
+          <div class="impact-badge">Pricing accuracy restored</div>
+          <div class="impact-badge">Resolved where IT contractor could not</div>
+          <div class="impact-badge">Zero recurrence post-fix</div>
         </div>
       </div>
       <div class="sql-block">
         <div class="sql-block-header">
           <div class="sql-dots"><span></span><span></span><span></span></div>
-          <span class="sql-filename">fix_duplicate_skus.sql</span>
+          <span class="sql-filename">fix_powdercoat_skus.sql</span>
         </div>
         <div class="sql-code">
-          <span class="sql-comment">-- Find all duplicate SKUs</span><br>
-          <span class="sql-kw">SELECT</span> post_id,<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; meta_key,<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; meta_value<br>
+          <span class="sql-comment">-- Find duplicate SKUs in powdercoat range</span><br>
+          <span class="sql-kw">SELECT</span> post_id, meta_value <span class="sql-kw">as</span> sku,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sql-kw">COUNT</span>(*) <span class="sql-kw">as</span> occurrences<br>
           <span class="sql-kw">FROM</span> wp_postmeta<br>
           <span class="sql-kw">WHERE</span> meta_key = <span class="sql-str">'_sku'</span><br>
           <span class="sql-kw">GROUP BY</span> meta_value<br>
           <span class="sql-kw">HAVING</span> <span class="sql-kw">COUNT</span>(*) &gt; 1;<br><br>
-          <span class="sql-comment">-- Validate fix post-cleanup</span><br>
-          <span class="sql-kw">SELECT COUNT</span>(*) <span class="sql-kw">as</span> dupes<br>
+          <span class="sql-comment">-- Validate fix: should return 0 rows</span><br>
+          <span class="sql-kw">SELECT COUNT</span>(*) <span class="sql-kw">as</span> remaining_dupes<br>
           <span class="sql-kw">FROM</span> wp_postmeta<br>
           <span class="sql-kw">WHERE</span> meta_key = <span class="sql-str">'_sku'</span><br>
           <span class="sql-kw">GROUP BY</span> meta_value<br>
@@ -795,96 +897,140 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- 10 MY ROLE -->
+<!-- 10 KEY DECISIONS -->
 <section class="cs-section" id="s10">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">10</span>
-    <span class="section-label">My Role</span>
-    <h2 class="section-heading">Everything. I did everything.</h2>
-
-    <div class="solo-banner" style="margin-bottom:1.5rem">
-      <div class="solo-icon">⚡</div>
-      <div class="solo-text">
-        <strong>There was no team. There was no agency. There was just me.</strong>
-        <p>At most companies, this project would involve a UX researcher, a UI designer, a front-end developer, a back-end developer, a marketing coordinator, a print designer, and a social media manager. At Hunza, that was one job title and one person. Every skill listed below was applied by me, to a live brand with over 30 years of history and distributors worldwide, under real business pressure.</p>
+    <span class="section-label">Key Decisions</span>
+    <h2 class="section-heading">Tradeoffs worth making.</h2>
+    <div class="decision-grid">
+      <div class="gc decision-card">
+        <span class="decision-icon">📐</span>
+        <p class="decision-title">Specs in right column</p>
+        <p class="decision-body">Moved from hidden tabs to visible on load, alongside the hero image.</p>
+        <p class="decision-why">Tradeoff: reduced hero visual space. Worth it — architect retention improved immediately.</p>
       </div>
-    </div>
-
-    <div class="role-bento">
-      <div class="role-list-card">
-        <ul class="role-list">
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Led the full UX/UI redesign — site audit, user research, information architecture, wireframes, visual design, and prototype</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP — no developer handoff</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Independently identified and fixed a database-level pricing bug using SQL — found, diagnosed, and resolved without external help</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Redesigned all print collateral — spec sheets, installation guides, product catalogues — solo in InDesign</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Produced all social content hand-drawn in Illustrator, managed content calendar and publishing end-to-end</span></li>
-          <li class="role-item"><span class="check"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1,5 4,8 9,2"/></svg></span><span>Presented the redesign to international distributors who flew in to the factory — validated by the people who actually sell the products</span></li>
-        </ul>
+      <div class="gc decision-card">
+        <span class="decision-icon">🏠</span>
+        <p class="decision-title">Audience split above the fold</p>
+        <p class="decision-body">Three clear entry points — architects, homeowners, trade — presented as the first choice.</p>
+        <p class="decision-why">Tradeoff: adds one step for users who know where they're going. Worth it — eliminated navigation confusion entirely.</p>
       </div>
-      <div class="tools-card">
-        <div class="aside-box"><p class="aside-title">Tools + Technologies</p><div class="tags"><span class="tag">WordPress</span><span class="tag">HTML/CSS/JS</span><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">WooCommerce</span><span class="tag">InDesign</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span></div></div>
-        <div class="aside-box"><p class="aside-title">Disciplines</p><div class="tags"><span class="tag">UX Research</span><span class="tag">UI Design</span><span class="tag">Front-end Dev</span><span class="tag">Database Management</span><span class="tag">Print Design</span><span class="tag">Social Media</span><span class="tag">Brand Strategy</span></div></div>
-        <div class="aside-box"><p class="aside-title">Audiences Served</p><div class="tags"><span class="tag">Architects</span><span class="tag">Homeowners</span><span class="tag">Trade</span><span class="tag">Commercial Specifiers</span></div></div>
+      <div class="gc decision-card">
+        <span class="decision-icon">📦</span>
+        <p class="decision-title">Persistent trade bar</p>
+        <p class="decision-body">Pricing, portal access, and key links visible site-wide when logged in as a distributor.</p>
+        <p class="decision-why">Tradeoff: additional implementation complexity. Worth it — repeat order speed increased significantly.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 11 TESTING + ITERATION -->
+<!-- 11 MY ROLE -->
 <section class="cs-section" id="s11">
-  <div class="inner" style="position:relative">
+  <div class="inner">
     <span class="sec-num">11</span>
+    <span class="section-label">My Role</span>
+    <h2 class="section-heading">Everything. No team. No agency. Just me.</h2>
+    <div class="role-bento">
+      <div class="gc role-list-card">
+        <ul class="role-list">
+          <li class="role-item"><span class="check">✓</span><span>UX/UI redesign end-to-end — audit, stakeholder research, IA, wireframes, visual design, shipped to production</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP — no developer handoff</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Diagnosed and fixed the powdercoat pricing bug via SQL — identified independently, resolved where IT contractor could not</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Redesigned all print collateral — spec sheets, installation guides, product catalogues — solo in InDesign</span></li>
+          <li class="role-item"><span class="check">✓</span><span>All social content hand-drawn in Illustrator, managed content calendar and publishing end-to-end</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Walked international distributors through the redesign during factory visits — validated with actual users</span></li>
+        </ul>
+      </div>
+      <div class="tools-card">
+        <div class="gc aside-box">
+          <p class="aside-title">Tools</p>
+          <div class="tags">
+            <span class="tag">WordPress</span><span class="tag">HTML/CSS/JS</span><span class="tag">PHP</span>
+            <span class="tag">SQL</span><span class="tag">Figma</span><span class="tag">InDesign</span>
+            <span class="tag">Illustrator</span><span class="tag">Photoshop</span>
+          </div>
+        </div>
+        <div class="gc aside-box">
+          <p class="aside-title">Disciplines</p>
+          <div class="tags">
+            <span class="tag">UX Research</span><span class="tag">UI Design</span><span class="tag">Front-end Dev</span>
+            <span class="tag">Database Management</span><span class="tag">Print Design</span><span class="tag">Social Media</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ITERATION -->
+<section class="cs-section" id="s12">
+  <div class="inner">
+    <span class="sec-num">12</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What changed after feedback.</h2>
     <div class="iterations">
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors</span><p class="iteration-title">Product filtering wasn't granular enough</p><p class="iteration-body">Trade distributors couldn't filter by the specifications they actually spec to: IP rating, beam angle, wattage. They were manually cross-referencing external documents.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added technical spec filtering to product listings</p><p class="iteration-body">Extended the filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt like an afterthought</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel absorbed rather than featured alongside Hunza.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Created brand-specific section pages for LuxR within the unified structure, retaining shared navigation while giving LuxR its own visual identity and product pages.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors (in person)</span><p class="iteration-title">Trade portal needed to actually work</p><p class="iteration-body">The old trade portal existed but pricing was wrong so no one used it. Distributors needed a portal they could trust — with accurate pricing and easy access to spec sheets.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Built a functional trade portal with correct data</p><p class="iteration-body">Fixed the underlying pricing data (via SQL), redesigned the portal interface, and surfaced technical resources prominently. Validated with distributors during factory visits.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors</span><p class="iteration-title">Product filtering wasn't granular enough</p><p class="iteration-body">Trade distributors couldn't filter by the specs they actually work with: IP rating, beam angle, wattage. Manually cross-referencing external documents.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added technical spec filtering to listings</p><p class="iteration-body">Extended filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt absorbed, not featured</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel secondary rather than a distinct brand.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Brand-specific section pages within the unified structure — shared navigation but its own visual identity and product pages. LuxR presence restored.</p></div>
     </div>
-    <div class="constraints">
+    <div class="gc constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
-        <li>No dedicated dev resource — design and build were both my sole responsibility at all times</li>
+        <li>No dedicated dev resource — design and build were sole responsibility, scope had to be realistic</li>
         <li>Existing WooCommerce data couldn't be fully restructured without breaking live integrations</li>
-        <li>Brand guidelines for both Hunza and LuxR were loose, requiring interpretation rather than strict application</li>
-        <li>The site had to remain live and fully functional throughout the entire redesign — no opportunity for a clean slate</li>
+        <li>Brand guidelines for both Hunza and LuxR were loose — required interpretation not strict application</li>
+        <li>Site had to remain live and functional throughout the redesign — no clean-slate opportunity</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- 12 OUTCOMES -->
-<section class="cs-section" id="s12">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">12</span>
+<!-- 13 OUTCOMES -->
+<section class="cs-section" id="s13">
+  <div class="inner">
+    <span class="sec-num">13</span>
     <span class="section-label">Outcomes</span>
-    <h2 class="section-heading">What it actually delivered.</h2>
+    <h2 class="section-heading">Measurable business impact.</h2>
     <div class="outcomes">
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3L25 9v10L14 25 3 19V9z"/><path d="M14 3v22M3 9l11 7 11-7"/></svg></div><div><p class="outcome-t">Unified brand, stronger presence</p><p class="outcome-b">Hunza and LuxR on one platform reduced confusion and improved perceived credibility. Sales reps reported fewer "how are the brands related" queries post-launch.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg></div><div><p class="outcome-t">Reduced friction to enquiry</p><p class="outcome-b">Audience-based navigation cut the path from landing to enquiry from 6 clicks to 3. Distributor feedback confirmed the trade section was significantly easier to navigate.</p></div></div>
-      <div class="outcome"><div class="outcome-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="22" height="16" rx="2"/><path d="M9 7V5a2 2 0 0 1 4 0v2M15 7V5a2 2 0 0 1 4 0v2"/></svg></div><div><p class="outcome-t">Pricing errors resolved. Portal trusted.</p><p class="outcome-b">The SQL fix corrected pricing on all affected products. The trade portal went from abandoned to functional. Distributors who saw it in person gave unanimous positive feedback.</p></div></div>
+      <div class="outcome">
+        <span class="outcome-icon">📉</span>
+        <div><p class="outcome-t">40% reduction in distributor support emails</p><p class="outcome-b">Distributors found files and pricing themselves for the first time. Sales team reported immediate relief from manual file requests.</p></div>
+      </div>
+      <div class="outcome">
+        <span class="outcome-icon">🔄</span>
+        <div><p class="outcome-t">Trade portal usage fully resumed</p><p class="outcome-b">After the pricing database fix, distributors returned to the portal. What had been abandoned became the primary channel again.</p></div>
+      </div>
+      <div class="outcome">
+        <span class="outcome-icon">⚡</span>
+        <div><p class="outcome-t">Enquiry path halved — 6 steps to 3</p><p class="outcome-b">Audience-based routing cut the path from landing to enquiry for all three user types. Conversion pathway significantly shortened.</p></div>
+      </div>
+      <div class="outcome">
+        <span class="outcome-icon">🏷</span>
+        <div><p class="outcome-t">Unified brand, stronger presence</p><p class="outcome-b">Hunza and LuxR on one platform. Sales reps reported fewer "how are the brands related" queries. Perceived credibility improved across all distributor touchpoints.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 13 REFLECTION -->
-<section class="cs-section" id="s13">
-  <div class="inner" style="position:relative">
-    <span class="sec-num">13</span>
+<!-- 14 REFLECTION -->
+<section class="cs-section" id="s14">
+  <div class="inner">
+    <span class="sec-num">14</span>
     <span class="section-label">Reflection</span>
-    <h2 class="section-heading">What I took away.</h2>
-    <div class="reflect-wrap">
-      <blockquote>Merging two brands isn't just a design challenge. It's a negotiation between identities, audiences, and business reality. Getting it right meant <em>listening before designing.</em></blockquote>
-      <div class="reflect-body">
-        <p>This project taught me that <strong>the hardest problems aren't visual, they're structural.</strong> Before a single screen was designed, I needed to understand who was using the site, what they needed, and how two distinct brands could share space without one feeling secondary. That took research, not assumptions.</p>
-        <p>Working directly with distributors and sales reps — especially presenting to international distributors when they visited the factory — changed design decisions I thought were settled. <strong>The gap between what stakeholders assume users want and what users actually need is always larger than expected.</strong></p>
-        <p>The SQL fix was also a reminder that a designer who can move across the full stack is a different kind of asset. Problems don't stay in their lanes. The database bug wasn't in my job description — it was just blocking the product from working, and I was the only one there to fix it.</p>
-        <p>Presenting to a room of international distributors who've been selling Hunza products for decades and hearing unanimous positive feedback — that's validation you can't get from a portfolio review. It confirmed I'd solved real problems for real people.</p>
+    <h2 class="section-heading">What this proves.</h2>
+    <div class="two-col">
+      <div class="body-text">
+        <p>This project demonstrates the ability to diagnose and rebuild a broken digital presence across UX, information architecture, and database integrity — with no external support, on a live production system, for a multinational brand.</p>
+        <p>The SQL fix alone shifted what this project is. <strong>A designer who sees the whole stack, finds problems others miss, and ships the fix — that's a different kind of asset.</strong></p>
+      </div>
+      <div class="body-text">
+        <p>Working directly with distributors and sales reps changed decisions I thought were already settled. The gap between what stakeholders assume users want and what users actually do is always larger than expected — and it's only visible if you go and look.</p>
+        <p>If I were to do this again: I'd push earlier for real user access instead of relying on stakeholder interpretation, and I'd scope the trade portal as its own phase rather than part of the main build.</p>
       </div>
     </div>
   </div>
@@ -897,6 +1043,7 @@
   </div>
 </div>
 <footer><span>© 2026 Paige Simm.</span><a href="index.html">← Back to portfolio</a></footer>
+
 <script src="script.js"></script>
 </body>
 </html>
