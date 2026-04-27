@@ -3,17 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hunza & LuxR — Case Study · Paige Simm</title>
+<title>Hunza & LuxR - Case Study · Paige Simm</title>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@300,400,500,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="case-study.css">
 <style>
 
 /* ============================================================
-   UNIFIED GLASS SYSTEM — single token set, enforced everywhere
+   UNIFIED GLASS SYSTEM - single token set, enforced everywhere
    ============================================================ */
 :root {
-  /* Glass tokens */
   --g-bg:          rgba(255,255,255,0.52);
   --g-bg-strong:   rgba(255,255,255,0.72);
   --g-bg-muted:    rgba(255,255,255,0.28);
@@ -22,20 +21,14 @@
   --g-blur:        blur(18px) saturate(160%);
   --g-shadow:      0 4px 24px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.8);
   --g-shadow-lift: 0 16px 48px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
-
-  /* Accent bleeds */
   --accent-glow:   rgba(232,98,42,0.14);
   --amber-glow:    rgba(240,164,74,0.10);
 }
 
-/* ============================================================
-   ANIMATED BACKGROUND — does real visual work
-   ============================================================ */
 body {
   background: #f5f1eb;
   min-height: 100vh;
 }
-/* Warm gradient mesh */
 body::after {
   content: '';
   position: fixed; inset: 0; z-index: -2; pointer-events: none;
@@ -45,7 +38,6 @@ body::after {
     radial-gradient(ellipse 50vw 40vh at 50% 50%, rgba(255,220,180,0.08) 0%, transparent 65%),
     #f5f1eb;
 }
-/* Grain overlay */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.03;
@@ -53,18 +45,6 @@ body::before {
   background-size: 128px;
 }
 
-/* Floating blob that follows sections */
-.section-blob {
-  position: absolute; border-radius: 50%;
-  pointer-events: none; z-index: 0;
-  filter: blur(60px); opacity: 0.5;
-}
-
-/* ============================================================
-   BASE CARD SYSTEM — exactly two types
-   ============================================================ */
-
-/* Type A: Primary glass card */
 .gc {
   background: var(--g-bg);
   backdrop-filter: var(--g-blur);
@@ -85,24 +65,9 @@ body::before {
 .gc:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
 .gc.no-hover:hover { transform: none; box-shadow: var(--g-shadow); }
 
-/* Type B: Muted secondary */
-.gc-muted {
-  background: var(--g-bg-muted);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--g-border-sub);
-  border-radius: 16px;
-}
-
-/* ============================================================
-   NAV
-   ============================================================ */
 .nav { background: rgba(245,241,235,0.78); backdrop-filter: blur(24px) saturate(180%); border-bottom: 1px solid rgba(255,255,255,0.5); }
 .nav.scrolled { background: rgba(245,241,235,0.92); }
 
-/* ============================================================
-   HERO
-   ============================================================ */
 .cs-hero.hunza { color: var(--dark); }
 .cs-hero.hunza .cs-title-line:first-child { color: var(--dark); }
 .cs-hero.hunza .cs-eyebrow { color: var(--accent); }
@@ -111,14 +76,10 @@ body::before {
 .cs-hero.hunza .cs-meta-value { color: var(--dark); font-weight: 500; }
 .cs-hero.hunza .cs-hero-meta { border-top-color: rgba(0,0,0,0.08); }
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
 .cs-section { background: transparent; }
 .cs-section:nth-child(even) { background: transparent; }
 .inner { position: relative; }
 
-/* Section label — tiny, uppercase, accent */
 .section-label {
   font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--accent);
@@ -131,9 +92,6 @@ body::before {
   border-radius: 50%; background: var(--accent);
 }
 
-/* ============================================================
-   TOP SUMMARY — 3 glass pills, not a dashboard grid
-   ============================================================ */
 .top-summary {
   display: grid; grid-template-columns: repeat(3,1fr);
   gap: 1px;
@@ -156,9 +114,6 @@ body::before {
 .ts-text { font-size: 0.92rem; line-height: 1.55; color: var(--dark); font-weight: 300; }
 .ts-text strong { font-weight: 700; }
 
-/* ============================================================
-   STAT ROW — fewer but bigger
-   ============================================================ */
 .stat-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
 .stat-pill {
   background: var(--g-bg-strong); backdrop-filter: var(--g-blur);
@@ -175,9 +130,6 @@ body::before {
 }
 .stat-pill-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
 
-/* ============================================================
-   EDITORIAL MOMENT — oversized type peak
-   ============================================================ */
 .editorial-peak {
   padding: 4.5rem 3rem;
   text-align: center; position: relative;
@@ -204,9 +156,6 @@ body::before {
   letter-spacing: 0.1em; text-transform: uppercase;
 }
 
-/* ============================================================
-   PERSONAS — same gc base, no extra card type
-   ============================================================ */
 .persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.75rem; margin-top: 1.5rem; }
 .persona-card { padding: 1.4rem; }
 .persona-avatar {
@@ -228,9 +177,6 @@ body::before {
 }
 .persona-observed { font-size: 0.74rem; line-height: 1.6; color: rgba(0,0,0,0.45); font-weight: 300; }
 
-/* ============================================================
-   FLOW DIAGRAM — proper visual weight
-   ============================================================ */
 .flow-diagram {
   background: var(--g-bg); backdrop-filter: var(--g-blur);
   border: 1px solid var(--g-border); border-radius: 22px;
@@ -286,9 +232,6 @@ body::before {
 .fd-arrow svg { opacity: 0.3; }
 .fd-note { font-size: 0.75rem; color: var(--muted); font-style: italic; margin-top: 1.5rem; text-align: center; }
 
-/* ============================================================
-   BEFORE / AFTER — image sizing enforced
-   ============================================================ */
 .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .ba-panel {
   background: var(--g-bg); backdrop-filter: var(--g-blur);
@@ -310,9 +253,9 @@ body::before {
 .ba-tag.after  { background: rgba(232,98,42,0.12); color: var(--accent); }
 .ba-panel img {
   width: 100%;
-  height: 340px;           /* fixed height so desktop screenshots show real content */
+  height: 340px;
   object-fit: cover;
-  object-position: top;   /* always show top of screenshot, not middle crop */
+  object-position: top;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -326,51 +269,41 @@ body::before {
   text-align: center; padding: 1.5rem; line-height: 1.6;
 }
 
-/* Homepage B/A: stacked befores + tall after that fills both */
 .ba-grid-homepage {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   margin-top: 1.5rem;
-  align-items: stretch;   /* right column fills full height */
+  align-items: stretch;
 }
 .ba-grid-homepage .ba-stack {
   display: flex; flex-direction: column; gap: 0.75rem;
 }
-/* The "after" panel in homepage B/A fills the full combined height */
 .ba-panel-tall { height: 100%; display: flex; flex-direction: column; }
 .ba-panel-tall img {
-  flex: 1;                /* fill remaining space after header + caption */
-  width: 100%; height: 0; /* flex overrides height */ min-height: 440px;
+  flex: 1; width: 100%; height: 0; min-height: 440px;
   object-fit: cover; object-position: top; display: block;
 }
 .ba-panel-tall .ba-caption { flex-shrink: 0; }
 
-/* Desktop screenshot panels: taller for full-page shots */
 .ba-panel.desktop img { height: 400px; }
 
-/* Product page: 2-col, both same height, show top of screen */
 .ba-grid-product {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 0.75rem; margin-top: 1.5rem;
 }
 .ba-grid-product .ba-panel img { height: 360px; }
 
-/* Downloads: landscape, shorter but wider */
 .ba-grid-downloads {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 0.75rem; margin-top: 1.5rem;
 }
 .ba-grid-downloads .ba-panel img { height: 300px; }
 
-/* Distributor: single full-width after image */
 .ba-distributor-wrap { margin-top: 1.5rem; }
 .ba-distributor-after .ba-panel img { height: 380px; }
 .ba-caption { padding: 0.8rem 1.1rem; font-size: 0.75rem; color: var(--muted); line-height: 1.55; }
 
-/* ============================================================
-   PROBLEM GRID — same gc base
-   ============================================================ */
 .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .prob { padding: 1.6rem; border-top: 3px solid var(--accent); }
 .prob:hover { transform: translateY(-3px); box-shadow: var(--g-shadow-lift); }
@@ -378,9 +311,6 @@ body::before {
 .prob-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
 .prob-b { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
-/* ============================================================
-   SQL SECTION — inverted dark glass, isolated "earned" moment
-   ============================================================ */
 .sql-section-wrap {
   margin: 0 -3rem;
   padding: 4rem 3rem;
@@ -443,9 +373,6 @@ body::before {
 }
 .impact-badge::before { content: '✓'; }
 
-/* ============================================================
-   DECISIONS — consolidated into gc cards
-   ============================================================ */
 .decision-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .decision-card { padding: 1.6rem; }
 .decision-icon { font-size: 1.4rem; margin-bottom: 0.9rem; display: block; }
@@ -456,9 +383,6 @@ body::before {
   border-top: 1px solid rgba(232,98,42,0.12); padding-top: 0.6rem;
 }
 
-/* ============================================================
-   FULL-BLEED BLOCKQUOTE — editorial peak
-   ============================================================ */
 .cs-blockquote-peak {
   margin: 0 -3rem;
   padding: 4rem 3rem;
@@ -482,9 +406,6 @@ body::before {
   letter-spacing: 0.06em; font-weight: 300;
 }
 
-/* ============================================================
-   ROLE LIST — gc base
-   ============================================================ */
 .role-bento { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .role-list-card { padding: 1.8rem; }
 .role-list { list-style: none; }
@@ -519,9 +440,6 @@ body::before {
 }
 .tag:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
-/* ============================================================
-   OUTCOMES — gc cards, left-accent not floating bubbles
-   ============================================================ */
 .outcomes { display: flex; flex-direction: column; gap: 0.6rem; }
 .outcome {
   display: flex; align-items: flex-start; gap: 1.2rem;
@@ -538,9 +456,6 @@ body::before {
 .outcome-t { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
 .outcome-b { font-size: 0.85rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
 
-/* ============================================================
-   ITERATIONS
-   ============================================================ */
 .iterations { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
 .iteration { border-radius: 18px; padding: 1.5rem; }
 .iteration--problem {
@@ -557,9 +472,6 @@ body::before {
 .iteration-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
 .iteration-body { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
-/* ============================================================
-   CONSTRAINTS
-   ============================================================ */
 .constraints { padding: 1.5rem 1.8rem; margin-top: 1rem; }
 .constraints-title { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.9rem; }
 .constraints ul { list-style: none; }
@@ -571,17 +483,11 @@ body::before {
 .constraints li:last-child { border-bottom: none; }
 .constraints li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
-/* ============================================================
-   TWO COL
-   ============================================================ */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 5rem; align-items: start; margin-top: 1rem; }
 .body-text p { font-size: 0.97rem; line-height: 1.85; color: rgba(0,0,0,0.58); font-weight: 300; margin-bottom: 1rem; }
 .body-text p strong { font-weight: 700; color: var(--dark); }
 .body-text p:last-child { margin-bottom: 0; }
 
-/* ============================================================
-   END + FOOTER
-   ============================================================ */
 .cs-end {
   max-width: 1100px; margin: 0 auto; padding: 4rem 3rem;
   display: flex; justify-content: space-between; align-items: center;
@@ -596,9 +502,6 @@ footer { background: transparent; border-top: 1px solid rgba(0,0,0,0.06); paddin
 footer span, footer a { font-size: 0.72rem; color: rgba(0,0,0,0.3); text-decoration: none; transition: color 0.2s; }
 footer a:hover { color: var(--accent); }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 900px) {
   .top-summary { grid-template-columns: 1fr; gap: 0; }
   .persona-grid { grid-template-columns: 1fr; }
@@ -649,7 +552,7 @@ footer a:hover { color: var(--accent); }
   <div class="cs-hero-bg"></div>
   <div class="cs-hero-top">
     <span class="cs-eyebrow">Case Study · UX/UI · Web Development · SQL</span>
-    <span class="cs-year">2023–2024 · Hunza Outdoor Lighting</span>
+    <span class="cs-year">2023-2024 · Hunza Outdoor Lighting</span>
   </div>
   <div class="cs-hero-content">
     <h1 class="cs-title">
@@ -674,11 +577,11 @@ footer a:hover { color: var(--accent); }
     </div>
     <div class="ts-cell">
       <p class="ts-label">Solution</p>
-      <p class="ts-text">Audience-based routing. Unified platform. <strong>SQL fix for all powdercoat SKUs.</strong> Trade portal rebuilt from scratch.</p>
+      <p class="ts-text">Audience-based routing. Unified platform. <strong>SQL fix for all powdercoat SKUs.</strong> Trade portal redesigned from scratch.</p>
     </div>
     <div class="ts-cell">
-      <p class="ts-label">Impact</p>
-      <p class="ts-text">Enquiry path <strong>6→3 steps.</strong> File retrieval <strong>3 min → &lt;30 sec.</strong> Support emails <strong>−40%.</strong> Portal trusted and in use again.</p>
+      <p class="ts-label">Status</p>
+      <p class="ts-text">Full redesign built and validated with distributors during walkthroughs. <strong>Awaiting management deployment.</strong></p>
     </div>
   </div>
 </div>
@@ -691,15 +594,15 @@ footer a:hover { color: var(--accent); }
     <h2 class="section-heading">A global brand with a site that was actively losing trust.</h2>
     <div class="two-col">
       <div class="body-text">
-        <p>Hunza (30+ years of international presence) and LuxR needed to merge onto one platform without losing either brand's identity. I was brought in as Marketing Coordinator and ended up owning the entire digital overhaul — no agency, no developer, no design lead. Just me.</p>
-        <p>The existing platform had structural problems, a corrupted product database, and three completely different user types all being served the same generic experience. Mid-project I discovered every powdercoat aluminium product was showing incorrect pricing — a bug their external IT contractor had tried and failed to resolve.</p>
+        <p>Hunza (30+ years of international presence) and LuxR needed to merge onto one platform without losing either brand's identity. I was brought in as Marketing Coordinator and ended up owning the entire digital overhaul - no agency, no developer, no design lead. Just me.</p>
+        <p>The existing platform had structural problems, a corrupted product database, and three completely different user types all being served the same generic experience. Mid-project I discovered every powdercoat aluminium product was showing incorrect pricing - a bug their external IT contractor had tried and failed to resolve.</p>
         <p><strong>Everything had to work properly, not just look good.</strong></p>
       </div>
       <div>
         <div class="stat-row">
           <div class="stat-pill"><span class="stat-pill-val" data-target="2">2</span><span class="stat-pill-label">Brands merged</span></div>
           <div class="stat-pill"><span class="stat-pill-val" data-target="3">3</span><span class="stat-pill-label">User types</span></div>
-          <div class="stat-pill"><span class="stat-pill-val">SQL</span><span class="stat-pill-label">DB fix shipped</span></div>
+          <div class="stat-pill"><span class="stat-pill-val">SQL</span><span class="stat-pill-label">DB fix written</span></div>
           <div class="stat-pill"><span class="stat-pill-val">6→3</span><span class="stat-pill-label">Steps to enquiry</span></div>
         </div>
       </div>
@@ -707,13 +610,13 @@ footer a:hover { color: var(--accent); }
   </div>
 </section>
 
-<!-- EDITORIAL PEAK: oversized stat -->
+<!-- EDITORIAL PEAK: SQL FIX (not a fake metric) -->
 <div class="editorial-peak">
   <div class="editorial-peak-bg"></div>
   <div style="position:relative;z-index:1">
-    <span class="editorial-peak-number">−40%</span>
-    <p class="editorial-peak-label">Reduction in distributor support emails after the redesign</p>
-    <p class="editorial-peak-sub">Measured over 3 months post-launch · distributors found files themselves for the first time</p>
+    <span class="editorial-peak-number">SQL</span>
+    <p class="editorial-peak-label">Powdercoat pricing bug fixed - external IT contractor couldn't</p>
+    <p class="editorial-peak-sub">Identified via phpMyAdmin · Query written · Validation added to prevent recurrence</p>
   </div>
 </div>
 
@@ -728,7 +631,7 @@ footer a:hover { color: var(--accent); }
       <div class="gc persona-card">
         <div class="persona-avatar">📐</div>
         <p class="persona-name">Architect</p>
-        <p class="persona-goal">"IP ratings, beam angles, IES files — instantly."</p>
+        <p class="persona-goal">"IP ratings, beam angles, IES files - instantly."</p>
         <p class="persona-observed">Observed: Left pages that hid specs in tabs. Gone within seconds if data wasn't immediately visible.</p>
       </div>
       <div class="gc persona-card">
@@ -768,7 +671,7 @@ footer a:hover { color: var(--accent); }
     <span class="sec-num">04</span>
     <span class="section-label">User Flow</span>
     <h2 class="section-heading">One site. Three different journeys.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">The original site had no branching — everyone walked the same path. The redesign introduces audience selection at the first decision point, routing each user type to content built specifically for them.</p>
+    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">The original site had no branching - everyone walked the same path. The redesign introduces audience selection at the first decision point, routing each user type to content built specifically for them.</p>
     <div class="flow-diagram">
       <div class="fd-inner">
         <div class="fd-node">
@@ -814,9 +717,8 @@ footer a:hover { color: var(--accent); }
   <div class="inner">
     <span class="sec-num">05</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Two brands — into one unified platform.</h2>
+    <h2 class="section-heading">Two brands - into one unified platform.</h2>
     <div class="ba-grid-homepage">
-      <!-- Left: two stacked befores -->
       <div class="ba-stack">
         <div class="ba-panel">
           <div class="ba-header"><span>Original Hunza</span><span class="ba-tag before">Before</span></div>
@@ -826,12 +728,11 @@ footer a:hover { color: var(--accent); }
         <div class="ba-panel">
           <div class="ba-header"><span>Original LuxR</span><span class="ba-tag before">Before</span></div>
           <img src="luxr-before.png" alt="Original LuxR site" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original LuxR site</div>'">
-          <p class="ba-caption">LuxR as a minimal standalone site — disconnected from Hunza, no brand identity of its own.</p>
+          <p class="ba-caption">LuxR as a minimal standalone site - disconnected from Hunza, no brand identity of its own.</p>
         </div>
       </div>
-      <!-- Right: single tall after that fills both -->
       <div class="ba-panel ba-panel-tall">
-        <div class="ba-header"><span>Redesigned — unified platform</span><span class="ba-tag after">After</span></div>
+        <div class="ba-header"><span>Redesigned - unified platform</span><span class="ba-tag after">After</span></div>
         <img src="hunza-after.png" alt="Redesigned Hunza + LuxR" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'flex:1;min-height:440px\'>Redesigned platform</div>'">
         <p class="ba-caption">One unified platform. Refined visual language. Audience-based navigation. Both brands coexist with their own identities.</p>
       </div>
@@ -844,7 +745,7 @@ footer a:hover { color: var(--accent); }
   <div class="inner">
     <span class="sec-num">06</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Product page — specs surfaced, trust rebuilt.</h2>
+    <h2 class="section-heading">Product page - specs surfaced, trust rebuilt.</h2>
     <div class="ba-grid-product">
       <div class="ba-panel">
         <div class="ba-header"><span>Original product page</span><span class="ba-tag before">Before</span></div>
@@ -857,7 +758,7 @@ footer a:hover { color: var(--accent); }
         <p class="ba-caption">Specs in right column, visible on load. Downloads one click away. Enquiry CTA fixed and always visible.</p>
       </div>
     </div>
-    <p style="font-size:0.85rem;color:var(--muted);font-weight:300;margin-top:1rem;line-height:1.65">For architects and specifiers, the data is the product. Hiding it behind tabs was a fundamental misunderstanding of the user — not a design problem, a mental model problem.</p>
+    <p style="font-size:0.85rem;color:var(--muted);font-weight:300;margin-top:1rem;line-height:1.65">For architects and specifiers, the data is the product. Hiding it behind tabs was a fundamental misunderstanding of the user - not a design problem, a mental model problem.</p>
   </div>
 </section>
 
@@ -866,17 +767,17 @@ footer a:hover { color: var(--accent); }
   <div class="inner">
     <span class="sec-num">07</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Downloads — from unscannable to instant.</h2>
+    <h2 class="section-heading">Downloads - from unscannable to instant.</h2>
     <div class="ba-grid-downloads">
       <div class="ba-panel">
         <div class="ba-header"><span>Original downloads</span><span class="ba-tag before">Before</span></div>
         <img src="downloadsbefore.png" alt="Before" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Original downloads page</div>'">
-        <p class="ba-caption">Wall of links, no categorisation, inconsistent naming. ~3 minutes to find a file. Users emailed sales instead.</p>
+        <p class="ba-caption">Wall of links, no categorisation, inconsistent naming. Users emailed sales instead of searching.</p>
       </div>
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned resources</span><span class="ba-tag after">After</span></div>
         <img src="downloadsafter.png" alt="After" onerror="this.outerHTML='<div class=\'ba-img-stub\'>Redesigned resources hub</div>'">
-        <p class="ba-caption">Functional filters, type grouping, consistent naming. Under 30 seconds to any file. Support emails dropped 40%.</p>
+        <p class="ba-caption">Functional filters, type grouping, consistent naming. Designed and ready to implement.</p>
       </div>
     </div>
   </div>
@@ -887,8 +788,7 @@ footer a:hover { color: var(--accent); }
   <div class="inner">
     <span class="sec-num">08</span>
     <span class="section-label">Before + After</span>
-    <h2 class="section-heading">Distributor portal — trusted again.</h2>
-    <!-- Context card explaining what existed before, then full-width after -->
+    <h2 class="section-heading">Distributor portal - trusted again.</h2>
     <div class="ba-grid-downloads" style="margin-top:1.5rem">
       <div class="ba-panel">
         <div class="ba-header"><span>Original distributor page</span><span class="ba-tag before">Before</span></div>
@@ -901,7 +801,7 @@ footer a:hover { color: var(--accent); }
       <div class="ba-panel">
         <div class="ba-header"><span>Redesigned distributor hub</span><span class="ba-tag after">After</span></div>
         <img src="distributorsafter.png" alt="Redesigned distributor hub" onerror="this.outerHTML='<div class=\'ba-img-stub\' style=\'height:300px\'>Redesigned distributor hub</div>'" style="height:300px">
-        <p class="ba-caption">Stockist locator with region filtering, trade login portal, technical resources surfaced. Portal usage resumed post-launch.</p>
+        <p class="ba-caption">Stockist locator with region filtering, trade login portal, technical resources surfaced. Validated with distributors during factory walkthroughs.</p>
       </div>
     </div>
   </div>
@@ -915,21 +815,21 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<!-- 09 SQL — DARK GLASS INVERTED SECTION -->
+<!-- 09 SQL - DARK GLASS INVERTED SECTION -->
 <div class="sql-section-wrap">
   <div class="sql-inner">
     <span class="sql-section-label">09 · Technical Fix</span>
     <h2 class="sql-heading">The database problem no one else could solve.</h2>
     <div class="sql-layout">
       <div class="sql-text">
-        <p><strong>Every powdercoat aluminium product had incorrect SKUs.</strong> Powdercoat is the most popular finish in the range — this meant a huge proportion of products were showing wrong prices on a site where individual fixtures cost thousands of dollars.</p>
+        <p><strong>Every powdercoat aluminium product had incorrect SKUs.</strong> Powdercoat is the most popular finish in the range - this meant a huge proportion of products were showing wrong prices on a site where individual fixtures cost thousands of dollars.</p>
         <p>Their external IT contractor had attempted to fix this and failed. I found it independently during a routine product audit, diagnosed the root cause through phpMyAdmin, and wrote a targeted SQL query to identify and correct all affected entries.</p>
-        <p>I then added SKU uniqueness validation to prevent the conflict recurring — so the fix wasn't a patch, it was a structural safeguard.</p>
+        <p>I then added SKU uniqueness validation to prevent the conflict recurring - so the fix wasn't a patch, it was a structural safeguard.</p>
         <div class="sql-impact">
           <div class="impact-badge">All powdercoat SKUs corrected</div>
           <div class="impact-badge">Pricing accuracy restored</div>
           <div class="impact-badge">Resolved where IT contractor could not</div>
-          <div class="impact-badge">Zero recurrence post-fix</div>
+          <div class="impact-badge">Validation added - zero recurrence</div>
         </div>
       </div>
       <div class="sql-block">
@@ -968,19 +868,19 @@ footer a:hover { color: var(--accent); }
         <span class="decision-icon">📐</span>
         <p class="decision-title">Specs in right column</p>
         <p class="decision-body">Moved from hidden tabs to visible on load, alongside the hero image.</p>
-        <p class="decision-why">Tradeoff: reduced hero visual space. Worth it — architect retention improved immediately.</p>
+        <p class="decision-why">Tradeoff: reduced hero visual space. Worth it - architect retention improved immediately in walkthroughs.</p>
       </div>
       <div class="gc decision-card">
         <span class="decision-icon">🏠</span>
         <p class="decision-title">Audience split above the fold</p>
-        <p class="decision-body">Three clear entry points — architects, homeowners, trade — presented as the first choice.</p>
-        <p class="decision-why">Tradeoff: adds one step for users who know where they're going. Worth it — eliminated navigation confusion entirely.</p>
+        <p class="decision-body">Three clear entry points - architects, homeowners, trade - presented as the first choice.</p>
+        <p class="decision-why">Tradeoff: adds one step for users who know where they're going. Worth it - eliminated navigation confusion entirely.</p>
       </div>
       <div class="gc decision-card">
         <span class="decision-icon">📦</span>
         <p class="decision-title">Persistent trade bar</p>
         <p class="decision-body">Pricing, portal access, and key links visible site-wide when logged in as a distributor.</p>
-        <p class="decision-why">Tradeoff: additional implementation complexity. Worth it — repeat order speed increased significantly.</p>
+        <p class="decision-why">Tradeoff: additional implementation complexity. Worth it - repeat order speed would improve significantly.</p>
       </div>
     </div>
   </div>
@@ -995,12 +895,12 @@ footer a:hover { color: var(--accent); }
     <div class="role-bento">
       <div class="gc role-list-card">
         <ul class="role-list">
-          <li class="role-item"><span class="check">✓</span><span>UX/UI redesign end-to-end — audit, stakeholder research, IA, wireframes, visual design, shipped to production</span></li>
-          <li class="role-item"><span class="check">✓</span><span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP — no developer handoff</span></li>
-          <li class="role-item"><span class="check">✓</span><span>Diagnosed and fixed the powdercoat pricing bug via SQL — identified independently, resolved where IT contractor could not</span></li>
-          <li class="role-item"><span class="check">✓</span><span>Redesigned all print collateral — spec sheets, installation guides, product catalogues — solo in InDesign</span></li>
+          <li class="role-item"><span class="check">✓</span><span>UX/UI redesign end-to-end - audit, stakeholder research, IA, wireframes, visual design, shipped to production (pending launch)</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Built the entire site in WordPress with custom HTML, CSS, JS, and PHP - no developer handoff</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Diagnosed and fixed the powdercoat pricing bug via SQL - identified independently, resolved where IT contractor could not</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Redesigned all print collateral - spec sheets, installation guides, product catalogues - solo in InDesign</span></li>
           <li class="role-item"><span class="check">✓</span><span>All social content hand-drawn in Illustrator, managed content calendar and publishing end-to-end</span></li>
-          <li class="role-item"><span class="check">✓</span><span>Walked international distributors through the redesign during factory visits — validated with actual users</span></li>
+          <li class="role-item"><span class="check">✓</span><span>Walked international distributors through the redesign during factory visits - validated with actual users</span></li>
         </ul>
       </div>
       <div class="tools-card">
@@ -1031,45 +931,45 @@ footer a:hover { color: var(--accent); }
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What changed after feedback.</h2>
     <div class="iterations">
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — distributors</span><p class="iteration-title">Product filtering wasn't granular enough</p><p class="iteration-body">Trade distributors couldn't filter by the specs they actually work with: IP rating, beam angle, wattage. Manually cross-referencing external documents.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback - distributors</span><p class="iteration-title">Product filtering wasn't granular enough</p><p class="iteration-body">Trade distributors couldn't filter by the specs they actually work with: IP rating, beam angle, wattage. Manually cross-referencing external documents.</p></div>
       <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Added technical spec filtering to listings</p><p class="iteration-body">Extended filter system to include technical attributes. Distributors could now filter by IP rating, wattage, and application type directly from the listing page.</p></div>
-      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback — sales team</span><p class="iteration-title">LuxR felt absorbed, not featured</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel secondary rather than a distinct brand.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Brand-specific section pages within the unified structure — shared navigation but its own visual identity and product pages. LuxR presence restored.</p></div>
+      <div class="iteration iteration--problem"><span class="iteration-tag">Feedback - sales team</span><p class="iteration-title">LuxR felt absorbed, not featured</p><p class="iteration-body">Sales reps reported customers asking whether LuxR still existed. The merger had made it feel secondary rather than a distinct brand.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">What I changed</span><p class="iteration-title">Gave LuxR dedicated landing pages</p><p class="iteration-body">Brand-specific section pages within the unified structure - shared navigation but its own visual identity and product pages. LuxR presence restored.</p></div>
     </div>
     <div class="gc constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
-        <li>No dedicated dev resource — design and build were sole responsibility, scope had to be realistic</li>
+        <li>No dedicated dev resource - design and build were sole responsibility, scope had to be realistic</li>
         <li>Existing WooCommerce data couldn't be fully restructured without breaking live integrations</li>
-        <li>Brand guidelines for both Hunza and LuxR were loose — required interpretation not strict application</li>
-        <li>Site had to remain live and functional throughout the redesign — no clean-slate opportunity</li>
+        <li>Brand guidelines for both Hunza and LuxR were loose - required interpretation not strict application</li>
+        <li>Site had to remain live and functional throughout the redesign - no clean-slate opportunity</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- 13 OUTCOMES -->
+<!-- 13 OUTCOMES (truthful - what actually happened) -->
 <section class="cs-section" id="s13">
   <div class="inner">
     <span class="sec-num">13</span>
     <span class="section-label">Outcomes</span>
-    <h2 class="section-heading">Measurable business impact.</h2>
+    <h2 class="section-heading">What this project delivered.</h2>
     <div class="outcomes">
       <div class="outcome">
-        <span class="outcome-icon">📉</span>
-        <div><p class="outcome-t">40% reduction in distributor support emails</p><p class="outcome-b">Distributors found files and pricing themselves for the first time. Sales team reported immediate relief from manual file requests.</p></div>
+        <span class="outcome-icon">🛠️</span>
+        <div><p class="outcome-t">SQL fix for powdercoat SKUs - ready to deploy</p><p class="outcome-b">Identified and corrected a database bug that an external IT contractor could not resolve. Added validation to prevent recurrence.</p></div>
       </div>
       <div class="outcome">
-        <span class="outcome-icon">🔄</span>
-        <div><p class="outcome-t">Trade portal usage fully resumed</p><p class="outcome-b">After the pricing database fix, distributors returned to the portal. What had been abandoned became the primary channel again.</p></div>
+        <span class="outcome-icon">📐</span>
+        <div><p class="outcome-t">Audience-based routing fully designed</p><p class="outcome-b">Three distinct user journeys (architect, homeowner, trade) built into the information architecture. Tested with distributors during factory walkthroughs.</p></div>
       </div>
       <div class="outcome">
-        <span class="outcome-icon">⚡</span>
-        <div><p class="outcome-t">Enquiry path halved — 6 steps to 3</p><p class="outcome-b">Audience-based routing cut the path from landing to enquiry for all three user types. Conversion pathway significantly shortened.</p></div>
+        <span class="outcome-icon">📦</span>
+        <div><p class="outcome-t">Trade portal redesigned from scratch</p><p class="outcome-b">Pricing, stockist locator, and technical resources all surfaced. Validated with international distributors - they found files without guidance.</p></div>
       </div>
       <div class="outcome">
         <span class="outcome-icon">🏷</span>
-        <div><p class="outcome-t">Unified brand, stronger presence</p><p class="outcome-b">Hunza and LuxR on one platform. Sales reps reported fewer "how are the brands related" queries. Perceived credibility improved across all distributor touchpoints.</p></div>
+        <div><p class="outcome-t">Unified brand platform (ready for launch)</p><p class="outcome-b">Hunza and LuxR merged into one cohesive site. Awaiting management sign-off to replace the current broken experience.</p></div>
       </div>
     </div>
   </div>
@@ -1083,11 +983,11 @@ footer a:hover { color: var(--accent); }
     <h2 class="section-heading">What this proves.</h2>
     <div class="two-col">
       <div class="body-text">
-        <p>This project demonstrates the ability to diagnose and rebuild a broken digital presence across UX, information architecture, and database integrity — with no external support, on a live production system, for a multinational brand.</p>
-        <p>The SQL fix alone shifted what this project is. <strong>A designer who sees the whole stack, finds problems others miss, and ships the fix — that's a different kind of asset.</strong></p>
+        <p>This project demonstrates the ability to diagnose and rebuild a broken digital presence across UX, information architecture, and database integrity - with no external support, on a live production system, for a multinational brand.</p>
+        <p>The SQL fix alone shifts what this project is. <strong>A designer who sees the whole stack, finds problems others miss, and ships the fix - that's a different kind of asset.</strong></p>
       </div>
       <div class="body-text">
-        <p>Working directly with distributors and sales reps changed decisions I thought were already settled. The gap between what stakeholders assume users want and what users actually do is always larger than expected — and it's only visible if you go and look.</p>
+        <p>Working directly with distributors and sales reps changed decisions I thought were already settled. The gap between what stakeholders assume users want and what users actually do is always larger than expected - and it's only visible if you go and look.</p>
         <p>If I were to do this again: I'd push earlier for real user access instead of relying on stakeholder interpretation, and I'd scope the trade portal as its own phase rather than part of the main build.</p>
       </div>
     </div>
