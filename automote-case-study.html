@@ -193,7 +193,7 @@
     <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">The most frequent dealer action. Redesigned for inline editing with immediate confirmation.</p>
     <div class="flow-compare">
       <div class="flow-before">
-        <div class="flow-header">Before — 5 steps</div>
+        <div class="flow-header">Before: 5 steps</div>
         <div class="flow-steps">
           <div class="flow-step"><span class="flow-step-num">1</span>Navigate to orders list</div>
           <div class="flow-step"><span class="flow-step-num">2</span>Click into order (leave list)</div>
@@ -203,7 +203,7 @@
         </div>
       </div>
       <div class="flow-after">
-        <div class="flow-header">After — 2 steps</div>
+        <div class="flow-header">After: 2 steps</div>
         <div class="flow-steps">
           <div class="flow-step"><span class="flow-step-num">1</span>Filter to find order</div>
           <div class="flow-step"><span class="flow-step-num">2</span>Inline edit with confirmation</div>
@@ -219,26 +219,66 @@
   <div class="inner">
     <span class="sec-num">04</span>
     <span class="section-label">Wireframes</span>
-    <h2 class="section-heading">Structuring before styling.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:54ch;line-height:1.75;margin-bottom:0">Wireframed key screens to validate information architecture before moving to high-fidelity.</p>
-    <div class="img-grid-3">
+    <h2 class="section-heading">Structure first.</h2>
+    <p style="font-size:0.9rem;color:var(--muted);font-weight:300;max-width:52ch;line-height:1.75;margin-bottom:1.25rem">Sketched out the core problems before touching Figma. Getting the logic right on paper is faster than getting it wrong in high-fidelity.</p>
+    <div class="img-grid-2" style="max-width:700px">
       <div class="img-panel">
-        <img class="img-sketch" src="filter wireframing.jpg" alt="Filter panel wireframing — initial exploration" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter wireframing — initial</div>'">
-        <p class="img-caption">Initial exploration — testing how to surface filtering without cluttering the primary view</p>
+        <img class="img-sketch" src="problemidentification.jpg" alt="Problem identification sketch" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Problem identification</div>'">
+        <p class="img-caption">Identifying the navigation and workflow failures before any design decisions</p>
       </div>
       <div class="img-panel">
-        <img class="img-sketch" src="filter wireframing 2.jpg" alt="Filter wireframing — second iteration" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter wireframing — second iteration</div>'">
-        <p class="img-caption">Second iteration — refining collapse/expand behaviour and filter grouping</p>
-      </div>
-      <div class="img-panel">
-        <img class="img-sketch" src="filter wrireframing.jpg" alt="Filter wireframing — third iteration" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter wireframing — third iteration</div>'">
-        <p class="img-caption">Third iteration — finalising filter hierarchy before moving to high-fidelity</p>
+        <img class="img-sketch" src="problemidentification2.jpg" alt="Problem identification sketch 2" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Problem identification 2</div>'">
+        <p class="img-caption">Mapping which interactions caused the most friction and where steps could be removed</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 05 ORDERS -->
+<!-- 05 EARLY EXPLORATION -->
+<section class="cs-section" id="s5">
+  <div class="inner">
+    <span class="sec-num">05</span>
+    <span class="section-label">Early Exploration</span>
+    <h2 class="section-heading">Testing direction before committing.</h2>
+    <p style="font-size:0.9rem;color:var(--muted);font-weight:300;max-width:52ch;line-height:1.75;margin-bottom:1.25rem">First-pass high-fidelity screens to test layout logic and information hierarchy. The goal was validating the approach, not visual polish. These informed what got built and what got cut.</p>
+    <div class="img-grid-2">
+      <div class="img-panel">
+        <img class="img-sketch" src="filter wireframing.jpg" alt="Filter panel layout exploration" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter layout exploration</div>'">
+        <p class="img-caption">Filter panel layout: testing how much of the primary view to preserve when filters are open</p>
+      </div>
+      <div class="img-panel">
+        <img class="img-sketch" src="filter wireframing 2.jpg" alt="Filter hierarchy iteration" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter hierarchy iteration</div>'">
+        <p class="img-caption">Second pass: refining how filters group and whether they collapse cleanly</p>
+      </div>
+    </div>
+    <div class="img-grid-3" style="margin-top:0.75rem">
+      <div class="img-panel">
+        <img class="img-sketch" src="filter wrireframing.jpg" alt="Filter layout third pass" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter layout third pass</div>'">
+        <p class="img-caption">Third pass: settled on the collapsible sidebar approach</p>
+      </div>
+      <div class="img-panel">
+        <img class="img-sketch" src="filter 1 - 9.png" alt="Filter panel high-fidelity draft" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Filter panel draft</div>'">
+        <p class="img-caption">High-fidelity draft: filter panel grouped by category, visual hierarchy tested</p>
+      </div>
+      <div class="img-panel">
+        <img class="img-sketch" src="adding config 1 -1.png" alt="Configuration flow early draft" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Configuration flow draft</div>'">
+        <p class="img-caption">Configuration flow: testing step structure before the two-panel layout was locked</p>
+      </div>
+    </div>
+    <div class="img-grid-2" style="margin-top:0.75rem">
+      <div class="img-panel">
+        <img class="img-sketch" src="editing config 1 - 1.png" alt="Editing configuration early draft" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Config editing draft</div>'">
+        <p class="img-caption">Editing flow draft: inline save and cancel hierarchy tested here before the final approach</p>
+      </div>
+      <div class="img-panel">
+        <img class="img-sketch" src="config steps.png" alt="Step flow early draft" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:4/3\'>Step flow draft</div>'">
+        <p class="img-caption">Step progress draft: numbered flow tested here, simplified in final</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ORDERS -->
 <section class="cs-section" id="s5">
   <div class="inner">
     <span class="sec-num">05</span>
@@ -248,49 +288,43 @@
 
     <div class="img-panel" style="margin-bottom:1rem">
       <img class="img-desktop" src="orders 1 -1.png" alt="Automote orders management — filterable by ID, customer, model, date, and production status" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Orders management screen</div>'">
-      <p class="img-caption">Order management — filterable by ID, customer, model, date, and production status. Visual weight distinguishes action-required statuses.</p>
+      <p class="img-caption">Order management: filterable by ID, customer, model, date, and production status. Visual weight distinguishes action-required statuses.</p>
     </div>
 
     <div class="img-panel" style="margin-top:0.75rem">
       <img class="img-desktop" src="orders 1 -1 (1).png" alt="Orders list with filter panel open — collapsible sidebar keeps primary content visible" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Orders — filter panel open</div>'">
-      <p class="img-caption">Filter panel open — collapsible sidebar keeps the primary content visible while filtering</p>
+      <p class="img-caption">Filter panel open. Collapsible sidebar keeps the primary content visible while filtering</p>
     </div>
 
     <div class="img-grid-2" style="margin-top:0.75rem">
       <div class="img-panel">
         <img class="img-desktop" src="edit orders.png" alt="Inline order editing — status updated without navigating away" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Inline order editing</div>'">
-        <p class="img-caption">Inline order editing — status can be updated without navigating away</p>
+        <p class="img-caption">Inline order editing. Status updated without leaving the screen</p>
       </div>
       <div class="img-panel">
-        <img class="img-desktop" src="inventory 1 -1.png" alt="Inventory overview — consistent row structure and quick-action controls" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Inventory overview</div>'">
-        <p class="img-caption">Inventory overview — consistent row structure and quick-action controls</p>
+        <img class="img-desktop" src="inventory 1 -1.png" alt="Inventory overview: consistent row structure and quick-action controls" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Inventory overview</div>'">
+        <p class="img-caption">Inventory overview: consistent row structure and quick-action controls</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 06 VEHICLE CONFIGURATION -->
-<section class="cs-section" id="s6">
+<!-- 07 VEHICLE CONFIGURATION -->
+<section class="cs-section" id="s7">
   <div class="inner">
-    <span class="sec-num">06</span>
+    <span class="sec-num">07</span>
     <span class="section-label">Final Design</span>
     <h2 class="section-heading">Vehicle configuration without losing context.</h2>
-    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:58ch;line-height:1.75;margin-bottom:1.5rem">The two-panel layout keeps order details and configuration steps visible simultaneously — no navigating between them.</p>
+    <p style="font-size:0.95rem;color:var(--muted);font-weight:300;max-width:58ch;line-height:1.75;margin-bottom:1.5rem">The two-panel layout keeps order details and configuration steps visible at the same time. No navigating back and forth.</p>
 
     <div class="img-panel" style="margin-bottom:1rem">
-      <img class="img-desktop" src="edit trim level.png" alt="Vehicle configuration — two-panel with order details persistent on left, steps on right" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Two-panel vehicle configuration</div>'">
-      <p class="img-caption">Two-panel vehicle configuration — order details persistent on left, configuration steps on right</p>
+      <img class="img-desktop" src="edit trim level.png" alt="Vehicle configuration two-panel with order details on left and steps on right" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Two-panel vehicle configuration</div>'">
+      <p class="img-caption">Two-panel configuration: order details persistent on the left, steps on the right</p>
     </div>
 
-    <div class="img-grid-2">
-      <div class="img-panel">
-        <img class="img-desktop" src="edit trim.png" alt="Trim level selection with visual preview" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Trim level selection</div>'">
-        <p class="img-caption">Trim level selection with visual preview</p>
-      </div>
-      <div class="img-panel">
-        <img class="img-desktop" src="adding config 1 -1.png" alt="Adding configuration options — step progress indicator" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Adding configuration options</div>'">
-        <p class="img-caption">Adding options — clear step progress indicator</p>
-      </div>
+    <div class="img-panel">
+      <img class="img-desktop" src="edit trim.png" alt="Trim level selection with visual preview" onerror="this.outerHTML='<div class=\'img-stub\' style=\'aspect-ratio:16/10\'>Trim level selection</div>'">
+      <p class="img-caption">Trim level selection with visual preview</p>
     </div>
   </div>
 </section>
@@ -303,51 +337,51 @@
   </div>
 </div>
 
-<!-- 07 DESIGN DECISIONS -->
-<section class="cs-section" id="s7">
+<!-- 08 DESIGN DECISIONS -->
+<section class="cs-section" id="s8">
   <div class="inner">
-    <span class="sec-num">07</span>
+    <span class="sec-num">08</span>
     <span class="section-label">Key Decisions</span>
     <h2 class="section-heading">Tradeoffs worth making.</h2>
     <div class="decision-grid">
-      <div class="gc decision-card"><span class="decision-icon">🗂</span><p class="decision-title">Two-panel configuration</p><p class="decision-body">Details and steps in persistent split view. Dealers never lose context mid-task.</p><p class="decision-why">Tradeoff: more complex layout. Worth it — eliminated mid-task navigation entirely.</p></div>
-      <div class="gc decision-card"><span class="decision-icon">🔍</span><p class="decision-title">Collapsible side filter</p><p class="decision-body">Visible when needed, hidden when not. Filters by ID, customer, model, date.</p><p class="decision-why">Tradeoff: additional UI element. Worth it — dealers found orders significantly faster.</p></div>
-      <div class="gc decision-card"><span class="decision-icon">🚦</span><p class="decision-title">Status as text labels</p><p class="decision-body">Production status as readable text, not icons alone. No legend required.</p><p class="decision-why">Tradeoff: less visual minimalism. Worth it — zero misinterpretation in testing.</p></div>
-      <div class="gc decision-card"><span class="decision-icon">⚓</span><p class="decision-title">Structured sidebar nav</p><p class="decision-body">Tools grouped into logical categories with persistent context across all screens.</p><p class="decision-why">Tradeoff: requires initial learning. Worth it — dealers always knew where they were.</p></div>
-      <div class="gc decision-card"><span class="decision-icon">🎯</span><p class="decision-title">Primary/secondary hierarchy</p><p class="decision-body">Primary actions use filled buttons. Destructive actions deliberately subdued.</p><p class="decision-why">Tradeoff: less visual uniformity. Worth it — reduced accidental destructive actions.</p></div>
-      <div class="gc decision-card"><span class="decision-icon">📐</span><p class="decision-title">Unified component system</p><p class="decision-body">Spacing, type, buttons, forms applied consistently across every screen.</p><p class="decision-why">Tradeoff: initial setup time. Worth it — users relied on patterns without hesitation.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">🗂</span><p class="decision-title">Two-panel configuration</p><p class="decision-body">Details and steps in persistent split view. Dealers never lose context mid-task.</p><p class="decision-why">Tradeoff: more complex layout. Worth it. Eliminated mid-task navigation entirely.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">🔍</span><p class="decision-title">Collapsible side filter</p><p class="decision-body">Visible when needed, hidden when not. Filters by ID, customer, model, date.</p><p class="decision-why">Tradeoff: additional UI element. Worth it. Dealers found orders significantly faster.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">🚦</span><p class="decision-title">Status as text labels</p><p class="decision-body">Production status as readable text, not icons alone. No legend required.</p><p class="decision-why">Tradeoff: less visual minimalism. Worth it. Zero misinterpretation in testing.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">⚓</span><p class="decision-title">Structured sidebar nav</p><p class="decision-body">Tools grouped into logical categories with persistent context across all screens.</p><p class="decision-why">Tradeoff: requires initial learning. Worth it. Dealers always knew where they were.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">🎯</span><p class="decision-title">Primary/secondary hierarchy</p><p class="decision-body">Primary actions use filled buttons. Destructive actions deliberately subdued.</p><p class="decision-why">Tradeoff: less visual uniformity. Worth it. Reduced accidental destructive actions.</p></div>
+      <div class="gc decision-card"><span class="decision-icon">📐</span><p class="decision-title">Unified component system</p><p class="decision-body">Spacing, type, buttons, forms applied consistently across every screen.</p><p class="decision-why">Tradeoff: initial setup time. Worth it. Users relied on patterns without hesitation.</p></div>
     </div>
   </div>
 </section>
 
-<!-- 08 TESTING -->
-<section class="cs-section" id="s8">
+<!-- 09 TESTING -->
+<section class="cs-section" id="s9">
   <div class="inner">
-    <span class="sec-num">08</span>
+    <span class="sec-num">09</span>
     <span class="section-label">Testing + Iteration</span>
     <h2 class="section-heading">What the reviews revealed.</h2>
     <div class="iterations">
       <div class="iteration iteration--problem"><span class="iteration-tag">Feedback</span><p class="iteration-title">Status column not scannable</p><p class="iteration-body">Dealers scanning a long list couldn't quickly identify which orders needed action.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">Change</span><p class="iteration-title">Visual weight for action-required statuses</p><p class="iteration-body">Subtle colour coding for statuses requiring action. Text labels retained — colour additive, not replacing.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">Change</span><p class="iteration-title">Visual weight for action-required statuses</p><p class="iteration-body">Subtle colour coding for statuses requiring action. Text labels retained. Colour additive, not replacing.</p></div>
       <div class="iteration iteration--problem"><span class="iteration-tag">Feedback</span><p class="iteration-title">Bulk actions missing</p><p class="iteration-body">Sales managers needed to update multiple orders at once. v1 required individual updates.</p></div>
-      <div class="iteration iteration--solution"><span class="iteration-tag">Change</span><p class="iteration-title">Bulk selection and action bar</p><p class="iteration-body">Row-level checkboxes and contextual action bar appearing when items are selected.</p></div>
+      <div class="iteration iteration--solution"><span class="iteration-tag">Change</span><p class="iteration-title">Bulk selection and action bar</p><p class="iteration-body">Row-level checkboxes and a contextual action bar that appears when items are selected.</p></div>
     </div>
     <div class="gc constraints">
       <p class="constraints-title">Constraints</p>
       <ul>
-        <li>Internship timeline — six months, focused on highest-frequency workflows</li>
-        <li>No direct access to end users — feedback came through LuminateOne stakeholders</li>
-        <li>Prototype for planning — not involved in implementation, so edge cases needed to be thorough</li>
+        <li>Internship timeline: six months, focused on highest-frequency workflows</li>
+        <li>No direct access to end users. Feedback came through LuminateOne stakeholders</li>
+        <li>Prototype for planning only. Not involved in implementation, so edge cases needed to be thorough</li>
         <li>Work within Automote's established colour palette</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- 09 OUTCOMES -->
-<section class="cs-section" id="s9">
+<!-- 10 OUTCOMES -->
+<section class="cs-section" id="s10">
   <div class="inner">
-    <span class="sec-num">09</span>
+    <span class="sec-num">10</span>
     <span class="section-label">Outcomes</span>
     <h2 class="section-heading">How the work landed.</h2>
     <div class="outcomes">
@@ -358,10 +392,10 @@
   </div>
 </section>
 
-<!-- 10 REFLECTION -->
-<section class="cs-section" id="s10">
+<!-- 11 REFLECTION -->
+<section class="cs-section" id="s11">
   <div class="inner">
-    <span class="sec-num">10</span>
+    <span class="sec-num">11</span>
     <span class="section-label">Reflection</span>
     <h2 class="section-heading">What I'd do differently.</h2>
     <div class="two-col">
