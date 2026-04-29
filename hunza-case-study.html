@@ -145,13 +145,13 @@
     }
 
     /* Images in the stacked before panels: fill whatever height is left after
-       the header and caption, so both panels stretch to an equal size */
+       the header and caption. min-height keeps them visible before images load. */
     .ba-stack .ba-panel .img-before-after,
     .ba-stack .ba-panel .img-stub {
       flex: 1 1 0;
       width: 100%;
       object-fit: cover;
-      min-height: 0;          /* allows flex shrink below intrinsic size */
+      min-height: 220px;
     }
 
     /* The after panel (right col) must also stretch to fill the full row height */
@@ -161,13 +161,14 @@
       height: 100%;
     }
 
-    /* The after image fills whatever height remains after header + caption */
+    /* The after image fills whatever height remains after header + caption.
+       min-height ~2x the before images so proportions hold before load. */
     .ba-grid-homepage > .ba-panel .img-before-after,
     .ba-grid-homepage > .ba-panel .img-stub {
       flex: 1 1 0;
       width: 100%;
       object-fit: cover;
-      min-height: 0;
+      min-height: 500px;
     }
 
     /* Responsive: collapse to single column on narrow screens */
@@ -486,9 +487,9 @@
     <h2 class="sql-heading">The database problem no one else could solve.</h2>
     <div class="sql-layout">
       <div class="sql-text">
-        <p><strong>Every powdercoat aluminium product had incorrect SKUs.</strong> WooCommerce was storing each powdercoat colour as a separate SKU (e.g. S/U12/S EBK, S/U12/S EBZ) while Accredo — the ERP — only tracks by base material (S/U12/S ALI). This meant SKU-based price imports always failed, and the external IT contractor couldn't find the root cause.</p>
-        <p>I identified the mismatch independently during a product audit, diagnosed it through phpMyAdmin, and wrote a targeted SQL query to surface all duplicate and conflicting SKUs across the full powdercoat range — 5,000+ affected variations.</p>
-        <p>The fix: rename all powdercoat variation SKUs to their ALI equivalent so they match Accredo exactly, while keeping the colour attribute on each variation so customers can still select their finish on the front end and it appears correctly on the order. I then built a Python sync script so future Accredo price exports map automatically — no manual work, no recurrence.</p>
+        <p><strong>Every powdercoat aluminium product had incorrect SKUs.</strong> WooCommerce was storing each powdercoat colour as a separate SKU (e.g. S/U12/S EBK, S/U12/S EBZ) while Accredo (the ERP) only tracks by base material (S/U12/S ALI). This meant SKU-based price imports always failed, and the external IT contractor could not find the root cause.</p>
+        <p>I identified the mismatch independently during a product audit, diagnosed it through phpMyAdmin, and wrote a targeted SQL query to surface all duplicate and conflicting SKUs across the full powdercoat range: 5,000+ affected variations.</p>
+        <p>The fix: I generated a WooCommerce-compatible CSV to rename all powdercoat variation SKUs to their ALI equivalent so they match Accredo exactly, while keeping the colour attribute on each variation so customers can still select their finish on the front end and it appears correctly on the order. A CSV is the standard WooCommerce bulk import format: each row maps a product ID to its corrected SKU and updated price, and the whole file uploads in one go via Products > Import. I then built a Python sync script so future Accredo price exports map automatically to a fresh CSV ready to import, with no manual work required.</p>
         <div class="sql-impact">
           <div class="impact-badge">5,000+ SKUs corrected</div>
           <div class="impact-badge">Pricing accuracy restored</div>
