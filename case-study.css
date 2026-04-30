@@ -93,7 +93,7 @@ body::before {
 .cs-hero {
   min-height: 85vh;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 0 3rem 4rem;
+  padding: 10rem 3rem 4rem;    /* top padding clears nav + absolute eyebrow row */
   position: relative; overflow: hidden;
 }
 .cs-hero-bg { position: absolute; inset: 0; z-index: 0; }
@@ -713,7 +713,7 @@ footer a:hover { color: var(--accent); }
   .flow-compare { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .cs-hero { padding: 0 1.5rem 3rem; min-height: 75vh; }
+  .cs-hero { padding: 8rem 1.5rem 3rem; min-height: 75vh; }
   .cs-hero-top { left: 1.5rem; right: 1.5rem; top: 5rem; flex-direction: column; align-items: flex-start; }
   .cs-section { padding: 3.5rem 1.5rem; }
   .editorial-peak { margin: 0 -1.5rem; padding: 3rem 1.5rem; }
