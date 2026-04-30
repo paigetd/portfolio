@@ -466,24 +466,39 @@ body::before {
 
 /* ---- PHONE SHOWCASE ---- */
 .phones-showcase {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
-  padding: 2.5rem 2rem; margin: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;        /* align phone bottoms so labels sit on the same line */
+  gap: 2rem;
+  padding: 3rem 2rem 2.5rem;
+  margin: 2rem 0;
   background: rgba(255,255,255,0.35);
   border: 1px solid rgba(255,255,255,0.72);
   border-radius: 24px;
 }
-.phone-item { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
-.phone-item:nth-child(even) .img-phone { transform: translateY(12px); }
+.phone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;                  /* more breathing room between image and label */
+}
+/* Remove stagger — it was causing label misalignment */
+.phone-item:nth-child(even) .img-phone { transform: none; }
 .phone-item:hover .img-phone { transform: translateY(-10px) scale(1.02) !important; }
 .phone-item .img-phone {
-  width: 130px;
-  border-radius: 22px;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.1);
+  width: 165px;                 /* was 130px — meaningfully bigger */
+  border-radius: 26px;
+  box-shadow: 0 28px 56px rgba(0,0,0,0.18), 0 8px 16px rgba(0,0,0,0.1);
   border: 1px solid rgba(255,255,255,0.2);
 }
 .phone-lbl {
-  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0;                /* gap on phone-item handles spacing */
 }
 
 /* ---- DECISION GRID ---- */
@@ -705,8 +720,8 @@ footer a:hover { color: var(--accent); }
   .cs-hero-meta > div:last-child { border-bottom: none; padding-bottom: 0; }
   .problem-grid, .iterations, .ba-grid, .img-grid-2, .img-grid-3 { grid-template-columns: 1fr; }
   .decision-grid, .persona-grid { grid-template-columns: 1fr; }
-  .phones-showcase { padding: 1.5rem 0.75rem; gap: 0.75rem; }
-  .phone-item .img-phone { width: 95px; }
+  .phones-showcase { padding: 1.5rem 0.75rem; gap: 1rem; }
+  .phone-item .img-phone { width: 110px; border-radius: 18px; }
   .fd-inner { grid-template-columns: 1fr; min-width: unset; }
   .fd-arrow { display: none; }
   .cs-end { padding: 2.5rem 1.5rem; flex-direction: column; align-items: flex-start; }
